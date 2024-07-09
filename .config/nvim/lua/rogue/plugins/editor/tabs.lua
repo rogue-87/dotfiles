@@ -16,7 +16,7 @@ return {
 		require("tabby.tabline").set(function(line)
 			return {
 				{
-					{ "  ", hl = theme.head },
+					{ "  ", hl = theme.head },
 					line.sep("", theme.head, theme.fill),
 				},
 				line.tabs().foreach(function(tab)
@@ -26,14 +26,14 @@ return {
 						-- tab.is_current() and "" or "",
 						tab.number(),
 						tab.name(),
-						tab.close_btn(""),
+						-- tab.close_btn(""),
 						line.sep("", hl, theme.fill),
 						hl = hl,
 						margin = " ",
 					}
 				end),
 				line.spacer(),
-				line.wins_in_tab(line.api.get_current_tab()).foreach(function(win)
+				--[[ line.wins_in_tab(line.api.get_current_tab()).foreach(function(win)
 					return {
 						line.sep("", theme.win, theme.fill),
 						win.is_current() and "" or "󰆣",
@@ -46,7 +46,7 @@ return {
 				{
 					line.sep("", theme.tail, theme.fill),
 					{ "  ", hl = theme.tail },
-				},
+				}, ]]
 				hl = theme.fill,
 			}
 		end)

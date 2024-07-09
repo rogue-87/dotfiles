@@ -61,7 +61,7 @@ return {
 				width = 40,
 			},
 			source_selector = {
-				winbar = true,
+				winbar = false,
 				statusline = false,
 			},
 			default_component_configs = {
@@ -81,14 +81,6 @@ return {
 					},
 				},
 			},
-			--[[ event_handlers = {
-				{
-					event = "file_opened",
-					handler = function(file_path)
-						require("neo-tree.command").execute({ action = "close" })
-					end,
-				},
-			}, ]]
 			commands = {
 				system_open = function(state)
 					local node = state.tree:get_node()

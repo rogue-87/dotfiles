@@ -1,7 +1,7 @@
 return {
 	"mfussenegger/nvim-dap",
 	event = { "BufReadPre", "BufNewFile" },
-	enabled = false,
+	-- enabled = false,
 	dependencies = {
 		"rcarriga/nvim-dap-ui",
 		"nvim-neotest/nvim-nio",
@@ -30,8 +30,9 @@ return {
 		local opts = {}
 
 		opts.desc = "DAP Toggle Breakpoint"
-		map("n", "<Leader>dt", function() dap.toggle_breakpoint() end, opts)
+		map("n", "<Leader>bt", function() dap.toggle_breakpoint() end, opts)
 
-		opts.desc = "DAP continue" map("n", "<leader>dc", function() dap.continue() end, opts)
+		opts.desc = "DAP continue"
+    map("n", "<leader>bc", function() dap.continue() end, opts)
 	end,
 }

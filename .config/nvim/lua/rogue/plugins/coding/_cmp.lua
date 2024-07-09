@@ -42,8 +42,8 @@ return { -- Completion Core
 			sources = cmp.config.sources({
 				{ name = "nvim_lsp" },
 				{ name = "luasnip" },
+				{ name = "buffer" },
 				{ name = "path" },
-				-- { name = "buffer" },
 			}),
 			formatting = {
 				format = lspkind.cmp_format({

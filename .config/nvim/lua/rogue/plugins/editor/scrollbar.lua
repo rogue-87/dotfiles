@@ -1,6 +1,6 @@
 return {
 	"lewis6991/satellite.nvim",
-	enabled = false,
+	-- enabled = false,
 	event = { "BufReadPre", "BufNewFile" },
 	config = function()
 		require("satellite").setup({
@@ -9,10 +9,11 @@ return {
 			winblend = 50,
 			zindex = 40,
 			excluded_filetypes = {},
-			width = 2,
+			width = 1,
 			handlers = {
 				cursor = {
 					enable = true,
+          overlap = true,
 					-- Supports any number of symbols
 					symbols = { "⎺", "⎻", "⎼", "⎽" },
 					-- symbols = { '⎻', '⎼' }
