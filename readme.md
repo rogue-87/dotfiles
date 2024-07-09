@@ -4,6 +4,9 @@
 
 ![Neovim Config](./readme-stuff/nvim-config.png)
 
+#### what's this neovim config for?
+front-end webdev and also golang
+
 #### Look at that sweet sweet startup time :p
 
 ![Neovim Startup Time](./readme-stuff/nvim-startup-time.png)
