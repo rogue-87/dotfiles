@@ -1,20 +1,24 @@
 return {
 	"neovim/nvim-lspconfig",
-	event = { "BufReadPre", "BufNewFile" },
 	dependencies = {
+		"williamboman/mason.nvim",
+		"williamboman/mason-lspconfig.nvim",
+		"WhoIsSethDaniel/mason-tool-installer.nvim",
+		-- "jay-babu/mason-nvim-dap.nvim",
 		"hrsh7th/cmp-nvim-lsp",
 		{ "antosha417/nvim-lsp-file-operations", config = true },
 	},
 	config = function()
+		local lspconfig = require("lspconfig")
+    local cmp_nvim_lsp = require("cmp_nvim_lsp")
+		local capabilities = require("cmp_nvim_lsp").default_capabilities()
+		local mason_registry = require("mason-registry")
+
 		local signs = { Error = " ", Warn = " ", Hint = "󰠠 ", Info = " " }
 		for type, icon in pairs(signs) do
 			local hl = "DiagnosticSign" .. type
 			vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
 		end
-		local lspconfig = require("lspconfig")
-		local mason_lspconfig = require("mason-lspconfig")
-		local mason_registry = require("mason-registry")
-		local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
 		-- Manually installed LSPs
 		lspconfig["lua_ls"].setup({
@@ -61,101 +65,164 @@ return {
 			filetypes = { "fish" },
 		})
 
+		-- The one and only
+		require("mason").setup({
+			ui = {
+				border = "none",
+				width = 0.8,
+				height = 0.8,
+				icons = {
+					package_installed = "✓",
+					package_pending = "➜",
+					package_uninstalled = "✗",
+				},
+			},
+		})
 		-- LSPs installed using mason.nvim
-		mason_lspconfig.setup_handlers({
-			-- Default config for all servers
-			function(server_name)
-				lspconfig[server_name].setup({
-					capabilities = capabilities,
-				})
-			end,
-			-- ["lua_ls"] = function() end,
-			["gopls"] = function()
-				lspconfig["gopls"].setup({
-					cmd = { "gopls" },
-					capabilities = capabilities,
-					filetypes = { "go", "gomod", "gowork", "gotmpl" },
-					single_file_support = true,
-				})
-			end,
-			-- Web dev stuff
-			["html"] = function()
-				lspconfig["html"].setup({
-					capabilities = capabilities,
-					filetypes = { "html", "templ" },
-					init_options = {
-						configurationSection = { "html", "css", "javascript" },
-						embeddedLanguages = {
-							css = true,
-							javascript = true,
+		require("mason-lspconfig").setup({
+			-- LSPs
+			ensure_installed = {
+				-- Web
+				"html",
+				"cssls",
+				"tsserver",
+				"jsonls",
+				"astro",
+				"volar",
+				"emmet_language_server",
+
+				-- Generic
+				-- "lua_ls",
+				"bashls",
+				"gopls",
+			},
+			automatic_installation = true,
+			handlers = {
+				-- Default config for all servers
+				function(server_name)
+					lspconfig[server_name].setup({
+						capabilities = capabilities,
+					})
+				end,
+				["gopls"] = function()
+					lspconfig["gopls"].setup({
+						cmd = { "gopls" },
+						capabilities = capabilities,
+						filetypes = { "go", "gomod", "gowork", "gotmpl" },
+						single_file_support = true,
+					})
+				end,
+				-- Web dev stuff
+				["html"] = function()
+					lspconfig["html"].setup({
+						capabilities = capabilities,
+						filetypes = { "html", "templ" },
+						init_options = {
+							configurationSection = { "html", "css", "javascript" },
+							embeddedLanguages = {
+								css = true,
+								javascript = true,
+							},
+							provideFormatter = true,
 						},
-						provideFormatter = false,
-					},
-					single_file_support = true,
-				})
-			end,
-			["cssls"] = function()
-				lspconfig["cssls"].setup({
-					capabilities = capabilities,
-				})
-			end,
-			["css_variables"] = function()
-				lspconfig["css_variables"].setup({})
-			end,
-			["cssmodules_ls"] = function()
-				lspconfig["cssmodules_ls"].setup({})
-			end,
-			["emmet_language_server"] = function()
-				lspconfig["emmet_language_server"].setup({
-					capabilities = capabilities,
-					filetypes = {
-						"html",
-						"css",
-						"scss",
-					},
-				})
-			end,
-			["tsserver"] = function()
-				local vue_plugin = os.getenv("HOME") .. "/.npm/packages/lib/node_modules/@vue/typescript-plugin/"
-				lspconfig["tsserver"].setup({
-					init_options = {
-						plugins = {
-							{
-								name = "@vue/typescript-plugin",
-								location = vue_plugin,
-								languages = { "javascript", "typescript", "vue" },
+						single_file_support = true,
+					})
+				end,
+				["cssls"] = function()
+					lspconfig["cssls"].setup({
+						capabilities = capabilities,
+					})
+				end,
+				["css_variables"] = function()
+					lspconfig["css_variables"].setup({})
+				end,
+				["cssmodules_ls"] = function()
+					lspconfig["cssmodules_ls"].setup({})
+				end,
+				["emmet_language_server"] = function()
+					lspconfig["emmet_language_server"].setup({
+						capabilities = capabilities,
+						filetypes = {
+							"html",
+							"javascriptreact",
+							"typescriptreact",
+							"css",
+							"sass",
+							"scss",
+							"vue",
+							"astro",
+						},
+					})
+				end,
+				["tsserver"] = function()
+					local vue_plugin = os.getenv("HOME") .. "/.npm/packages/lib/node_modules/@vue/typescript-plugin/"
+					lspconfig["tsserver"].setup({
+						init_options = {
+							plugins = {
+								{
+									name = "@vue/typescript-plugin",
+									location = vue_plugin,
+									languages = { "javascript", "typescript", "vue" },
+								},
 							},
 						},
-					},
-					filetypes = {
-						"javascript",
-						"typescript",
-						"javascriptreact",
-						"typescriptreact",
-					},
-					on_attach = function(client, bufnr) end,
-				})
-			end,
-			["volar"] = function()
-				local ts_lib_mason = mason_registry.get_package("vue-language-server"):get_install_path()
-					.. "/node_modules/typescript/lib"
-				local ts_lib_npm = os.getenv("HOME") .. "/.npm/packages/lib/node_modules/typescript/lib/"
-
-				lspconfig["volar"].setup({
-					init_options = {
-						typescript = {
-							tsdk = ts_lib_mason,
+						filetypes = {
+							"javascript",
+							"typescript",
+							"javascriptreact",
+							"typescriptreact",
 						},
-					},
-					filetypes = { "vue" },
-				})
-			end,
-			["astro"] = function()
-				lspconfig["astro"].setup({})
-			end,
+						on_attach = function(client, bufnr) end,
+					})
+				end,
+				["volar"] = function()
+					local ts_lib_mason = mason_registry.get_package("vue-language-server"):get_install_path()
+						.. "/node_modules/typescript/lib"
+					local ts_lib_npm = os.getenv("HOME") .. "/.npm/packages/lib/node_modules/typescript/lib/"
 
-			-- End of Web dev stuff
+					lspconfig["volar"].setup({
+						init_options = {
+							typescript = {
+								tsdk = ts_lib_mason,
+							},
+						},
+						filetypes = { "vue" },
+					})
+				end,
+				["astro"] = function()
+					lspconfig["astro"].setup({})
+				end,
+				-- End of Web dev stuff
+			},
 		})
+		-- Formatters, Linters.
+		require("mason-tool-installer").setup({
+			-- Formatters, Linters
+			ensure_installed = {
+				-- Fomratters
+				-- "stylua",
+				"prettier",
+				"shfmt",
+
+				-- Linters
+				-- "selene",
+				"codespell",
+				"stylelint",
+				"eslint_d",
+
+				-- Both
+			},
+			auto_update = true,
+		})
+
+		-- For installing & configuring Daps
+		--[[ require("mason-nvim-dap").setup({
+			ensure_installed = {
+				"node2",
+				"js",
+			},
+			automatic_installation = false,
+		}) ]]
 
 		local map = vim.keymap.set
 		vim.api.nvim_create_autocmd("LspAttach", {

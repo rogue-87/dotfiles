@@ -10,7 +10,7 @@ return {
 				javascriptreact = { "prettier" },
 				typescriptreact = { "prettier" },
 				vue = { "prettier" },
-				astro = { "prettier-plug-astro" },
+				astro = { "prettier-plugin-astro" },
 				css = { "prettier" },
 				scss = { "prettier" },
 				html = { "prettier" },
