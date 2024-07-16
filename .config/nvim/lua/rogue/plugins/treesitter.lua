@@ -1,6 +1,7 @@
 return {
 	"nvim-treesitter/nvim-treesitter",
 	build = ":TSUpdate",
+	event = { "BufReadPre", "BufNewFile" },
 	config = function()
 		local configs = require("nvim-treesitter.configs")
 		configs.setup({
@@ -14,6 +15,7 @@ return {
 
 				"html",
 				"css",
+				"javascript",
 				"scss",
 				"astro",
 				"vue",
@@ -29,15 +31,13 @@ return {
 				"markdown_inline",
 			},
 			modules = {},
-			ignore_install = { "javascript" },
+			ignore_install = {},
 			sync_install = true,
-			parser_install_dir = nil,
 			auto_install = true,
 			highlight = {
 				enable = true,
-				-- disable = {},
 			},
-
+			indent = { enable = true },
 			incremental_selection = {
 				enable = true,
 				keymaps = {

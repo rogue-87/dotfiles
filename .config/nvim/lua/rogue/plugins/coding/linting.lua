@@ -1,6 +1,5 @@
 return {
 	"mfussenegger/nvim-lint",
-	enabled = false,
 	event = { "BufReadPre", "BufNewFile" },
 	config = function()
 		local lint = require("lint")
@@ -11,7 +10,7 @@ return {
 			javascript = { "eslint_d" },
 			typescript = { "eslint_d" },
 			vue = { "eslint" },
-			lua = { "selene" },
+			-- lua = { "selene" },
 			markdown = { "codespell" },
 		}
 

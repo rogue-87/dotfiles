@@ -10,6 +10,7 @@ return { -- Completion Core
 		{ -- Snippet Engine
 			"L3MON4D3/LuaSnip",
 			version = "2.*",
+			build = "make install_jsregexp",
 			dependencies = {
 				"saadparwaiz1/cmp_luasnip",
 				"rafamadriz/friendly-snippets",

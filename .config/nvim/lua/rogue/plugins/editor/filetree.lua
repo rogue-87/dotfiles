@@ -33,6 +33,11 @@ return {
 		vim.fn.sign_define("DiagnosticSignHint", { text = "󰌵", texthl = "DiagnosticSignHint" })
 	end,
 	config = function()
+		--[[ Disable netrw ]]
+		vim.g.loaded_netrw = 1
+		vim.g.loaded_netrwPlugin = 1
+		vim.cmd("let g:netrw_liststyle = 3")
+
 		require("neo-tree").setup({
 			close_if_last_window = false,
 			sort_case_insensitive = false,

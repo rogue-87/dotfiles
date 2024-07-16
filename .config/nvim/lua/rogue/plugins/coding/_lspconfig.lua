@@ -1,7 +1,6 @@
 local client = require("vim.lsp.client")
 return {
 	"neovim/nvim-lspconfig",
-	-- enabled = false,
 	-- event = { "BufReadPre", "BufNewFile" },
 	dependencies = {
 		"williamboman/mason.nvim",
@@ -55,7 +54,7 @@ return {
 				"emmet_language_server",
 
 				-- Generic
-				-- "lua_ls",
+				"lua_ls",
 				"bashls",
 				"gopls",
 			},
@@ -214,7 +213,7 @@ return {
 
 				-- Both
 			},
-			auto_update = true,
+			auto_update = false,
 		})
 
 		-- For installing & configuring Daps
