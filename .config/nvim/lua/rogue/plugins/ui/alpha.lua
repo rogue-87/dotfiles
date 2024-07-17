@@ -1,4 +1,4 @@
-local ascii_art = {
+local ascii = {
 	neovim = {
 		[[                               __                ]],
 		[[  ___     ___    ___   __  __ /\_\    ___ ___    ]],
@@ -31,7 +31,7 @@ local module = {
 	config = function()
 		local alpha = require("alpha")
 		local dashboard = require("alpha.themes.dashboard")
-		dashboard.section.header.val = ascii_art["rogue"]
+		dashboard.section.header.val = ascii["rogue"]
 		dashboard.section.buttons.val = {
 			dashboard.button("e", "  New file", ":ene <BAR> startinsert <cr>"),
 
@@ -51,11 +51,6 @@ local module = {
 
 			dashboard.button("q", "󰅚  Quit Neovim", ":qa<CR>"),
 		}
-		-- I'll fix this later :P
-		-- local handle = io.popen("fortune")
-		-- local fortune = handle:read("*a")
-		-- handle:close()
-		-- dashboard.section.footer.val = fortune
 
 		dashboard.config.opts.noautocmd = true
 

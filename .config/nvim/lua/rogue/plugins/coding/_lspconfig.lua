@@ -1,7 +1,6 @@
 local client = require("vim.lsp.client")
 return {
 	"neovim/nvim-lspconfig",
-	-- event = { "BufReadPre", "BufNewFile" },
 	dependencies = {
 		"williamboman/mason.nvim",
 		"williamboman/mason-lspconfig.nvim",
@@ -201,12 +200,12 @@ return {
 			-- Formatters, Linters
 			ensure_installed = {
 				-- Fomratters
-				-- "stylua",
+				"stylua",
 				"prettier",
 				"shfmt",
 
 				-- Linters
-				-- "selene",
+				"selene",
 				"codespell",
 				"stylelint",
 				"eslint_d",
@@ -252,7 +251,7 @@ return {
 				map("n", "<leader>D", "<cmd>Telescope diagnostics bufnr=0<CR>", opts) -- show  diagnostics for file
         -- end of Telescope
 
-        -- [[ vim.lsp]]
+        -- [[ vim.lsp ]]
 				opts.desc = "See available code actions"
 				map({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts) -- see available code actions, in visual mode will apply to selection
 

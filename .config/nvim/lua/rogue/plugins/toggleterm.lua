@@ -15,8 +15,8 @@ return {
 			shade_filetypes = { "neo-tree" },
 			direction = "float",
 			float_opts = {
-                border = "single"
-            },
+				border = "single",
+			},
 		})
 
 		-- extra stuff
