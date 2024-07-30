@@ -5,6 +5,7 @@
 ![Neovim Config](./readme-stuff/nvim-config.png)
 
 #### what's this neovim config for?
+
 front-end webdev and also golang
 
 #### Look at that sweet sweet startup time :p
@@ -15,15 +16,11 @@ front-end webdev and also golang
 
 #### shellscript
 
-clone the repo recursively using `git clone --recurse-submodules <GIT-REPO-URL>` into your home directory, if you want ranger devicons, and cd into the dotfiles directory, and then run setup shellscript file. oh yea, only works on fedora for now
-
 ```bash
 bash setup.sh
 ```
 
 #### manual
-
-- clone the repo recursively using `git clone --recurse-submodules <GIT-REPO-URL>` into your home directory.
 
 - Install [lazygit](https://github.com/jesseduffield/lazygit?tab=readme-ov-file#installation)
 

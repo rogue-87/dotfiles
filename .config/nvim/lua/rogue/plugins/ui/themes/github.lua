@@ -25,7 +25,7 @@ return {
 			darken = { -- Darken floating windows and sidebar-like windows
 				floats = true,
 				sidebars = {
-					enabled = true,
+					enable = true,
 					list = {
 						"neo-tree",
 					}, -- Apply dark background to specific windows

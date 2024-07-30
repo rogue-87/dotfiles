@@ -36,7 +36,8 @@ return {
 			desc = "Noice All",
 		},
 		{
-			"<leader>snd",
+			-- "<leader>snd",
+			"<esc>",
 			function()
 				require("noice").cmd("dismiss")
 			end,
