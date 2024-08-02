@@ -8,12 +8,14 @@ return {
 			current_only = false,
 			winblend = 50,
 			zindex = 40,
-			excluded_filetypes = {},
+			excluded_filetypes = {
+				"neo-tree",
+			},
 			width = 1,
 			handlers = {
 				cursor = {
 					enable = true,
-          overlap = true,
+					overlap = true,
 					-- Supports any number of symbols
 					symbols = { "⎺", "⎻", "⎼", "⎽" },
 					-- symbols = { '⎻', '⎼' }

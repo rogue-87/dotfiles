@@ -222,7 +222,6 @@ return {
 				"js",
 			},
 			automatic_installation = false,
-
 		})
 
 		local map = vim.keymap.set
@@ -231,7 +230,7 @@ return {
 			callback = function(ev)
 				local opts = { buffer = ev.buf, silent = true }
 
-        -- [[ Telescope ]]
+				-- [[ Telescope ]]
 				opts.desc = "Show LSP references"
 				map("n", "gR", "<cmd>Telescope lsp_references<CR>", opts) -- show definition, references
 
@@ -249,9 +248,9 @@ return {
 
 				opts.desc = "Show buffer diagnostics"
 				map("n", "<leader>D", "<cmd>Telescope diagnostics bufnr=0<CR>", opts) -- show  diagnostics for file
-        -- end of Telescope
+				-- end of Telescope
 
-        -- [[ vim.lsp ]]
+				-- [[ vim.lsp ]]
 				opts.desc = "See available code actions"
 				map({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts) -- see available code actions, in visual mode will apply to selection
 
@@ -265,9 +264,9 @@ return {
 				vim.keymap.set("i", "<C-h>", function()
 					vim.lsp.buf.signature_help()
 				end, opts)
-        -- end of vim.lsp
+				-- end of vim.lsp
 
-        -- [[ vim.diagnostics ]]
+				-- [[ vim.diagnostics ]]
 				opts.desc = "Show line diagnostics"
 				map("n", "<leader>d", vim.diagnostic.open_float, opts) -- show diagnostics for line
 
@@ -276,10 +275,10 @@ return {
 				opts.desc = "Go to next diagnostic"
 				map("n", "]d", vim.diagnostic.goto_next, opts) -- jump to next diagnostic in buffer
 
-        -- end of vim.diagnostics
+				-- end of vim.diagnostics
 
-        -- [[ Extras ]]
-        -- end of Extras
+				-- [[ Extras ]]
+				-- end of Extras
 			end,
 		})
 	end,

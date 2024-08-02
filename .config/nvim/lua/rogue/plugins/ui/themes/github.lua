@@ -28,6 +28,8 @@ return {
 					enable = true,
 					list = {
 						"neo-tree",
+						"terminal",
+						"toggleterm",
 					}, -- Apply dark background to specific windows
 				},
 			},
