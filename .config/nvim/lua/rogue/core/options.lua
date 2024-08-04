@@ -12,7 +12,6 @@ vim.o.smartindent = true
 -- damn you javascript!
 vim.cmd("filetype plugin indent on")
 
-
 --# End of Tab & Indentation
 
 -- Search

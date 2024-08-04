@@ -4,7 +4,6 @@ return {
 	event = { "BufReadPre", "BufNewFile" },
 	config = function()
 		require("satellite").setup({
-
 			current_only = false,
 			winblend = 50,
 			zindex = 40,

@@ -189,7 +189,11 @@ return {
 					})
 				end,
 				["astro"] = function()
-					lspconfig["astro"].setup({})
+					lspconfig["astro"].setup({
+						capabilities = capabilities,
+						on_attach = function() end,
+						filetypes = { "astro" },
+					})
 				end,
 				-- End of Web dev stuff
 			},
