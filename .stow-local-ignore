@@ -1,0 +1,11 @@
+\.git
+\.gitignore
+\.gitmodules
+\.bashrc-ext
+scripts
+readme-stuff
+readme.md
+setup.sh
+selene.toml
+stylua.toml
+Makefile
