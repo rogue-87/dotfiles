@@ -40,10 +40,20 @@ require("lazy").setup({
     { import = "rogue.plugins.editor" },
     { import = "rogue.plugins.coding" },
     { import = "rogue.plugins.coding.lsp" },
-    { import = "rogue.plugins.coding.debugging" }, -- debugging support(only debugger without config for languages)
-    { import = "rogue.plugins.coding.testing" }, -- for testing frameworks(e.g. vite and such)
-    { import = "rogue.plugins.extras" },
-    { import = "rogue.plugins.extras.lang" }, -- lang contains extra configs for languages(syntax, debugging, testing ,etc)
+    { import = "rogue.plugins.coding.debugging" }, -- debugging support(only debugger without config for languages.)
+    { import = "rogue.plugins.coding.testing" }, -- for testing frameworks(e.g. vite and such. still not 100% done)
+    -- { import = "rogue.plugins.extras" },
+    -- { import = "rogue.plugins.extras.ai" },
+    -- { import = "rogue.plugins.extras.discord-rpc" },
+    -- { import = "rogue.plugins.extras.img-clip" },
+    { import = "rogue.plugins.extras.wakatime" },
+    -- { import = "rogue.plugins.extras.lang" }, -- lang contains extra configs for languages(syntax, debugging, testing ,etc)
+    { import = "rogue.plugins.extras.lang.markdown" },
+    { import = "rogue.plugins.extras.lang.typescript" },
+    { import = "rogue.plugins.extras.lang.rust" },
+    -- { import = "rogue.plugins.extras.lang.c-cpp-rust" },
+    -- { import = "rogue.plugins.extras.lang.csharp" },
+    -- { import = "rogue.plugins.extras.lang.python" },
   },
   ui = {
     wrap = true,
@@ -67,7 +77,7 @@ require("lazy").setup({
         "netrwPlugin",
         "tarPlugin",
         "tohtml",
-        -- "tutor",
+        "tutor",
         "zipPlugin",
       },
     },

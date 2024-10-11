@@ -11,15 +11,11 @@ return {
     { "<leader>na", function() require("noice").cmd("all")      end, desc = "All",              },
     { "<leader>nl", function() require("noice").cmd("last")     end, desc = "Last message",     },
     { "<leader>nh", function() require("noice").cmd("history")  end, desc = "Message history",  },
-    { "<esc>",
-      function()
-        if not require("noice").cmd("dismiss") then
-          return "<esc>"
-        end
-      end,
+    { "<C-Esc>",
+      function() require("noice").cmd("dismiss") end,
       desc = "Dismiss all",
     },
-    { "<c-f>",
+    { "<C-f>",
       function()
         if not require("noice.lsp").scroll(4) then
           return "<c-f>"
@@ -27,7 +23,7 @@ return {
       end,
       silent = true, expr = true, desc = "Scroll Forward", mode = { "i", "n", "s" },
     },
-    { "<c-b>",
+    { "<C-b>",
       function()
         if not require("noice.lsp").scroll(-4) then
           return "<c-b>"

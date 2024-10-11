@@ -31,23 +31,18 @@ return { -- Lsp Config
 
     -- MANUALLY INSTALLED LSPs
     lspconfig["nushell"].setup({})
-    lspconfig["dartls"].setup({})
-    lspconfig["clangd"].setup({ cmd = { "clangd-17" } })
-    lspconfig["nil_ls"].setup({})
-    -- lspconfig["fish_lsp"].setup({})
 
     -- LSPs INSTALLED & MANAGED BY MASON.NVIM
     msn_lspconf.setup({
       -- LSPs
       ensure_installed = {
-        "lua_ls",
         "bashls",
+        "lua_ls",
         "html",
         "cssls",
         "ts_ls",
         "jsonls",
         "astro",
-        "svelte",
         "emmet_language_server",
       },
       automatic_installation = false,
@@ -86,9 +81,6 @@ return { -- Lsp Config
         end,
         ["ts_ls"] = function()
           lspconfig["ts_ls"].setup({})
-        end,
-        ["svelte"] = function()
-          lspconfig["svelte"].setup({})
         end,
         ["astro"] = function()
           lspconfig["astro"].setup({})
@@ -136,10 +128,10 @@ return { -- Lsp Config
         map("n", "<leader>cgD", "<cmd>Telescope lsp_definitions<CR>", opts)
 
         opts.desc = "Show LSP implementations"
-        map("n", "<leader>cti", "<cmd>Telescope lsp_implementations<CR>", opts)
+        map("n", "<leader>cTi", "<cmd>Telescope lsp_implementations<CR>", opts)
 
         opts.desc = "Show LSP type definitions"
-        map("n", "<leader>ctd", "<cmd>Telescope lsp_type_definitions<CR>", opts)
+        map("n", "<leader>cTd", "<cmd>Telescope lsp_type_definitions<CR>", opts)
 
         opts.desc = "Show line diagnostics"
         map("n", "<leader>cd", vim.diagnostic.open_float, opts)

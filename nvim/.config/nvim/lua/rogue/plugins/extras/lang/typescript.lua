@@ -27,6 +27,7 @@ return {
         },
       }
     end
+
     if not dap.adapters["node"] then
       dap.adapters["node"] = function(cb, config)
         if config.type == "node" then
@@ -50,7 +51,7 @@ return {
       }
     end
 
-    local js_filetypes = { "typescript", "javascript", "typescriptreact", "javascriptreact", "astro", "svelte" }
+    local js_filetypes = { "typescript", "javascript", "typescriptreact", "javascriptreact", "astro" }
 
     local vscode = require("dap.ext.vscode")
     vscode.type_to_filetypes["node"] = js_filetypes

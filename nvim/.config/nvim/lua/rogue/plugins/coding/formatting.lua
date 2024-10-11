@@ -24,7 +24,6 @@ return {
 
         lua = { "stylua" },
         bash = { "shfmt" },
-        go = { "gofmt" },
         rust = { "rustfmt" },
       },
     })

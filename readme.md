@@ -16,8 +16,6 @@
 
 - Install [lazygit](https://github.com/jesseduffield/lazygit?tab=readme-ov-file#installation)
 
-- install [glow](https://github.com/charmbracelet/glow?tab=readme-ov-file#installation)
-
 - install these packages(most likely available in the distro repo)
 
 ```

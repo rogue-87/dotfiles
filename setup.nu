@@ -1,0 +1,26 @@
+let pkgs = {
+    dnf: [
+        "kitty",
+        "neovim",
+        "fastfetch",
+        "stow",
+        "btop",
+        "cava",
+        "lazygit",
+        "npm",
+        "nodejs",
+        "python3",
+        "pip",
+        "lua",
+        "luarocks",
+        "rust",
+        "fish",
+    ],
+    npm: [
+        "all-the-package-names",
+        "browser-sync",
+        "neovim",
+        "pnpm",
+        "yarn",
+    ],
+}
