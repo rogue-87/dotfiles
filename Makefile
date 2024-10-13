@@ -1,17 +1,25 @@
-DOTFILES_DIR = ${HOME}/dotfiles
+LAPTOP = ${HOME}/dotfiles/laptop
+TERMUX = ${HOME}/dotfiles/termux
 TARGET_DIR = ${HOME}
 
-.PHONY: test stow unstow
+.PHONY: test stow-laptop unstow-laptop stow-termux unstow-termux
 
 test:
-	@echo $(DOTFILES_DIR)
+	@echo $(LAPTOP)
 	@echo $(TARGET_DIR)
 
-stow:
-	@echo "Stowing dotfiles..."
-	stow --target=$(TARGET_DIR) --dir=$(DOTFILES_DIR) nvim nushell git fastfetch kitty
+stow-laptop:
+	@echo "Stowing laptop dotfiles..."
+	stow --target=$(TARGET_DIR) --dir=$(LAPTOP) nvim nushell git fastfetch kitty
 
-unstow:
-	@echo "Unstowing dotfiles..."
-	stow --target=$(TARGET_DIR) --dir=$(DOTFILES_DIR) -D nvim nushell git fastfetch kitty
+unstow-laptop:
+	@echo "Unstowing laptop dotfiles..."
+	stow --target=$(TARGET_DIR) --dir=$(LAPTOP) -D nvim nushell git fastfetch kitty
 
+stow-termux:
+	@echo "Stowing termux dotfiles..."
+	stow --target=$(TARGET_DIR) --dir=$(TERMUX) nvim nushell git fastfetch kitty termux-settings bash-profile
+
+unstow-termux:
+	@echo "Unstowing termux dotfiles..."
+	stow --target=$(TARGET_DIR) --dir=$(TERMUX) -D nvim nushell git fastfetch kitty termux-settings bash-profile
