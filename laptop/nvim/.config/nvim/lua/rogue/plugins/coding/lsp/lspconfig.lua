@@ -21,7 +21,11 @@ return { -- Lsp Config
       },
     },
     { "williamboman/mason-lspconfig.nvim" },
-    { "antosha417/nvim-lsp-file-operations", dependencies = { "nvim-lua/plenary.nvim", "nvim-neo-tree/neo-tree.nvim" }, opts = {} },
+    {
+      "antosha417/nvim-lsp-file-operations",
+      dependencies = { "nvim-lua/plenary.nvim", "nvim-neo-tree/neo-tree.nvim" },
+      opts = {},
+    },
   },
 
   config = function()
@@ -43,6 +47,7 @@ return { -- Lsp Config
         "ts_ls",
         "jsonls",
         "astro",
+        "svelte",
         "emmet_language_server",
       },
       automatic_installation = false,
@@ -84,6 +89,9 @@ return { -- Lsp Config
         end,
         ["astro"] = function()
           lspconfig["astro"].setup({})
+        end,
+        ["svelte"] = function()
+          lspconfig["svelte"].setup({})
         end,
         ["jsonls"] = function()
           capabilities.textDocument.completion.completionItem.snippetSupport = true

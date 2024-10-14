@@ -14,6 +14,7 @@ return {
         html = { "prettier" },
         vue = { "prettier" },
         astro = { "prettier" },
+        svelte = { "prettier" },
         markdown = { "prettier" },
 
         css = { "prettier" },
@@ -24,7 +25,7 @@ return {
 
         lua = { "stylua" },
         bash = { "shfmt" },
-        rust = { "rustfmt" },
+        -- rust = { "rustfmt" },
       },
     })
 

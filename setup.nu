@@ -1,5 +1,5 @@
 let pkgs = {
-    dnf: [
+    sys: [
         "kitty",
         "neovim",
         "fastfetch",

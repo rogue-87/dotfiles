@@ -18,11 +18,11 @@ require("lazy").setup({
     {
       {
         "folke/lazydev.nvim",
-        ft = "lua", -- only load on lua files
+        ft = "lua",
         opts = {
           runtime = vim.env.VIMRUNTIME,
           library = {
-            "luvit-meta/library", -- see below
+            "luvit-meta/library",
           },
           integrations = {
             lspconfig = true,
