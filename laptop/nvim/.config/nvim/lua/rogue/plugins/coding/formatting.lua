@@ -39,6 +39,15 @@ return {
       end,
     }
 
+    conform.formatters.prettier = {
+      args = function(self, ctx)
+        if vim.endswith(ctx.filename, ".svelte") then
+          return { "--stdin-filepath", "$FILENAME", "--plugin", "prettier-plugin-svelte" }
+        end
+        return { "--stdin-filepath", "$FILENAME" }
+      end,
+    }
+
     -- COMMANDS
     vim.api.nvim_create_user_command("Format", function(args)
       local range = nil

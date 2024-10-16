@@ -5,7 +5,7 @@ g.mapleader = " "
 g.editorconfig = true
 
 -- use nushell if available; otherwise, fallback to bash.
-opt.shell = vim.fn.exepath("nu") ~= "" and vim.fn.exepath("nu") or vim.fn.exepath("bash")
+-- opt.shell = vim.fn.exepath("nu") ~= "" and vim.fn.exepath("nu") or vim.fn.exepath("bash")
 
 opt.number = true
 opt.relativenumber = true
