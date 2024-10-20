@@ -34,7 +34,7 @@ return { -- Lsp Config
     local msn_lspconf = require("mason-lspconfig")
 
     -- MANUALLY INSTALLED LSPs
-    lspconfig["nushell"].setup({})
+    -- lspconfig["nushell"].setup({})
 
     -- LSPs INSTALLED & MANAGED BY MASON.NVIM
     msn_lspconf.setup({
@@ -48,7 +48,8 @@ return { -- Lsp Config
         "jsonls",
         "astro",
         "svelte",
-        "emmet_language_server",
+        -- "emmet_language_server",
+        "emmet_ls",
       },
       automatic_installation = false,
       handlers = {
@@ -81,8 +82,8 @@ return { -- Lsp Config
         ["css_variables"] = function()
           lspconfig["css_variables"].setup({})
         end,
-        ["emmet_language_server"] = function()
-          lspconfig["emmet_language_server"].setup({})
+        ["emmet_ls"] = function()
+          lspconfig["emmet_ls"].setup({})
         end,
         ["ts_ls"] = function()
           lspconfig["ts_ls"].setup({})

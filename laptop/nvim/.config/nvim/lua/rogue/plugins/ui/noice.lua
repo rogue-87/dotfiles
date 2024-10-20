@@ -11,7 +11,7 @@ return {
     { "<leader>na", function() require("noice").cmd("all")      end, desc = "All",              },
     { "<leader>nl", function() require("noice").cmd("last")     end, desc = "Last message",     },
     { "<leader>nh", function() require("noice").cmd("history")  end, desc = "Message history",  },
-    { "<C-Esc>",
+    { "<leader>nd",
       function() require("noice").cmd("dismiss") end,
       desc = "Dismiss all",
     },

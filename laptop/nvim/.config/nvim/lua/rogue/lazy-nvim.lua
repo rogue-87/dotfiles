@@ -43,15 +43,14 @@ require("lazy").setup({
     { import = "rogue.plugins.coding.debugging" }, -- debugging support(adds DAP support in nvim)
     { import = "rogue.plugins.coding.testing" }, -- for testing frameworks(e.g. vite and such. still not 100% done)
     -- { import = "rogue.plugins.extras" }, -- stuff you probably don't need
-    -- { import = "rogue.plugins.extras.ai" },
     { import = "rogue.plugins.extras.discord-rpc" },
     -- { import = "rogue.plugins.extras.img-clip" },
     { import = "rogue.plugins.extras.wakatime" },
     -- { import = "rogue.plugins.extras.lang" }, -- lang contains extra configs for languages(syntax, autocompletion, debugging, testing ,etc)
     { import = "rogue.plugins.extras.lang.markdown" },
     { import = "rogue.plugins.extras.lang.typescript" },
-    { import = "rogue.plugins.extras.lang.rust" },
-    -- { import = "rogue.plugins.extras.lang.c-cpp-rust" },
+    -- { import = "rogue.plugins.extras.lang.rust" },
+    { import = "rogue.plugins.extras.lang.c-cpp-rust" },
     { import = "rogue.plugins.extras.lang.csharp" },
     -- { import = "rogue.plugins.extras.lang.python" },
   },

@@ -32,4 +32,5 @@ PATH="$HOME/.spicetify:$PATH"
 PATH="$HOME/.npm/packages/bin:$PATH"
 PATH="$PNPM_HOME:$PATH"
 
-source ./pnpm-completion.bash
+source ~/.pnpm-completion.bash
+source ~/.zoxide.bash
