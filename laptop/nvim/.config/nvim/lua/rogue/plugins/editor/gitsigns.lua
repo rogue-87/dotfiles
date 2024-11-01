@@ -1,7 +1,7 @@
 return {
-  "lewis6991/gitsigns.nvim",
-  enabled = "false",
-  event = { "BufReadPre", "BufWritePost", "BufNewFile" },
+	"lewis6991/gitsigns.nvim",
+	enabled = "false",
+	event = { "BufReadPre", "BufWritePost", "BufNewFile" },
   -- stylua: ignore
   keys = {
     { "<leader>g", "", desc = "git" },
@@ -17,5 +17,5 @@ return {
     { "<leader>gR", function() package.loaded.gitsigns.reset_buffer()               end, desc = "Reset buffer"                        },
     { "<leader>gt", function() package.loaded.gitsigns.toggle_deleted()             end, desc = "Toggle Deleted"                      },
   },
-  opts = {},
+	opts = {},
 }
