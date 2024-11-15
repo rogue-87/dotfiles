@@ -6,47 +6,10 @@ return {
 		local conform = require("conform")
 		conform.setup({
 			formatters_by_ft = {
-				javascript = { "prettier" },
-				typescript = { "prettier" },
-				javascriptreact = { "prettier" },
-				typescriptreact = { "prettier" },
-
-				html = { "prettier" },
-				vue = { "prettier" },
-				astro = { "prettier" },
-				-- svelte = { "prettier" },
-				markdown = { "prettier" },
-
-				css = { "prettier" },
-				scss = { "prettier" },
-
-				json = { "prettier" },
-				yaml = { "prettier" },
-
 				lua = { "stylua" },
 				bash = { "shfmt" },
-				-- rust = { "rustfmt" },
 			},
 		})
-
-		-- PER-FORMATTER CONFIG
-		conform.formatters.prettier = {
-			args = function(self, ctx)
-				if vim.endswith(ctx.filename, ".astro") then
-					return { "--stdin-filepath", "$FILENAME", "--plugin", "prettier-plugin-astro" }
-				end
-				return { "--stdin-filepath", "$FILENAME" }
-			end,
-		}
-
-		-- conform.formatters.prettier = {
-		--   args = function(self, ctx)
-		--     if vim.endswith(ctx.filename, ".svelte") then
-		--       return { "--stdin-filepath", "$FILENAME", "--plugin", "prettier-plugin-svelte" }
-		--     end
-		--     return { "--stdin-filepath", "$FILENAME" }
-		--   end,
-		-- }
 
 		-- COMMANDS
 		vim.api.nvim_create_user_command("Format", function(args)

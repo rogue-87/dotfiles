@@ -8,8 +8,18 @@ return {
 			"williamboman/mason.nvim", -- pylsp, pyright.
 		},
 		opts = function()
-			require("lspconfig")["pylsp"].setup({})
-			-- require("lspconfig")["pyright"].setup({})
+			require("lspconfig").pylsp.setup({
+				settings = {
+					pylsp = {
+						plugins = {
+							pycodestyle = {
+								ignore = { "W391" },
+								maxLineLength = 100,
+							},
+						},
+					},
+				},
+			})
 		end,
 	},
 	-- formatter
@@ -22,7 +32,9 @@ return {
 		},
 		opts = function()
 			require("conform").setup({
-				py = { "ruff" },
+				formatters_by_ft = {
+					py = { "ruff", "black", "isort", lsp_format = "fallback" },
+				},
 			})
 		end,
 	},
@@ -40,7 +52,8 @@ return {
 		end,
 	},
 	-- debugger
-	{
+	-- NOTE: still not working properly
+	--[[ {
 		"mfussenegger/nvim-dap",
 		optional = true,
 		ft = "py",
@@ -103,5 +116,5 @@ return {
 				},
 			}
 		end,
-	},
+	}, ]]
 }

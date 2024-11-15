@@ -1,5 +1,7 @@
 return {
 	-- lsp
+	-- clangd and rust-analyzer comes with a formatter
+	-- but I configured rust to use rustfmt and fallback to lsp formatting
 	{
 		"neovim/nvim-lspconfig",
 		optional = true,
@@ -7,9 +9,9 @@ return {
 		opts = function()
 			local lspconfig = require("lspconfig")
 			-- clangd is installed by default on most linux distros and even if not, you can still install it
-			-- using the package manager or use mason
-			-- by default it will use the one in /usr/bin/clangd-17
-			lspconfig["clangd"].setup({ cmd = { "clangd-17" } })
+			-- using the package manager or mason
+			-- by default it will use the one in /usr/bin/clangd-18
+			lspconfig["clangd"].setup({ cmd = { "clangd-18" } })
 			lspconfig["rust_analyzer"].setup({})
 		end,
 	},
@@ -17,12 +19,12 @@ return {
 	{
 		"stevearc/conform.nvim",
 		optional = true,
-		ft = { "c", "cpp", "rust" },
+		ft = { "rust" },
 		opts = function()
 			require("conform").setup({
-				c = { "clang-format-17", "clang-format", lsp_format = "fallback" },
-				cpp = { "clang-format-17", "clang-format", lsp_format = "fallback" },
-				rust = { "rustfmt", lsp_format = "fallback" },
+				formatters_by_ft = {
+					rust = { "rustfmt", lsp_format = "fallback" },
+				},
 			})
 		end,
 	},

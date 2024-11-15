@@ -5,33 +5,30 @@ return {
 		"MunifTanjim/nui.nvim",
 		"rcarriga/nvim-notify",
 	},
-  -- stylua: ignore
-  keys = {
-    { "<leader>n", "", desc = "Noice"  },
-    { "<leader>na", function() require("noice").cmd("all")      end, desc = "All",              },
-    { "<leader>nl", function() require("noice").cmd("last")     end, desc = "Last message",     },
-    { "<leader>nh", function() require("noice").cmd("history")  end, desc = "Message history",  },
-    { "<c-esc>",
-      function() require("noice").cmd("dismiss") end,
-      desc = "Dismiss all",
+    -- stylua: ignore
+    keys = {
+        { "<leader>n", "", desc = "Noice"  },
+        { "<leader>na", function() require("noice").cmd("all")      end, desc = "All",              },
+        { "<leader>nl", function() require("noice").cmd("last")     end, desc = "Last message",     },
+        { "<leader>nh", function() require("noice").cmd("history")  end, desc = "Message history",  },
+        { "<c-esc>",    function() require("noice").cmd("dismiss")  end, desc = "Dismiss all",      },
+        { "<C-f>",
+            function()
+                if not require("noice.lsp").scroll(4) then
+                    return "<c-f>"
+                end
+            end,
+          silent = true, expr = true, desc = "Scroll Forward", mode = { "i", "n", "s" },
+        },
+        { "<C-b>",
+            function()
+                if not require("noice.lsp").scroll(-4) then
+                    return "<c-b>"
+                end
+            end,
+            silent = true, expr = true, desc = "Scroll Backward", mode = { "i", "n", "s" },
+        },
     },
-    { "<C-f>",
-      function()
-        if not require("noice.lsp").scroll(4) then
-          return "<c-f>"
-        end
-      end,
-      silent = true, expr = true, desc = "Scroll Forward", mode = { "i", "n", "s" },
-    },
-    { "<C-b>",
-      function()
-        if not require("noice.lsp").scroll(-4) then
-          return "<c-b>"
-        end
-      end,
-      silent = true, expr = true, desc = "Scroll Backward", mode = { "i", "n", "s" },
-    },
-  },
 	---@type NoiceConfig
 	opts = {
 		cmdline = {

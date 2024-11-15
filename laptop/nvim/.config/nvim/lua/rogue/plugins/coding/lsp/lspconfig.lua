@@ -28,23 +28,12 @@ return { -- Lsp Config
 		local capabilities = require("cmp_nvim_lsp").default_capabilities()
 		local msn_lspconf = require("mason-lspconfig")
 
-		-- MANUALLY INSTALLED LSPs
-		-- lspconfig["nushell"].setup({})
-
 		-- LSPs INSTALLED & MANAGED BY MASON.NVIM
 		msn_lspconf.setup({
 			-- LSPs
 			ensure_installed = {
 				"bashls",
 				"lua_ls",
-				"html",
-				"cssls",
-				"ts_ls",
-				"jsonls",
-				"astro",
-				"svelte",
-				-- "emmet_language_server",
-				"emmet_ls",
 			},
 			automatic_installation = false,
 			handlers = {
@@ -66,52 +55,8 @@ return { -- Lsp Config
 						},
 					})
 				end,
-				["html"] = function()
-					capabilities.textDocument.completion.completionItem.snippetSupport = true
-					lspconfig["html"].setup({ capabilities = capabilities })
-				end,
-				["cssls"] = function()
-					capabilities.textDocument.completion.completionItem.snippetSupport = true
-					lspconfig["cssls"].setup({ capabilities = capabilities })
-				end,
-				["css_variables"] = function()
-					lspconfig["css_variables"].setup({})
-				end,
-				["emmet_ls"] = function()
-					lspconfig["emmet_ls"].setup({})
-				end,
-				["ts_ls"] = function()
-					lspconfig["ts_ls"].setup({})
-				end,
-				["astro"] = function()
-					lspconfig["astro"].setup({})
-				end,
-				["svelte"] = function()
-					lspconfig["svelte"].setup({})
-				end,
-				["jsonls"] = function()
-					capabilities.textDocument.completion.completionItem.snippetSupport = true
-					lspconfig["jsonls"].setup({
-						filetypes = { "json", "jsonc" },
-						capabilities = capabilities,
-						settings = {
-							json = {
-								-- Schemas https://www.schemastore.org
-								schemas = require("schemastore").json.schemas(),
-								validate = { enable = true },
-							},
-						},
-					})
-				end,
-				["eslint"] = function()
-					lspconfig["eslint"].setup({
-						on_attach = function(client, bufnr)
-							vim.api.nvim_create_autocmd("BufWritePre", {
-								buffer = bufnr,
-								command = "EslintFixAll",
-							})
-						end,
-					})
+				["bashls"] = function()
+					lspconfig["bashls"].setup({})
 				end,
 			},
 		})
