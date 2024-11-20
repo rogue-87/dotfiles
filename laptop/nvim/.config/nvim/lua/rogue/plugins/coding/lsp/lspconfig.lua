@@ -38,9 +38,9 @@ return { -- Lsp Config
 			automatic_installation = false,
 			handlers = {
 				-- DEFAULT CONFIG FOR ALL SERVERS
-				function(server_name)
+				--[[ function(server_name)
 					lspconfig[server_name].setup({ capabilities = capabilities })
-				end,
+				end, ]]
 				["lua_ls"] = function()
 					lspconfig["lua_ls"].setup({
 						settings = {
@@ -69,16 +69,16 @@ return { -- Lsp Config
 				map("n", "<leader>cl", "", { desc = "lsp show/goto" })
 
 				opts.desc = "Show LSP definitions"
-				map("n", "<leader>clD", "<cmd>Telescope lsp_definitions<CR>", opts)
+				map("n", "<leader>clD", "<cmd>Telescope lsp_definitions<cr>", opts)
 
 				opts.desc = "Show LSP references"
-				map("n", "<leader>clr", "<cmd>Telescope lsp_references<CR>", opts)
+				map("n", "<leader>clr", "<cmd>Telescope lsp_references<cr>", opts)
 
 				opts.desc = "Show LSP implementations"
-				map("n", "<leader>cli", "<cmd>Telescope lsp_implementations<CR>", opts)
+				map("n", "<leader>cli", "<cmd>Telescope lsp_implementations<cr>", opts)
 
 				opts.desc = "Show LSP type definitions"
-				map("n", "<leader>clt", "<cmd>Telescope lsp_type_definitions<CR>", opts)
+				map("n", "<leader>clt", "<cmd>Telescope lsp_type_definitions<cr>", opts)
 
 				opts.desc = "LSP Go to declaration"
 				map("n", "<leader>cld", vim.lsp.buf.declaration, opts)
@@ -87,7 +87,7 @@ return { -- Lsp Config
 				map("n", "<leader>cd", vim.diagnostic.open_float, opts)
 
 				opts.desc = "Show buffer diagnostics"
-				map("n", "<leader>cD", "<cmd>Telescope diagnostics bufnr=0<CR>", opts)
+				map("n", "<leader>cD", "<cmd>Telescope diagnostics bufnr=0<cr>", opts)
 
 				opts.desc = "See available code actions"
 				map({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts)

@@ -47,10 +47,10 @@ require("lazy").setup({
 		-- NOTE: do NOT enable both c-cpp-rust and rustacean. this could cause some issues
 		{ import = "rogue.plugins.extras.lang.c-cpp-rust" },
 		-- { import = "rogue.plugins.extras.lang.csharp" },
-		-- { import = "rogue.plugins.extras.lang.dart" },
+		{ import = "rogue.plugins.extras.lang.dart" },
 		-- { import = "rogue.plugins.extras.lang.golang" },
 		{ import = "rogue.plugins.extras.lang.markdown" },
-		-- { import = "rogue.plugins.extras.lang.python" },
+		{ import = "rogue.plugins.extras.lang.python" },
 		-- { import = "rogue.plugins.extras.lang.rustacean" },
 		{ import = "rogue.plugins.extras.lang.webdev" },
 	},

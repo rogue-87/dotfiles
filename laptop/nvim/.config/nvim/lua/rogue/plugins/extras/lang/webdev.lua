@@ -99,6 +99,7 @@ return {
 			local dap = require("dap")
 			local mason = require("mason-registry")
 
+			-- debug adapter for nodejs(js) and deno(ts)
 			dap.adapters["pwa-node"] = {
 				type = "server",
 				host = "localhost",
@@ -117,7 +118,7 @@ return {
 				{
 					type = "pwa-node",
 					request = "launch",
-					name = "Launch file",
+					name = "Debug with js-debug",
 					program = "${file}",
 					cwd = "${workspaceFolder}",
 				},
@@ -128,7 +129,7 @@ return {
 				{
 					type = "pwa-node",
 					request = "launch",
-					name = "Launch file",
+					name = "Debug with deno",
 					runtimeExecutable = "deno",
 					runtimeArgs = {
 						"run",
@@ -142,7 +143,7 @@ return {
 			}
 
 			-- js-firefox
-			dap.adapters.firefox = {
+			--[[ dap.adapters.firefox = {
 				type = "executable",
 				command = "node",
 				args = {
@@ -160,7 +161,7 @@ return {
 					webRoot = "${workspaceFolder}",
 					firefoxExecutable = "/usr/bin/firefox",
 				},
-			}
+			} ]]
 		end,
 	},
 }

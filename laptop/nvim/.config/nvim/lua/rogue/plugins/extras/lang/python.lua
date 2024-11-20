@@ -8,7 +8,7 @@ return {
 			"williamboman/mason.nvim", -- pylsp, pyright.
 		},
 		opts = function()
-			require("lspconfig").pylsp.setup({
+			require("lspconfig")["pylsp"].setup({
 				settings = {
 					pylsp = {
 						plugins = {

@@ -34,6 +34,7 @@ return {
 				"tsx",
 				"astro",
 				"svelte",
+				"jsdoc",
 			},
 			modules = {},
 			ignore_install = {},
