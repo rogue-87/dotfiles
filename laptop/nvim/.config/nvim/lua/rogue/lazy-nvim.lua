@@ -44,8 +44,8 @@ require("lazy").setup({
 		{ import = "rogue.plugins.coding.testing" }, -- for testing frameworks(e.g. vite and such. still not 100% done)
 		-- { import = "rogue.plugins.extras" }, -- stuff you probably don't need
 		{ import = "rogue.plugins.extras.wakatime" },
-		-- NOTE: do NOT enable both c-cpp-rust and rustacean. this could cause some issues
-		{ import = "rogue.plugins.extras.lang.c-cpp-rust" },
+		-- NOTE: do NOT enable both c-cpp and rustacean. this could cause some issues
+		{ import = "rogue.plugins.extras.lang.c-cpp" },
 		-- { import = "rogue.plugins.extras.lang.csharp" },
 		{ import = "rogue.plugins.extras.lang.dart" },
 		-- { import = "rogue.plugins.extras.lang.golang" },
