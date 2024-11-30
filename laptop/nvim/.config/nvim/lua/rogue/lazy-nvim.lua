@@ -23,6 +23,7 @@ require("lazy").setup({
 					runtime = vim.env.VIMRUNTIME,
 					library = {
 						"luvit-meta/library",
+						"${3rd}/love2d/library",
 					},
 					integrations = {
 						lspconfig = true,
@@ -42,17 +43,19 @@ require("lazy").setup({
 		{ import = "rogue.plugins.coding.lsp" },
 		{ import = "rogue.plugins.coding.debugging" }, -- debugging support(adds DAP support in nvim)
 		{ import = "rogue.plugins.coding.testing" }, -- for testing frameworks(e.g. vite and such. still not 100% done)
-		-- { import = "rogue.plugins.extras" }, -- stuff you probably don't need
+
+		-- { import = "rogue.plugins.extras" }, -- extra stuff
 		{ import = "rogue.plugins.extras.wakatime" },
-		-- NOTE: do NOT enable both c-cpp and rustacean. this could cause some issues
+		{ import = "rogue.plugins.extras.webdev" },
+
 		{ import = "rogue.plugins.extras.lang.c-cpp" },
-		-- { import = "rogue.plugins.extras.lang.csharp" },
+		{ import = "rogue.plugins.extras.lang.csharp" },
 		{ import = "rogue.plugins.extras.lang.dart" },
-		-- { import = "rogue.plugins.extras.lang.golang" },
+		{ import = "rogue.plugins.extras.lang.golang" },
+		{ import = "rogue.plugins.extras.lang.java" },
 		{ import = "rogue.plugins.extras.lang.markdown" },
 		{ import = "rogue.plugins.extras.lang.python" },
-		-- { import = "rogue.plugins.extras.lang.rustacean" },
-		{ import = "rogue.plugins.extras.lang.webdev" },
+		{ import = "rogue.plugins.extras.lang.rustacean" },
 	},
 	ui = {
 		wrap = true,

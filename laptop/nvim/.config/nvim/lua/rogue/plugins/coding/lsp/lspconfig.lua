@@ -22,10 +22,17 @@ return { -- Lsp Config
 		},
 		{ "williamboman/mason-lspconfig.nvim" },
 	},
-
+	-- stylua: ignore
+	keys = {
+		{ "<leader>cla", 	"",						desc = "Actions",   },
+		{ "<leader>clas", 	":LspStart ",			desc = "Start",		},
+		{ "<leader>clat", 	":LspStop ",			desc = "Stop",		},
+		{ "<leader>clar", 	"<cmd>LspRestart<cr>",	desc = "Restart",	},
+		{ "<leader>clai", 	"<cmd>LspInfo<cr>",		desc = "Info",		},
+	},
 	config = function()
 		local lspconfig = require("lspconfig")
-		local capabilities = require("cmp_nvim_lsp").default_capabilities()
+		-- local capabilities = require("cmp_nvim_lsp").default_capabilities()
 		local msn_lspconf = require("mason-lspconfig")
 
 		-- LSPs INSTALLED & MANAGED BY MASON.NVIM
@@ -66,7 +73,7 @@ return { -- Lsp Config
 			callback = function(ev)
 				local map = vim.keymap.set
 				local opts = { buffer = ev.buf, silent = true }
-				map("n", "<leader>cl", "", { desc = "lsp show/goto" })
+				map("n", "<leader>cl", "", { desc = "lsp" })
 
 				opts.desc = "Show LSP definitions"
 				map("n", "<leader>clD", "<cmd>Telescope lsp_definitions<cr>", opts)
