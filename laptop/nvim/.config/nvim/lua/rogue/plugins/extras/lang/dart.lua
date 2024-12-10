@@ -1,5 +1,4 @@
 return {
-
 	-- lsp
 	-- comes with a formatter
 	{

@@ -18,7 +18,7 @@ return {
 	{
 		"mfussenegger/nvim-dap",
 		optional = true,
-		ft = "dart",
+		ft = { "go", "gomod", "gowork", "gotmpl" },
 		opts = function()
 			local dap = require("dap")
 			dap.adapters.delve = function(callback, config)

@@ -13,4 +13,21 @@ return {
 			lspconfig["jdtls"].setup({})
 		end,
 	},
+	-- formatter
+	{
+		"stevearc/conform.nvim",
+		optional = true,
+		dependencies = {
+			"williamboman/mason.nvim", -- xmlformatter
+		},
+		opts = function()
+			if vim.fn.filereadable("pom.xml") == 1 then
+				require("conform").setup({
+					formatters_by_ft = {
+						xml = { "xmlformat" },
+					},
+				})
+			end
+		end,
+	},
 }

@@ -10,11 +10,11 @@ test:
 
 stow-laptop:
 	@echo "Stowing laptop dotfiles..."
-	stow --target=$(TARGET_DIR) --dir=$(LAPTOP) nvim git fastfetch kitty bash
+	stow --target=$(TARGET_DIR) --dir=$(LAPTOP) nvim git fastfetch kitty bash neovide
 
 unstow-laptop:
 	@echo "Unstowing laptop dotfiles..."
-	stow --target=$(TARGET_DIR) --dir=$(LAPTOP) -D nvim git fastfetch kitty bash
+	stow --target=$(TARGET_DIR) --dir=$(LAPTOP) -D nvim git fastfetch kitty bash neovide
 
 stow-termux:
 	@echo "Stowing termux dotfiles..."

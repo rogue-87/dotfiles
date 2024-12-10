@@ -31,7 +31,7 @@ opt.sessionoptions = { "curdir", "folds", "globals", "help", "tabpages", "termin
 opt.fillchars = { foldopen = "", foldclose = "", fold = " ", foldsep = " ", diff = "╱", eob = " " }
 
 if vim.g.neovide then
-	vim.o.guifont = "NotoMono Nerd Font:h10"
+	vim.o.guifont = "NotoMono Nerd Font:h12"
 	vim.opt.linespace = 0
 
 	vim.g.neovide_scale_factor = 1.0
