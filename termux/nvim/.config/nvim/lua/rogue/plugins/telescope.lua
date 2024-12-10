@@ -1,13 +1,13 @@
 return {
-  "nvim-telescope/telescope.nvim",
-  dependencies = {
-    "nvim-lua/plenary.nvim",
-    "nvim-tree/nvim-web-devicons",
-    "nvim-telescope/telescope-symbols.nvim",
-    { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
-  },
-  event = { "BufReadPre", "BufNewFile" },
-  branch = "0.1.x",
+	"nvim-telescope/telescope.nvim",
+	dependencies = {
+		"nvim-lua/plenary.nvim",
+		"nvim-tree/nvim-web-devicons",
+		"nvim-telescope/telescope-symbols.nvim",
+		{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+	},
+	event = { "BufReadPre", "BufNewFile" },
+	branch = "0.1.x",
   --stylua: ignore
   keys = {
     { "<leader>ff", function()  require("telescope.builtin").find_files({ hidden = true })  end, desc = "Fuzzy find files in cwd" },
@@ -23,27 +23,31 @@ return {
     { "<leader>gs", function()  require("telescope.builtin").find_files()                   end, desc = "Status" },
   },
 
-  config = function()
-    local telescope = require("telescope")
-    local actions = require("telescope.actions")
-    telescope.setup({
-      defaults = {
-        file_ignore_patterns = {
-          "node_modules",
-          "dist",
-          ".git",
-          ".env",
-          "*.lock",
-        },
-        mappings = {
-          i = {
-            ["<C-k>"] = actions.move_selection_previous, --move to prev result
-            ["<C-j>"] = actions.move_selection_next, --move to next result
-            ["<C-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
-          },
-        },
-      },
-    })
-    telescope.load_extension("fzf")
-  end,
+	config = function()
+		local telescope = require("telescope")
+		local actions = require("telescope.actions")
+		telescope.setup({
+			defaults = {
+				file_ignore_patterns = {
+					"node_modules",
+					"dist",
+					".git",
+					".env",
+					"*.lock",
+				},
+				mappings = {
+					i = {
+						["<C-k>"] = actions.move_selection_previous, --move to prev result
+						["<C-j>"] = actions.move_selection_next, --move to next result
+						["<C-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
+						["<S-o>"] = function()
+							local entry = require("telescope.actions.state").get_selected_entry()
+							vim.ui.open(entry[1])
+						end,
+					},
+				},
+			},
+		})
+		telescope.load_extension("fzf")
+	end,
 }
