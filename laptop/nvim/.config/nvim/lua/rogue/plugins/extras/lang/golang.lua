@@ -5,9 +5,6 @@ return {
 		"neovim/nvim-lspconfig",
 		optional = true,
 		ft = { "go", "gomod", "gowork", "gotmpl" },
-		dependencies = {
-			"williamboman/mason.nvim",
-		},
 		opts = function()
 			local lspconfig = require("lspconfig")
 			lspconfig["gopls"].setup({})

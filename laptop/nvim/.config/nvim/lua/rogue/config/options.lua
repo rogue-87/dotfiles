@@ -1,6 +1,8 @@
 local opt, g = vim.opt, vim.g
 
 -- Global vim variables
+g.loaded_netrw = 1
+g.loaded_netrwPlugin = 1
 g.mapleader = " "
 g.editorconfig = true
 

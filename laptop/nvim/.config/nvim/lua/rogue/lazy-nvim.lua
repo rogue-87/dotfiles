@@ -12,7 +12,7 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
-	install = { colorscheme = { "github_dark_default" } },
+	install = { colorscheme = { "onedark" } },
 	checker = { enabled = true },
 	spec = {
 		{
@@ -47,13 +47,16 @@ require("lazy").setup({
 		-- { import = "rogue.plugins.extras" }, -- extra stuff
 		{ import = "rogue.plugins.extras.wakatime" },
 		{ import = "rogue.plugins.extras.webdev" },
+		{ import = "rogue.plugins.extras.godot" },
 
 		{ import = "rogue.plugins.extras.lang.c-cpp" },
 		{ import = "rogue.plugins.extras.lang.csharp" },
 		{ import = "rogue.plugins.extras.lang.dart" },
 		{ import = "rogue.plugins.extras.lang.golang" },
 		{ import = "rogue.plugins.extras.lang.java" },
+		{ import = "rogue.plugins.extras.lang.kotlin" },
 		{ import = "rogue.plugins.extras.lang.markdown" },
+		{ import = "rogue.plugins.extras.lang.php" },
 		{ import = "rogue.plugins.extras.lang.python" },
 		{ import = "rogue.plugins.extras.lang.rustacean" },
 	},

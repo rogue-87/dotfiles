@@ -32,7 +32,7 @@ return { -- Lsp Config
 	},
 	config = function()
 		local lspconfig = require("lspconfig")
-		-- local capabilities = require("cmp_nvim_lsp").default_capabilities()
+		local capabilities = require("cmp_nvim_lsp").default_capabilities()
 		local msn_lspconf = require("mason-lspconfig")
 
 		-- LSPs INSTALLED & MANAGED BY MASON.NVIM
@@ -50,6 +50,7 @@ return { -- Lsp Config
 				end, ]]
 				["lua_ls"] = function()
 					lspconfig["lua_ls"].setup({
+						capabilities = capabilities,
 						settings = {
 							Lua = {
 								diagnostics = {

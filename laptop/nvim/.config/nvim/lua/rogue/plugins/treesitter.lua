@@ -39,7 +39,7 @@ return {
 			modules = {},
 			ignore_install = {},
 			sync_install = true,
-			auto_install = true,
+			auto_install = false,
 			highlight = { enable = true },
 			indent = { enable = false },
 			incremental_selection = {

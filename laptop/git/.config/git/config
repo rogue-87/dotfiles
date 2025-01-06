@@ -3,6 +3,6 @@
 	email = rogue87.dev@gmail.com
 	name = Rogue
 [init]
-	defaultBranch = master
+	defaultBranch = main
 [github]
   user = rogue-87
