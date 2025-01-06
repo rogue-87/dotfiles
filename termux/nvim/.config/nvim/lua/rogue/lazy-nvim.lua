@@ -12,7 +12,7 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
-	install = { colorscheme = { "github_dark_default" } },
+	-- install = { colorscheme = { "" } },
 	checker = { enabled = true },
 	spec = {
 		{
