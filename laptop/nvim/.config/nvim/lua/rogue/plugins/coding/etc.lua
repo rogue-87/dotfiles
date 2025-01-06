@@ -36,11 +36,11 @@ return {
 			"kevinhwang91/promise-async",
 		},
 		event = "VeryLazy",
-    -- stylua: ignore
-    keys = {
-      { "zR", function() require("ufo").openAllFolds() end, desc = "Open all folds" },
-      { "zM", function() require("ufo").closeAllFolds() end, desc = "Close all folds" },
-    },
+		-- stylua: ignore
+		keys = {
+			{ "zR", function() require("ufo").openAllFolds() end, desc = "Open all folds" },
+			{ "zM", function() require("ufo").closeAllFolds() end, desc = "Close all folds" },
+		},
 		opts = {
 			provider_selector = function()
 				return { "lsp", "indent" }

@@ -1,6 +1,7 @@
 return {
 	{
 		"navarasu/onedark.nvim",
+		enabled = false,
 		lazy = false,
 		priority = 1000,
 		config = function()
@@ -19,7 +20,7 @@ return {
 				-- Options are italic, bold, underline, none
 				-- You can configure multiple style with comma separated, For e.g., keywords = 'italic,bold'
 				code_style = {
-					comments = "italic",
+					comments = "none",
 					keywords = "bold",
 					functions = "none",
 					strings = "none",
@@ -47,56 +48,56 @@ return {
 		end,
 	},
 	{
-		"projekt0n/github-nvim-theme",
-		enabled = false,
-		lazy = false,
-		priority = 1000,
+		"EdenEast/nightfox.nvim",
+		enabled = true,
 		config = function()
-			local palettes = {}
-			local specs = {}
-			local groups = {}
-			require("github-theme").setup({
+			-- Default options
+			require("nightfox").setup({
 				options = {
-					compile_path = vim.fn.stdpath("cache") .. "/github-theme",
+					-- Compiled file's destination location
+					compile_path = vim.fn.stdpath("cache") .. "/nightfox",
 					compile_file_suffix = "_compiled", -- Compiled file suffix
-					hide_end_of_buffer = true, -- Hide the '~' character at the end of the buffer for a cleaner look
-					hide_nc_statusline = true, -- Override the underline style for non-active statuslines
 					transparent = false, -- Disable setting background
 					terminal_colors = true, -- Set terminal colors (vim.g.terminal_color_*) used in `:terminal`
 					dim_inactive = false, -- Non focused panes set to alternative background
 					module_default = true, -- Default enable value for modules
+					colorblind = {
+						enable = false, -- Enable colorblind support
+						simulate_only = false, -- Only show simulated colorblind colors and not diff shifted
+						severity = {
+							protan = 0, -- Severity [0,1] for protan (red)
+							deutan = 0, -- Severity [0,1] for deutan (green)
+							tritan = 0, -- Severity [0,1] for tritan (blue)
+						},
+					},
 					styles = { -- Style to be applied to different syntax groups
-						comments = "italic", -- Value is any valid attr-list value `:help attr-list`
+						comments = "NONE", -- Value is any valid attr-list value `:help attr-list`
+						conditionals = "NONE",
+						constants = "NONE",
+						functions = "NONE",
 						keywords = "bold",
-						types = "italic,bold",
+						numbers = "NONE",
+						operators = "NONE",
+						strings = "NONE",
+						types = "NONE",
+						variables = "NONE",
 					},
 					inverse = { -- Inverse highlight for different types
 						match_paren = false,
 						visual = false,
 						search = false,
 					},
-					darken = { -- Darken floating windows and sidebar-like windows
-						floats = true,
-						sidebars = {
-							enable = true,
-							list = {
-								"neo-tree",
-								"terminal",
-							},
-						},
-					},
 					modules = { -- List of various plugins and additional options
-						whichkey = { enable = true },
-						neotree = { enable = true },
-						dapui = { enable = true },
+						-- ...
 					},
 				},
-				palettes = palettes,
-				specs = specs,
-				groups = groups,
+				palettes = {},
+				specs = {},
+				groups = {},
 			})
 
-			vim.cmd("colorscheme github_dark_default")
+			-- setup must be called before loading
+			vim.cmd("colorscheme carbonfox")
 		end,
 	},
 }

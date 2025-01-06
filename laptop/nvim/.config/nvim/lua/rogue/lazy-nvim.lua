@@ -12,7 +12,7 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
-	install = { colorscheme = { "onedark" } },
+	-- install = { colorscheme = { "" } },
 	checker = { enabled = true },
 	spec = {
 		{
