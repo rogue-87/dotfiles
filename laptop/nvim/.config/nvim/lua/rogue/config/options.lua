@@ -6,8 +6,10 @@ g.loaded_netrwPlugin = 1
 g.mapleader = " "
 g.editorconfig = true
 
--- use nushell if available; otherwise, fallback to bash.
--- opt.shell = vim.fn.exepath("nu") ~= "" and vim.fn.exepath("nu") or vim.fn.exepath("bash")
+-- use fish if available; otherwise, fallback to bash.
+local shell = "fish"
+local fallback_shell = "bash"
+opt.shell = vim.fn.exepath(shell) ~= "" and vim.fn.exepath(shell) or vim.fn.exepath(fallback_shell)
 
 opt.number = true
 opt.relativenumber = true
