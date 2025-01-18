@@ -1,6 +1,5 @@
 return {
 	-- language server
-	-- can also format sql files
 	{
 		"neovim/nvim-lspconfig",
 		optional = true,

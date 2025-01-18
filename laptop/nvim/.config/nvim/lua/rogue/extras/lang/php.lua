@@ -3,13 +3,10 @@ return {
 	{
 		"neovim/nvim-lspconfig",
 		optional = true,
-		ft = "kotlin",
-		dependencies = {
-			"williamboman/mason.nvim",
-		},
+		ft = { "php", "blade", "html" },
 		opts = function()
 			local lspconfig = require("lspconfig")
-			lspconfig["kotlin_language_server"].setup({})
+			lspconfig["intelephense"].setup({})
 		end,
 	},
 }

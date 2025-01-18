@@ -4,7 +4,7 @@ TARGET_DIR = ${HOME}
 
 .PHONY: test laptop-stow laptop-unstow termux-stow termux-unstow
 
-LAPTOP_PACKAGES = nvim neovide git fastfetch kitty bash fish
+LAPTOP_PACKAGES = nvim neovide git fastfetch kitty fish
 
 TERMUX_PACKAGES = nvim git fastfetch kitty termux-settings bash fish
 

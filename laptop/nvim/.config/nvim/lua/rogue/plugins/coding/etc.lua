@@ -3,6 +3,8 @@ return {
 	{ "windwp/nvim-autopairs", event = "InsertEnter", opts = {} },
 	-- Close surrounding text
 	{ "kylechui/nvim-surround", version = "*", event = { "BufReadPre", "BufNewFile" }, opts = {} },
+	-- autoclose & autorename for html tags
+	{ "windwp/nvim-ts-autotag", opts = {} },
 	-- Commenting
 	{
 		"numToStr/Comment.nvim",
@@ -32,10 +34,8 @@ return {
 	-- Code fold
 	{
 		"kevinhwang91/nvim-ufo",
-		dependencies = {
-			"kevinhwang91/promise-async",
-		},
-		event = "VeryLazy",
+		dependencies = { "kevinhwang91/promise-async" },
+		lazy = false,
 		-- stylua: ignore
 		keys = {
 			{ "zR", function() require("ufo").openAllFolds() end, desc = "Open all folds" },
@@ -52,9 +52,5 @@ return {
 			vim.o.foldlevelstart = 99
 			vim.o.foldenable = true
 		end,
-	},
-	{
-		"windwp/nvim-ts-autotag",
-		opts = {},
 	},
 }

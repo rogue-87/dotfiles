@@ -1,4 +1,3 @@
--- NOTE: only works for js files for now
 return {
 	-- lsp
 	{
@@ -35,8 +34,8 @@ return {
 					})
 				end,
 			})
-			-- others
 
+			-- others
 			lspconfig["astro"].setup({})
 			lspconfig["svelte"].setup({})
 		end,
@@ -67,25 +66,6 @@ return {
 					yaml = { "prettier" },
 				},
 			})
-
-			-- PER-FORMATTER CONFIG
-			--[[ conform.formatters.prettier = {
-				args = function(self, ctx)
-					if vim.endswith(ctx.filename, ".astro") then
-						return { "--stdin-filepath", "$FILENAME", "--plugin", "prettier-plugin-astro" }
-					end
-					return { "--stdin-filepath", "$FILENAME" }
-				end,
-			} ]]
-
-			--[[ conform.formatters.prettier = {
-				args = function(self, ctx)
-					if vim.endswith(ctx.filename, ".svelte") then
-						return { "--stdin-filepath", "$FILENAME", "--plugin", "prettier-plugin-svelte" }
-					end
-					return { "--stdin-filepath", "$FILENAME" }
-				end,
-			} ]]
 		end,
 	},
 	-- debugger
@@ -113,7 +93,7 @@ return {
 				},
 			}
 
-			-- js-debug
+			-- vscode-js-debug
 			require("dap").configurations.javascript = {
 				{
 					type = "pwa-node",
@@ -141,27 +121,6 @@ return {
 					attachSimplePort = 9229,
 				},
 			}
-
-			-- js-firefox
-			--[[ dap.adapters.firefox = {
-				type = "executable",
-				command = "node",
-				args = {
-					mason.get_package("firefox-debug-adapter"):get_install_path() .. "/dist/adapter.bundle.js",
-				},
-			}
-
-			dap.configurations.typescript = {
-				{
-					name = "Debug with Firefox",
-					type = "firefox",
-					request = "launch",
-					reAttach = true,
-					url = "http://localhost:3000",
-					webRoot = "${workspaceFolder}",
-					firefoxExecutable = "/usr/bin/firefox",
-				},
-			} ]]
 		end,
 	},
 }

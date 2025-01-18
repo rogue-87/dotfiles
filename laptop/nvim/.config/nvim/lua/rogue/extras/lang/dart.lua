@@ -11,31 +11,32 @@ return {
 		end,
 	},
 	-- debugger
-	-- NOTE: still not working
+	-- WARN: doesn't work
 	{
 		"mfussenegger/nvim-dap",
 		optional = true,
 		ft = "dart",
 		dependencies = {},
 		opts = function()
+			local dartSdk = vim.fn.exepath("dart")
+			local flutterSdk = vim.fn.exepath("flutter")
+
 			local dap = require("dap")
 			-- Dart CLI adapter (recommended)
 			dap.adapters.dart = {
 				type = "executable",
-				command = "dart", -- if you're using fvm, you'll need to provide the full path to dart (dart.exe for windows users), or you could prepend the fvm command
+				command = "dart",
 				args = { "debug_adapter" },
-				-- windows users will need to set 'detached' to false
 				options = {
-					detached = true,
+					detached = true, -- windows users will need to set 'detached' to false
 				},
 			}
 			dap.adapters.flutter = {
 				type = "executable",
-				command = "flutter", -- if you're using fvm, you'll need to provide the full path to flutter (flutter.bat for windows users), or you could prepend the fvm command
+				command = "flutter",
 				args = { "debug_adapter" },
-				-- windows users will need to set 'detached' to false
 				options = {
-					detached = false,
+					detached = true, -- windows users will need to set 'detached' to false
 				},
 			}
 
@@ -44,8 +45,8 @@ return {
 					type = "dart",
 					request = "launch",
 					name = "Launch dart",
-					dartSdkPath = "/opt/flutter/bin/cache/dart-sdk/bin/dart", -- ensure this is correct
-					flutterSdkPath = "/opt/flutter/bin/flutter", -- ensure this is correct
+					dartSdkPath = dartSdk,
+					flutterSdkPath = flutterSdk,
 					program = "${workspaceFolder}/lib/main.dart", -- ensure this is correct
 					cwd = "${workspaceFolder}",
 				},
@@ -53,8 +54,8 @@ return {
 					type = "flutter",
 					request = "launch",
 					name = "Launch flutter",
-					dartSdkPath = "/opt/flutter/bin/cache/dart-sdk/bin/dart", -- ensure this is correct
-					flutterSdkPath = "/opt/flutter/bin/flutter", -- ensure this is correct
+					dartSdkPath = dartSdk,
+					flutterSdkPath = flutterSdk,
 					program = "${workspaceFolder}/lib/main.dart", -- ensure this is correct
 					cwd = "${workspaceFolder}",
 				},

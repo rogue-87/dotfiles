@@ -6,6 +6,7 @@ return {
 }
 
 -- NOTE: Fallback
+
 -- return {
 -- 	-- lsp
 -- 	{

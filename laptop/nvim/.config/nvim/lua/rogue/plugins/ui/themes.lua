@@ -1,9 +1,17 @@
 return {
 	{
-		"navarasu/onedark.nvim",
-		enabled = false,
+		"projekt0n/github-nvim-theme",
+		name = "github-theme",
 		lazy = false,
 		priority = 1000,
+		config = function()
+			require("github-theme").setup({})
+
+			vim.cmd("colorscheme github_dark_default")
+		end,
+	},
+	{
+		"navarasu/onedark.nvim",
 		config = function()
 			require("onedark").setup({
 				style = "warmer",
@@ -44,12 +52,11 @@ return {
 				},
 			})
 
-			require("onedark").load()
+			-- require("onedark").load()
 		end,
 	},
 	{
 		"EdenEast/nightfox.nvim",
-		enabled = true,
 		config = function()
 			-- Default options
 			require("nightfox").setup({
@@ -97,7 +104,7 @@ return {
 			})
 
 			-- setup must be called before loading
-			vim.cmd("colorscheme carbonfox")
+			-- vim.cmd("colorscheme carbonfox")
 		end,
 	},
 }

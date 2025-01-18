@@ -8,6 +8,7 @@ return {
 			formatters_by_ft = {
 				lua = { "stylua" },
 				bash = { "shfmt" },
+				xml = { "xmlformat" },
 			},
 		})
 

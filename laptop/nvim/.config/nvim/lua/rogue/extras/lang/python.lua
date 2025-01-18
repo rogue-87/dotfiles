@@ -8,18 +8,7 @@ return {
 			"williamboman/mason.nvim", -- pylsp, pyright.
 		},
 		opts = function()
-			require("lspconfig")["pylsp"].setup({
-				settings = {
-					pylsp = {
-						plugins = {
-							pycodestyle = {
-								ignore = { "W391" },
-								maxLineLength = 100,
-							},
-						},
-					},
-				},
-			})
+			require("lspconfig")["pyright"].setup({})
 		end,
 	},
 	-- formatter
@@ -52,8 +41,7 @@ return {
 		end,
 	},
 	-- debugger
-	-- NOTE: still not working properly
-	--[[ {
+	{
 		"mfussenegger/nvim-dap",
 		optional = true,
 		ft = "py",
@@ -62,6 +50,8 @@ return {
 		},
 		opts = function()
 			local dap = require("dap")
+			-- use this as an alternative to `os.getenv("VIRTUAL_ENV") .. "/bin/python"` for command
+			-- I personally think it's better to setup a venv and install debugpy that way though
 			local mason = require("mason-registry")
 			local mason_python_bin = mason.get_package("debugpy"):get_install_path() .. "/venv/bin/python"
 
@@ -82,7 +72,7 @@ return {
 				else
 					cb({
 						type = "executable",
-						command = mason_python_bin,
+						command = os.getenv("VIRTUAL_ENV") .. "/bin/python",
 						args = { "-m", "debugpy.adapter" },
 						options = {
 							source_filetype = "python",
@@ -116,5 +106,5 @@ return {
 				},
 			}
 		end,
-	}, ]]
+	},
 }

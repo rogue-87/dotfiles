@@ -3,11 +3,13 @@ return {
 	{
 		"neovim/nvim-lspconfig",
 		optional = true,
-		ft = { "php", "blade", "html" },
+		ft = "java",
+		dependencies = {
+			"williamboman/mason.nvim",
+		},
 		opts = function()
 			local lspconfig = require("lspconfig")
-			lspconfig["intelephense"].setup({})
-			-- lspconfig["phpactor"].setup({})
+			lspconfig["jdtls"].setup({})
 		end,
 	},
 }

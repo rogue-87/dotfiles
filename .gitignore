@@ -1,7 +1,5 @@
-lazy-lock.json
 package-lock.json
 package.json
 fish_variables
-.config/fish/completions/
 secrets.*
 history.txt

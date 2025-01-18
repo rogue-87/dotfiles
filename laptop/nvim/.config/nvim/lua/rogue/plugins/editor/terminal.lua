@@ -1,3 +1,15 @@
+---@param program Terminal
+---@param cmd string
+local function termexec(program, cmd)
+	local check = os.execute("command -v " .. cmd .. " >/dev/null 2>&1")
+
+	if check then
+		program:toggle()
+	else
+		vim.notify(cmd .. " is not found. make sure it's installed and available in $PATH", vim.log.levels.WARN, {})
+	end
+end
+
 return {
 	"akinsho/toggleterm.nvim",
 	event = { "VeryLazy" },
@@ -40,9 +52,10 @@ return {
 		local map = vim.keymap.set
 		-- COMMANDS
 		-- stylua: ignore
-		cmd("LazyGit", function() lazygit:toggle() end, { desc = "lazygit" })
+		cmd("LazyGit", function() termexec(lazygit, lazygit.cmd) end, { desc = "lazygit" })
+
 		-- stylua: ignore
-		cmd("Btop", function() btop:toggle() end, { desc = "btop" })
+		cmd("Btop", function() termexec(btop, btop.cmd) end, { desc = "btop" })
 
 		-- KEYMAPS FOR TERMINAL PROGRAMS
 		local opts = { noremap = true, silent = true }
@@ -51,10 +64,10 @@ return {
 
 		opts.desc = "Lazygit"
 		-- stylua: ignore
-		map("n", "<leader>rl", function() lazygit:toggle() end, opts)
+		map("n", "<leader>rl", function() termexec(lazygit, lazygit.cmd) end, opts)
 
 		opts.desc = "Btop"
 		-- stylua: ignore
-		map("n", "<leader>rb", function() btop:toggle() end, opts)
+		map("n", "<leader>rb", function() termexec(btop, btop.cmd) end, opts)
 	end,
 }
