@@ -1,15 +1,16 @@
-LAPTOP = ${HOME}/dotfiles/laptop
-TERMUX = ${HOME}/dotfiles/termux
+LAPTOP = ${HOME}/dotfiles/profiles/laptop
+TERMUX = ${HOME}/dotfiles/profiles/termux
 TARGET_DIR = ${HOME}
+
+LAPTOP_PACKAGES = nvim neovide git fastfetch kitty fish
+TERMUX_PACKAGES = nvim git fastfetch kitty termux-settings bash fish
 
 .PHONY: test laptop-stow laptop-unstow termux-stow termux-unstow
 
-LAPTOP_PACKAGES = nvim neovide git fastfetch kitty fish
-
-TERMUX_PACKAGES = nvim git fastfetch kitty termux-settings bash fish
 
 test:
 	@echo $(LAPTOP)
+	@echo $(TERMUX)
 	@echo $(TARGET_DIR)
 
 laptop-stow:

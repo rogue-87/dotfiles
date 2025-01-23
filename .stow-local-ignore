@@ -1,7 +1,6 @@
 \.git
 \.gitignore
 \.gitmodules
-\.bashrc-ext
 scripts
 readme-stuff
 readme.md
