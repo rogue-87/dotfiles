@@ -35,19 +35,10 @@ return { -- Lsp Config
 		local capabilities = require("cmp_nvim_lsp").default_capabilities()
 		local msn_lspconf = require("mason-lspconfig")
 
-		-- LSPs INSTALLED & MANAGED BY MASON.NVIM
 		msn_lspconf.setup({
-			-- LSPs
-			ensure_installed = {
-				"bashls",
-				"lua_ls",
-			},
+			ensure_installed = { "bashls", "lua_ls", "jsonls" },
 			automatic_installation = false,
 			handlers = {
-				-- DEFAULT CONFIG FOR ALL SERVERS
-				--[[ function(server_name)
-					lspconfig[server_name].setup({ capabilities = capabilities })
-				end, ]]
 				["lua_ls"] = function()
 					lspconfig["lua_ls"].setup({
 						capabilities = capabilities,
@@ -65,6 +56,19 @@ return { -- Lsp Config
 				end,
 				["bashls"] = function()
 					lspconfig["bashls"].setup({})
+				end,
+				["jsonls"] = function()
+					lspconfig["jsonls"].setup({
+						filetypes = { "json", "jsonc" },
+						capabilities = capabilities,
+						settings = {
+							json = {
+								-- Schemas https://www.schemastore.org
+								schemas = require("schemastore").json.schemas(),
+								validate = { enable = true },
+							},
+						},
+					})
 				end,
 			},
 		})

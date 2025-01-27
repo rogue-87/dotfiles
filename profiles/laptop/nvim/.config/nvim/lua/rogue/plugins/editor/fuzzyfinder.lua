@@ -8,20 +8,21 @@ return {
 	},
 	event = { "BufReadPre", "BufNewFile" },
 	branch = "0.1.x",
-  --stylua: ignore
-  keys = {
-    { "<leader>ff", function()  require("telescope.builtin").find_files({ hidden = true })  end, desc = "Fuzzy find files in cwd" },
-    { "<leader>fr", function()  require("telescope.builtin").oldfiles()                     end, desc = "Fuzzy find recent files" },
-    { "<leader>fs", function()  require("telescope.builtin").live_grep()                    end, desc = "Find string in cwd" },
-    { "<leader>fS", function()  require("telescope.builtin").symbols()                      end, desc = "Find symbols" },
-    { "<leader>fb", function()  require("telescope.builtin").buffers()                      end, desc = "Find buffers" },
-    { "<leader>fg", function()  require("telescope.builtin").grep_string()                  end, desc = "Find string under cursor in cwd" },
-    { "<leader>fc", function()  require("telescope.builtin").colorscheme()                  end, desc = "Select colorscheme" },
-    { "<leader>fh", function()  require("telescope.builtin").help_tags()                    end, desc = "Help tags" },
-    { "<leader>gc", function()  require("telescope.builtin").git_commits()                  end, desc = "Commits" },
-    { "<leader>gs", function()  require("telescope.builtin").git_status()                   end, desc = "Status" },
-    { "<leader>gs", function()  require("telescope.builtin").find_files()                   end, desc = "Status" },
-  },
+	-- stylua: ignore
+	keys = {
+		{ "<leader>ff", function()  require("telescope.builtin").find_files({ hidden = true })  end, desc = "Fuzzy find files in cwd" },
+    	{ "<leader>fr", function()  require("telescope.builtin").oldfiles()                     end, desc = "Fuzzy find recent files" },
+    	{ "<leader>fs", function()  require("telescope.builtin").live_grep()                    end, desc = "Find string in cwd" },
+    	{ "<leader>fS", function()  require("telescope.builtin").symbols()                      end, desc = "Find symbols" },
+    	{ "<leader>fb", function()  require("telescope.builtin").buffers()                      end, desc = "Find buffers" },
+    	{ "<leader>fg", function()  require("telescope.builtin").grep_string()                  end, desc = "Find string under cursor in cwd" },
+    	{ "<leader>fc", function()  require("telescope.builtin").colorscheme()                  end, desc = "Select colorscheme" },
+    	{ "<leader>fh", function()  require("telescope.builtin").help_tags()                    end, desc = "Help tags" },
+    	{ "<leader>gc", function()  require("telescope.builtin").git_commits()                  end, desc = "Commits" },
+    	{ "<leader>gs", function()  require("telescope.builtin").git_status()                   end, desc = "Status" },
+    	{ "<leader>gs", function()  require("telescope.builtin").find_files()                   end, desc = "Status" },
+
+	},
 
 	config = function()
 		local telescope = require("telescope")

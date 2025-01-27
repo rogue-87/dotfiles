@@ -1,59 +1,50 @@
 -- NOTE: load settings
 require("rogue.config")
 
--- NOTE: load lazy.nvim
+-- NOTE: bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not vim.loop.fs_stat(lazypath) then
-	vim.fn.system({
-		"git",
-		"clone",
-		"--filter=blob:none",
-		"https://github.com/folke/lazy.nvim.git",
-		"--branch=stable", -- latest stable release
-		lazypath,
-	})
+if not (vim.uv or vim.loop).fs_stat(lazypath) then
+	local lazyrepo = "https://github.com/folke/lazy.nvim.git"
+	local out = vim.fn.system({ "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath })
+	if vim.v.shell_error ~= 0 then
+		vim.api.nvim_echo({
+			{ "Failed to clone lazy.nvim:\n", "ErrorMsg" },
+			{ out, "WarningMsg" },
+			{ "\nPress any key to exit..." },
+		}, true, {})
+		vim.fn.getchar()
+		os.exit(1)
+	end
 end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
-	install = { colorscheme = { "github_dark_default" } },
-	checker = { enabled = true },
 	spec = {
+		-- { "folke/neoconf.nvim", opts = {} },
 		{
-			{
-				"folke/lazydev.nvim",
-				ft = "lua",
-				opts = {
-					runtime = vim.env.VIMRUNTIME,
-					library = {
-						"luvit-meta/library",
-						"${3rd}/love2d/library",
-					},
-					integrations = {
-						lspconfig = true,
-						cmp = true,
-					},
-					enabled = function(root_dir)
-						return vim.g.lazydev_enabled == nil and true or vim.g.lazydev_enabled
-					end,
+			"folke/lazydev.nvim",
+			ft = "lua",
+			opts = {
+				library = {
+					"nvim-dap-ui",
+					{ path = "${3rd}/luv/library", words = { "vim%.uv" } },
+					-- { path = "${3rd}/love2d/library" },
 				},
 			},
-			{ "Bilal2453/luvit-meta", lazy = true }, -- optional `vim.uv` typings
 		},
-		{ import = "rogue.plugins" },
 		{ import = "rogue.plugins.ui" },
 		{ import = "rogue.plugins.editor" },
 		{ import = "rogue.plugins.coding" },
 		{ import = "rogue.plugins.coding.lsp" },
-		{ import = "rogue.plugins.coding.debugging" }, -- debugging support(adds DAP support in nvim)
-		{ import = "rogue.plugins.coding.testing" }, -- for testing frameworks(e.g. vite and such. still not 100% done)
+		{ import = "rogue.plugins.debugging" }, -- DAP support for nvim
 
 		-- { import = "rogue.extras" }, -- extra stuff
-		-- { import = "rogue.extras.godot" },
 		-- { import = "rogue.extras.db" },
+		-- { import = "rogue.extras.godot" },
 		{ import = "rogue.extras.wakatime" },
 		{ import = "rogue.extras.webdev" },
 
+		-- { import = "rogue.extras.lang" }, -- uncomment this to load all lang configs
 		{ import = "rogue.extras.lang.cc" },
 		{ import = "rogue.extras.lang.csharp" },
 		{ import = "rogue.extras.lang.dart" },
@@ -65,18 +56,18 @@ require("lazy").setup({
 		{ import = "rogue.extras.lang.markdown" },
 		{ import = "rogue.extras.lang.php" },
 		{ import = "rogue.extras.lang.python" },
-		{ import = "rogue.extras.lang.rustacean" },
+		{ import = "rogue.extras.lang.rust" },
 	},
+	install = { colorscheme = { "github_dark_default" } },
+	checker = { enabled = true },
 	ui = {
 		wrap = true,
 		border = "none",
 	},
-	news = {
-		lazy = true,
-	},
+	news = { lazy = true },
 	performance = {
 		cache = {
-			enabled = true,
+			enabled = false,
 		},
 		reset_packpath = true,
 		rtp = {

@@ -15,17 +15,6 @@ return {
 			lspconfig["cssls"].setup({ capabilities = capabilities })
 			lspconfig["css_variables"].setup({})
 			lspconfig["ts_ls"].setup({})
-			lspconfig["jsonls"].setup({
-				filetypes = { "json", "jsonc" },
-				capabilities = capabilities,
-				settings = {
-					json = {
-						-- Schemas https://www.schemastore.org
-						schemas = require("schemastore").json.schemas(),
-						validate = { enable = true },
-					},
-				},
-			})
 			lspconfig["eslint"].setup({
 				on_attach = function(client, bufnr)
 					vim.api.nvim_create_autocmd("BufWritePre", {

@@ -8,6 +8,19 @@ return {
 			"williamboman/mason.nvim", -- pylsp, pyright.
 		},
 		opts = function()
+			--[[ require("lspconfig")["pylsp"].setup({
+				settings = {
+					pylsp = {
+						plugins = {
+							pycodestyle = {
+								ignore = { "W391" },
+								maxLineLength = 100,
+							},
+						},
+					},
+				},
+			}) ]]
+
 			require("lspconfig")["pyright"].setup({})
 		end,
 	},
