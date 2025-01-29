@@ -6,6 +6,7 @@ return {
 }
 
 -- NOTE: Fallback
+
 -- return {
 -- 	-- lsp
 -- 	{
@@ -35,9 +36,6 @@ return {
 -- 		"mfussenegger/nvim-dap",
 -- 		optional = true,
 -- 		ft = { "rust" },
--- 		dependencies = {
--- 			"williamboman/mason.nvim", -- codelldb
--- 		},
 -- 		opts = function()
 -- 			local dap = require("dap")
 -- 			dap.adapters.codelldb = {

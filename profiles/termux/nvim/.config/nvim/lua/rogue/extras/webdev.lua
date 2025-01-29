@@ -1,11 +1,7 @@
--- NOTE: only works for js files for now
 return {
 	-- lsp
 	{
 		"neovim/nvim-lspconfig",
-		dependencies = {
-			"williamboman/mason.nvim",
-		},
 		optional = true,
 		opts = function()
 			local lspconfig = require("lspconfig")
@@ -16,17 +12,6 @@ return {
 			lspconfig["cssls"].setup({ capabilities = capabilities })
 			lspconfig["css_variables"].setup({})
 			lspconfig["ts_ls"].setup({})
-			lspconfig["jsonls"].setup({
-				filetypes = { "json", "jsonc" },
-				capabilities = capabilities,
-				settings = {
-					json = {
-						-- Schemas https://www.schemastore.org
-						schemas = require("schemastore").json.schemas(),
-						validate = { enable = true },
-					},
-				},
-			})
 			lspconfig["eslint"].setup({
 				on_attach = function(client, bufnr)
 					vim.api.nvim_create_autocmd("BufWritePre", {
@@ -35,8 +20,8 @@ return {
 					})
 				end,
 			})
-			-- others
 
+			-- others
 			lspconfig["astro"].setup({})
 			lspconfig["svelte"].setup({})
 		end,
@@ -45,9 +30,6 @@ return {
 	{
 		"stevearc/conform.nvim",
 		optional = true,
-		dependencies = {
-			"williamboman/mason.nvim",
-		},
 		opts = function()
 			local conform = require("conform")
 			conform.setup({
@@ -67,25 +49,6 @@ return {
 					yaml = { "prettier" },
 				},
 			})
-
-			-- PER-FORMATTER CONFIG
-			--[[ conform.formatters.prettier = {
-				args = function(self, ctx)
-					if vim.endswith(ctx.filename, ".astro") then
-						return { "--stdin-filepath", "$FILENAME", "--plugin", "prettier-plugin-astro" }
-					end
-					return { "--stdin-filepath", "$FILENAME" }
-				end,
-			} ]]
-
-			--[[ conform.formatters.prettier = {
-				args = function(self, ctx)
-					if vim.endswith(ctx.filename, ".svelte") then
-						return { "--stdin-filepath", "$FILENAME", "--plugin", "prettier-plugin-svelte" }
-					end
-					return { "--stdin-filepath", "$FILENAME" }
-				end,
-			} ]]
 		end,
 	},
 	-- debugger
@@ -113,7 +76,7 @@ return {
 				},
 			}
 
-			-- js-debug
+			-- vscode-js-debug
 			require("dap").configurations.javascript = {
 				{
 					type = "pwa-node",
@@ -141,27 +104,6 @@ return {
 					attachSimplePort = 9229,
 				},
 			}
-
-			-- js-firefox
-			--[[ dap.adapters.firefox = {
-				type = "executable",
-				command = "node",
-				args = {
-					mason.get_package("firefox-debug-adapter"):get_install_path() .. "/dist/adapter.bundle.js",
-				},
-			}
-
-			dap.configurations.typescript = {
-				{
-					name = "Debug with Firefox",
-					type = "firefox",
-					request = "launch",
-					reAttach = true,
-					url = "http://localhost:3000",
-					webRoot = "${workspaceFolder}",
-					firefoxExecutable = "/usr/bin/firefox",
-				},
-			} ]]
 		end,
 	},
 }

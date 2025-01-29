@@ -4,22 +4,8 @@ return {
 		"neovim/nvim-lspconfig",
 		optional = true,
 		ft = "py",
-		dependencies = {
-			"williamboman/mason.nvim", -- pylsp, pyright.
-		},
 		opts = function()
-			require("lspconfig")["pylsp"].setup({
-				settings = {
-					pylsp = {
-						plugins = {
-							pycodestyle = {
-								ignore = { "W391" },
-								maxLineLength = 100,
-							},
-						},
-					},
-				},
-			})
+			require("lspconfig")["pyright"].setup({})
 		end,
 	},
 	-- formatter
@@ -27,13 +13,15 @@ return {
 		"stevearc/conform.nvim",
 		optional = true,
 		ft = "py",
-		dependencies = {
-			"williamboman/mason.nvim", -- ruff, black, isort.
-		},
 		opts = function()
 			require("conform").setup({
 				formatters_by_ft = {
-					py = { "ruff", "black", "isort", lsp_format = "fallback" },
+					py = {
+						"ruff",
+						-- "black",
+						-- "isort",
+						lsp_format = "fallback",
+					},
 				},
 			})
 		end,
@@ -43,27 +31,18 @@ return {
 		"mfussenegger/nvim-lint",
 		optional = true,
 		ft = "py",
-		dependencies = {
-			"williamboman/mason.nvim", -- ruff, mypy.
-		},
 		opts = function()
 			local python = { "ruff" }
 			table.insert(require("lint").linters_by_ft, python)
 		end,
 	},
 	-- debugger
-	-- NOTE: still not working properly
-	--[[ {
+	{
 		"mfussenegger/nvim-dap",
 		optional = true,
 		ft = "py",
-		dependencies = {
-			"williamboman/mason.nvim", -- debugpy
-		},
 		opts = function()
 			local dap = require("dap")
-			local mason = require("mason-registry")
-			local mason_python_bin = mason.get_package("debugpy"):get_install_path() .. "/venv/bin/python"
 
 			dap.adapters.python = function(cb, config)
 				if config.request == "attach" then
@@ -82,7 +61,7 @@ return {
 				else
 					cb({
 						type = "executable",
-						command = mason_python_bin,
+						command = os.getenv("VIRTUAL_ENV") .. "/bin/python",
 						args = { "-m", "debugpy.adapter" },
 						options = {
 							source_filetype = "python",
@@ -116,5 +95,5 @@ return {
 				},
 			}
 		end,
-	}, ]]
+	},
 }

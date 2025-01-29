@@ -1,7 +1,15 @@
 return {
 	{
+		"projekt0n/github-nvim-theme",
+		name = "github-theme",
+		config = function()
+			require("github-theme").setup({})
+
+			-- vim.cmd("colorscheme github_dark_default")
+		end,
+	},
+	{
 		"navarasu/onedark.nvim",
-		enabled = false,
 		lazy = false,
 		priority = 1000,
 		config = function()
@@ -49,7 +57,6 @@ return {
 	},
 	{
 		"EdenEast/nightfox.nvim",
-		enabled = true,
 		config = function()
 			-- Default options
 			require("nightfox").setup({
@@ -97,7 +104,7 @@ return {
 			})
 
 			-- setup must be called before loading
-			vim.cmd("colorscheme carbonfox")
+			-- vim.cmd("colorscheme carbonfox")
 		end,
 	},
 }

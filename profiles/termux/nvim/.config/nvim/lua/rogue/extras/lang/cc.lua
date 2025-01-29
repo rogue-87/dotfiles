@@ -1,3 +1,11 @@
+if vim.fn.filereadable("CMakeLists.txt") == 1 then
+	--Enable (broadcasting) snippet capability for completion
+	local capabilities = require("cmp_nvim_lsp").default_capabilities()
+	capabilities.textDocument.completion.completionItem.snippetSupport = true
+
+	require("lspconfig").neocmake.setup({ capabilities = capabilities })
+end
+
 return {
 	-- lsp
 	{
@@ -17,9 +25,6 @@ return {
 		"mfussenegger/nvim-dap",
 		optional = true,
 		ft = { "c", "cpp" },
-		dependencies = {
-			"williamboman/mason.nvim", -- codelldb
-		},
 		opts = function()
 			local dap = require("dap")
 			dap.adapters.codelldb = {

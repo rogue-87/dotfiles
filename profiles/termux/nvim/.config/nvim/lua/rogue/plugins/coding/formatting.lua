@@ -1,6 +1,5 @@
 return {
 	"stevearc/conform.nvim",
-	dependencies = { "mason.nvim" },
 	event = { "BufReadPre", "BufWritePost", "BufNewFile" },
 	config = function()
 		local conform = require("conform")
@@ -8,6 +7,7 @@ return {
 			formatters_by_ft = {
 				lua = { "stylua" },
 				bash = { "shfmt" },
+				xml = { "xmllint" },
 			},
 		})
 

@@ -1,11 +1,15 @@
 local opt, g = vim.opt, vim.g
 
 -- Global vim variables
+g.loaded_netrw = 1
+g.loaded_netrwPlugin = 1
 g.mapleader = " "
 g.editorconfig = true
 
--- use nushell if available; otherwise, fallback to bash.
--- opt.shell = vim.fn.exepath("nu") ~= "" and vim.fn.exepath("nu") or vim.fn.exepath("bash")
+-- use fish if available; otherwise, fallback to bash.
+local shell = "fish"
+local fallback_shell = "bash"
+opt.shell = vim.fn.exepath(shell) ~= "" and vim.fn.exepath(shell) or vim.fn.exepath(fallback_shell)
 
 opt.number = true
 opt.relativenumber = true
@@ -22,7 +26,7 @@ opt.termguicolors = true
 opt.clipboard = "unnamedplus"
 opt.autowrite = true
 opt.completeopt = "menu,menuone,noselect"
-opt.conceallevel = 2 -- Hide * markup for bold and italic, but not markers with substitutions
+opt.conceallevel = 0 -- Hide * markup for bold and italic, but not markers with substitutions
 opt.confirm = true --  Confirm to save changes before exiting modified buffer
 opt.smoothscroll = true
 opt.cursorline = false
@@ -31,7 +35,7 @@ opt.sessionoptions = { "curdir", "folds", "globals", "help", "tabpages", "termin
 opt.fillchars = { foldopen = "", foldclose = "", fold = " ", foldsep = " ", diff = "╱", eob = " " }
 
 if vim.g.neovide then
-	vim.o.guifont = "NotoMono Nerd Font:h10"
+	vim.o.guifont = "NotoMono Nerd Font:h12"
 	vim.opt.linespace = 0
 
 	vim.g.neovide_scale_factor = 1.0

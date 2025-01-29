@@ -20,22 +20,45 @@ return { -- Lsp Config
 				{ "<leader>mm", "<cmd>Mason<cr>", desc = "Mason" },
 			},
 		},
-		{ "williamboman/mason-lspconfig.nvim" },
 	},
 	-- stylua: ignore
 	keys = {
-		{ "<leader>cla", 	"",						desc = "Actions",   },
-		{ "<leader>clas", 	":LspStart ",			desc = "Start",		},
-		{ "<leader>clat", 	":LspStop ",			desc = "Stop",		},
-		{ "<leader>clar", 	"<cmd>LspRestart<cr>",	desc = "Restart",	},
-		{ "<leader>clai", 	"<cmd>LspInfo<cr>",		desc = "Info",		},
+		{ "<leader>cla", 	"",					desc = "Actions",   },
+		{ "<leader>clas", 	":LspStart ",		desc = "Start",		},
+		{ "<leader>clat", 	":LspStop ",		desc = "Stop",		},
+		{ "<leader>clar", 	":LspRestart<cr>",	desc = "Restart",	},
+		{ "<leader>clai", 	":LspInfo<cr>",		desc = "Info",		},
 	},
 	config = function()
 		local lspconfig = require("lspconfig")
-		-- local capabilities = require("cmp_nvim_lsp").default_capabilities()
-		local msn_lspconf = require("mason-lspconfig")
+		local capabilities = require("cmp_nvim_lsp").default_capabilities()
+
+		lspconfig["bashls"].setup({})
 
 		lspconfig["lua_ls"].setup({
+			capabilities = capabilities,
+			on_init = function(client)
+				if client.workspace_folders then
+					local path = client.workspace_folders[1].name
+					if vim.uv.fs_stat(path .. "/.luarc.json") then
+						return
+					end
+				end
+
+				client.config.settings.Lua = vim.tbl_deep_extend("force", client.config.settings.Lua, {
+					runtime = {
+						version = "LuaJIT",
+					},
+					workspace = {
+						checkThirdParty = false,
+						library = {
+							vim.env.VIMRUNTIME,
+							"${3rd}/luv/library",
+							"${3rd}/busted/library",
+						},
+					},
+				})
+			end,
 			settings = {
 				Lua = {
 					diagnostics = {
@@ -48,21 +71,15 @@ return { -- Lsp Config
 			},
 		})
 
-		-- LSPs INSTALLED & MANAGED BY MASON.NVIM
-		msn_lspconf.setup({
-			-- LSPs
-			ensure_installed = {
-				"bashls",
-			},
-			automatic_installation = false,
-			handlers = {
-				-- DEFAULT CONFIG FOR ALL SERVERS
-				--[[ function(server_name)
-					lspconfig[server_name].setup({ capabilities = capabilities })
-				end, ]]
-				["bashls"] = function()
-					lspconfig["bashls"].setup({})
-				end,
+		lspconfig["jsonls"].setup({
+			filetypes = { "json", "jsonc" },
+			capabilities = capabilities,
+			settings = {
+				json = {
+					-- Schemas https://www.schemastore.org
+					schemas = require("schemastore").json.schemas(),
+					validate = { enable = true },
+				},
 			},
 		})
 
