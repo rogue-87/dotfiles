@@ -4,9 +4,6 @@ return {
 		"neovim/nvim-lspconfig",
 		optional = true,
 		ft = "cs",
-		dependencies = {
-			"williamboman/mason.nvim",
-		},
 		opts = function()
 			local mason = require("mason-registry")
 			local omnisharp_dll = mason.get_package("omnisharp"):get_install_path() .. "/libexec/OmniSharp.dll"
@@ -42,9 +39,6 @@ return {
 		"mfussenegger/nvim-dap",
 		optional = true,
 		ft = "cs",
-		dependencies = {
-			"williamboman/mason.nvim",
-		},
 		opts = function()
 			local dap = require("dap")
 			local mason = require("mason-registry")

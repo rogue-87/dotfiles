@@ -25,9 +25,6 @@ return {
 		"mfussenegger/nvim-dap",
 		optional = true,
 		ft = { "c", "cpp" },
-		dependencies = {
-			"williamboman/mason.nvim", -- codelldb
-		},
 		opts = function()
 			local dap = require("dap")
 			dap.adapters.codelldb = {

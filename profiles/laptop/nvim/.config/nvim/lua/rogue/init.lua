@@ -20,18 +20,7 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
 	spec = {
-		-- { "folke/neoconf.nvim", opts = {} },
-		{
-			"folke/lazydev.nvim",
-			ft = "lua",
-			opts = {
-				library = {
-					"nvim-dap-ui",
-					{ path = "${3rd}/luv/library", words = { "vim%.uv" } },
-					-- { path = "${3rd}/love2d/library" },
-				},
-			},
-		},
+		{ "folke/lazydev.nvim", ft = "lua", opts = {} },
 		{ import = "rogue.plugins.ui" },
 		{ import = "rogue.plugins.editor" },
 		{ import = "rogue.plugins.coding" },

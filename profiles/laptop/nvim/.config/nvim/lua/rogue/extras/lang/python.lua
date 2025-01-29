@@ -4,23 +4,7 @@ return {
 		"neovim/nvim-lspconfig",
 		optional = true,
 		ft = "py",
-		dependencies = {
-			"williamboman/mason.nvim", -- pylsp, pyright.
-		},
 		opts = function()
-			--[[ require("lspconfig")["pylsp"].setup({
-				settings = {
-					pylsp = {
-						plugins = {
-							pycodestyle = {
-								ignore = { "W391" },
-								maxLineLength = 100,
-							},
-						},
-					},
-				},
-			}) ]]
-
 			require("lspconfig")["pyright"].setup({})
 		end,
 	},
@@ -29,13 +13,15 @@ return {
 		"stevearc/conform.nvim",
 		optional = true,
 		ft = "py",
-		dependencies = {
-			"williamboman/mason.nvim", -- ruff, black, isort.
-		},
 		opts = function()
 			require("conform").setup({
 				formatters_by_ft = {
-					py = { "ruff", "black", "isort", lsp_format = "fallback" },
+					py = {
+						"ruff",
+						-- "black",
+						-- "isort",
+						lsp_format = "fallback",
+					},
 				},
 			})
 		end,
@@ -45,9 +31,6 @@ return {
 		"mfussenegger/nvim-lint",
 		optional = true,
 		ft = "py",
-		dependencies = {
-			"williamboman/mason.nvim", -- ruff, mypy.
-		},
 		opts = function()
 			local python = { "ruff" }
 			table.insert(require("lint").linters_by_ft, python)
@@ -58,15 +41,8 @@ return {
 		"mfussenegger/nvim-dap",
 		optional = true,
 		ft = "py",
-		dependencies = {
-			"williamboman/mason.nvim", -- debugpy
-		},
 		opts = function()
 			local dap = require("dap")
-			-- use this as an alternative to `os.getenv("VIRTUAL_ENV") .. "/bin/python"` for command
-			-- I personally think it's better to setup a venv and install debugpy that way though
-			local mason = require("mason-registry")
-			local mason_python_bin = mason.get_package("debugpy"):get_install_path() .. "/venv/bin/python"
 
 			dap.adapters.python = function(cb, config)
 				if config.request == "attach" then

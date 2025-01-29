@@ -2,9 +2,6 @@ return {
 	-- lsp
 	{
 		"neovim/nvim-lspconfig",
-		dependencies = {
-			"williamboman/mason.nvim",
-		},
 		optional = true,
 		opts = function()
 			local lspconfig = require("lspconfig")
@@ -33,9 +30,6 @@ return {
 	{
 		"stevearc/conform.nvim",
 		optional = true,
-		dependencies = {
-			"williamboman/mason.nvim",
-		},
 		opts = function()
 			local conform = require("conform")
 			conform.setup({

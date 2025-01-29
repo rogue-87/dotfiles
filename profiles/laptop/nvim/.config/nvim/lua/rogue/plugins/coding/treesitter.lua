@@ -10,6 +10,7 @@ return {
 				"luadoc",
 				"vim",
 				"vimdoc",
+				"regex",
 				"query",
 				"markdown",
 				"markdown_inline",

@@ -14,9 +14,6 @@ return {
 		"stevearc/conform.nvim",
 		optional = true,
 		ft = "luau",
-		dependencies = {
-			"williamboman/mason.nvim",
-		},
 		opts = function()
 			require("conform").setup({
 				formatters_by_ft = {
@@ -30,9 +27,6 @@ return {
 		"mfussenegger/nvim-lint",
 		optional = true,
 		ft = "luau",
-		dependencies = {
-			"williamboman/mason.nvim",
-		},
 		opts = function()
 			local luau = { "selene" }
 			table.insert(require("lint").linters_by_ft, luau)

@@ -1,6 +1,5 @@
 return {
 	-- lsp
-	-- comes with a formatter
 	{
 		"neovim/nvim-lspconfig",
 		optional = true,

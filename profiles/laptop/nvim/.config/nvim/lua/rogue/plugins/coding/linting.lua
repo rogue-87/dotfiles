@@ -1,6 +1,5 @@
 return {
 	"mfussenegger/nvim-lint",
-	dependencies = { "mason.nvim" },
 	event = { "BufReadPre", "BufWritePost", "BufNewFile" },
 	config = function()
 		local lint = require("lint")
