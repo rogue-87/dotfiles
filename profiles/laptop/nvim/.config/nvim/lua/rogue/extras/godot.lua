@@ -4,7 +4,7 @@ return {
 		"neovim/nvim-lspconfig",
 		optional = true,
 		config = function()
-			local capabilities = require("cmp_nvim_lsp").default_capabilities()
+			local capabilities = require("rogue.util.capabilities").get()
 			local lspconfig = require("lspconfig")
 
 			lspconfig["gdscript"].setup({

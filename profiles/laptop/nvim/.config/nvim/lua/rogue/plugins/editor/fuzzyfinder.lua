@@ -21,7 +21,6 @@ return {
     	{ "<leader>gc", function()  require("telescope.builtin").git_commits()                  end, desc = "Commits" },
     	{ "<leader>gs", function()  require("telescope.builtin").git_status()                   end, desc = "Status" },
     	{ "<leader>gs", function()  require("telescope.builtin").find_files()                   end, desc = "Status" },
-
 	},
 
 	config = function()

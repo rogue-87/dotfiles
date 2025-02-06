@@ -2,7 +2,7 @@ return { -- Lsp Config
 	"neovim/nvim-lspconfig",
 	event = { "BufReadPost", "BufWritePost", "BufNewFile" },
 	dependencies = {
-		"hrsh7th/cmp-nvim-lsp",
+		"saghen/blink.cmp",
 		"b0o/schemastore.nvim",
 		{
 			"williamboman/mason.nvim",
@@ -31,12 +31,12 @@ return { -- Lsp Config
 	},
 	config = function()
 		local lspconfig = require("lspconfig")
-		local capabilities = require("cmp_nvim_lsp").default_capabilities()
+		local capabilities = require("rogue.util.capabilities").get()
 
 		lspconfig["bashls"].setup({})
 
 		lspconfig["lua_ls"].setup({
-			capabilities = capabilities,
+			-- capabilities = capabilities,
 			on_init = function(client)
 				if client.workspace_folders then
 					local path = client.workspace_folders[1].name
@@ -46,16 +46,15 @@ return { -- Lsp Config
 				end
 
 				client.config.settings.Lua = vim.tbl_deep_extend("force", client.config.settings.Lua, {
-					runtime = {
-						version = "LuaJIT",
-					},
+					runtime = { version = "LuaJIT" },
+					telemetry = { enable = false },
 					workspace = {
-						checkThirdParty = false,
 						library = {
 							vim.env.VIMRUNTIME,
 							"${3rd}/luv/library",
 							"${3rd}/busted/library",
 						},
+						checkThirdParty = false,
 					},
 				})
 			end,

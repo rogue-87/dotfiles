@@ -5,12 +5,28 @@ return {
 		optional = true,
 		opts = function()
 			local lspconfig = require("lspconfig")
-			local capabilities = require("cmp_nvim_lsp").default_capabilities()
+			local capabilities = require("rogue.util.capabilities").get()
 			-- primary
 			lspconfig["html"].setup({ capabilities = capabilities })
-			lspconfig["emmet_ls"].setup({})
+			-- lspconfig["emmet_ls"].setup({})
+
 			lspconfig["cssls"].setup({ capabilities = capabilities })
-			lspconfig["css_variables"].setup({})
+			lspconfig["css_variables"].setup({
+				filetypes = { "css", "scss", "less", "svelte" },
+				settings = {
+					lookupFiles = {
+						"**/*.less",
+						"**/*.scss",
+						"**/*.sass",
+						"**/*.css",
+
+						-- svelte
+						"src/lib/style/abstracts/colorscheme.css",
+						"src/lib/style/abstracts/variables.css",
+					},
+				},
+			})
+			lspconfig["tailwindcss"].setup({})
 			lspconfig["ts_ls"].setup({})
 			lspconfig["eslint"].setup({
 				on_attach = function(client, bufnr)
@@ -55,9 +71,7 @@ return {
 	{
 		"mfussenegger/nvim-dap",
 		optional = true,
-		dependencies = {
-			"williamboman/mason.nvim",
-		},
+		dependencies = { "williamboman/mason.nvim" },
 		opts = function()
 			local dap = require("dap")
 			local mason = require("mason-registry")

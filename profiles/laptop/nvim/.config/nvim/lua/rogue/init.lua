@@ -20,7 +20,7 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
 	spec = {
-		{ "folke/lazydev.nvim", ft = "lua", opts = {} },
+		{ "folke/lazydev.nvim", ft = "lua", opts = {} }, -- need this for plugin autocompletion
 		{ import = "rogue.plugins.ui" },
 		{ import = "rogue.plugins.editor" },
 		{ import = "rogue.plugins.coding" },
@@ -28,24 +28,26 @@ require("lazy").setup({
 		{ import = "rogue.plugins.debugging" }, -- DAP support for nvim
 
 		-- { import = "rogue.extras" }, -- extra stuff
-		-- { import = "rogue.extras.db" },
+		{ import = "rogue.extras.db" },
 		-- { import = "rogue.extras.godot" },
 		{ import = "rogue.extras.wakatime" },
 		{ import = "rogue.extras.webdev" },
 
 		-- { import = "rogue.extras.lang" }, -- uncomment this to load all lang configs
-		{ import = "rogue.extras.lang.cc" },
 		{ import = "rogue.extras.lang.csharp" },
+		{ import = "rogue.extras.lang.cxx" },
 		{ import = "rogue.extras.lang.dart" },
 		{ import = "rogue.extras.lang.fish" },
-		{ import = "rogue.extras.lang.golang" },
-		{ import = "rogue.extras.lang.java" },
-		{ import = "rogue.extras.lang.kotlin" },
+		-- { import = "rogue.extras.lang.golang" },
+		-- { import = "rogue.extras.lang.java" },
+		-- { import = "rogue.extras.lang.kotlin" },
 		{ import = "rogue.extras.lang.luau" },
 		{ import = "rogue.extras.lang.markdown" },
-		{ import = "rogue.extras.lang.php" },
+		-- { import = "rogue.extras.lang.php" },
 		{ import = "rogue.extras.lang.python" },
 		{ import = "rogue.extras.lang.rust" },
+		{ import = "rogue.extras.lang.teal" },
+		{ import = "rogue.extras.lang.zig" },
 	},
 	install = { colorscheme = { "github_dark_default" } },
 	checker = { enabled = true },
@@ -55,9 +57,7 @@ require("lazy").setup({
 	},
 	news = { lazy = true },
 	performance = {
-		cache = {
-			enabled = false,
-		},
+		cache = { enabled = false },
 		reset_packpath = true,
 		rtp = {
 			reset = true,
