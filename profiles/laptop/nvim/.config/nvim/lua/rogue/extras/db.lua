@@ -22,7 +22,7 @@ return {
 		opts = {
 			sources = {
 				per_filetype = { sql = { "dadbod", "buffer" } },
-				providers = { dadbod = { name = "Dadbod", module = "vim_dadbod_completion.blink" } },
+				providers = { dadbod = { name = "Dadbod", module = "vim_dadbod_completion.blink", opts = {} } },
 			},
 		},
 	},

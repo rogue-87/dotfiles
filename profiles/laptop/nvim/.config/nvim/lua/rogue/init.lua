@@ -28,6 +28,7 @@ require("lazy").setup({
 		{ import = "rogue.plugins.debugging" }, -- DAP support for nvim
 
 		-- { import = "rogue.extras" }, -- extra stuff
+		{ import = "rogue.extras.ai" },
 		{ import = "rogue.extras.db" },
 		-- { import = "rogue.extras.godot" },
 		{ import = "rogue.extras.wakatime" },
@@ -51,10 +52,7 @@ require("lazy").setup({
 	},
 	install = { colorscheme = { "github_dark_default" } },
 	checker = { enabled = true },
-	ui = {
-		wrap = true,
-		border = "none",
-	},
+	ui = { wrap = true, border = "none" },
 	news = { lazy = true },
 	performance = {
 		cache = { enabled = false },
