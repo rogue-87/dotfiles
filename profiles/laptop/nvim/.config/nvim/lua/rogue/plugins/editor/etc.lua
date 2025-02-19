@@ -1,7 +1,6 @@
 return {
 	{
 		"lewis6991/gitsigns.nvim",
-		enabled = "false",
 		event = { "BufReadPre", "BufWritePost", "BufNewFile" },
 		-- stylua: ignore
 		keys = {
@@ -20,7 +19,6 @@ return {
 		},
 		opts = {},
 	},
-
 	{
 		-- For color highlighting
 		"catgoose/nvim-colorizer.lua",

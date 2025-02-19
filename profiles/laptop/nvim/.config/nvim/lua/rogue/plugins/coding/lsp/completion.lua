@@ -16,7 +16,9 @@ return {
 		---@module 'blink.cmp'
 		---@type blink.cmp.Config
 		opts = {
-			keymap = { preset = "enter", cmdline = {} },
+			keymap = { preset = "enter" },
+
+			cmdline = { enabled = false },
 
 			appearance = {
 				use_nvim_cmp_as_default = true,
@@ -26,6 +28,7 @@ return {
 			completion = {
 				menu = { border = "padded" },
 				documentation = { window = { border = "padded" } },
+				list = { selection = { preselect = true, auto_insert = false } },
 			},
 			signature = { window = { border = "single" } },
 
@@ -42,8 +45,6 @@ return {
 						score_offset = 100,
 					},
 				},
-				-- stylua: ignore
-				cmdline = function() return {} end,
 			},
 		},
 		opts_extend = { "sources.default" },

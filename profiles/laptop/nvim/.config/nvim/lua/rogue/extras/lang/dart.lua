@@ -17,27 +17,9 @@ return {
 		ft = "dart",
 		dependencies = {},
 		opts = function()
-			local dartSdk = vim.fn.exepath("dart")
-			local flutterSdk = vim.fn.exepath("flutter")
-
+			local dartSdk = vim.fn.expand("~/.local/packages/flutter/bin/cache/dart-sdk/bin/dart")
+			local flutterSdk = vim.fn.expand("~/.local/packages/flutter/bin/flutter")
 			local dap = require("dap")
-			-- Dart CLI adapter (recommended)
-			dap.adapters.dart = {
-				type = "executable",
-				command = "dart",
-				args = { "debug_adapter" },
-				options = {
-					detached = true, -- windows users will need to set 'detached' to false
-				},
-			}
-			dap.adapters.flutter = {
-				type = "executable",
-				command = "flutter",
-				args = { "debug_adapter" },
-				options = {
-					detached = true, -- windows users will need to set 'detached' to false
-				},
-			}
 
 			dap.configurations.dart = {
 				{
@@ -57,6 +39,24 @@ return {
 					flutterSdkPath = flutterSdk,
 					program = "${workspaceFolder}/lib/main.dart", -- ensure this is correct
 					cwd = "${workspaceFolder}",
+				},
+			}
+
+			-- Dart CLI adapter (recommended)
+			dap.adapters.dart = {
+				type = "executable",
+				command = "dart",
+				args = { "debug_adapter" },
+				options = {
+					detached = true, -- windows users will need to set 'detached' to false
+				},
+			}
+			dap.adapters.flutter = {
+				type = "executable",
+				command = "flutter",
+				args = { "debug_adapter" },
+				options = {
+					detached = true, -- windows users will need to set 'detached' to false
 				},
 			}
 		end,

@@ -12,6 +12,7 @@ end
 
 return {
 	"akinsho/toggleterm.nvim",
+	version = "*",
 	event = { "VeryLazy" },
 	config = function()
 		local toggleterm = require("toggleterm")
@@ -32,8 +33,8 @@ return {
 			close_on_exit = true,
 			float_opts = {
 				border = "single",
-				width = 180,
-				height = 38,
+				width = 150,
+				height = 30,
 			},
 		})
 
@@ -43,8 +44,8 @@ return {
 			close_on_exit = true,
 			float_opts = {
 				border = "single",
-				width = 180,
-				height = 38,
+				width = 150,
+				height = 30,
 			},
 		})
 
