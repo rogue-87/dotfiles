@@ -20,7 +20,6 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
 	spec = {
-		{ "folke/lazydev.nvim", ft = "lua", opts = {} }, -- need this for plugin autocompletion
 		{ import = "rogue.plugins.ui" },
 		{ import = "rogue.plugins.editor" },
 		{ import = "rogue.plugins.coding" },

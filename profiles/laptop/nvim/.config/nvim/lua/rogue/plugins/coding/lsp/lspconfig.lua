@@ -32,55 +32,40 @@ return { -- Lsp Config
 	config = function()
 		local lspconfig = require("lspconfig")
 		local capabilities = require("rogue.util.capabilities").get()
+		capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 		lspconfig["bashls"].setup({})
 
 		lspconfig["lua_ls"].setup({
-			-- capabilities = capabilities,
 			on_init = function(client)
 				if client.workspace_folders then
 					local path = client.workspace_folders[1].name
-					if vim.uv.fs_stat(path .. "/.luarc.json") then
+					if
+						path ~= vim.fn.stdpath("config")
+						and (vim.uv.fs_stat(path .. "/.luarc.json") or vim.uv.fs_stat(path .. "/.luarc.jsonc"))
+					then
 						return
 					end
 				end
 
 				client.config.settings.Lua = vim.tbl_deep_extend("force", client.config.settings.Lua, {
 					runtime = { version = "LuaJIT" },
-					telemetry = { enable = false },
 					workspace = {
+						checkThirdParty = false,
 						library = {
 							vim.env.VIMRUNTIME,
 							"${3rd}/luv/library",
 							"${3rd}/busted/library",
 						},
-						checkThirdParty = false,
 					},
 				})
 			end,
-			settings = {
-				Lua = {
-					diagnostics = {
-						globals = { "vim" },
-					},
-					completion = {
-						callSnippet = "Replace",
-					},
-				},
-			},
+			settings = { Lua = {} },
 		})
 
-		lspconfig["jsonls"].setup({
-			filetypes = { "json", "jsonc" },
-			capabilities = capabilities,
-			settings = {
-				json = {
-					-- Schemas https://www.schemastore.org
-					schemas = require("schemastore").json.schemas(),
-					validate = { enable = true },
-				},
-			},
-		})
+		lspconfig["jsonls"].setup({ capabilities = capabilities })
+
+		lspconfig["taplo"].setup({})
 
 		vim.api.nvim_create_autocmd("LspAttach", {
 			group = vim.api.nvim_create_augroup("UserLspConfig", {}),

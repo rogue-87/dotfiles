@@ -23,6 +23,6 @@ if status is-interactive
         set -p fish_complete_path (brew --prefix)/share/fish/vendor_completions.d
     end
 
-	# flutter
-	set -x CHROME_EXECUTABLE chromium-browser
+    # flutter
+    set -x CHROME_EXECUTABLE chromium-browser
 end

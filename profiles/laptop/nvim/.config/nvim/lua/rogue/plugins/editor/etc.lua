@@ -59,4 +59,6 @@ return {
 			buftypes = {},
 		},
 	},
+	-- smooth scrolling
+	{ "karb94/neoscroll.nvim", opts = {} },
 }

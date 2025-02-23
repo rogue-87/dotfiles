@@ -118,6 +118,7 @@ return {
 				view = "popup",
 				opts = { enter = true, format = "details" },
 				filter = {},
+				filter_opts = {},
 			},
 		},
 		notify = {
