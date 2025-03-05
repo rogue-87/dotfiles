@@ -1,7 +1,7 @@
 local utils = require("config.utils")
 local autocmd = vim.api.nvim_create_autocmd
 local augroup = utils.augroup
-local map = require("config.utils").map
+local map = utils.map
 
 utils.on_attach(function(client, bufnr)
 	local opts = { buffer = bufnr }
@@ -238,6 +238,6 @@ utils.on_attach(function(client, bufnr)
 		vim.print(vim.lsp.buf.list_workspace_folders())
 	end, opts, "list workspace folders")
 	map("n", "<localleader>rd", function()
-		print("Language server " .. (vim.lsp.buf.server_ready() and "is ready" or "is not ready"))
+		print("Language server " .. (vim.lsp.status() and "is ready" or "is not ready"))
 	end, opts, "check if lsp is ready")
 end)

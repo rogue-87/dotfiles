@@ -25,7 +25,7 @@ require("lazy").setup({
 
 		-- { import = "extras" }, -- extra stuff
 		{ import = "extras.ai" },
-		{ import = "extras.db" },
+		-- { import = "extras.db" },
 		-- { import = "extras.godot" },
 		{ import = "extras.wakatime" },
 		{ import = "extras.webdev" },
@@ -45,12 +45,12 @@ require("lazy").setup({
 		{ import = "extras.lang.rust" },
 		{ import = "extras.lang.zig" },
 	},
-	install = { colorscheme = { "github_dark_default" } },
+	install = { colorscheme = { "nightfox" } },
 	checker = { enabled = true },
 	ui = { wrap = true, border = "none" },
 	news = { lazy = true },
 	performance = {
-		cache = { enabled = false },
+		cache = { enabled = true },
 		reset_packpath = true,
 		rtp = {
 			reset = true,
@@ -69,4 +69,4 @@ require("lazy").setup({
 	},
 })
 
-vim.cmd("colorscheme github_dark_default")
+vim.cmd("colorscheme nightfox")

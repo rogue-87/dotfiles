@@ -3,32 +3,17 @@ return {
 	branch = "v3.x",
 	lazy = false,
 	keys = {
-		{ "<leader>e", "<cmd>Neotree toggle<CR>", desc = "Explore" },
+		{ "<leader>e", "<cmd>Neotree toggle<cr>", desc = "Explore" },
 		{ "<leader>\\", "<cmd>Neotree reveal<cr>", desc = "Reveal file location in Filetree" },
 		{ "<leader>ge", "<cmd>Neotree git_status<cr>", desc = "Explore git" },
 	},
 	dependencies = {
 		"nvim-lua/plenary.nvim",
-		"MunifTanjim/nui.nvim",
 		"nvim-tree/nvim-web-devicons",
-		{
-			"s1n7ax/nvim-window-picker",
-			name = "window-picker",
-			version = "2.*",
-			config = function()
-				require("window-picker").setup({
-					filter_rules = {
-						include_current_win = false,
-						autoselect_one = true,
-						bo = {
-							filetype = { "neo-tree", "neo-tree-popup", "notify" },
-							buftype = { "terminal" },
-						},
-					},
-				})
-			end,
-		},
+		"MunifTanjim/nui.nvim",
 	},
+	---@module "neo-tree"
+	---@type neotree.setupOpts
 	opts = {
 		close_if_last_window = false,
 		enable_git_status = true,
