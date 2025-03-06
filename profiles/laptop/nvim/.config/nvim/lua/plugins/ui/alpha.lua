@@ -1,5 +1,6 @@
 return {
 	"goolord/alpha-nvim",
+	lazy = false,
 	dependencies = {
 		"nvim-tree/nvim-web-devicons",
 		"nvim-lua/plenary.nvim",
@@ -64,4 +65,7 @@ return {
 			end,
 		})
 	end,
+	keys = {
+		{ "<leader>a", "<cmd>Alpha<cr>", desc = "Alpha Dashboard" },
+	},
 }

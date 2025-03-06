@@ -1,6 +1,6 @@
 -- autocommands go here
-local autocmd = vim.api.nvim_create_autocmd
 local utils = require("config.utils")
+local autocmd = vim.api.nvim_create_autocmd
 local map = utils.augroup
 local augroup = utils.augroup
 

@@ -5,19 +5,17 @@ return {
 		local tsconfigs = require("nvim-treesitter.configs")
 		tsconfigs.setup({
 			ensure_installed = {
-				"c",
-				"lua",
 				"luadoc",
-				"vim",
-				"vimdoc",
 				"regex",
-				"query",
-				"markdown",
-				"markdown_inline",
 				"diff",
-				"html",
-				"css",
-				"javascript",
+				-- already installed in /lib64/nvim/parser/
+				-- "c",
+				-- "lua",
+				-- "markdown",
+				-- "markdown_inline",
+				-- "query",
+				-- "vim",
+				-- "vimdoc",
 			},
 			modules = {},
 			ignore_install = {},

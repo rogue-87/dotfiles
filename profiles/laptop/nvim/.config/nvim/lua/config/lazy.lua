@@ -26,6 +26,7 @@ require("lazy").setup({
 		-- { import = "extras" }, -- extra stuff
 		{ import = "extras.ai" },
 		-- { import = "extras.db" },
+		{ import = "extras.discord" },
 		-- { import = "extras.godot" },
 		{ import = "extras.wakatime" },
 		{ import = "extras.webdev" },
@@ -46,7 +47,7 @@ require("lazy").setup({
 		{ import = "extras.lang.zig" },
 	},
 	install = { colorscheme = { "nightfox" } },
-	checker = { enabled = true },
+	checker = { enabled = false },
 	ui = { wrap = true, border = "none" },
 	news = { lazy = true },
 	performance = {
