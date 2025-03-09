@@ -13,10 +13,10 @@ autocmd({ "VimResized" }, {
 	end,
 })
 
---[[ local diagnostics_options = require("config.defaults").diagnostics_options
+local diagnostics_options = require("config.defaults").diagnostics_options
 -- automatically show diagnostics on current line
 autocmd({ "CursorHold" }, {
 	callback = function()
 		vim.diagnostic.open_float(nil, diagnostics_options.float)
 	end,
-}) ]]
+})

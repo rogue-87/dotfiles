@@ -38,8 +38,10 @@ return {
 				},
 				mappings = {
 					i = {
-						["<C-k>"] = actions.move_selection_previous, --move to prev result
-						["<C-j>"] = actions.move_selection_next, --move to next result
+						["<C-f>"] = actions.preview_scrolling_down,
+						["<C-b>"] = actions.preview_scrolling_up,
+						["<C-k>"] = actions.move_selection_previous,
+						["<C-j>"] = actions.move_selection_next,
 						["<C-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
 						["<C-o>"] = function()
 							local entry = require("telescope.actions.state").get_selected_entry()

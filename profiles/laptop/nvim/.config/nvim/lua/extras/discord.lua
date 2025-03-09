@@ -8,7 +8,7 @@ return {
 	lazy = false,
 	---@module "cord"
 	---@type CordConfig
-	opts = { enabled = false },
+	opts = {},
 	keys = {
 		{ "<leader>ce", "<cmd>Cord enable<cr>", desc = "Enable" },
 		{ "<leader>cd", "<cmd>Cord disable<cr>", desc = "Disable" },

@@ -13,9 +13,7 @@ end
 return {
 	{
 		"mfussenegger/nvim-dap",
-		dependencies = {
-			{ "theHamsta/nvim-dap-virtual-text", opts = {} },
-		},
+		dependencies = { { "theHamsta/nvim-dap-virtual-text", opts = {} } },
 		-- stylua: ignore
 		keys = {
 			{ "<leader>d", "", desc = "+debug", mode = {"n", "v"} },
@@ -42,12 +40,7 @@ return {
 			local vscode = require("dap.ext.vscode")
 			local json = require("plenary.json")
 			vscode.json_decode = function(str)
-				return vim.json.decode(json.json_strip_comments(str, {}))
-			end
-
-			-- Extends dap.configurations with entries read from .vscode/launch.json
-			if vim.fn.filereadable(".vscode/launch.json") then
-				vscode.load_launchjs()
+				return vim.json.decode(json.json_strip_comments(str))
 			end
 		end,
 	},
@@ -59,7 +52,7 @@ return {
 		},
 		-- stylua: ignore
 		keys = {
-			{ "<leader>du", function() require("dapui").toggle({ }) end, desc = "Dap UI" },
+			{ "<leader>du", function() require("dapui").toggle({}) end, desc = "Dap UI" },
 			{ "<leader>de", function() require("dapui").eval()      end, desc = "Eval", mode = {"n", "v"} },
 		},
 		opts = {},

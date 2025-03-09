@@ -13,7 +13,6 @@ return {
 		"MunifTanjim/nui.nvim",
 	},
 	---@module "neo-tree"
-	---@type neotree.setupOpts
 	opts = {
 		close_if_last_window = false,
 		enable_git_status = true,
@@ -49,6 +48,12 @@ return {
 			window = {
 				mappings = {
 					["O"] = "system_open",
+					["P"] = {
+						"toggle_preview",
+						config = {
+							use_float = false,
+						},
+					},
 				},
 			},
 		},
