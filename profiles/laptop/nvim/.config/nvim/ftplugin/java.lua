@@ -3,6 +3,22 @@ local utils = require("config.utils")
 local config = {
 	cmd = { vim.fn.exepath("jdtls") },
 	root_dir = vim.fs.dirname(vim.fs.find({ "gradlew", ".git", "mvnw" }, { upward = true })[1]),
+	settings = {
+		java = {
+			configuration = {
+				runtimes = {
+					{
+						name = "Java-21",
+						path = "/usr/lib/jvm/java-21-openjdk/",
+					},
+					{
+						name = "Java-24",
+						path = "/usr/lib/jvm/java-24-openjdk/",
+					},
+				},
+			},
+		},
+	},
 }
 local plugins_path = vim.fn.stdpath("data") .. "/lazy"
 local bundles = {}
@@ -25,5 +41,4 @@ config["init_options"] = { bundles = bundles }
 
 if utils.has("nvim-jdtls") then
 	require("jdtls").start_or_attach(config)
-	vim.print(bundles)
 end
