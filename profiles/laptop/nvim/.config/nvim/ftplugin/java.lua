@@ -1,4 +1,9 @@
 local utils = require("config.utils")
+local mason = require("mason-registry")
+local java_debug = mason.get_package("java-debug-adapter"):get_install_path()
+	.. "/extension/server/com.microsoft.java.debug.plugin-*.jar"
+
+local java_test = mason.get_package("java-test"):get_install_path() .. "/extension/server/*.jar"
 
 local config = {
 	cmd = { vim.fn.exepath("jdtls") },
@@ -20,21 +25,14 @@ local config = {
 		},
 	},
 }
-local plugins_path = vim.fn.stdpath("data") .. "/lazy"
 local bundles = {}
 
 if utils.has("java-debug") then
-	table.insert(
-		bundles,
-		vim.fn.glob(
-			plugins_path .. "/java-debug/com.microsoft.java.debug.plugin/target/com.microsoft.java.debug.plugin-*.jar",
-			true
-		)
-	)
+	table.insert(bundles, vim.fn.glob(java_debug, true))
 end
 
 if utils.has("vscode-java-test") then
-	vim.list_extend(bundles, vim.split(vim.fn.glob(plugins_path .. "/vscode-java-test/server/*.jar", true), "\n"))
+	vim.list_extend(bundles, vim.split(vim.fn.glob(java_test, true), "\n"))
 end
 
 config["init_options"] = { bundles = bundles }
