@@ -2,7 +2,7 @@ LAPTOP = ${HOME}/dotfiles/profiles/laptop
 TERMUX = ${HOME}/dotfiles/profiles/termux
 TARGET_DIR = ${HOME}
 
-LAPTOP_PACKAGES = nvim neovide git fastfetch kitty fish
+LAPTOP_PACKAGES = nvim neovide git fastfetch kitty fish xplr zed
 TERMUX_PACKAGES = nvim git fastfetch kitty termux-settings bash fish
 
 .PHONY: test laptop-stow laptop-unstow termux-stow termux-unstow

@@ -24,7 +24,7 @@ require("lazy").setup({
 		{ import = "plugins.debugging" }, -- DAP support for nvim
 
 		-- { import = "extras" }, -- extra stuff
-		{ import = "extras.ai" },
+		-- { import = "extras.ai" },
 		-- { import = "extras.db" },
 		{ import = "extras.discord" },
 		-- { import = "extras.godot" },
