@@ -14,17 +14,21 @@ return {
 	"akinsho/toggleterm.nvim",
 	version = "*",
 	event = { "VeryLazy" },
-	config = function()
+	---@module "toggleterm"
+	---@type ToggleTermConfig
+	---@diagnostic disable-next-line: missing-fields
+	opts = {
+		open_mapping = [[<c-`>]],
+		start_in_insert = true,
+		shade_filetypes = { "neo-tree" },
+		direction = "horizontal",
+		float_opts = { border = "single" },
+	},
+	config = function(_, opts)
 		local toggleterm = require("toggleterm")
 		local Terminal = require("toggleterm.terminal").Terminal
 
-		toggleterm.setup({
-			open_mapping = [[<c-`>]],
-			start_in_insert = true,
-			shade_filetypes = { "neo-tree" },
-			direction = "float",
-			float_opts = { border = "single" },
-		})
+		toggleterm.setup(opts)
 
 		-- TERMINAL PROGRAMS
 		local lazygit = Terminal:new({

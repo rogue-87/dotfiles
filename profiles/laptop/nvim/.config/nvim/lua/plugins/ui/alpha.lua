@@ -22,11 +22,7 @@ return {
 		dashboard.section.buttons.val = {
 			dashboard.button("e", "  New file", ":ene <BAR> startinsert <cr>"),
 
-			dashboard.button(
-				"f",
-				"󰍉  Find Files",
-				"<cmd>lua require('telescope.builtin').find_files({ hidden = true })<cr>"
-			),
+			dashboard.button("f", "󰍉  Find Files", "<cmd>lua Snacks.picker.files()<cr>"),
 
 			dashboard.button(
 				"s",
@@ -39,11 +35,9 @@ return {
 			dashboard.button("l", "󰒲  Lazy", "<cmd>Lazy<cr>"),
 
 			dashboard.button("m", "🛠 Mason", "<cmd>Mason<cr>"),
-		  -- stylua: ignore
-		  dashboard.button("c", "  Config", "<cmd>lua vim.fn.chdir(vim.fn.stdpath('config'))<cr>" .. "<cmd>lua require('telescope.builtin').find_files({ hidden = true })<cr>"),
-
+		  	-- stylua: ignore
+		  	dashboard.button("c", "  Config", "<cmd>lua vim.fn.chdir(vim.fn.stdpath('config'))<cr>" .. "<cmd>lua Snacks.picker.files({ hidden = true })<cr>"),
 			dashboard.button("h", "󰓙  Run healthcheck", "<cmd>checkhealth<cr>"),
-
 			dashboard.button("q", "󰗼  Quit Neovim", "<cmd>qa<cr>"),
 		}
 		alpha.setup(dashboard.config)

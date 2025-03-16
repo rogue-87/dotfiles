@@ -76,6 +76,8 @@ utils.on_attach(function(client, bufnr)
 		map("n", "<localleader>gi", function()
 			if utils.has("lspsaga.nvim") then
 				vim.cmd([[Lspsaga finder imp+def]])
+			elseif utils.has("snacks.nvim") then
+				Snacks.picker.lsp_implementations()
 			elseif utils.has("telescope.nvim") then
 				vim.cmd([[Telescope lsp_implementations]])
 			else
@@ -88,6 +90,8 @@ utils.on_attach(function(client, bufnr)
 		map("n", "<localleader>gr", function()
 			if utils.has("lspsaga.nvim") then
 				vim.cmd([[Lspsaga finder ref]])
+			elseif utils.has("snacks.nvim") then
+				Snacks.picker.lsp_references()
 			elseif utils.has("telescope.nvim") then
 				vim.cmd([[Telescope lsp_references]])
 			else
@@ -226,13 +230,17 @@ utils.on_attach(function(client, bufnr)
 		end, opts, "workspace diagnostics")
 		map("n", "<localleader>bd", function()
 			vim.cmd([[Lspsaga show_buf_diagnostics]])
-		end, opts, "workspace diagnostics")
+		end, opts, "buffer diagnostics")
+		map("n", "<localleader>ld", function()
+			vim.cmd([[Lspsaga show_line_diagnostics]])
+		end, opts, "line diagnostics")
 		map("n", "<localleader>wo", function()
 			vim.cmd([[Lspsaga outline]])
 		end, opts, "workspace outline")
+	else
+		map("n", "<localleader>ld", vim.diagnostic.open_float, opts, "line diagnostics")
 	end
 	map("n", "<localleader>sl", vim.diagnostic.setloclist, opts, "set loclist")
-	map("n", "<localleader>of", vim.diagnostic.open_float, opts, "open float")
 
 	map("n", "<localleader>wf", function()
 		vim.print(vim.lsp.buf.list_workspace_folders())
