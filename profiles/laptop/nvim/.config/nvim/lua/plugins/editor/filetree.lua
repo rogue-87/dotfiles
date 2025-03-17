@@ -3,9 +3,8 @@ return {
 	branch = "v3.x",
 	lazy = false,
 	keys = {
-		{ "<leader>e", "<cmd>Neotree toggle<cr>", desc = "Explore" },
-		{ "<leader>\\", "<cmd>Neotree reveal<cr>", desc = "Reveal file location in Filetree" },
-		{ "<leader>ge", "<cmd>Neotree git_status<cr>", desc = "Explore git" },
+		{ "<leader>e", "<cmd>Neotree toggle<cr>", desc = "explore" },
+		{ "<leader>\\", "<cmd>Neotree reveal<cr>", desc = "reveal file location in Filetree" },
 	},
 	dependencies = {
 		"nvim-lua/plenary.nvim",

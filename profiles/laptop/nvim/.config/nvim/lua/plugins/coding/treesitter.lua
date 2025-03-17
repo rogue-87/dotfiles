@@ -1,6 +1,13 @@
 return {
 	"nvim-treesitter/nvim-treesitter",
 	build = ":TSUpdate",
+	init = function()
+		require("vim.treesitter.query").add_predicate("is-mise?", function(_, _, bufnr, _)
+			local filepath = vim.api.nvim_buf_get_name(tonumber(bufnr) or 0)
+			local filename = vim.fn.fnamemodify(filepath, ":t")
+			return string.match(filename, ".*mise.*%.toml$")
+		end, { force = true, all = false })
+	end,
 	config = function()
 		local tsconfigs = require("nvim-treesitter.configs")
 		tsconfigs.setup({
@@ -9,13 +16,13 @@ return {
 				"regex",
 				"diff",
 				-- already installed in /lib64/nvim/parser/
-				-- "c",
-				-- "lua",
-				-- "markdown",
-				-- "markdown_inline",
-				-- "query",
-				-- "vim",
-				-- "vimdoc",
+				"c",
+				"lua",
+				"markdown",
+				"markdown_inline",
+				"query",
+				"vim",
+				"vimdoc",
 			},
 			modules = {},
 			ignore_install = {},
