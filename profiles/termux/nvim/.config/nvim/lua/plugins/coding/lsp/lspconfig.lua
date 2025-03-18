@@ -20,15 +20,6 @@ return { -- Lsp Config
 			},
 		},
 	},
-	-- stylua: ignore
-	keys = {
-		{ "<leader>l", 		"",					desc = "Lsp",   	},
-		{ "<leader>ll", 	":LspLog",			desc = "Log",   	},
-		{ "<leader>ls", 	":LspStart ",		desc = "Start",		},
-		{ "<leader>lS", 	":LspStop ",		desc = "Stop",		},
-		{ "<leader>lr", 	":LspRestart<cr>",	desc = "Restart",	},
-		{ "<leader>li", 	":LspInfo<cr>",		desc = "Info",		},
-	},
 	config = function()
 		local lspconfig = require("lspconfig")
 		local capabilities = require("config.utils").lsp.capabilities.get()

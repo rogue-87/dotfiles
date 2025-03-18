@@ -1,12 +1,7 @@
 return {
-	-- lsp
-	{
-		"neovim/nvim-lspconfig",
-		optional = true,
-		ft = "java",
-		opts = function()
-			local lspconfig = require("lspconfig")
-			lspconfig["jdtls"].setup({})
-		end,
+	"mfussenegger/nvim-jdtls",
+	dependencies = {
+		{ "neovim/nvim-lspconfig", optional = true },
+		{ "mfussenegger/nvim-dap", optional = true },
 	},
 }
