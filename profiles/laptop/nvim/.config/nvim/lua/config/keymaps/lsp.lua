@@ -77,6 +77,7 @@ utils.on_attach(function(client, bufnr)
 			if utils.has("lspsaga.nvim") then
 				vim.cmd([[Lspsaga finder imp+def]])
 			elseif utils.has("snacks.nvim") then
+				---@diagnostic disable-next-line: undefined-global
 				Snacks.picker.lsp_implementations()
 			elseif utils.has("telescope.nvim") then
 				vim.cmd([[Telescope lsp_implementations]])
@@ -91,6 +92,7 @@ utils.on_attach(function(client, bufnr)
 			if utils.has("lspsaga.nvim") then
 				vim.cmd([[Lspsaga finder ref]])
 			elseif utils.has("snacks.nvim") then
+				---@diagnostic disable-next-line: undefined-global
 				Snacks.picker.lsp_references()
 			elseif utils.has("telescope.nvim") then
 				vim.cmd([[Telescope lsp_references]])
@@ -196,6 +198,7 @@ utils.on_attach(function(client, bufnr)
 				vim.lsp.buf.incoming_calls()
 			end
 		end, opts, "incoming calls")
+
 		map("n", "<localleader>co", function()
 			if utils.has("lspsaga.nvim") then
 				vim.cmd([[Lspsaga outgoing_calls]])
