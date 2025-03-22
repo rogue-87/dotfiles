@@ -3,3 +3,4 @@ package.json
 fish_variables
 secrets.*
 history.txt
+*.log

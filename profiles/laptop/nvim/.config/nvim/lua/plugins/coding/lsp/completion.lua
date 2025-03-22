@@ -31,6 +31,7 @@ return {
 				documentation = { window = { border = "padded" } },
 				list = { selection = { preselect = true, auto_insert = false } },
 			},
+
 			signature = { window = { border = "single" } },
 
 			snippets = { preset = "default" },
@@ -47,6 +48,8 @@ return {
 					},
 				},
 			},
+
+			fuzzy = { implementation = "prefer_rust_with_warning" },
 		},
 		opts_extend = { "sources.default" },
 	},

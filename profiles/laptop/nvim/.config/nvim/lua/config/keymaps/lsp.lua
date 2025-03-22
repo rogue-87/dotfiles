@@ -180,7 +180,11 @@ utils.on_attach(function(client, bufnr)
 
 	if client.server_capabilities.renameProvider then
 		map("n", "<localleader>rn", function()
-			vim.lsp.buf.rename()
+			if utils.has("lspsaga.nvim") then
+				vim.cmd([[Lspsaga rename]])
+			else
+				vim.lsp.buf.rename()
+			end
 		end, opts, "rename symbol")
 
 		if utils.has("lspsaga.nvim") then

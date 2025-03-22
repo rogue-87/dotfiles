@@ -1,3 +1,4 @@
+-- WARN: language server doesn't work
 return {
 	-- lsp
 	{
