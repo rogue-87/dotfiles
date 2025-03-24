@@ -1,6 +1,4 @@
-local opt = vim.opt_local
-
-opt.conceallevel = 0
-opt.tabstop = 2
-opt.shiftwidth = 2
-opt.expandtab = true
+vim.wo.conceallevel = 0
+vim.bo.tabstop = 4
+vim.bo.shiftwidth = 4
+vim.bo.expandtab = true

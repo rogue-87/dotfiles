@@ -4,3 +4,4 @@ fish_variables
 secrets.*
 history.txt
 *.log
+.env

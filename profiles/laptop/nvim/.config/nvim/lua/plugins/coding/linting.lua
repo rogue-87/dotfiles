@@ -1,13 +1,15 @@
+-- noice
 return {
 	"mfussenegger/nvim-lint",
 	event = { "BufReadPre", "BufWritePost", "BufNewFile" },
 	config = function()
 		local lint = require("lint")
-
 		-- LINTER CONFIG
 		lint.linters_by_ft = {
 			lua = { "selene" },
 			markdown = { "codespell" },
+			text = { "codespell" },
+			typst = { "codespell" },
 		}
 
 		-- AUTO COMMANDS

@@ -11,6 +11,7 @@ termux_packages := "bash  fastfetch  fish  git  nvim  termux-settings"
 # where to put these packages
 target := "$HOME"
 
+# recipes
 help:
     @just --list
 

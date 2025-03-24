@@ -17,8 +17,8 @@ return {
 		ft = "dart",
 		dependencies = {},
 		opts = function()
-			local dartSdk = vim.fn.expand("~/.local/packages/flutter/bin/cache/dart-sdk/bin/dart")
-			local flutterSdk = vim.fn.expand("~/.local/packages/flutter/bin/flutter")
+			local dartSdk = vim.fn.glob(vim.fn.expand("~/.local/share/mise/installs/flutter/*-stable/bin/cache/dart-sdk/bin/dart"))
+			local flutterSdk = vim.fn.glob(vim.fn.expand("~/.local/share/mise/installs/flutter/*-stable/bin/flutter"))
 			local dap = require("dap")
 
 			dap.configurations.dart = {

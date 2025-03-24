@@ -1,4 +1,2 @@
-local opt = vim.opt_local
-
-opt.tabstop = 2
-opt.shiftwidth = 2
+vim.bo.tabstop = 2
+vim.bo.shiftwidth = 2
