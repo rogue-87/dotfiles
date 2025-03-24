@@ -16,13 +16,11 @@ then use `make` to run stow. here's what you can do
 
 ```sh
 # setup dotfiles for laptop
-make laptop-stow
-# remove laptop dotfiles
-make laptop-unstow
+just stow laptop
 # setup dotfiles for termux(android terminal emulator)
-make termux-stow
-# remove termux dotfiles
-make termux-unstow
+just stow termux
+# remove dotfiles
+just unstow
 ```
 
 tada!, you're good to go :]
