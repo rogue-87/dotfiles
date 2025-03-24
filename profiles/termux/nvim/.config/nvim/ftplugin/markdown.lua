@@ -1,5 +1,3 @@
-local opt = vim.opt_local
-
-opt.conceallevel = 1
-opt.tabstop = 2
-opt.shiftwidth = 2
+vim.wo.conceallevel = 1
+vim.bo.tabstop = 2
+vim.bo.shiftwidth = 2

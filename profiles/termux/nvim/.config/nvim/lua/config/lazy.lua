@@ -27,6 +27,7 @@ require("lazy").setup({
 		-- { import = "extras.ai" },
 		-- { import = "extras.db" },
 		-- { import = "extras.godot" },
+		-- { import = "extras.notes" },
 		{ import = "extras.wakatime" },
 		{ import = "extras.webdev" },
 
@@ -37,8 +38,7 @@ require("lazy").setup({
 		{ import = "extras.lang.fish" },
 		{ import = "extras.lang.golang" },
 		-- { import = "extras.lang.java" },
-		{ import = "extras.lang.luau" },
-		{ import = "extras.lang.markdown" },
+		-- { import = "extras.lang.luau" },
 		-- { import = "extras.lang.php" },
 		{ import = "extras.lang.python" },
 		{ import = "extras.lang.rust" },

@@ -5,7 +5,7 @@ return {
 		optional = true,
 		ft = "py",
 		opts = function()
-			require("lspconfig")["pyright"].setup({})
+			require("lspconfig")["pylyzer"].setup({})
 		end,
 	},
 	-- formatter

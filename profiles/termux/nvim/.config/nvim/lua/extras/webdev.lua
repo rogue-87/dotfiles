@@ -6,10 +6,9 @@ return {
 		opts = function()
 			local lspconfig = require("lspconfig")
 			local capabilities = require("config.utils").lsp.capabilities.get()
-			-- primary
+
 			lspconfig["html"].setup({ capabilities = capabilities })
 			-- lspconfig["emmet_ls"].setup({})
-
 			lspconfig["cssls"].setup({ capabilities = capabilities })
 			lspconfig["css_variables"].setup({
 				filetypes = { "css", "scss", "less", "svelte" },
@@ -26,20 +25,25 @@ return {
 					},
 				},
 			})
-			lspconfig["tailwindcss"].setup({})
-			lspconfig["ts_ls"].setup({})
-			lspconfig["eslint"].setup({
-				on_attach = function(client, bufnr)
-					vim.api.nvim_create_autocmd("BufWritePre", {
-						buffer = bufnr,
-						command = "EslintFixAll",
-					})
-				end,
-			})
 
-			-- others
-			lspconfig["astro"].setup({})
-			lspconfig["svelte"].setup({})
+			if vim.fn.filereadable("package.json") == 1 then
+				lspconfig["ts_ls"].setup({})
+				lspconfig["eslint"].setup({
+					on_attach = function(client, bufnr)
+						vim.api.nvim_create_autocmd("BufWritePre", {
+							buffer = bufnr,
+							command = "EslintFixAll",
+						})
+					end,
+				})
+			elseif vim.fn.filereadable("deno.json") == 1 then
+				lspconfig["denols"].setup({})
+			end
+
+			if vim.fn.filereadable("deno.json") == 1 or vim.fn.filereadable("package.json") == 1 then
+				lspconfig["svelte"].setup({})
+				lspconfig["tailwindcss"].setup({})
+			end
 		end,
 	},
 	-- formatter
@@ -48,23 +52,59 @@ return {
 		optional = true,
 		opts = function()
 			local conform = require("conform")
-			conform.setup({
-				formatters_by_ft = {
-					javascript = { "prettier" },
-					typescript = { "prettier" },
-					javascriptreact = { "prettier" },
-					typescriptreact = { "prettier" },
+			if vim.fn.filereadable("package.json") == 1 then
+				conform.setup({
+					formatters_by_ft = {
+						javascript = { "prettier" },
+						javascriptreact = { "prettier" },
+						typescript = { "prettier" },
+						typescriptreact = { "prettier" },
 
-					html = { "prettier" },
-					markdown = { "prettier" },
+						html = { "prettier" },
+						markdown = { "prettier" },
+						css = { "prettier" },
+						scss = { "prettier" },
 
-					css = { "prettier" },
-					scss = { "prettier" },
+						json = { "prettier" },
+						yaml = { "prettier" },
+					},
+				})
+			elseif vim.fn.filereadable("deno.json") == 1 then
+				conform.setup({
+					formatters_by_ft = {
+						javascript = { "deno_fmt" },
+						javascriptreact = { "deno_fmt" },
+						typescript = { "deno_fmt" },
+						typescriptreact = { "deno_fmt" },
 
-					json = { "prettier" },
-					yaml = { "prettier" },
-				},
-			})
+						html = { "deno_fmt" },
+						markdown = { "deno_fmt" },
+						css = { "deno_fmt" },
+						scss = { "deno_fmt" },
+
+						json = { "deno_fmt" },
+						yaml = { "deno_fmt" },
+					},
+				})
+			end
+		end,
+	},
+	-- linter
+	{
+		"mfussenegger/nvim-lint",
+		optional = true,
+		opts = function()
+			local deno = {
+				javascript = { "deno" },
+				javascriptreact = { "deno" },
+				typescript = { "deno" },
+				typescriptreact = { "deno" },
+				json = { "deno" },
+			}
+
+			for k, v in pairs(deno) do
+				table.insert(require("lint").linters_by_ft, deno[k])
+			end
 		end,
 	},
 	-- debugger
@@ -76,7 +116,7 @@ return {
 			local dap = require("dap")
 			local mason = require("mason-registry")
 
-			-- debug adapter for nodejs(js) and deno(ts)
+			-- debug adapter for nodejs & deno
 			dap.adapters["pwa-node"] = {
 				type = "server",
 				host = "localhost",
@@ -90,8 +130,7 @@ return {
 				},
 			}
 
-			-- vscode-js-debug
-			require("dap").configurations.javascript = {
+			dap.configurations.javascript = {
 				{
 					type = "pwa-node",
 					request = "launch",
@@ -101,7 +140,6 @@ return {
 				},
 			}
 
-			-- js-deno
 			dap.configurations.typescript = {
 				{
 					type = "pwa-node",

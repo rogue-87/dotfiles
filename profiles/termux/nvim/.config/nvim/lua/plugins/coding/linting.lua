@@ -8,6 +8,8 @@ return {
 		lint.linters_by_ft = {
 			lua = { "selene" },
 			markdown = { "codespell" },
+			text = { "codespell" },
+			typst = { "codespell" },
 		}
 
 		-- AUTO COMMANDS
