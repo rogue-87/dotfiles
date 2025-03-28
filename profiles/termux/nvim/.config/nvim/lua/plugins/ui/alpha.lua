@@ -34,7 +34,7 @@ return {
 
 			dashboard.button("l", "󰒲  Lazy", "<cmd>Lazy<cr>"),
 
-			dashboard.button("m", "🛠 Mason", "<cmd>Mason<cr>"),
+			dashboard.button("m", "󱌣 Mason", "<cmd>Mason<cr>"),
 		  	-- stylua: ignore
 		  	dashboard.button("c", "  Config", "<cmd>lua vim.fn.chdir(vim.fn.stdpath('config'))<cr>" .. "<cmd>lua Snacks.picker.files({ hidden = true })<cr>"),
 			dashboard.button("h", "󰓙  Run healthcheck", "<cmd>checkhealth<cr>"),
@@ -48,7 +48,7 @@ return {
 			callback = function()
 				local stats = require("lazy").stats()
 				local ms = (math.floor(stats.startuptime * 100 + 0.5) / 100)
-				dashboard.section.footer.val = "⚡ Neovim loaded "
+				dashboard.section.footer.val = "󱐋 Neovim loaded "
 					.. stats.loaded
 					.. "/"
 					.. stats.count

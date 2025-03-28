@@ -6,10 +6,10 @@ termux := "$PWD/profiles/termux"
 
 # stow packages
 laptop_packages := "btop  fastfetch  fish  git  kitty  mise  neovide  nvim  rio  xplr  zed  zellij"
-termux_packages := "bash  fastfetch  fish  git  nvim  termux-settings"
+termux_packages := "fastfetch  fish  git  nvim  termux-settings"
 
 # where to put these packages
-target := "$HOME"
+target := env('HOME')
 
 # recipes
 help:
@@ -17,8 +17,11 @@ help:
 
 info:
     @echo "  available profiles {{BLUE}} {{NORMAL}}:"
-    @echo "  {{YELLOW}}laptop termux{{NORMAL}}"
-    @echo 
+    @echo "  {{YELLOW}}"
+    @echo "  laptop: {{laptop}}"
+    @echo "  termux: {{termux}}"
+    @echo "  {{NORMAL}}"
+    
     @echo "  laptop packages {{BLUE}} {{NORMAL}}:"
     @echo "  {{GREEN}}{{laptop_packages}}{{NORMAL}}"
     @echo
@@ -27,18 +30,18 @@ info:
     @echo 
     @echo "  target directory {{BLUE}} {{NORMAL}}: {{GREEN}}{{target}}{{NORMAL}}"
 
-stow target:
+stow profile:
     #!/bin/env bash
-    set -euo pipefail
+    set -euxo pipefail
 
-    if [[ "{{target}}" == "laptop" ]]; then
+    if [[ "{{profile}}" == "laptop" ]]; then
         printf "{{YELLOW}} Stowing dotfiles for laptop... {{NORMAL}}"
-        stow --target={{target}} --dir={{laptop}} {{laptop_packages}}
-    elif [[ "{{target}}" == "termux" ]]; then
+        stow --target="{{target}}" --dir="{{laptop}}" "{{laptop_packages}}"
+    elif [[ "{{profile}}" == "termux" ]]; then
         printf "{{YELLOW}} Stowing dotfiles for termux... {{NORMAL}}"
-        stow --target={{target}} --dir={{termux}} {{termux_packages}}
+        stow --target="{{target}}" --dir="{{termux}}" {{termux_packages}}
     else
-        echo "Unknown target: {{target}}"
+        echo "Unknown target: {{profile}}"
         exit 1
     fi
     printf "{{GREEN}} dotfiles ready! {{NORMAL}}"

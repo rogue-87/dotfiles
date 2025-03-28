@@ -6,7 +6,7 @@ return {
 
 		-- LINTER CONFIG
 		lint.linters_by_ft = {
-			lua = { "selene" },
+			-- lua = { "selene" },
 			markdown = { "codespell" },
 			text = { "codespell" },
 			typst = { "codespell" },
