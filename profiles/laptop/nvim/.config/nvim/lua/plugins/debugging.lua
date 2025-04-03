@@ -13,7 +13,10 @@ end
 return {
 	{
 		"mfussenegger/nvim-dap",
-		dependencies = { { "theHamsta/nvim-dap-virtual-text", opts = {} } },
+		dependencies = {
+			{ "theHamsta/nvim-dap-virtual-text", opts = {} },
+			{ "igorlfs/nvim-dap-view", opts = {} },
+		},
 		-- stylua: ignore
 		keys = {
 			{ "<leader>d", "", desc = "+debug", mode = {"n", "v"} },
@@ -42,28 +45,6 @@ return {
 			vscode.json_decode = function(str)
 				return vim.json.decode(json.json_strip_comments(str))
 			end
-		end,
-	},
-	{
-		"rcarriga/nvim-dap-ui",
-		dependencies = {
-			"mfussenegger/nvim-dap",
-			"nvim-neotest/nvim-nio",
-		},
-		-- stylua: ignore
-		keys = {
-			{ "<leader>du", function() require("dapui").toggle({}) end, desc = "Dap UI" },
-			{ "<leader>de", function() require("dapui").eval()      end, desc = "Eval", mode = {"n", "v"} },
-		},
-		opts = {},
-		-- stylua: ignore
-		config = function(_, opts)
-			local dap = require("dap")
-			local dapui = require("dapui")
-			dapui.setup(opts)
-			dap.listeners.after.event_initialized["dapui_config"] = function() dapui.open({}) end
-			dap.listeners.before.event_terminated["dapui_config"] = function() dapui.close({}) end
-			dap.listeners.before.event_exited["dapui_config"] = function() dapui.close({})end
 		end,
 	},
 }

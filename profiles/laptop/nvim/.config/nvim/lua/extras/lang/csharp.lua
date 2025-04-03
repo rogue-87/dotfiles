@@ -7,7 +7,7 @@ return {
 		opts = function()
 			local mason = require("mason-registry")
 			local omnisharp_dll = mason.get_package("omnisharp"):get_install_path() .. "/libexec/OmniSharp.dll"
-			local capabilities = require("config.utils").lsp.capabilities.get()
+			local capabilities = require("utils").lsp.capabilities.get()
 
 			require("lspconfig")["omnisharp"].setup({
 				cmd = { "dotnet", omnisharp_dll },

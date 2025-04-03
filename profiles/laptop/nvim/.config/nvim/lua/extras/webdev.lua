@@ -5,7 +5,7 @@ return {
 		optional = true,
 		opts = function()
 			local lspconfig = require("lspconfig")
-			local capabilities = require("config.utils").lsp.capabilities.get()
+			local capabilities = require("utils").lsp.capabilities.get()
 
 			lspconfig["html"].setup({ capabilities = capabilities })
 			-- lspconfig["emmet_ls"].setup({})

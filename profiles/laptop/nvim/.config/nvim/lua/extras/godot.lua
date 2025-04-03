@@ -6,14 +6,14 @@ return {
 		optional = true,
 		opts = function()
 			local lspconfig = require("lspconfig")
-			local capabilities = require("config.utils").lsp.capabilities.get()
+			local capabilities = require("utils").lsp.capabilities.get()
 			lspconfig["gdscript"].setup({
 				capabilities = capabilities,
 			})
 		end,
 		init = function()
 			local pipepath = vim.fn.stdpath("cache") .. "/server.pipe"
-			if not vim.loop.fs_stat(pipepath) then
+			if not vim.uv.fs_stat(pipepath) then
 				vim.fn.serverstart(pipepath)
 			end
 		end,

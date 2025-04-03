@@ -61,17 +61,9 @@ return {
 	},
 	-- options from nvim_open_win()| vim.diagnostic.open_float()
 	-- | vim.lsp.util.open_floating_preview()| vim.diagnostic.config()
-	---@type table
+	---@type vim.diagnostic.Opts
 	diagnostics_options = {
-		virtual_text = false,
-		-- virtual_text = {
-		--     severity = { min = vim.diagnostic.severity.WARN, max = vim.diagnostic.severity.ERROR },
-		--     source = "if_many",
-		--     spacing = 0,
-		--     prefix = "●",
-		-- },
 		float = {
-			--nvim_open_win() options
 			relative = "cursor",
 			-- "single": A single line box.
 			-- "double": A double line box.
@@ -96,8 +88,15 @@ return {
 			source = "if_many",
 			severity_sort = true,
 		},
-		update_in_insert = false,
-		-- This affects the order in which signs and virtual text are displayed
+		jump = {},
+		virtual_lines = false,
+		virtual_text = true,
 		severity_sort = true,
+		signs = {
+			-- text = {},
+		},
+		underline = {},
+		---@type vim.diagnostic.Opts.Float
+		update_in_insert = {},
 	},
 }

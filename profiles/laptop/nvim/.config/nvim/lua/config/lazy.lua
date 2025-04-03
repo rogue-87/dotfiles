@@ -17,10 +17,25 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
 	spec = {
-		{ import = "plugins.ui" },
-		{ import = "plugins.editor" },
-		{ import = "plugins.coding" },
-		{ import = "plugins.coding.lsp" },
+		{
+			"williamboman/mason.nvim",
+			opts = {
+				ui = {
+					icons = {
+						package_installed = "✓",
+						package_pending = "➜",
+						package_uninstalled = "✗",
+					},
+				},
+			},
+			cmd = "Mason",
+			keys = {
+				{ "<leader>mm", "<cmd>Mason<cr>", desc = "Mason" },
+			},
+		},
+		{ import = "plugins.ui" }, -- colorschemes, dashboard, improved lsp UI and more
+		{ import = "plugins.editor" }, -- fuzzy finder, filetree, scrollbar, git integration & more
+		{ import = "plugins.coding" }, -- code completion, formatting, linting, etc...
 		{ import = "plugins.debugging" }, -- DAP support for nvim
 
 		-- { import = "extras" }, -- extra stuff
@@ -30,19 +45,19 @@ require("lazy").setup({
 		-- { import = "extras.godot" },
 		-- { import = "extras.notes" },
 		{ import = "extras.wakatime" },
-		{ import = "extras.webdev" },
+		-- { import = "extras.webdev" },
 
 		-- { import = "extras.lang" }, -- uncomment this to load all lang configs
-		{ import = "extras.lang.csharp" },
-		{ import = "extras.lang.cxx" },
-		{ import = "extras.lang.dart" },
-		{ import = "extras.lang.fish" },
-		{ import = "extras.lang.golang" },
+		-- { import = "extras.lang.csharp" },
+		-- { import = "extras.lang.cc" },
+		-- { import = "extras.lang.dart" },
+		-- { import = "extras.lang.fish" },
+		-- { import = "extras.lang.golang" },
 		-- { import = "extras.lang.java" },
 		-- { import = "extras.lang.luau" },
 		-- { import = "extras.lang.php" },
-		{ import = "extras.lang.python" },
-		{ import = "extras.lang.rust" },
+		-- { import = "extras.lang.python" },
+		-- { import = "extras.lang.rust" },
 		-- { import = "extras.lang.zig" },
 	},
 	install = { colorscheme = { "nightfox" } },
@@ -68,5 +83,3 @@ require("lazy").setup({
 		},
 	},
 })
-
-vim.cmd("colorscheme nightfox")

@@ -3,11 +3,11 @@ return {
 		"OXY2DEV/markview.nvim",
 		lazy = false,
 		opts = {
-			html = { enable = true },
+			html = { enable = false },
 			markdown = { enable = false },
-			markdown_inline = { enable = false },
+			markdown_inline = { enable = true },
 			typst = { enable = false },
-			yaml = { enable = true },
+			yaml = { enable = false },
 		},
 	},
 	{

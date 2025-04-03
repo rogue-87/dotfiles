@@ -1,3 +1,5 @@
+local defaults = require("config.defaults")
+
 -- Global vim variables
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
@@ -61,4 +63,16 @@ if vim.g.neovide then
 	vim.g.neovide_refresh_rate = 60
 	vim.g.neovide_refresh_rate_idle = 5
 	vim.g.neovide_fullscreen = false
+end
+vim.diagnostic.config(defaults.diagnostics_options)
+
+-- configure diagnostics signs
+for name, icon in pairs(defaults.icons.diagnostics) do
+	name = "DiagnosticSign" .. name
+	vim.fn.sign_define(name, { text = icon, texthl = name, numhl = "" })
+end
+
+-- configure debugger diagnostics signs
+for name, icon in pairs(defaults.icons.debugger) do
+	vim.fn.sign_define(name, { text = icon, texthl = name, numhl = "" })
 end

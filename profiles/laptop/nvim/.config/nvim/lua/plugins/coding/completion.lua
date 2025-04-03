@@ -4,6 +4,8 @@ return {
 		ft = "lua", -- only load on lua files
 		opts = {
 			library = {
+				-- See the configuration section for more details
+				-- Load luvit types when the `vim.uv` word is found
 				{ path = "${3rd}/luv/library", words = { "vim%.uv" } },
 			},
 		},
@@ -13,7 +15,7 @@ return {
 		-- optional: provides snippets for the snippet source
 		dependencies = { "rafamadriz/friendly-snippets" },
 		-- use a release tag to download pre-built binaries
-		version = "*",
+		version = "1.*",
 		---@module 'blink.cmp'
 		---@type blink.cmp.Config
 		opts = {

@@ -1,6 +1,6 @@
 if vim.fn.filereadable("CMakeLists.txt") == 1 then
 	--Enable (broadcasting) snippet capability for completion
-	local capabilities = require("config.utils").lsp.capabilities.get()
+	local capabilities = require("utils").lsp.capabilities.get()
 	capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 	require("lspconfig").neocmake.setup({ capabilities = capabilities })
