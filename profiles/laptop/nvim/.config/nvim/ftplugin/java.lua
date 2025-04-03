@@ -1,9 +1,9 @@
-local utils = require("config.utils")
-local mason = require("mason-registry")
-local java_debug = mason.get_package("java-debug-adapter"):get_install_path()
-	.. "/extension/server/com.microsoft.java.debug.plugin-*.jar"
+local utils = require("utils")
+-- local mason = require("mason-registry")
+--[[ local java_debug = mason.get_package("java-debug-adapter"):get_install_path()
+	.. "/extension/server/com.microsoft.java.debug.plugin-*.jar" ]]
 
-local java_test = mason.get_package("java-test"):get_install_path() .. "/extension/server/*.jar"
+-- local java_test = mason.get_package("java-test"):get_install_path() .. "/extension/server/*.jar"
 
 local config = {
 	cmd = { vim.fn.exepath("jdtls") },
