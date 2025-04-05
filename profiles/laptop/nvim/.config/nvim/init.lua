@@ -7,6 +7,7 @@ utils.lazy_load({ "config.keymaps", "config.autocmds" })
 -- bootstrap lazy.nvim
 require("config.lazy")
 
+-- choose colorscheme
 vim.cmd("colorscheme nightfox")
 
 -- language server configs to enable

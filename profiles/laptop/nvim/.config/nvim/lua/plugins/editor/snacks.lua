@@ -94,6 +94,7 @@ return {
 				Snacks.toggle.option("wrap", { name = "Wrap" }):map("<leader>uw")
 				Snacks.toggle.scroll():map("<leader>uS")
 				Snacks.toggle.treesitter():map("<leader>uT")
+				Snacks.toggle.words():map("<leader>uW")
 			end,
 		})
 	end,

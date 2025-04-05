@@ -43,9 +43,9 @@ require("lazy").setup({
 		-- { import = "extras.db" },
 		-- { import = "extras.discord" },
 		-- { import = "extras.godot" },
-		{ import = "extras.notes" },
-		{ import = "extras.wakatime" },
-		{ import = "extras.webdev" },
+		-- { import = "extras.notes" },
+		-- { import = "extras.wakatime" },
+		-- { import = "extras.webdev" },
 
 		-- { import = "extras.lang" }, -- uncomment this to load all lang configs
 		{ import = "extras.lang.dart" },
