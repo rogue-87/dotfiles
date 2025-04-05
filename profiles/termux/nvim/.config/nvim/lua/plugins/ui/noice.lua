@@ -1,10 +1,7 @@
 return {
 	"folke/noice.nvim",
-	event = "VeryLazy",
-	dependencies = {
-		"MunifTanjim/nui.nvim",
-		"rcarriga/nvim-notify",
-	},
+	lazy = false, -- lazy loading causes some issues with cmdhight
+	dependencies = { "MunifTanjim/nui.nvim" },
     -- stylua: ignore
     keys = {
         { "<leader>n", "", desc = "Noice"  },
@@ -19,7 +16,7 @@ return {
                     return "<c-f>"
                 end
             end,
-          silent = true, expr = true, desc = "Scroll Forward", mode = { "i", "n", "s" },
+			silent = true, expr = true, desc = "Scroll Forward", mode = { "i", "n", "s" },
         },
         { "<C-b>",
             function()
@@ -38,14 +35,9 @@ return {
 			opts = {}, -- global options for the cmdline. See section on views
 			---@type table<string, CmdlineFormat>
 			format = {
-				-- conceal: (default=true) This will hide the text in the cmdline that matches the pattern.
-				-- view: (default is cmdline view)
-				-- opts: any options passed to the view
-				-- icon_hl_group: optional hl_group for the icon
-				-- title: set to anything or empty string to hide
 				cmdline = { pattern = "^:", icon = "", lang = "vim" },
-				search_down = { kind = "search", pattern = "^/", icon = " ", lang = "regex" },
-				search_up = { kind = "search", pattern = "^%?", icon = " ", lang = "regex" },
+				search_down = { kind = "search", pattern = "^/", icon = " ", lang = "regex" },
+				search_up = { kind = "search", pattern = "^%?", icon = " ", lang = "regex" },
 				filter = { pattern = "^:%s*!", icon = "$", lang = "bash" },
 				lua = { pattern = { "^:%s*lua%s+", "^:%s*lua%s*=%s*", "^:%s*=%s*" }, icon = "", lang = "lua" },
 				help = { pattern = "^:%s*he?l?p?%s+", icon = "󰋖" },
@@ -69,12 +61,10 @@ return {
 			kind_icons = {},
 		},
 		---@type NoiceRouteConfig
-		redirect = {
-			view = "popup",
-			filter = { event = "msg_show" },
-		},
+		redirect = { view = "popup", filter = { event = "msg_show" } },
 		---@type table<string, NoiceCommand>
 		commands = {
+			---@diagnostic disable-next-line: missing-fields
 			history = {
 				-- options for the message history that you get with `:Noice`
 				view = "popup",
@@ -114,7 +104,6 @@ return {
 			},
 			-- :Noice all
 			all = {
-				-- options for the message history that you get with `:Noice`
 				view = "popup",
 				opts = { enter = true, format = "details" },
 				filter = {},
@@ -122,11 +111,6 @@ return {
 			},
 		},
 		notify = {
-			-- Noice can be used as `vim.notify` so you can route any notification like other messages
-			-- Notification messages have their level and other properties set.
-			-- event is always "notify" and kind can be any log level as a string
-			-- The default routes will forward notifications to nvim-notify
-			-- Benefit of using Noice for this is the routing and consistent history view
 			enabled = true,
 			view = "mini",
 		},
@@ -155,6 +139,7 @@ return {
 				opts = {}, -- merged with defaults from documentation
 			},
 		},
+		health = { checker = false },
 		---@type NoicePresets
 		presets = {
 			bottom_search = false, -- use a classic bottom cmdline for search

@@ -1,13 +1,25 @@
--- enables the new experimental lua-loader for nvim that byte-compiles and caches lua files.
-vim.loader.enable()
+local utils = require("utils")
 
 -- load vim settings(options, keymaps, etc...)
-require("config")
+require("config.options")
+utils.lazy_load({ "config.keymaps", "config.autocmds" })
 
 -- bootstrap lazy.nvim
 require("config.lazy")
 
-if vim.fn.executable("mise") == 1 then
-	-- Prepend mise shims to PATH
-	vim.env.PATH = vim.env.HOME .. "/.local/share/mise/shims:" .. vim.env.PATH
-end
+vim.cmd("colorscheme nightfox")
+
+-- language server configs to enable
+vim.lsp.enable({
+	-- shell langs
+	"bashls",
+	"fish-lsp",
+	-- programming langs
+	"clangd",
+	"luals",
+	"omnisharp",
+	"pyright",
+	-- other
+	"jsonls",
+	"taplo",
+})

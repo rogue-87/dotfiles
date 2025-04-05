@@ -1,22 +1,22 @@
--- autocommands go here
-local utils = require("config.utils")
-local autocmd = vim.api.nvim_create_autocmd
-local map = utils.augroup
-local augroup = utils.augroup
+-- auto-commands go here
+local utils = require("utils")
 
--- resize splits if window got resized
-autocmd({ "VimResized" }, {
-	group = augroup("resize_splits"),
-	callback = function()
-		vim.cmd("wincmd =")
-		vim.cmd("tabdo wincmd =")
-	end,
-})
+utils.lsp.on_attach(function(client, bufnr)
+	local opts = { buffer = bufnr }
 
-local diagnostics_options = require("config.defaults").diagnostics_options
--- automatically show diagnostics on current line
-autocmd({ "CursorHold", "CursorHoldI" }, {
-	callback = function()
-		vim.diagnostic.open_float(nil, diagnostics_options.float)
-	end,
-})
+	--[[ if client.server_capabilities.completionProvider then
+		vim.bo[bufnr].omnifunc = "v:lua.vim.lsp.omnifunc"
+	end ]]
+
+	if client.server_capabilities.inlayHintProvider then
+		vim.lsp.inlay_hint.enable(false)
+	end
+
+	-- prefer LSP folding if client supports it
+	if client.server_capabilities.foldingRangeProvider then
+		local win = vim.api.nvim_get_current_win()
+		vim.wo[win][0].foldexpr = "v:lua.vim.lsp.foldexpr()"
+	end
+end)
+
+utils.lsp.on_detach()
