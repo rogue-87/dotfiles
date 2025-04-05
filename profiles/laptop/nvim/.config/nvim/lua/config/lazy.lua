@@ -49,6 +49,7 @@ require("lazy").setup({
 
 		-- { import = "extras.lang" }, -- uncomment this to load all lang configs
 		{ import = "extras.lang.dart" },
+		-- { import = "extras.lang.go" },
 		{ import = "extras.lang.java" },
 		{ import = "extras.lang.rust" },
 	},
