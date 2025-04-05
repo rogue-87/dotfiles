@@ -1,6 +1,6 @@
 return {
 	"folke/noice.nvim",
-	event = "VeryLazy",
+	lazy = false, -- lazy loading causes some issues with cmdhight
 	dependencies = { "MunifTanjim/nui.nvim" },
     -- stylua: ignore
     keys = {

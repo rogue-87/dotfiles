@@ -9,11 +9,10 @@
 	"workspace": {
 		"checkThirdParty": false,
 		"library": [
-			// "~/.local/share/nvim/lazy/",  // completion for plugins(may use lots of memory!)
+			"~/.local/share/nvim/lazy/", // completion for plugins(may use lots of memory!)
 			"$VIMRUNTIME/lua",
-			"${3rd}/luv/library",
-			"${3rd}/busted/library"
-			// "${3rd}/love2d/library"
+			// "${3rd}/luv/library",
+			// "${3rd}/busted/library",
 		]
 	},
 	"completion.callSnippet": "Replace"

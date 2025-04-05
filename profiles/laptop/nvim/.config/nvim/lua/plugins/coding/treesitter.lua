@@ -15,7 +15,6 @@ return {
 				"luadoc",
 				"regex",
 				"diff",
-				-- already installed in /lib64/nvim/parser/
 				"c",
 				"lua",
 				"markdown",
@@ -42,7 +41,6 @@ return {
 		})
 
 		local ts_parsers = require("nvim-treesitter.parsers")
-
 		-- to keep track notified filetypes
 		local notified_filetypes = {}
 

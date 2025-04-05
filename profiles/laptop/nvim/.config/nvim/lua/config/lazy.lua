@@ -36,29 +36,21 @@ require("lazy").setup({
 		{ import = "plugins.ui" }, -- colorschemes, dashboard, improved lsp UI and more
 		{ import = "plugins.editor" }, -- fuzzy finder, filetree, scrollbar, git integration & more
 		{ import = "plugins.coding" }, -- code completion, formatting, linting, etc...
-		{ import = "plugins.debugging" }, -- DAP support for nvim
+		-- { import = "plugins.debugging" }, -- DAP support for nvim
 
 		-- { import = "extras" }, -- extra stuff
 		-- { import = "extras.ai" },
 		-- { import = "extras.db" },
 		-- { import = "extras.discord" },
 		-- { import = "extras.godot" },
-		-- { import = "extras.notes" },
+		{ import = "extras.notes" },
 		{ import = "extras.wakatime" },
-		-- { import = "extras.webdev" },
+		{ import = "extras.webdev" },
 
 		-- { import = "extras.lang" }, -- uncomment this to load all lang configs
-		-- { import = "extras.lang.csharp" },
-		-- { import = "extras.lang.cc" },
-		-- { import = "extras.lang.dart" },
-		-- { import = "extras.lang.fish" },
-		-- { import = "extras.lang.golang" },
-		-- { import = "extras.lang.java" },
-		-- { import = "extras.lang.luau" },
-		-- { import = "extras.lang.php" },
-		-- { import = "extras.lang.python" },
-		-- { import = "extras.lang.rust" },
-		-- { import = "extras.lang.zig" },
+		{ import = "extras.lang.dart" },
+		{ import = "extras.lang.java" },
+		{ import = "extras.lang.rust" },
 	},
 	install = { colorscheme = { "nightfox" } },
 	checker = { enabled = false },

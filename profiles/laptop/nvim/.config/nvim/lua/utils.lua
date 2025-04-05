@@ -176,11 +176,23 @@ M.map = function(mode, lhs, rhs, opts, desc)
 	vim.keymap.set(mode, lhs, rhs, opts)
 end
 
+--- shortcut to vim.api.nvim_create_autocmd
 M.autocmd = vim.api.nvim_create_autocmd
 
+--- shortcut to vim.api.nvim_create_augroup
 M.augroup = vim.api.nvim_create_augroup
 
 M.lsp = {}
+--- ```lua
+--- shortcut to
+--- vim.api.nvim_create_autocmd("LspAttatch", function(client, bufnr)
+--- 	callback = function(args)
+--- 		local bufnr = args.buf
+--- 		local client = vim.lsp.get_client_by_id(args.data.client_id)
+--- 		on_attach(client, bufnr)
+--- 	end
+--- end)
+--- ```
 ---@param on_attach fun(client: vim.lsp.Client?, bufnr: integer)
 function M.lsp.on_attach(on_attach)
 	vim.api.nvim_create_autocmd("LspAttach", {
@@ -192,7 +204,7 @@ function M.lsp.on_attach(on_attach)
 	})
 end
 
-function M.lsp.auto_detach()
+function M.lsp.on_detach()
 	vim.api.nvim_create_autocmd({ "LspDetach" }, {
 		group = vim.api.nvim_create_augroup("LspStopWithLastClient", {}),
 		callback = function(args)

@@ -16,8 +16,11 @@ return {
 	---@type conform.setupOpts
 	opts = {
 		formatters_by_ft = {
-			lua = { "stylua" },
 			bash = { "shfmt" },
+			go = { "gofmt", lsp_format = "fallback" },
+			lua = { "stylua" },
+			python = { "ruff_format", lsp_format = "fallback" },
+			rust = { "rustfmt", lsp_format = "fallback" },
 			xml = { "xmllint" },
 		},
 		default_format_opts = { lsp_format = "fallback" },

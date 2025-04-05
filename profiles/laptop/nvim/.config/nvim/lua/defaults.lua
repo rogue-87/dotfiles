@@ -2,22 +2,22 @@ return {
 	-- icons used by other plugins
 	icons = {
 		diagnostics = {
-			Error = "󰅚 ", -- " ", "󰢃 "
-			Warn = "󰀪 ", -- " ",
-			Hint = "󰌶 ", -- "󰠠 ", " ",
-			Info = " ", -- " ", "󰗡 "
+			Error = "󰅚 ",
+			Warn = "󰀪 ",
+			Hint = "󰌶 ",
+			Info = " ",
 		},
 		debugger = {
-			DapBreakpoint = " ", --▶️breakpoints
-			DapBreakpointCondition = " ", --conditional breakpoints
-			DapLogPoint = " ", --log points
-			DapStopped = " ", --🟥indicate where the debugger has stopped
-			DapBreakpointRejected = " ", --indicate breakpoints rejected by the debug
+			DapBreakpoint = " ",
+			DapBreakpointCondition = " ",
+			DapLogPoint = " ",
+			DapStopped = " ",
+			DapBreakpointRejected = " ",
 		},
 		git = {
-			add = { text = "│" }, --" ","▎"
-			change = { text = "!" }, --" ",
-			delete = { text = "_" }, --" ",""
+			add = { text = "│" },
+			change = { text = "!" },
+			delete = { text = "_" },
 			topdelete = { text = "‾" },
 			changedelete = { text = "~" },
 			untracked = { text = "┆" },
@@ -25,36 +25,36 @@ return {
 		kinds = {
 			Array = " ",
 			Boolean = " ",
-			Class = " ", --"󰠱 ",
-			Color = "  ", --"󰏘 ", "󰸌 "
+			Class = " ",
+			Color = "  ",
 			Constant = " ",
 			Constructor = "",
 			Copilot = " ",
 			Enum = " ",
 			EnumMember = "",
-			Event = " ", --"",
-			Field = "󰄶 ", --"󰘻 ","󰄷 "
-			File = "󰈙", -- 󰷈 󱪗 󱪝
-			Folder = "  ", --󰉋  
-			Function = "󰊕", --"󰡱 "
-			Interface = " ", --"",
-			Keyword = "󰌋 ", --"󱕵"
+			Event = " ",
+			Field = "󰄶 ",
+			File = "󰈙",
+			Folder = "  ",
+			Function = "󰊕",
+			Interface = " ",
+			Keyword = "󰌋 ",
 			Method = "󰆧 ",
 			Module = " ",
 			Namespace = " ",
 			Null = " ",
 			Number = " ",
 			Object = " ",
-			Operator = " ", --"󰆕",
+			Operator = " ",
 			Package = "󰏗 ",
-			Property = " ", --" ",󱉯
-			Reference = " ", --"",
+			Property = " ",
+			Reference = " ",
 			Snippet = " ",
 			String = " ",
-			Struct = " ", --" ",
-			Text = "󰊄 ", --" ",󰚞
+			Struct = " ",
+			Text = "󰊄 ",
 			TypeParameter = " ",
-			Unit = " ", --"",
+			Unit = " ",
 			Value = "󰎠",
 			Variable = "󰘛 ",
 		},
@@ -93,7 +93,12 @@ return {
 		virtual_text = true,
 		severity_sort = true,
 		signs = {
-			-- text = {},
+			text = {
+				[vim.diagnostic.severity.ERROR] = "󰅚 ",
+				[vim.diagnostic.severity.WARN] = "󰀪 ",
+				[vim.diagnostic.severity.HINT] = "󰌶 ",
+				[vim.diagnostic.severity.INFO] = " ",
+			},
 		},
 		underline = {},
 		---@type vim.diagnostic.Opts.Float

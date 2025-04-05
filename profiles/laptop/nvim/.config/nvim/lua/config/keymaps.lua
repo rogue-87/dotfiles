@@ -90,10 +90,6 @@ utils.map("n", "<C-.>", "<cmd>+tabmove<cr>", opts)
 utils.lsp.on_attach(function(client, bufnr)
 	local ls_opts = { buffer = bufnr }
 
-	if client.server_capabilities.inlayHintProvider then
-		vim.lsp.inlay_hint.enable(true)
-	end
-
 	if client.server_capabilities.hoverProvider then
 		utils.map("n", "K", function()
 			vim.lsp.buf.hover()
@@ -119,12 +115,8 @@ utils.lsp.on_attach(function(client, bufnr)
 		utils.map("n", "<localleader>gD", vim.lsp.buf.declaration, ls_opts, "goto declaration")
 	end
 
-	if client.server_capabilities.completionProvider then
-		vim.bo[bufnr].omnifunc = "v:lua.vim.lsp.omnifunc"
-	end
-
 	if client.server_capabilities.definitionProvider then
-		vim.bo[bufnr].tagfunc = "v:lua.vim.lsp.tagfunc"
+		-- vim.bo[bufnr].tagfunc = "v:lua.vim.lsp.tagfunc"
 		utils.map("n", "<localleader>gd", function()
 			if utils.has("lspsaga.nvim") then
 				vim.cmd([[Lspsaga goto_definition]])
@@ -174,7 +166,6 @@ utils.lsp.on_attach(function(client, bufnr)
 			if utils.has("lspsaga.nvim") then
 				vim.cmd([[Lspsaga finder ref]])
 			elseif utils.has("snacks.nvim") then
-				---@diagnostic disable-next-line: undefined-global
 				Snacks.picker.lsp_references()
 			else
 				vim.lsp.buf.references()
@@ -234,7 +225,7 @@ utils.lsp.on_attach(function(client, bufnr)
 
 	if client.server_capabilities.documentFormattingProvider then
 		utils.map("n", "<localleader>uf", function()
-			utils.toggle("autoformat", { global = true })
+			utils.toggle("autoformat", { global = false })
 			utils.autocmd("BufWritePre", {
 				group = utils.augroup("LspFormat", { clear = true }),
 				callback = function()
@@ -266,12 +257,6 @@ utils.lsp.on_attach(function(client, bufnr)
 				vim.lsp.buf.rename()
 			end
 		end, ls_opts, "rename symbol")
-
-		-- if utils.has("lspsaga.nvim") then
-		-- 	map("n", "<localleader>rnw", function()
-		-- 		vim.cmd([[Lspsaga project_replace]])
-		-- 	end, opts, "rename across workspace")
-		-- end
 	end
 
 	if client.server_capabilities.callHierarchyProvider then
@@ -300,14 +285,14 @@ utils.lsp.on_attach(function(client, bufnr)
 		if utils.has("lspsaga.nvim") then
 			vim.cmd([[Lspsaga diagnostic_jump_prev]])
 		else
-			vim.diagnostic.goto_prev()
+			vim.diagnostic.jump({ count = -1, float = true })
 		end
 	end, ls_opts, "goto previous diagnostics")
 	utils.map("n", "]d", function()
 		if utils.has("lspsaga.nvim") then
 			vim.cmd([[Lspsaga diagnostic_jump_next]])
 		else
-			vim.diagnostic.goto_next()
+			vim.diagnostic.jump({ count = 1, float = true })
 		end
 	end, ls_opts, "goto next diagnostics")
 
@@ -333,6 +318,6 @@ utils.lsp.on_attach(function(client, bufnr)
 		vim.print(vim.lsp.buf.list_workspace_folders())
 	end, ls_opts, "list workspace folders")
 	utils.map("n", "<localleader>rd", function()
-		print("Language server " .. (vim.lsp.status() and "is ready" or "is not ready"))
+		vim.notify("Language server " .. (vim.lsp.status() and "is ready" or "is not ready"), vim.log.levels.INFO)
 	end, ls_opts, "check if lsp is ready")
 end)

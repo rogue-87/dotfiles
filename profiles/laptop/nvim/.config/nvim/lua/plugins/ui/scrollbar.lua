@@ -1,6 +1,9 @@
+---@diagnostic disable: missing-fields
 return {
 	"lewis6991/satellite.nvim",
-	event = { "BufReadPre", "BufNewFile" },
+	lazy = false,
+	---@module "satellite"
+	---@type SatelliteConfig
 	opts = {
 		current_only = false,
 		winblend = 50,
@@ -14,37 +17,12 @@ return {
 			"dapui_console",
 			"dap-repl",
 		},
-		width = 1,
+		width = 2,
 		handlers = {
-			cursor = {
-				enable = true,
-				overlap = true,
-				symbols = { "⎺", "⎻", "⎼", "⎽" },
-			},
-			search = {
-				enable = true,
-			},
-			diagnostic = {
-				enable = true,
-				signs = { "-", "=", "≡" },
-				min_severity = vim.diagnostic.severity.HINT,
-			},
-			gitsigns = {
-				enable = false,
-				signs = { -- can only be a single character (multibyte is okay)
-					add = "│",
-					change = "│",
-					delete = "-",
-				},
-			},
-			marks = {
-				enable = true,
-				show_builtins = false,
-				key = "m",
-			},
-			quickfix = {
-				signs = { "-", "=", "≡" },
-			},
+			diagnostic = { enable = true },
+			gitsigns = { enable = false },
+			marks = { enable = true },
+			search = { enable = true },
 		},
 	},
 }

@@ -1,7 +1,7 @@
 return {
 	{
 		"lewis6991/gitsigns.nvim",
-		event = { "BufReadPre", "BufWritePost", "BufNewFile" },
+		lazy = false,
 		-- stylua: ignore
 		keys = {
 			{ "<leader>g", "", desc = "git" },
@@ -17,7 +17,8 @@ return {
 			{ "<leader>gR", function() package.loaded.gitsigns.reset_buffer()               end, desc = "Reset buffer"                        },
 			{ "<leader>gt", function() package.loaded.gitsigns.toggle_deleted()             end, desc = "Toggle Deleted"                      },
 		},
-		opts = {},
+		---@type Gitsigns.Config
+		opts = { signcolumn = true },
 	},
 	{
 		-- For color highlighting
@@ -59,4 +60,5 @@ return {
 			buftypes = {},
 		},
 	},
+	{ "folke/todo-comments.nvim", dependencies = { "nvim-lua/plenary.nvim" }, opts = {} },
 }

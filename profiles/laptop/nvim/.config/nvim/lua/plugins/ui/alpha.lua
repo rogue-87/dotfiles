@@ -22,7 +22,7 @@ return {
 		dashboard.section.buttons.val = {
 			dashboard.button("e", "  New file", ":ene <BAR> startinsert <cr>"),
 
-			dashboard.button("f", "󰍉  Find Files", "<cmd>lua Snacks.picker.files()<cr>"),
+			dashboard.button("f", "  Find Files", "<cmd>lua Snacks.picker.files()<cr>"),
 
 			dashboard.button(
 				"s",

@@ -1,11 +1,12 @@
-local defaults = require("config.defaults")
+local defaults = require("defaults")
+local utils = require("utils")
 
 -- Global vim variables
+vim.g.mapleader = " "
+vim.g.maplocalleader = "\\"
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 vim.g.editorconfig = true
-vim.g.mapleader = " "
-vim.g.maplocalleader = "\\"
 
 -- use fish if available; otherwise, fallback to bash.
 local shell = "fish"
@@ -31,47 +32,26 @@ vim.o.conceallevel = 0 -- Hide * markup for bold and italic, but not markers wit
 vim.o.confirm = true --  Confirm to save changes before exiting modified buffer
 vim.o.smoothscroll = true
 vim.o.cursorline = false
-vim.o.updatetime = 1500
-
 vim.o.sessionoptions = "curdir,folds,globals,help,tabpages,terminal,winsize"
+
+-- enable spelling
+vim.o.spell = false
+vim.o.spelllang = "en_us"
+
+-- nice and simple folding:
+vim.o.foldenable = true
+vim.o.foldlevel = 99
+vim.o.foldtext = ""
+vim.o.foldcolumn = "0"
 vim.o.fillchars = "foldopen:,foldclose:,fold: ,foldsep: ,diff:╱,eob: "
+vim.o.foldmethod = "expr"
+-- default to treesitter folding
+vim.o.foldexpr = "v:lua.vim.treesitter.foldexpr()"
 
-if vim.g.neovide then
-	vim.o.guifont = "NotoMono Nerd Font:h12"
-	vim.o.linespace = 0
-
-	vim.g.neovide_scale_factor = 1.0
-	vim.g.neovide_text_gamma = 0.0
-	vim.g.neovide_text_contrast = 0.5
-
-	vim.g.neovide_padding_top = 0
-	vim.g.neovide_padding_bottom = 0
-	vim.g.neovide_padding_right = 0
-	vim.g.neovide_padding_left = 0
-
-	vim.g.neovide_floating_shadow = true
-	vim.g.neovide_floating_z_height = 10
-	vim.g.neovide_light_angle_degrees = 45
-	vim.g.neovide_light_radius = 5
-
-	vim.g.neovide_transparency = 1.0
-	vim.g.neovide_position_animation_length = 0.15
-	vim.g.neovide_scroll_animation_length = 0.3
-	vim.g.neovide_hide_mouse_when_typing = true
-	vim.g.neovide_theme = "auto"
-
-	vim.g.neovide_refresh_rate = 60
-	vim.g.neovide_refresh_rate_idle = 5
-	vim.g.neovide_fullscreen = false
-end
+-- diagnostic options
 vim.diagnostic.config(defaults.diagnostics_options)
 
--- configure diagnostics signs
-for name, icon in pairs(defaults.icons.diagnostics) do
-	name = "DiagnosticSign" .. name
-	vim.fn.sign_define(name, { text = icon, texthl = name, numhl = "" })
-end
-
+-- signs
 -- configure debugger diagnostics signs
 for name, icon in pairs(defaults.icons.debugger) do
 	vim.fn.sign_define(name, { text = icon, texthl = name, numhl = "" })

@@ -7,10 +7,10 @@ return {
 		local lint = require("lint")
 		-- LINTER CONFIG
 		lint.linters_by_ft = {
+			go = { "golint" },
 			lua = { "selene" },
-			markdown = { "codespell" },
-			text = { "codespell" },
-			typst = { "codespell" },
+			python = { "ruff" },
+			rust = { "clippy" },
 		}
 
 		-- AUTO COMMANDS
