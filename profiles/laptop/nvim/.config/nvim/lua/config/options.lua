@@ -1,7 +1,4 @@
-local defaults = require("defaults")
-local utils = require("utils")
-
--- Global vim variables
+-- global vim variables
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 vim.g.loaded_netrw = 1
@@ -34,7 +31,7 @@ vim.o.smoothscroll = true
 vim.o.cursorline = false
 vim.o.sessionoptions = "curdir,folds,globals,help,tabpages,terminal,winsize"
 
--- enable spelling
+-- spelling
 vim.o.spell = false
 vim.o.spelllang = "en_us"
 
@@ -48,11 +45,24 @@ vim.o.foldmethod = "expr"
 -- default to treesitter folding
 vim.o.foldexpr = "v:lua.vim.treesitter.foldexpr()"
 
+local signs = require("utils").icons.diagnostics
 -- diagnostic options
-vim.diagnostic.config(defaults.diagnostics_options)
-
--- signs
--- configure debugger diagnostics signs
-for name, icon in pairs(defaults.icons.debugger) do
-	vim.fn.sign_define(name, { text = icon, texthl = name, numhl = "" })
-end
+vim.diagnostic.config({
+	float = {
+		border = "single",
+		severity_sort = true,
+		source = "if_many",
+		zindex = 3,
+	},
+	severity_sort = true,
+	signs = {
+		text = {
+			[vim.diagnostic.severity.ERROR] = signs.error,
+			[vim.diagnostic.severity.HINT] = signs.hint,
+			[vim.diagnostic.severity.INFO] = signs.info,
+			[vim.diagnostic.severity.WARN] = signs.warn,
+		},
+	},
+	virtual_lines = false,
+	virtual_text = true,
+})

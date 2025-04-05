@@ -1,5 +1,9 @@
+local utils = require("utils")
+
 -- load vim settings(options, keymaps, etc...)
-require("config")
+require("config.options")
+utils.lazy_load({ "config.keymaps", "config.autocmds" })
+
 -- bootstrap lazy.nvim
 require("config.lazy")
 

@@ -1,5 +1,65 @@
 local M = {}
 
+M.icons = {
+	diagnostics = {
+		error = "󰅚 ",
+		warn = "󰀪 ",
+		hint = "󰌶 ",
+		info = " ",
+	},
+	debugger = {
+		DapBreakpoint = " ",
+		DapBreakpointCondition = " ",
+		DapLogPoint = " ",
+		DapStopped = " ",
+		DapBreakpointRejected = " ",
+	},
+	git = {
+		add = { text = "│" },
+		change = { text = "!" },
+		delete = { text = "_" },
+		topdelete = { text = "‾" },
+		changedelete = { text = "~" },
+		untracked = { text = "┆" },
+	},
+	kinds = {
+		Array = " ",
+		Boolean = " ",
+		Class = " ",
+		Color = "  ",
+		Constant = " ",
+		Constructor = "",
+		Copilot = " ",
+		Enum = " ",
+		EnumMember = "",
+		Event = " ",
+		Field = "󰄶 ",
+		File = "󰈙",
+		Folder = "  ",
+		Function = "󰊕",
+		Interface = " ",
+		Keyword = "󰌋 ",
+		Method = "󰆧 ",
+		Module = " ",
+		Namespace = " ",
+		Null = " ",
+		Number = " ",
+		Object = " ",
+		Operator = " ",
+		Package = "󰏗 ",
+		Property = " ",
+		Reference = " ",
+		Snippet = " ",
+		String = " ",
+		Struct = " ",
+		Text = "󰊄 ",
+		TypeParameter = " ",
+		Unit = " ",
+		Value = "󰎠",
+		Variable = "󰘛 ",
+	},
+}
+
 function _G.dump(...)
 	vim.print(...)
 end

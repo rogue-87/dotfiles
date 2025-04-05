@@ -61,10 +61,7 @@ return {
 			kind_icons = {},
 		},
 		---@type NoiceRouteConfig
-		redirect = {
-			view = "popup",
-			filter = { event = "msg_show" },
-		},
+		redirect = { view = "popup", filter = { event = "msg_show" } },
 		---@type table<string, NoiceCommand>
 		commands = {
 			---@diagnostic disable-next-line: missing-fields

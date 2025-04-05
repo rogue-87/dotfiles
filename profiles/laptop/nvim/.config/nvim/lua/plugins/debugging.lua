@@ -17,6 +17,14 @@ return {
 			{ "theHamsta/nvim-dap-virtual-text", opts = {} },
 			{ "igorlfs/nvim-dap-view", opts = {} },
 		},
+		init = function()
+			local utils = require("utils")
+			-- signs
+			-- configure debugger diagnostics signs
+			for name, icon in pairs(utils.icons.debugger) do
+				vim.fn.sign_define(name, { text = icon, texthl = name, numhl = "" })
+			end
+		end,
 		-- stylua: ignore
 		keys = {
 			{ "<leader>d", "", desc = "+debug", mode = {"n", "v"} },
