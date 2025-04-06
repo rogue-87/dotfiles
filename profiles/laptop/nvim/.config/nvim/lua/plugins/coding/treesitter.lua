@@ -12,14 +12,14 @@ return {
 		local tsconfigs = require("nvim-treesitter.configs")
 		tsconfigs.setup({
 			ensure_installed = {
-				"luadoc",
-				"regex",
-				"diff",
 				"c",
+				"diff",
 				"lua",
+				"luadoc",
 				"markdown",
 				"markdown_inline",
 				"query",
+				"regex",
 				"vim",
 				"vimdoc",
 			},

@@ -14,8 +14,8 @@ if status is-interactive
 
 
     # default editor
-    set -Ux EDITOR nvim
-    set -Ux VISUAL nvim
+    set -x EDITOR nvim
+    set -x VISUAL nvim
 
     # browser to be used by flutter
     set -x CHROME_EXECUTABLE chromium-browser
