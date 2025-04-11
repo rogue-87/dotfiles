@@ -24,10 +24,10 @@ return {
 		lazy = false,
 		opts = {
 			html = { enable = false },
-			markdown = { enable = false },
+			markdown = { enable = true },
 			markdown_inline = { enable = true },
-			typst = { enable = false },
-			yaml = { enable = false },
+			typst = { enable = true },
+			yaml = { enable = true },
 		},
 	},
 	-- formatter

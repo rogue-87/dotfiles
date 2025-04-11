@@ -18,10 +18,10 @@ return {
 			{ "igorlfs/nvim-dap-view", opts = {} },
 		},
 		init = function()
-			local utils = require("utils")
+			local icons = require("myutils.icons")
 			-- signs
 			-- configure debugger diagnostics signs
-			for name, icon in pairs(utils.icons.debugger) do
+			for name, icon in pairs(icons.debugger) do
 				vim.fn.sign_define(name, { text = icon, texthl = name, numhl = "" })
 			end
 		end,

@@ -1,7 +1,7 @@
 vim.bo.tabstop = 4
 vim.bo.shiftwidth = 4
 
-local utils = require("utils")
+local utils = require("myutils")
 local mason = require("mason-registry")
 local java_debug = mason.get_package("java-debug-adapter"):get_install_path()
 	.. "/extension/server/com.microsoft.java.debug.plugin-*.jar"

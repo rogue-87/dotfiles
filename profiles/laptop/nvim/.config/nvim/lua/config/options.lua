@@ -45,7 +45,7 @@ vim.o.foldmethod = "expr"
 -- default to treesitter folding
 vim.o.foldexpr = "v:lua.vim.treesitter.foldexpr()"
 
-local signs = require("utils").icons.diagnostics
+local signs = require("myutils.icons").diagnostics
 -- diagnostic options
 vim.diagnostic.config({
 	float = {

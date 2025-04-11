@@ -1,19 +1,21 @@
 fork = false
-frame = "full"
+# "full", "none"
+frame = "none"
 idle = true
-maximized = false
+maximized = true
 mouse-cursor-icon = "arrow"
 neovim-bin = "/usr/bin/nvim"
 no-multigrid = false
 srgb = false
-tabs = true
+tabs = false
 theme = "auto"
 title-hidden = true
 vsync = true
 wsl = false
 
 [font]
-normal = [] # Will use the bundled Fira Code Nerd Font by default
+# Will use the bundled Fira Code Nerd Font by default
+normal = ["FiraCode Nerd Font Mono"]
 size = 14.0
 
 [box-drawing]
@@ -21,5 +23,5 @@ size = 14.0
 mode = "font-glyph"
 
 [box-drawing.sizes]
-default = [2, 4]  # Thin and thick values respectively, for all sizes
-
+# Thin and thick values respectively, for all sizes
+default = [2, 4]

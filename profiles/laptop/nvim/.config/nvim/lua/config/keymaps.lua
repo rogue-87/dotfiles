@@ -1,4 +1,5 @@
-local utils = require("utils")
+local utils = require("myutils")
+local lsp = require("myutils.lsp")
 ---@type vim.keymap.set.Opts
 local opts = { noremap = true, silent = true }
 
@@ -31,10 +32,24 @@ utils.map("n", "S", '"_S', opts)
 
 -- Actual Keymaps
 opts.desc = "this file"
-utils.map("n", "<leader>ww", "<cmd>w<cr>", opts)
+utils.map("n", "<leader>ww", function()
+	local msg = vim.api.nvim_exec2("w", { output = true })
+	vim.notify(msg["output"], vim.log.levels.TRACE)
+end, opts)
 
 opts.desc = "all files"
-utils.map("n", "<leader>wa", "<cmd>wa<cr>", opts)
+utils.map("n", "<leader>wa", function()
+	---@type {output: string}
+	local files = vim.api.nvim_exec2("wa", { output = true })
+
+	local list = {}
+	for file in files["output"]:gmatch('"(.-)"') do
+		table.insert(list, file)
+	end
+
+	if list == {} then return end
+	vim.notify(vim.inspect(list), vim.log.levels.TRACE)
+end, opts)
 
 opts.desc = "nohlsearch"
 utils.map("n", "<leader>h", "<cmd>nohlsearch<cr>", opts)
@@ -87,7 +102,7 @@ utils.map("n", "<C-,>", "<cmd>-tabmove<cr>", opts)
 utils.map("n", "<C-.>", "<cmd>+tabmove<cr>", opts)
 
 -- NOTE: LSP related mappings
-utils.lsp.on_attach(function(client, bufnr)
+lsp.on_attach(function(client, bufnr)
 	local ls_opts = { buffer = bufnr }
 
 	if client.server_capabilities.hoverProvider then

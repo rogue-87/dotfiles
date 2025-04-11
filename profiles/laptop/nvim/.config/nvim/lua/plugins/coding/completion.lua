@@ -11,18 +11,15 @@ return {
 
 		cmdline = { enabled = false },
 
-		appearance = {
-			use_nvim_cmp_as_default = true,
-			nerd_font_variant = "normal",
-		},
+		appearance = { use_nvim_cmp_as_default = true, nerd_font_variant = "normal" },
 
 		completion = {
 			menu = { border = "padded" },
-			documentation = { window = { border = "padded" } },
+			documentation = { window = { border = "padded", scrollbar = true } },
 			list = { selection = { preselect = true, auto_insert = false } },
 		},
 
-		signature = { window = { border = "single" } },
+		signature = { enabled = true },
 
 		snippets = { preset = "default" },
 		-- Default list of enabled providers defined so that you can extend it
@@ -31,5 +28,5 @@ return {
 			default = { "lsp", "path", "snippets", "buffer" },
 		},
 	},
-	-- opts_extend = { "sources.default" },
+	opts_extend = { "sources.default" },
 }

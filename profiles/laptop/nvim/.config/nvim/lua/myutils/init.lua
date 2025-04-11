@@ -1,65 +1,5 @@
 local M = {}
 
-M.icons = {
-	diagnostics = {
-		error = "󰅚 ",
-		warn = "󰀪 ",
-		hint = "󰌶 ",
-		info = " ",
-	},
-	debugger = {
-		DapBreakpoint = " ",
-		DapBreakpointCondition = " ",
-		DapLogPoint = " ",
-		DapStopped = " ",
-		DapBreakpointRejected = " ",
-	},
-	git = {
-		add = { text = "│" },
-		change = { text = "!" },
-		delete = { text = "_" },
-		topdelete = { text = "‾" },
-		changedelete = { text = "~" },
-		untracked = { text = "┆" },
-	},
-	kinds = {
-		Array = " ",
-		Boolean = " ",
-		Class = " ",
-		Color = "  ",
-		Constant = " ",
-		Constructor = "",
-		Copilot = " ",
-		Enum = " ",
-		EnumMember = "",
-		Event = " ",
-		Field = "󰄶 ",
-		File = "󰈙",
-		Folder = "  ",
-		Function = "󰊕",
-		Interface = " ",
-		Keyword = "󰌋 ",
-		Method = "󰆧 ",
-		Module = " ",
-		Namespace = " ",
-		Null = " ",
-		Number = " ",
-		Object = " ",
-		Operator = " ",
-		Package = "󰏗 ",
-		Property = " ",
-		Reference = " ",
-		Snippet = " ",
-		String = " ",
-		Struct = " ",
-		Text = "󰊄 ",
-		TypeParameter = " ",
-		Unit = " ",
-		Value = "󰎠",
-		Variable = "󰘛 ",
-	},
-}
-
 function _G.dump(...)
 	vim.print(...)
 end
@@ -89,25 +29,6 @@ function M.reload_one(module)
 			return
 		end
 	end
-end
-
---{ "git", "rg", { "fd", "fdfind" }, "lazygit" }
-M.check_if_cmd_exist = function(cmds)
-	local result = {}
-	for _, cmd in ipairs(cmds) do
-		local name = type(cmd) == "string" and cmd or vim.inspect(cmd)
-		local commands = type(cmd) == "string" and { cmd } or cmd
-		---@cast commands string[]
-		local found = false
-		for _, c in ipairs(commands) do
-			if vim.fn.executable(c) == 1 then
-				name = c
-				found = true
-			end
-			result[name] = { found }
-		end
-	end
-	return result
 end
 
 ---@param editor_variable? {global: boolean}
@@ -189,9 +110,9 @@ function M.on_very_lazy(fn)
 	})
 end
 
----@param modules string[]
 --modules like "autocmds" | "options" | "keymaps"
-M.lazy_load = function(modules)
+---@param modules string[]
+function M.lazy_load(modules)
 	-- when no file is opened at startup
 	if vim.fn.argc(-1) == 0 then
 		-- autocmds and keymaps can wait to load
@@ -225,12 +146,13 @@ local function mdesc(opt, description)
 	return vim.tbl_extend("force", opt, { desc = description })
 end
 
+--- wrapper function around `vim.keymap.set`
 ---@param mode string|table
 ---@param lhs string
 ---@param rhs string|function
 ---@param opts? table
 ---@param desc? string
-M.map = function(mode, lhs, rhs, opts, desc)
+function M.map(mode, lhs, rhs, opts, desc)
 	opts = opts and opts or {}
 	opts = mdesc(opts, desc)
 	vim.keymap.set(mode, lhs, rhs, opts)
@@ -241,57 +163,5 @@ M.autocmd = vim.api.nvim_create_autocmd
 
 --- shortcut to vim.api.nvim_create_augroup
 M.augroup = vim.api.nvim_create_augroup
-
-M.lsp = {}
---- ```lua
---- shortcut to
---- vim.api.nvim_create_autocmd("LspAttatch", function(client, bufnr)
---- 	callback = function(args)
---- 		local bufnr = args.buf
---- 		local client = vim.lsp.get_client_by_id(args.data.client_id)
---- 		on_attach(client, bufnr)
---- 	end
---- end)
---- ```
----@param on_attach fun(client: vim.lsp.Client?, bufnr: integer)
-function M.lsp.on_attach(on_attach)
-	vim.api.nvim_create_autocmd("LspAttach", {
-		callback = function(args)
-			local bufnr = args.buf
-			local client = vim.lsp.get_client_by_id(args.data.client_id)
-			on_attach(client, bufnr)
-		end,
-	})
-end
-
-function M.lsp.on_detach()
-	vim.api.nvim_create_autocmd({ "LspDetach" }, {
-		group = vim.api.nvim_create_augroup("LspStopWithLastClient", {}),
-		callback = function(args)
-			local client = vim.lsp.get_client_by_id(args.data.client_id)
-			if not client or not client.attached_buffers then
-				return
-			end
-
-			-- check if there are any other buffers attached to the client
-			for buf_id in pairs(client.attached_buffers) do
-				if buf_id ~= args.buf then
-					return
-				end
-			end
-			client:stop()
-		end,
-		desc = "Stop lsp client when no buffer is attached",
-	})
-end
-
-M.lsp.capabilities = {}
-function M.lsp.capabilities.get()
-	if M.has("blink.cmp") then
-		return require("blink-cmp").get_lsp_capabilities()
-	end
-
-	return vim.lsp.protocol.make_client_capabilities()
-end
 
 return M
