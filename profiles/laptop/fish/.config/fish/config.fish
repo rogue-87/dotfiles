@@ -19,4 +19,7 @@ if status is-interactive
 
     # browser to be used by flutter
     set -x CHROME_EXECUTABLE chromium-browser
+	if command -q -v zoxide >/dev/null
+		zoxide init fish | source
+	end
 end

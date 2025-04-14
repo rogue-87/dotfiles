@@ -15,10 +15,8 @@ git clone https://github.com/rogue-87/dotfiles.git
 then use `make` to run stow. here's what you can do
 
 ```sh
-# setup dotfiles for laptop
-just stow laptop
-# setup dotfiles for termux(android terminal emulator)
-just stow termux
+# setup dotfiles
+just stow
 # remove dotfiles
 just unstow
 ```
