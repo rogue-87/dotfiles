@@ -17,22 +17,6 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
 	spec = {
-		{
-			"williamboman/mason.nvim",
-			opts = {
-				ui = {
-					icons = {
-						package_installed = "✓",
-						package_pending = "➜",
-						package_uninstalled = "✗",
-					},
-				},
-			},
-			cmd = "Mason",
-			keys = {
-				{ "<leader>mm", "<cmd>Mason<cr>", desc = "Mason" },
-			},
-		},
 		{ import = "plugins.ui" }, -- colorschemes, dashboard, improved lsp UI and more
 		{ import = "plugins.editor" }, -- fuzzy finder, filetree, scrollbar, git integration & more
 		{ import = "plugins.coding" }, -- code completion, formatting, linting, etc...
