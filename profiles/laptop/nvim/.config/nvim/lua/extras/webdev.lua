@@ -325,18 +325,18 @@ return {
 			if vim.fn.filereadable("package.json") == 1 then
 				conform.setup({
 					formatters_by_ft = {
-						javascript = { "prettier" },
-						javascriptreact = { "prettier" },
-						typescript = { "prettier" },
-						typescriptreact = { "prettier" },
+						javascript = { "prettierd" },
+						javascriptreact = { "prettierd" },
+						typescript = { "prettierd" },
+						typescriptreact = { "prettierd" },
 
-						html = { "prettier" },
-						markdown = { "prettier" },
-						css = { "prettier" },
-						scss = { "prettier" },
+						html = { "prettierd" },
+						markdown = { "prettierd" },
+						css = { "prettierd" },
+						scss = { "prettierd" },
 
-						json = { "prettier" },
-						yaml = { "prettier" },
+						json = { "prettierd" },
+						yaml = { "prettierd" },
 					},
 				})
 			end
