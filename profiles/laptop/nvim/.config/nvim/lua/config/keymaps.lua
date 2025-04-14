@@ -47,7 +47,10 @@ utils.map("n", "<leader>wa", function()
 		table.insert(list, file)
 	end
 
-	if list == {} then return end
+	-- man I wish lua had type system instead of this
+	if type(list[1]) ~= "string" then
+		return
+	end
 	vim.notify(vim.inspect(list), vim.log.levels.TRACE)
 end, opts)
 
