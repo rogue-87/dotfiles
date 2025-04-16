@@ -34,7 +34,7 @@ utils.map("n", "S", '"_S', opts)
 opts.desc = "this file"
 utils.map("n", "<leader>ww", function()
 	local msg = vim.api.nvim_exec2("w", { output = true })
-	Snacks.notifier.notify(msg["output"], "trace", { style = "minimal" })
+	Snacks.notifier.notify(msg["output"], "info", { style = "compact", icon = "  ", title = "written" })
 end, opts)
 
 opts.desc = "all files"
@@ -44,11 +44,13 @@ utils.map("n", "<leader>wa", function()
 	-- stylua: ignore
 	if files["output"] == "" then return end
 
-	local list = {}
-	-- stylua: ignore
-	for file in files["output"]:gmatch('"(.-)"') do table.insert(list, file) end
+	local written_files = ""
+	for file in files["output"]:gmatch('"(.-)"') do
+		written_files = written_files .. file .. "\n"
+	end
+	written_files = written_files:sub(1, written_files:len() - 1)
 
-	Snacks.notifier.notify(vim.inspect(list), "trace", { style = "minimal" })
+	Snacks.notifier.notify(written_files, "info", { style = "fancy", icon = "  ", title = "written" })
 end, opts)
 
 opts.desc = "nohlsearch"
@@ -95,7 +97,6 @@ end, opts)
 
 utils.map("n", "<A-n>", "<cmd>tabnew<cr>", opts)
 utils.map("n", "<A-c>", "<cmd>tabclose<cr>", opts)
-utils.map("n", "<A-t>", "<cmd>tabonly<cr>", opts)
 utils.map("n", "<A-.>", "<cmd>tabn<cr>", opts)
 utils.map("n", "<A-,>", "<cmd>tabp<cr>", opts)
 utils.map("n", "<C-,>", "<cmd>-tabmove<cr>", opts)

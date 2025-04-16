@@ -22,7 +22,7 @@ return {
 		dashboard.section.buttons.val = {
 			dashboard.button("e", "  New file", ":ene <BAR> startinsert <cr>"),
 
-			dashboard.button("f", "󰍉  Find Files", "<cmd>lua Snacks.picker.files()<cr>"),
+			dashboard.button("f", "  Find Files", "<cmd>lua Snacks.picker.files()<cr>"),
 
 			dashboard.button(
 				"s",
@@ -48,7 +48,7 @@ return {
 			callback = function()
 				local stats = require("lazy").stats()
 				local ms = (math.floor(stats.startuptime * 100 + 0.5) / 100)
-				dashboard.section.footer.val = "⚡ Neovim loaded "
+				dashboard.section.footer.val = "󱐋 Neovim loaded "
 					.. stats.loaded
 					.. "/"
 					.. stats.count
