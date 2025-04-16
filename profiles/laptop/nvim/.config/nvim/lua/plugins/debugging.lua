@@ -48,7 +48,6 @@ return {
 		},
 		config = function()
 			local dap = require("dap")
-			local mason = require("mason-registry")
 
 			-- NOTE: dap for C/C++
 			dap.adapters.codelldb = {
@@ -75,7 +74,7 @@ return {
 			dap.configurations.cpp = { cc_dap_config }
 
 			-- NOTE: dap for C#
-			local netcoredbg = mason.get_package("netcoredbg"):get_install_path() .. "/netcoredbg"
+			local netcoredbg = "path/to" .. "/netcoredbg"
 			dap.adapters.coreclr = {
 				type = "executable",
 				command = netcoredbg,

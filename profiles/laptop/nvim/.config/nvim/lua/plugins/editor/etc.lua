@@ -30,7 +30,6 @@ return {
 				"*",
 				"!popup",
 				"!lazy",
-				"!mason",
 				"!noice",
 				"!neo-tree",
 			},

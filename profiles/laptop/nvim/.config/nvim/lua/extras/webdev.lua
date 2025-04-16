@@ -396,10 +396,8 @@ return {
 	--[[ {
 		"mfussenegger/nvim-dap",
 		optional = true,
-		dependencies = { "williamboman/mason.nvim" },
 		opts = function()
 			local dap = require("dap")
-			local mason = require("mason-registry")
 
 			-- debug adapter for nodejs & deno
 			dap.adapters["pwa-node"] = {
@@ -409,7 +407,7 @@ return {
 				executable = {
 					command = "node",
 					args = {
-						mason.get_package("js-debug-adapter"):get_install_path() .. "/js-debug/src/dapDebugServer.js",
+						"path/to" .. "/js-debug/src/dapDebugServer.js",
 						"${port}",
 					},
 				},

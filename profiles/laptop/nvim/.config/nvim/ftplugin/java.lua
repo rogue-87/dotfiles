@@ -2,11 +2,9 @@ vim.bo.tabstop = 4
 vim.bo.shiftwidth = 4
 
 local utils = require("myutils")
-local mason = require("mason-registry")
-local java_debug = mason.get_package("java-debug-adapter"):get_install_path()
-	.. "/extension/server/com.microsoft.java.debug.plugin-*.jar"
+local java_debug = "path/to" .. "/extension/server/com.microsoft.java.debug.plugin-*.jar"
 
-local java_test = mason.get_package("java-test"):get_install_path() .. "/extension/server/*.jar"
+local java_test = "path/to" .. "/extension/server/*.jar"
 
 local config = {
 	cmd = { vim.fn.exepath("jdtls") },
