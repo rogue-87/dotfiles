@@ -34,24 +34,21 @@ utils.map("n", "S", '"_S', opts)
 opts.desc = "this file"
 utils.map("n", "<leader>ww", function()
 	local msg = vim.api.nvim_exec2("w", { output = true })
-	vim.notify(msg["output"], vim.log.levels.TRACE)
+	Snacks.notifier.notify(msg["output"], "trace", { style = "minimal" })
 end, opts)
 
 opts.desc = "all files"
 utils.map("n", "<leader>wa", function()
 	---@type {output: string}
 	local files = vim.api.nvim_exec2("wa", { output = true })
+	-- stylua: ignore
+	if files["output"] == "" then return end
 
 	local list = {}
-	for file in files["output"]:gmatch('"(.-)"') do
-		table.insert(list, file)
-	end
+	-- stylua: ignore
+	for file in files["output"]:gmatch('"(.-)"') do table.insert(list, file) end
 
-	-- man I wish lua had type system instead of this
-	if type(list[1]) ~= "string" then
-		return
-	end
-	vim.notify(vim.inspect(list), vim.log.levels.TRACE)
+	Snacks.notifier.notify(vim.inspect(list), "trace", { style = "minimal" })
 end, opts)
 
 opts.desc = "nohlsearch"

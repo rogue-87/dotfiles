@@ -6,10 +6,6 @@ return {
 	opts = {
 		cmdline = {
 			enabled = true,
-			format = {
-				search_down = { kind = "search", pattern = "^/", icon = " ", lang = "regex" },
-				search_up = { kind = "search", pattern = "^%?", icon = " ", lang = "regex" },
-			},
 		},
 		health = { checker = false },
 		lsp = {
