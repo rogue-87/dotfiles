@@ -21,7 +21,7 @@ return {
 			python = { "ruff_format", lsp_format = "fallback" },
 			rust = { "rustfmt", lsp_format = "fallback" },
 			xml = { "xmllint" },
-			nix = { "nixfmt" }
+			nix = { "nixfmt" },
 		},
 		default_format_opts = { lsp_format = "fallback" },
 	},

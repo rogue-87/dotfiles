@@ -30,13 +30,15 @@ return {
 			yaml = { enable = true },
 		},
 	},
+	-- rendering images(requires a terminal that supports kitty graphics protocol)
+	{ "3rd/image.nvim", build = false, opts = { processor = "magick_cli" } },
 	-- formatter
 	{
 		"stevearc/conform.nvim",
 		optional = true,
 		opts = function()
 			local conform = require("conform")
-			conform.setup({ formatters_by_ft = { markdown = { "prettier" } } })
+			conform.setup({ formatters_by_ft = { markdown = { "prettierd" } } })
 		end,
 	},
 }

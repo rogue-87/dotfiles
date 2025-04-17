@@ -331,7 +331,7 @@ return {
 						typescriptreact = { "prettierd" },
 
 						html = { "prettierd" },
-						markdown = { "prettierd" },
+						-- markdown = { "prettierd" },
 						css = { "prettierd" },
 						scss = { "prettierd" },
 
