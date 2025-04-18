@@ -3,9 +3,6 @@ deno = "latest"
 flutter = "latest"
 gradle = "latest"
 lazygit = "latest"
-neovim = "latest"
 taplo = "latest"
 typst = "latest"
 usage = "latest"
-
-

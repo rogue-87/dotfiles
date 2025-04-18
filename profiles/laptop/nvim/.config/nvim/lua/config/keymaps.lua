@@ -50,7 +50,7 @@ utils.map("n", "<leader>wa", function()
 	end
 	written_files = written_files:sub(1, written_files:len() - 1)
 
-	Snacks.notifier.notify(written_files, "info", { style = "fancy", icon = "  ", title = "written" })
+	Snacks.notifier.notify(written_files, "info", { style = "compact", icon = "  ", title = "written" })
 end, opts)
 
 opts.desc = "nohlsearch"
