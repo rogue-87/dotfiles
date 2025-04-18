@@ -36,9 +36,6 @@ return {
 	{
 		"stevearc/conform.nvim",
 		optional = true,
-		opts = function()
-			local conform = require("conform")
-			conform.setup({ formatters_by_ft = { markdown = { "prettierd" } } })
-		end,
+		opts = { formatters_by_ft = { markdown = { "prettierd" } } },
 	},
 }
