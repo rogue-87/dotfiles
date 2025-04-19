@@ -1,5 +1,5 @@
-vim.bo.tabstop = 4
 vim.bo.shiftwidth = 4
+vim.bo.tabstop = 4
 
 local utils = require("myutils")
 local java_debug = "path/to" .. "/extension/server/com.microsoft.java.debug.plugin-*.jar"
