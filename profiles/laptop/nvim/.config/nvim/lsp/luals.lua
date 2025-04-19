@@ -12,7 +12,6 @@ return {
 		"selene.yml",
 		".git",
 	},
-	single_file_support = true,
 	log_level = vim.lsp.protocol.MessageType.Warning,
 	on_init = function(client)
 		if client.workspace_folders then
@@ -30,9 +29,9 @@ return {
 			workspace = {
 				checkThirdParty = false,
 				library = {
-					vim.env.VIMRUNTIME,
-					"${3rd}/luv/library",
-					"${3rd}/busted/library",
+					-- vim.env.VIMRUNTIME,
+					-- "${3rd}/luv/library",
+					-- "${3rd}/busted/library",
 				},
 			},
 		})

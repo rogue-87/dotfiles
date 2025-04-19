@@ -72,7 +72,6 @@ local configs = {
 		cmd = { "vscode-html-language-server", "--stdio" },
 		filetypes = { "html", "templ" },
 		root_markers = { "package.json", ".git" },
-		single_file_support = true,
 		settings = {},
 		init_options = {
 			provideFormatter = true,
@@ -85,7 +84,6 @@ local configs = {
 		filetypes = { "css", "scss", "less" },
 		init_options = { provideFormatter = true }, -- needed to enable formatting capabilities
 		root_markers = { "package.json", ".git" },
-		single_file_support = true,
 		settings = {
 			css = { validate = true },
 			scss = { validate = true },
@@ -253,7 +251,6 @@ local configs = {
 			"typescript.tsx",
 		},
 		root_markers = { "tsconfig.json", "jsconfig.json", "package.json", ".git" },
-		single_file_support = true,
 	},
 
 	denols = {
