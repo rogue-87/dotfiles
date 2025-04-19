@@ -24,7 +24,6 @@ require("lazy").setup({
 		-- { import = "extras" }, -- extra stuff
 		-- { import = "extras.ai" },
 		-- { import = "extras.db" },
-		-- { import = "extras.discord" },
 		{ import = "extras.notes" },
 		{ import = "extras.wakatime" },
 		{ import = "extras.webdev" },
