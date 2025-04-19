@@ -17,7 +17,6 @@ return {
 		},
 
 		completion = {
-			menu = { border = "padded" },
 			documentation = { window = { border = "padded" } },
 			list = { selection = { preselect = true, auto_insert = false } },
 		},
