@@ -1,4 +1,3 @@
--- noice
 return {
 	"mfussenegger/nvim-lint",
 	event = { "BufReadPre", "BufWritePost", "BufNewFile" },

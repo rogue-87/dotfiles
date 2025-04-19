@@ -1,12 +1,11 @@
+--- I only use this for the fancy cmdline :p
 ---@diagnostic disable: missing-fields
 return {
 	"folke/noice.nvim",
 	dependencies = { "MunifTanjim/nui.nvim" },
 	---@type NoiceConfig
 	opts = {
-		cmdline = {
-			enabled = true,
-		},
+		cmdline = { enabled = true },
 		health = { checker = false },
 		lsp = {
 			hover = { enabled = false },
@@ -15,7 +14,7 @@ return {
 			signature = { enabled = false },
 		},
 		messages = { enabled = true },
-		notify = { enabled = false, view = "mini" },
+		notify = { enabled = false },
 		popupmenu = { enabled = true },
 		presets = {
 			bottom_search = true,

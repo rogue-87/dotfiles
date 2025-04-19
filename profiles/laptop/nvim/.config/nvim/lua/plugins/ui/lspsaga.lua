@@ -6,9 +6,7 @@ return {
 	},
 	---@type LspsagaConfig
 	opts = {
-		lightbulb = {
-			sign = false,
-			virtual_text = true,
-		},
+		lightbulb = { sign = false, virtual_text = true },
+		rename = { in_select = false, keys = { quit = "<esc>" } },
 	},
 }

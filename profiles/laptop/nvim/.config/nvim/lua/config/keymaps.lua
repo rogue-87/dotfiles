@@ -31,28 +31,6 @@ utils.map({ "n", "v" }, "s", '"_s', opts)
 utils.map("n", "S", '"_S', opts)
 
 -- Actual Keymaps
-opts.desc = "this file"
-utils.map("n", "<leader>ww", function()
-	local msg = vim.api.nvim_exec2("w", { output = true })
-	Snacks.notifier.notify(msg["output"], "info", { style = "compact", icon = "  ", title = "written" })
-end, opts)
-
-opts.desc = "all files"
-utils.map("n", "<leader>wa", function()
-	---@type {output: string}
-	local files = vim.api.nvim_exec2("wa", { output = true })
-	-- stylua: ignore
-	if files["output"] == "" then return end
-
-	local written_files = ""
-	for file in files["output"]:gmatch('"(.-)"') do
-		written_files = written_files .. file .. "\n"
-	end
-	written_files = written_files:sub(1, written_files:len() - 1)
-
-	Snacks.notifier.notify(written_files, "info", { style = "compact", icon = "  ", title = "written" })
-end, opts)
-
 opts.desc = "nohlsearch"
 utils.map("n", "<leader>h", "<cmd>nohlsearch<cr>", opts)
 
@@ -333,7 +311,7 @@ lsp.on_attach(function(client, bufnr)
 	utils.map("n", "<localleader>wf", function()
 		vim.print(vim.lsp.buf.list_workspace_folders())
 	end, ls_opts, "list workspace folders")
-	utils.map("n", "<localleader>rd", function()
+	utils.map("n", "<localleader>cd", function()
 		vim.notify("Language server " .. (vim.lsp.status() and "is ready" or "is not ready"), vim.log.levels.INFO)
 	end, ls_opts, "check if lsp is ready")
 end)

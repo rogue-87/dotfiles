@@ -14,7 +14,6 @@ return {
 		appearance = { use_nvim_cmp_as_default = true, nerd_font_variant = "normal" },
 
 		completion = {
-			menu = { border = "padded" },
 			documentation = { window = { border = "padded", scrollbar = true } },
 			list = { selection = { preselect = true, auto_insert = false } },
 		},
