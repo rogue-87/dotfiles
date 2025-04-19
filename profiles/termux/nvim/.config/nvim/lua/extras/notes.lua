@@ -3,13 +3,11 @@ local configs = {
 	marksman = {
 		cmd = { "marksman", "server" },
 		filetypes = { "markdown", "markdown.mdx" },
-		single_file_support = true,
 		root_markers = { ".git", ".marksman.toml" },
 	},
 	tinymist = {
 		cmd = { "tinymist" },
 		filetypes = { "typst" },
-		single_file_support = true,
 		root_markers = { ".git" },
 	},
 }

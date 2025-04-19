@@ -1,4 +1,4 @@
-local utils = require("utils")
+local utils = require("myutils")
 
 -- load vim settings(options, keymaps, etc...)
 require("config.options")

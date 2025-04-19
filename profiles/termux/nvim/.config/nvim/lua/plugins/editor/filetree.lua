@@ -16,85 +16,28 @@ return {
 		close_if_last_window = false,
 		enable_git_status = true,
 		enable_diagnostics = true,
-		open_files_do_not_replace_types = { "terminal", "trouble", "qf" },
 		sort_case_insensitive = false,
 		filesystem = {
 			filtered_items = {
 				visible = true,
 				hide_dotfiles = true,
 				hide_gitignored = true,
-				hide_by_name = {
-					"node_modlues",
-				},
-				hide_by_pattern = { -- uses glob style patterns
-					--"*.meta",
-					--"*/src/*/tsconfig.json",
-				},
-				always_show = { -- remains visible even if other settings would normally hide it
-					--".gitignored",
-				},
-				always_show_by_pattern = { -- uses glob style patterns
-					--".env*",
-				},
-				never_show = { -- remains hidden even if visible is toggled to true, this overrides always_show
-					--".DS_Store",
-					--"thumbs.db"
-				},
-				never_show_by_pattern = { -- uses glob style patterns
-					--".null-ls_*",
-				},
+				hide_by_name = { "node_modlues" },
+				-- uses glob style patterns
+				hide_by_pattern = {},
+				-- remains visible even if other settings would normally hide it
+				always_show = {},
+				-- uses glob style patterns
+				always_show_by_pattern = {},
+				-- remains hidden even if visible is toggled to true, this overrides always_show
+				never_show = {},
+				-- uses glob style patterns
+				never_show_by_pattern = {},
 			},
-			window = {
-				mappings = {
-					["O"] = "system_open",
-					["P"] = {
-						"toggle_preview",
-						config = {
-							use_float = false,
-						},
-					},
-				},
-			},
+			window = { mappings = { ["O"] = "system_open" } },
 		},
-		window = {
-			position = "right",
-			width = 40,
-		},
-		source_selector = {
-			winbar = false,
-			statusline = false,
-		},
-		default_component_configs = {
-			diagnostics = {
-				symbols = {
-					hint = "󰌵",
-					info = " ",
-					warn = " ",
-					error = " ",
-				},
-				highlights = {
-					hint = "DiagnosticSignHint",
-					info = "DiagnosticSignInfo",
-					warn = "DiagnosticSignWarn",
-					error = "DiagnosticSignError",
-				},
-			},
-			git_status = {
-				symbols = {
-					-- Change type
-					added = "",
-					modified = "",
-					deleted = "✖",
-					renamed = "󰁕",
-					-- Status type
-					untracked = "",
-					ignored = "",
-					unstaged = "",
-					staged = "",
-					conflict = "",
-				},
-			},
-		},
+		window = { position = "right", width = 36 },
+		source_selector = { winbar = false, statusline = false },
 		commands = {
 			system_open = function(state)
 				local node = state.tree:get_node()

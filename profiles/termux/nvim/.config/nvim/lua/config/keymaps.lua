@@ -1,4 +1,5 @@
-local utils = require("utils")
+local utils = require("myutils")
+local lsp = require("myutils.lsp")
 ---@type vim.keymap.set.Opts
 local opts = { noremap = true, silent = true }
 
@@ -87,7 +88,7 @@ utils.map("n", "<C-,>", "<cmd>-tabmove<cr>", opts)
 utils.map("n", "<C-.>", "<cmd>+tabmove<cr>", opts)
 
 -- NOTE: LSP related mappings
-utils.lsp.on_attach(function(client, bufnr)
+lsp.on_attach(function(client, bufnr)
 	local ls_opts = { buffer = bufnr }
 
 	if client.server_capabilities.hoverProvider then

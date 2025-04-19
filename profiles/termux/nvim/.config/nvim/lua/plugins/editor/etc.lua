@@ -30,7 +30,6 @@ return {
 				"*",
 				"!popup",
 				"!lazy",
-				"!noice",
 				"!neo-tree",
 			},
 			user_default_options = {

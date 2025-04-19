@@ -18,24 +18,6 @@ return {
 			lualine_b = { "branch", "diff" },
 			lualine_c = { "filename", "diagnostics" },
 			lualine_x = {
-				-- stylua: ignore
-				{
-					function() return require("noice").api.status.command.get() end,
-					cond = function() return package.loaded["noice"] and require("noice").api.status.command.has()end,
-					color = { fg = "#ff9e64" },
-				},
-				-- stylua: ignore
-				{
-				  function() return require("noice").api.status.mode.get() end,
-				  cond = function() return package.loaded["noice"] and require("noice").api.status.mode.has() end,
-				  color = { fg = "#ff9e64"  },
-				},
-				-- stylua: ignore
-				{
-				  require("lazy.status").updates,
-				  cond = require("lazy.status").has_updates,
-				  color = function() return { fg = "#ff9e64" } end,
-				},
 				"encoding",
 				"filetype",
 			},

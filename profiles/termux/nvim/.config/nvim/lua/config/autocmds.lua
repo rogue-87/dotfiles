@@ -1,7 +1,7 @@
 -- auto-commands go here
-local utils = require("utils")
+local lsp = require("myutils.lsp")
 
-utils.lsp.on_attach(function(client, bufnr)
+lsp.on_attach(function(client, bufnr)
 	local opts = { buffer = bufnr }
 
 	--[[ if client.server_capabilities.completionProvider then
@@ -19,4 +19,4 @@ utils.lsp.on_attach(function(client, bufnr)
 	end
 end)
 
-utils.lsp.on_detach()
+lsp.on_detach()
