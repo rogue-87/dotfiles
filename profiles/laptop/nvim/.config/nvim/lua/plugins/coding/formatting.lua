@@ -16,12 +16,14 @@ return {
 	opts = {
 		formatters_by_ft = {
 			bash = { "shfmt" },
-			go = { "gofmt", lsp_format = "fallback" },
+			json = { "prettierd" },
 			lua = { "stylua" },
+			markdown = { "prettierd" },
+			nix = { "nixfmt" },
 			python = { "ruff_format", lsp_format = "fallback" },
 			rust = { "rustfmt", lsp_format = "fallback" },
 			xml = { "xmllint" },
-			nix = { "nixfmt" },
+			yaml = { "prettierd" },
 		},
 		default_format_opts = { lsp_format = "fallback" },
 	},

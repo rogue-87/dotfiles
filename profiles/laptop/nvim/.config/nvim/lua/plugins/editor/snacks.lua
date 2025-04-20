@@ -8,7 +8,16 @@ return {
 		bigfile = { enabled = true },
 		-- dashboard = { enabled = true },
 		-- explorer = { enabled = true },
-		indent = { enabled = true, animate = { enabled = false } },
+		indent = {
+			enabled = true,
+			animate = { enabled = false },
+			filter = function(buf)
+				-- stylua: ignore
+				if vim.bo[buf].filetype == "markdown" then return end
+
+				return vim.g.snacks_indent ~= false and vim.b[buf].snacks_indent ~= false and vim.bo[buf].buftype == ""
+			end,
+		},
 		-- input = { enabled = true },
 		notifier = { enabled = true, timeout = 3000 },
 		picker = { enabled = true },

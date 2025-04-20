@@ -28,12 +28,4 @@ return {
 			yaml = { enable = true },
 		},
 	},
-	-- rendering images(requires a terminal that supports kitty graphics protocol)
-	{ "3rd/image.nvim", build = false, opts = { processor = "magick_cli" } },
-	-- formatter
-	{
-		"stevearc/conform.nvim",
-		optional = true,
-		opts = { formatters_by_ft = { markdown = { "prettierd" } } },
-	},
 }

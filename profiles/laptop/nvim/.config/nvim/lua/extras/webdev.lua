@@ -328,12 +328,7 @@ return {
 						typescriptreact = { "prettierd" },
 
 						html = { "prettierd" },
-						-- markdown = { "prettierd" },
 						css = { "prettierd" },
-						scss = { "prettierd" },
-
-						json = { "prettierd" },
-						yaml = { "prettierd" },
 					},
 				})
 			end

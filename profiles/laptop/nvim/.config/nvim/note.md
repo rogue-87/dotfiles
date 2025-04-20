@@ -2,29 +2,26 @@
 
 Supported Programming Languages
 
-| Language   |    Language Server     |  Formatter   |      Linter      |     Debugger     |
-| :--------- | :--------------------: | :----------: | :--------------: | :--------------: |
-| c/cpp      |         clangd         |     LSP      |                  |     codelldb     |
-| csharp     |       omnisharp        |     LSP      |                  |    netcoredbg    |
-| dart       | `dart language-server` |     LSP      |                  |                  |
-| fish       |        fish-lsp        |     LSP      |                  |                  |
-| golang     |         gopls          |  gofmt,LSP   |      golint      |      delve       |
-| java       |         jdtls          |     LSP      |                  |                  |
-| lua        |         luals          |    stylua    |      selene      |                  |
-| python     |        pyright         |     ruff     |       ruff       |     debugpy      |
-| rust       |     rust-analyzer      | rustfmt, LSP |      clippy      |     codelldb     |
-| javascript |   tsserver `or` deno   |   prettier   | eslint `or` deno | js-debug-adapter |
-| typescript |   tsserver `or` deno   |   prettier   | eslint `or` deno |       deno       |
+| Language   |  Language Server   | Formatter |      Linter      |      Debugger      |
+| :--------- | :----------------: | :-------: | :--------------: | :----------------: |
+| c/cpp      |       clangd       |    LSP    |                  |                    |
+| csharp     |     omnisharp      |    LSP    |                  |     netcoredbg     |
+| dart       |     `builtin`      | `buildin` |                  |                    |
+| fish       |      fish-lsp      |    LSP    |                  |                    |
+| java       |       jdtls        |    LSP    |                  |                    |
+| lua        |       luals        |  stylua   |      selene      |                    |
+| python     |      pyright       |   ruff    |       ruff       |                    |
+| rust       |   rust-analyzer    |  rustfmt  |      clippy      | lldb `or` codelldb |
+| javascript | tsserver `or` deno | prettierd | eslint `or` deno |                    |
+| typescript | tsserver `or` deno | prettierd | eslint `or` deno |                    |
 
 Other Supported Languages(markup, sql, etc...)
 
-|   Language    |                            LSP                            | Formatter |
-| :-----------: | :-------------------------------------------------------: | :-------: |
-|     astro     |                         astro-ls                          |    LSP    |
-|    svelte     |                          svelte                           |    LSP    |
-|   markdown    |                          `NONE`                           | prettier  |
-| css/scss/less | vscode-css-language-server, css-variables-language-server | prettier  |
-|     json      |                          jsonls                           | prettier  |
+| Language |   LSP    |      Formatter      |
+| :------: | :------: | :-----------------: |
+|  svelte  |  svelte  |         LSP         |
+| markdown | marksman | prettierd `or` deno |
+|   json   |  jsonls  | prettierd `or` deno |
 
 # dotfiles/profiles/laptop/nvim/.config/nvim
 

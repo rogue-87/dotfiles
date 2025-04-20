@@ -23,17 +23,14 @@ require("lazy").setup({
 		-- { import = "plugins.debugging" }, -- DAP support for nvim
 
 		-- { import = "extras" }, -- extra stuff
-		-- { import = "extras.ai" },
 		-- { import = "extras.db" },
 		-- { import = "extras.discord" },
-		-- { import = "extras.godot" },
 		{ import = "extras.notes" },
 		{ import = "extras.wakatime" },
 		{ import = "extras.webdev" },
 
 		-- { import = "extras.lang" }, -- uncomment this to load all lang configs
 		{ import = "extras.lang.dart" },
-		-- { import = "extras.lang.go" },
 		{ import = "extras.lang.java" },
 		{ import = "extras.lang.rust" },
 	},

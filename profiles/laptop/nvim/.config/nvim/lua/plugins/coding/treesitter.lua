@@ -12,6 +12,7 @@ return {
 		local tsconfigs = require("nvim-treesitter.configs")
 		tsconfigs.setup({
 			ensure_installed = {
+				-- needed
 				"c",
 				"diff",
 				"lua",
@@ -22,6 +23,8 @@ return {
 				"regex",
 				"vim",
 				"vimdoc",
+				-- other
+				"rust",
 			},
 			modules = {},
 			ignore_install = {},
