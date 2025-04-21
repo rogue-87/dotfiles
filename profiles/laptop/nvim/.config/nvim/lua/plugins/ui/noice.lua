@@ -5,21 +5,24 @@ return {
 	dependencies = { "MunifTanjim/nui.nvim" },
 	---@type NoiceConfig
 	opts = {
-		cmdline = { enabled = true },
+		cmdline = { enabled = true, view = "cmdline" },
+		format = {
+			cmdline = { pattern = "^:", icon = "", lang = "vim" },
+		},
 		health = { checker = false },
 		lsp = {
 			hover = { enabled = false },
-			message = { enabled = false },
-			progress = { enabled = false },
+			message = { enabled = true },
+			progress = { enabled = true },
 			signature = { enabled = false },
 		},
 		messages = { enabled = true },
-		notify = { enabled = false },
-		popupmenu = { enabled = true },
+		notify = { enabled = true },
+		popupmenu = { enabled = false },
 		presets = {
-			bottom_search = true,
+			bottom_search = false,
 			cmdline_output_to_split = false,
-			command_palette = true,
+			command_palette = false,
 			inc_rename = false,
 			long_message_to_split = false,
 			lsp_doc_border = false,

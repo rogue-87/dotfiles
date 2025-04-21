@@ -19,7 +19,7 @@ return {
 			end,
 		},
 		-- input = { enabled = true },
-		notifier = { enabled = true, timeout = 3000 },
+		notifier = { enabled = true },
 		picker = { enabled = true },
 		quickfile = { enabled = true },
 		-- scope = { enabled = true },
@@ -84,46 +84,6 @@ return {
 		},
 	},
 	init = function()
-		local utils = require("myutils")
-		---@type vim.keymap.set.Opts
-		local opts = { noremap = true, silent = true }
-		opts.desc = "this file"
-		utils.map("n", "<leader>ww", function()
-			vim.api.nvim_command("w")
-			local full_path = vim.api.nvim_buf_get_name(0)
-			local filename = vim.fn.fnamemodify(full_path, ":.")
-
-			Snacks.notifier.notify(filename, "info", {
-				style = "compact",
-				icon = "",
-				title = "written",
-				ft = "text",
-			})
-		end, opts)
-
-		opts.desc = "all files"
-		utils.map("n", "<leader>wa", function()
-			---@type {output: string}
-			local files = vim.api.nvim_exec2("wa", { output = true })
-
-			-- stylua: ignore
-			if files["output"] == "" then return end
-
-			local written_files = ""
-			for file in files["output"]:gmatch('"(.-)"') do
-				file = vim.fn.fnamemodify(file, ":.")
-				written_files = written_files .. file .. "\n"
-			end
-			written_files = written_files:sub(1, written_files:len() - 1)
-
-			Snacks.notifier.notify(written_files, "info", {
-				style = "compact",
-				icon = "",
-				title = "written",
-				ft = "text",
-			})
-		end, opts)
-
 		vim.api.nvim_create_autocmd("User", {
 			pattern = "VeryLazy",
 			callback = function()
