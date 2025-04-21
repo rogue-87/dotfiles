@@ -10,7 +10,7 @@ return {
 		-- explorer = { enabled = true },
 		indent = { enabled = true, animate = { enabled = false } },
 		-- input = { enabled = true },
-		notifier = { enabled = true, timeout = 3000 },
+		notifier = { enabled = true },
 		picker = { enabled = true },
 		quickfile = { enabled = true },
 		-- scope = { enabled = true },

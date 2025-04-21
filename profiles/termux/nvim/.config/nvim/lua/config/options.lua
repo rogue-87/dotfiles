@@ -24,6 +24,7 @@ vim.o.relativenumber = true
 vim.o.scrolloff = 5
 vim.o.sessionoptions = "curdir,folds,globals,help,tabpages,terminal,winsize"
 vim.o.shiftwidth = 4
+vim.o.showmode = false
 vim.o.showtabline = 2
 vim.o.signcolumn = "yes"
 vim.o.smartindent = true

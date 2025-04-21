@@ -9,19 +9,17 @@ return {
 	opts = {
 		keymap = { preset = "enter" },
 
-		cmdline = { enabled = false },
+		cmdline = { enabled = true, completion = { ghost_text = { enabled = true } } },
 
-		appearance = {
-			use_nvim_cmp_as_default = true,
-			nerd_font_variant = "normal",
-		},
+		appearance = { nerd_font_variant = "normal" },
 
 		completion = {
-			documentation = { window = { border = "padded" } },
+			documentation = { window = { border = "padded", scrollbar = true } },
 			list = { selection = { preselect = true, auto_insert = false } },
+			ghost_text = { enabled = true },
 		},
 
-		signature = { window = { border = "single" } },
+		signature = { enabled = true },
 
 		snippets = { preset = "default" },
 		-- Default list of enabled providers defined so that you can extend it
