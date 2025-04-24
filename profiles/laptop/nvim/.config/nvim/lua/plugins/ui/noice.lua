@@ -8,7 +8,7 @@ return {
 		cmdline = { enabled = true, view = "cmdline" },
 		health = { checker = false },
 		lsp = {
-			hover = { enabled = false },
+			hover = { enabled = true },
 			message = { enabled = true },
 			progress = { enabled = true },
 			signature = { enabled = false },

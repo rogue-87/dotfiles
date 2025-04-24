@@ -56,11 +56,12 @@ return {
 		{ "<leader>nw",	function() Snacks.notifier.show_history({filter = "warn"})	end,	desc = "Warn"			},
 		{ "<c-esc>",   	function() Snacks.notifier.hide()							end,	desc = "Dismiss"  		},
 
-		-- Other
-		{ "<c-`>",      function() Snacks.terminal.toggle(nil, { interactive = true, win = { height = 5 }}) 	end, desc = "Toggle Terminal" },
+		-- Terminal
+		{ "<c-`>",      function() Snacks.terminal.toggle(nil, { interactive = true, win = { height = 5, }}) 	end, desc = "Toggle Terminal" },
 		{ "<c-/>",      function() Snacks.terminal.open(nil, { interactive = false, win = { height = 5 }}) 	end, desc = "Open Terminal" },
 		{ "<leader>rb", function() Snacks.terminal("btop", { win = { position = "float" } }) 	end, desc = "Btop" },
 		{ "<leader>rl", function() Snacks.lazygit() 											end, desc = "Lazygit" },
+		-- Other
 		{ "[[",         function() Snacks.words.jump(-vim.v.count1) 							end, desc = "Prev Reference", mode = { "n", "t" } },
 		{ "]]",         function() Snacks.words.jump(vim.v.count1) 								end, desc = "Next Reference", mode = { "n", "t" } },
 		{
