@@ -19,6 +19,7 @@ vim.lsp.enable({ "marksman", "tinymist" })
 return {
 	{
 		"OXY2DEV/markview.nvim",
+		enabled = false,
 		lazy = false,
 		opts = {
 			html = { enable = false },

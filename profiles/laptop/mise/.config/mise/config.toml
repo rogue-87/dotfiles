@@ -1,8 +1,2 @@
 [tools]
-deno = "latest"
-flutter = "latest"
-gradle = "latest"
-lazygit = "latest"
-taplo = "latest"
-typst = "latest"
 usage = "latest"

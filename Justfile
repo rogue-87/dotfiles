@@ -1,5 +1,3 @@
-# set shell := ["fish", "-c"]
-
 # profiles
 laptop := env('PWD') + "/profiles/laptop"
 termux := env('PWD') + "/profiles/termux"
@@ -68,3 +66,23 @@ unstow:
 
     fi
     printf "{{GREEN}} dotfiles unstowed successfully! {{NORMAL}}\n"
+
+nix-installer CMD:
+    #!/usr/bin/env bash
+    set -euo pipefail
+
+    if [[ "{{CMD}}" == "install" ]]; then
+
+        printf "{{YELLOW}} installing nix... {{NORMAL}}\n"
+        sleep 2s
+        curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install --determinate
+        printf "{{GREEN}} successfully installed nix! {{NORMAL}}\n"
+
+    elif [[ "{{CMD}}" == "uninstall" ]]; then
+
+        printf "{{YELLOW}} uninstalling nix... {{NORMAL}}\n"
+        sleep 2s
+        /nix/nix-installer uninstall
+        printf "{{GREEN}} successfully uninstalled nix! {{NORMAL}}\n"
+
+    fi
