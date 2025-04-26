@@ -5,6 +5,7 @@
   "conform.nvim": { "branch": "master", "commit": "372fc521f8421b7830ea6db4d6ea3bae1c77548c" },
   "cord.nvim": { "branch": "master", "commit": "19cc6990c0160292476be1ce1e14ad5986e579d9" },
   "flutter-tools.nvim": { "branch": "main", "commit": "6faf2c70bd56f1fe78620591a2bb73f4dc6f4870" },
+  "focus.nvim": { "branch": "master", "commit": "4135f976afe5d6e1fe66dff121db9d06643f439f" },
   "friendly-snippets": { "branch": "main", "commit": "fc8f183479a472df60aa86f00e295462f2308178" },
   "github-theme": { "branch": "main", "commit": "c106c9472154d6b2c74b74565616b877ae8ed31d" },
   "gitsigns.nvim": { "branch": "main", "commit": "140ac646db125904e456e42ab8b538d28f9607d7" },
