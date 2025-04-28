@@ -19,6 +19,7 @@ vim.lsp.enable({
 	"luals",
 	"omnisharp",
 	"pyright",
+	"rust-analyzer",
 	-- other
 	"jsonls",
 	"taplo",
