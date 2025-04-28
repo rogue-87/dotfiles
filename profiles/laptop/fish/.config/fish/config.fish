@@ -8,9 +8,9 @@ if status is-interactive
     fish_add_path ~/.spicetify
 
     # check if mise exists
-    if command -q -v mise >/dev/null
-        mise activate fish | source
-    end
+    # if command -q -v mise >/dev/null
+    #     mise activate fish | source
+    # end
 
 
     # default editor
