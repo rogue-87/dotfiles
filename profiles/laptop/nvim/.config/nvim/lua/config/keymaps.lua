@@ -96,17 +96,6 @@ lsp.on_attach(function(client, bufnr)
 		end, ls_opts, "get hover info")
 	end
 
-	if client.server_capabilities.semanticTokensProvider then
-		utils.map("n", "<localleader>us", function()
-			utils.toggle("enable_semantic_tokens", { global = true }, nil)
-			if vim.g["enable_semantic_tokens"] then
-				vim.lsp.semantic_tokens.start(bufnr, client.id)
-			else
-				vim.lsp.semantic_tokens.stop(bufnr, client.id)
-			end
-		end, ls_opts, "toggle semantic token highlighting")
-	end
-
 	if client.server_capabilities.signatureHelpProvider then
 		utils.map("n", "<localleader>k", vim.lsp.buf.signature_help, ls_opts, "get fn signature help")
 	end
@@ -173,42 +162,6 @@ lsp.on_attach(function(client, bufnr)
 		end, ls_opts, "goto type references")
 	end
 
-	if client.server_capabilities.documentHighlightProvider then
-		vim.api.nvim_set_hl(0, "LspReferenceRead", {
-			link = "DiffText",
-		})
-		vim.api.nvim_set_hl(0, "LspReferenceText", {
-			link = "IncSearch",
-		})
-		vim.api.nvim_set_hl(0, "LspRefDiffTexterenceWrite", {
-			link = "WildMenu",
-		})
-		local doc_highlight = utils.augroup("lsp_document_highlight", { clear = true })
-		local enable_highlight = function()
-			utils.autocmd({ "CursorHold", "CursorHoldI" }, {
-				group = doc_highlight,
-				buffer = bufnr,
-				callback = vim.lsp.buf.document_highlight,
-			})
-			utils.autocmd("CursorMoved", {
-				group = doc_highlight,
-				buffer = bufnr,
-				callback = vim.lsp.buf.clear_references,
-			})
-		end
-		local disable_highlight = function()
-			vim.lsp.buf.clear_references()
-			vim.api.nvim_clear_autocmds({
-				buffer = bufnr,
-				group = doc_highlight,
-			})
-		end
-		utils.map("n", "<localleader>uh", function()
-			utils.toggle("highlight", {}, { enable_highlight, disable_highlight })
-			vim.b[vim.fn.bufnr()]["highlight"]()
-		end, ls_opts, "toggle document highlight")
-	end
-
 	if client.server_capabilities.documentSymbolProvider then
 		utils.map("n", "<localleader>ds", vim.lsp.buf.document_symbol, ls_opts, "document symbols")
 	end
@@ -224,18 +177,6 @@ lsp.on_attach(function(client, bufnr)
 	end
 
 	if client.server_capabilities.documentFormattingProvider then
-		utils.map("n", "<localleader>uf", function()
-			utils.toggle("autoformat", { global = false })
-			utils.autocmd("BufWritePre", {
-				group = utils.augroup("LspFormat", { clear = true }),
-				callback = function()
-					if vim.g["autoformat"] then
-						vim.lsp.buf.format({ async = true })
-					end
-				end,
-			})
-		end, ls_opts, "toggle autoformat")
-
 		if not utils.has("conform.nvim") then
 			utils.map("n", "<localleader>f", function()
 				vim.lsp.buf.format({ async = true })
@@ -279,6 +220,38 @@ lsp.on_attach(function(client, bufnr)
 
 	if client.server_capabilities.workspaceSymbolProvider then
 		utils.map("n", "<localleader>ws", vim.lsp.buf.workspace_symbol, ls_opts, "list workspace symbols")
+	end
+
+	-- NOTE: Toggles
+	if client.server_capabilities.documentHighlightProvider then
+		Snacks.toggle.words():map("<localleader>uw")
+	end
+
+	if client.server_capabilities.diagnosticProvider then
+		Snacks.toggle.diagnostics():map("<localleader>ud")
+	end
+
+	if client.server_capabilities.inlayHintProvider then
+		Snacks.toggle.inlay_hints():map("<localleader>uh")
+	end
+
+	if client.server_capabilities.semanticTokensProvider then
+		vim.g.enable_semantic_tokens = true
+		local semantic_tokens_toggle = Snacks.toggle.new({
+			id = "semantic tokens",
+			name = "semantic tokens",
+			get = function()
+				return vim.g.enable_semantic_tokens
+			end,
+			set = function(state)
+				if state then
+					vim.lsp.semantic_tokens.start(bufnr, client.id)
+				else
+					vim.lsp.semantic_tokens.stop(bufnr, client.id)
+				end
+			end,
+		})
+		semantic_tokens_toggle:map("<localleader>us")
 	end
 
 	utils.map("n", "[d", function()

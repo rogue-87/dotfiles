@@ -5,7 +5,6 @@ return {
 		local lint = require("lint")
 		-- LINTER CONFIG
 		lint.linters_by_ft = {
-			go = { "golint" },
 			-- lua = { "selene" },
 			python = { "ruff" },
 			rust = { "clippy" },

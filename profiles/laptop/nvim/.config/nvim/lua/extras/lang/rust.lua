@@ -1,1 +1,1 @@
-return { "mrcjkb/rustaceanvim", version = "*", lazy = false }
+return { "mrcjkb/rustaceanvim", version = "^6", lazy = false }

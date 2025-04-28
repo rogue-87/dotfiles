@@ -10,7 +10,7 @@ return {
 		-- explorer = { enabled = true },
 		indent = { enabled = true, animate = { enabled = false } },
 		-- input = { enabled = true },
-		notifier = { enabled = true },
+		-- notifier = { enabled = true },
 		picker = { enabled = true },
 		quickfile = { enabled = true },
 		-- scope = { enabled = true },
@@ -40,12 +40,12 @@ return {
 		{ "<leader>si", function() Snacks.picker.icons() 		end, desc = "Icons" },
 		{ "<leader>sl", function() Snacks.picker.loclist() 		end, desc = "Location List" },
 		-- Notifier
-		{ "<leader>n", "",																	desc = "notifications"	},
-		{ "<leader>nh",	function() Snacks.notifier.show_history()					end,	desc = "History"		},
-		{ "<leader>ne",	function() Snacks.notifier.show_history({filter = "error"})	end,	desc = "Errors"			},
-		{ "<leader>ni",	function() Snacks.notifier.show_history({filter = "info"})	end,	desc = "Info"			},
-		{ "<leader>nw",	function() Snacks.notifier.show_history({filter = "warn"})	end,	desc = "Warn"			},
-		{ "<c-esc>",   	function() Snacks.notifier.hide()							end,	desc = "Dismiss"  		},
+		-- { "<leader>n", "",																	desc = "notifications"	},
+		-- { "<leader>nh",	function() Snacks.notifier.show_history()					end,	desc = "History"		},
+		-- { "<leader>ne",	function() Snacks.notifier.show_history({filter = "error"})	end,	desc = "Errors"			},
+		-- { "<leader>ni",	function() Snacks.notifier.show_history({filter = "info"})	end,	desc = "Info"			},
+		-- { "<leader>nw",	function() Snacks.notifier.show_history({filter = "warn"})	end,	desc = "Warn"			},
+		-- { "<c-esc>",   	function() Snacks.notifier.hide()							end,	desc = "Dismiss"  		},
 
 		-- Other
 		{ "<c-_>",      function() Snacks.terminal.toggle(nil, { interactive = true, win = { height = 5 }}) 	end, desc = "Toggle Terminal" },
@@ -80,28 +80,20 @@ return {
 				-- Setup some globals for debugging (lazy-loaded)
 				-- stylua: ignore
 				_G.dd = function(...) Snacks.debug.inspect(...) end
-
 				-- stylua: ignore
 				_G.bt = function() Snacks.debug.backtrace() end
-
 				vim.print = _G.dd -- Override print to use snacks for `:=` command
-
 				-- Create some toggle mappings
-				Snacks.toggle.diagnostics():map("<leader>ud")
-				Snacks.toggle.dim():map("<leader>uD")
+				Snacks.toggle.dim():map("<leader>ud")
 				Snacks.toggle.indent():map("<leader>ug")
-				Snacks.toggle.inlay_hints():map("<leader>uh")
 				Snacks.toggle.line_number():map("<leader>ul")
-				-- stylua: ignore
-				Snacks.toggle.option("background", { off = "light", on = "dark", name = "Dark Background" }):map("<leader>ub")
 				-- stylua: ignore
 				Snacks.toggle.option("conceallevel", { off = 0, on = vim.o.conceallevel > 0 and vim.o.conceallevel or 2 }):map("<leader>uc")
 				Snacks.toggle.option("relativenumber", { name = "Relative Number" }):map("<leader>uL")
 				Snacks.toggle.option("spell", { name = "Spelling" }):map("<leader>us")
 				Snacks.toggle.option("wrap", { name = "Wrap" }):map("<leader>uw")
 				Snacks.toggle.scroll():map("<leader>uS")
-				Snacks.toggle.treesitter():map("<leader>uT")
-				Snacks.toggle.words():map("<leader>uW")
+				Snacks.toggle.treesitter():map("<leader>ut")
 			end,
 		})
 	end,
