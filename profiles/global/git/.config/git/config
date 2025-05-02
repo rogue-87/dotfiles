@@ -1,0 +1,22 @@
+[user]
+	name = Rogue
+	email = rogue87@tuta.io ;Please don't spam :]
+[init]
+	defaultBranch = main
+[github]
+  user = rogue-87
+[core]
+	compression = 9
+	whitespace = error
+	preloadindex = true
+[status]
+	branch = true
+	showStash = true
+[diff]
+	context = 3
+	renames = copies
+	interHunkContext = 10
+[url "git@github.com:rogue-87/"]
+	insteadOf = "rogue:"
+[url "git@github.com:"]
+	insteadOf = "gh:"

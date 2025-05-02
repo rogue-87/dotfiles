@@ -1,0 +1,1 @@
+this should be used for configs that can be shared accross multiple devices(like git for example)
