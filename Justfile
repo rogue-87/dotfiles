@@ -1,12 +1,14 @@
 # profiles
+global := env('PWD') + "/profiles/global" # configs that can be shared accross mutiple devices
 laptop := env('PWD') + "/profiles/laptop"
 termux := env('PWD') + "/profiles/termux"
 
-# stow packages
-laptop_packages := "fastfetch fish git kitty mise neovide nvim rio xplr zed zellij"
-termux_packages := "fastfetch fish git nvim termux-settings"
+# stow configs
+global_configs := "fastfetch fish git" 
+laptop_configs := "kitty neovide nvim rio zed zellij"
+termux_configs := "nvim termux-settings"
 
-# where to put these packages
+# where to put these configs
 target := env('HOME')
 
 # recipes
@@ -14,19 +16,25 @@ help:
     @just --list
 
 info:
-    @echo "  available profiles {{BLUE}} {{NORMAL}}:"
+    @echo "  {{BLUE}} {{NORMAL}} global profile:"
+    @echo "    {{YELLOW}}{{termux}}{{NORMAL}}"
+    @echo
+    @echo "  {{BLUE}} {{NORMAL}} available profiles:"
     @echo "  {{YELLOW}}"
-    @echo "  laptop: {{laptop}}"
-    @echo "  termux: {{termux}}"
+    @echo "    laptop: {{laptop}}"
+    @echo "    termux: {{termux}}"
     @echo "  {{NORMAL}}"
     
-    @echo "  laptop packages {{BLUE}} {{NORMAL}}:"
-    @echo "  {{GREEN}}{{laptop_packages}}{{NORMAL}}"
+    @echo "  {{BLUE}} {{NORMAL}} global configs:"
+    @echo "    {{GREEN}}{{global_configs}}{{NORMAL}}"
     @echo
-    @echo "  termux packages {{BLUE}} {{NORMAL}}:"
-    @echo "  {{GREEN}}{{termux_packages}}{{NORMAL}}"
+    @echo "  {{BLUE}} {{NORMAL}} laptop configs:"
+    @echo "    {{GREEN}}{{laptop_configs}}{{NORMAL}}"
+    @echo
+    @echo "  {{BLUE}} {{NORMAL}} termux configs:"
+    @echo "    {{GREEN}}{{termux_configs}}{{NORMAL}}"
     @echo 
-    @echo "  target directory {{BLUE}} {{NORMAL}}: {{GREEN}}{{target}}{{NORMAL}}"
+    @echo "  {{BLUE}} {{NORMAL}} target directory: {{GREEN}}{{target}}{{NORMAL}}"
 
 stow:
     #!/usr/bin/env bash
@@ -35,12 +43,14 @@ stow:
     if [[ "{{os()}}" == linux ]]; then
 
         printf "{{YELLOW}} Stowing dotfiles for laptop... {{NORMAL}}\n"
-        stow --target="{{target}}" --dir="{{laptop}}" {{laptop_packages}}
+        stow --target={{target}} --dir={{global}} {{global_configs}}
+        stow --target={{target}} --dir={{laptop}} {{laptop_configs}}
 
     elif [[ "{{os()}}" == android ]]; then
 
         printf "{{YELLOW}} Stowing dotfiles for termux... {{NORMAL}}\n"
-        stow --target="{{target}}" --dir="{{termux}}" {{termux_packages}}
+        stow --target={{target}} --dir={{global}} {{global_configs}}
+        stow --target={{target}} --dir={{termux}} {{termux_configs}}
 
     else
 
@@ -57,12 +67,13 @@ unstow:
     if [[ "{{os()}}" == linux ]]; then
 
         printf "{{YELLOW}} unstowing linux {{NORMAL}}\n"
-        stow --target={{target}} --dir={{laptop}} -D {{laptop_packages}}
+        # stow --target={{target}} --dir={{global}} -D {{global_configs}}
+        stow --target={{target}} --dir={{laptop}} -D {{laptop_configs}}
 
     elif [[ "{{os()}}" == android ]]; then
 
         printf "{{YELLOW}} unstowing termux {{NORMAL}}\n"
-        stow --target={{target}} --dir={{termux}} -D {{termux_packages}}
+        stow --target={{target}} --dir={{termux}} -D {{termux_configs}}
 
     fi
     printf "{{GREEN}} dotfiles unstowed successfully! {{NORMAL}}\n"

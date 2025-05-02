@@ -36,6 +36,8 @@
           tinymist
           typst
           vscode-langservers-extracted
+          httpie
+          hurl
         ];
       };
     };
