@@ -1,6 +1,6 @@
 return {
 	-- Auto close
-	{ "windwp/nvim-autopairs", event = "InsertEnter", opts = {} },
+	{ "windwp/nvim-autopairs", enabled = false, event = "InsertEnter", opts = {} },
 	-- Close surrounding text
 	{ "kylechui/nvim-surround", version = "^3.0.0", event = "VeryLazy", opts = {} },
 	-- autoclose & autorename for html tags
