@@ -27,14 +27,16 @@
           # rust stuff
           taplo
 
+          # notes & stuff
+          marksman
+          tinymist
+          typst
+
           # other
           bash-language-server
           fish-lsp
-          marksman
           prettierd
           shfmt
-          tinymist
-          typst
           vscode-langservers-extracted
           httpie
           hurl
