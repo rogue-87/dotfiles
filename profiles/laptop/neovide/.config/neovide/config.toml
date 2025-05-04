@@ -16,7 +16,7 @@ wsl = false
 [font]
 size = 14.0
 hinting = "full"
-edging = "alias" # "alias", "antialias", "subpixelantialias"
+edging = "antialias" # "alias", "antialias", "subpixelantialias"
 normal = ["JetBrainsMono Nerd Font"]
 bold = { family = "JetBrainsMono Nerd Font", style = "Bold" }
 italic = { family = "JetBrainsMono Nerd Font", style = "Italic" }
