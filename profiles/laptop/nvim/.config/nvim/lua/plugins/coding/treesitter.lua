@@ -30,7 +30,10 @@ return {
 			ignore_install = {},
 			sync_install = true,
 			auto_install = false,
-			highlight = { enable = true },
+			highlight = {
+				enable = true,
+				additional_vim_regex_highlighting = false,
+			},
 			indent = { enable = false },
 			incremental_selection = {
 				enable = true,
