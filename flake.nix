@@ -17,15 +17,22 @@
         paths = with pkgs; [
           # lua stuff
           lua-language-server
-          # selene
+          selene
           stylua
-
           # nix stuff
           nixd
           nixfmt-rfc-style
 
           # rust stuff
           taplo
+
+          # java
+          jdt-language-server
+
+          # webdev
+          prettierd
+          typescript-language-server
+          vscode-langservers-extracted
 
           # notes & stuff
           marksman
@@ -35,11 +42,9 @@
           # other
           bash-language-server
           fish-lsp
-          prettierd
-          shfmt
-          vscode-langservers-extracted
           httpie
           hurl
+          shfmt
         ];
       };
     };
