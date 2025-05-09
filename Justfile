@@ -67,7 +67,7 @@ unstow:
     if [[ "{{os()}}" == linux ]]; then
 
         printf "{{YELLOW}} unstowing linux {{NORMAL}}\n"
-        # stow --target={{target}} --dir={{global}} -D {{global_configs}}
+        stow --target={{target}} --dir={{global}} -D {{global_configs}}
         stow --target={{target}} --dir={{laptop}} -D {{laptop_configs}}
 
     elif [[ "{{os()}}" == android ]]; then
@@ -97,3 +97,6 @@ nix-installer CMD:
         printf "{{GREEN}} successfully uninstalled nix! {{NORMAL}}\n"
 
     fi
+
+install-rust:
+    sudo dnf in rust rustfmt rust-analyzer clippy cargo
