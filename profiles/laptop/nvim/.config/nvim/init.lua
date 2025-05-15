@@ -24,4 +24,5 @@ vim.lsp.enable({
 	-- other
 	"jsonls",
 	"taplo",
+	"yamlls",
 })

@@ -24,6 +24,7 @@ return {
 				"vim",
 				"vimdoc",
 				-- other
+				"bash",
 				"rust",
 			},
 			modules = {},

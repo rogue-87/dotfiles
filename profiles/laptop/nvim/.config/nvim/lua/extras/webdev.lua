@@ -199,7 +199,7 @@ if vim.fn.filereadable("package.json") == 1 then vim.lsp.enable("tsserver") end
 if vim.fn.filereadable("deno.json") == 1 then vim.lsp.enable("denols") end
 
 if vim.fn.filereadable("package.json") == 1 or vim.fn.filereadable("deno.json") == 1 then
-	vim.lsp.enable({ "svelte", "tailwindcss" })
+	vim.lsp.enable({ "svelte" })
 end
 
 return {

@@ -19,20 +19,28 @@
           lua-language-server
           selene
           stylua
+          # lux-cli
+
           # nix stuff
           nixd
           nixfmt-rfc-style
 
           # rust stuff
+          rustup
           taplo
 
           # java
           jdt-language-server
+          gradle
+          maven
 
           # webdev
           prettierd
           typescript-language-server
           vscode-langservers-extracted
+          svelte-language-server
+          deno
+          bun
 
           # notes & stuff
           marksman
@@ -41,10 +49,12 @@
 
           # other
           bash-language-server
+          yaml-language-server
           fish-lsp
           httpie
           hurl
           shfmt
+          wrkflw
         ];
       };
     };
