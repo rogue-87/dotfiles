@@ -30,6 +30,7 @@ require("lazy").setup({
 		{ import = "extras.webdev" },
 
 		-- { import = "extras.lang" }, -- uncomment this to load all lang configs
+		{ import = "extras.lang.csharp" },
 		{ import = "extras.lang.dart" },
 		{ import = "extras.lang.java" },
 		{ import = "extras.lang.rust" },

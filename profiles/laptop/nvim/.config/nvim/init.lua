@@ -18,7 +18,6 @@ vim.lsp.enable({
 	-- programming langs
 	"clangd",
 	"luals",
-	"omnisharp",
 	"pyright",
 	"nixd",
 	-- other
