@@ -20,6 +20,7 @@ vim.lsp.enable({
 	"luals",
 	"pyright",
 	"nixd",
+	"teal-ls",
 	-- other
 	"jsonls",
 	"taplo",
