@@ -32,6 +32,7 @@ return {
 				"!lazy",
 				"!noice",
 				"!neo-tree",
+				"!snacks_terminal",
 			},
 			user_default_options = {
 				RGB = true, -- #RGB hex codes

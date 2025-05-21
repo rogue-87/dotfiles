@@ -17,14 +17,19 @@ return {
 	-- Moving code
 	{
 		"fedepujol/move.nvim",
-		event = { "BufReadPre", "BufNewFile" },
-		config = function()
-			require("move").setup({})
-			local opts = { noremap = true, silent = true }
-			vim.keymap.set("n", "<A-j>", ":MoveLine(1)<cr>", opts)
-			vim.keymap.set("n", "<A-k>", ":MoveLine(-1)<cr>", opts)
-			vim.keymap.set("v", "<A-j>", ":MoveBlock(1)<cr>", opts)
-			vim.keymap.set("v", "<A-k>", ":MoveBlock(-1)<cr>", opts)
-		end,
+		lazy = false,
+		keys = {
+			-- Normal Mode
+			{ "<A-j>", ":MoveLine(1)<CR>", desc = "Move Line Up", silent = true },
+			{ "<A-k>", ":MoveLine(-1)<CR>", desc = "Move Line Down", silent = true },
+			{ "<A-h>", ":MoveHChar(-1)<CR>", desc = "Move Character Left", silent = true },
+			{ "<A-l>", ":MoveHChar(1)<CR>", desc = "Move Character Right", silent = true },
+			-- Visual Mode
+			{ "<A-j>", ":MoveBlock(1)<CR>", mode = { "v" }, desc = "Move Block Up", silent = true },
+			{ "<A-k>", ":MoveBlock(-1)<CR>", mode = { "v" }, desc = "Move Block Down", silent = true },
+			{ "<A-h>", ":MoveHBlock(-1)<CR>", mode = { "v" }, desc = "Move Block Left", silent = true },
+			{ "<A-l>", ":MoveHBlock(1)<CR>", mode = { "v" }, desc = "Move Block Right", silent = true },
+		},
+		opts = {},
 	},
 }
