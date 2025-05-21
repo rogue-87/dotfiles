@@ -6,7 +6,11 @@
   };
 
   outputs =
-    inputs@{ self, nixpkgs, ... }:
+    inputs@{
+      self,
+      nixpkgs,
+      ...
+    }:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs { inherit system; };
@@ -19,7 +23,6 @@
           lua-language-server
           selene
           stylua
-          # lux-cli
 
           # nix stuff
           nixd
@@ -29,10 +32,19 @@
           rustup
           taplo
 
+          # python
+          pyright
+          ruff
+          uv
+
           # java
           jdt-language-server
           gradle
           maven
+
+          # csharp
+          dotnet-sdk_9
+          roslyn-ls
 
           # webdev
           prettierd
@@ -56,6 +68,7 @@
           shfmt
           wrkflw
         ];
+
       };
     };
 }
