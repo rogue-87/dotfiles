@@ -17,9 +17,10 @@ vim.lsp.enable({
 	"fish-lsp",
 	-- programming langs
 	"clangd",
+	"jdtls",
 	"luals",
-	"pyright",
 	"nixd",
+	"pyright",
 	"teal-ls",
 	-- other
 	"jsonls",
