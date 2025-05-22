@@ -49,7 +49,7 @@ return {
 
 		-- Other
 		{ "<c-_>",      function() Snacks.terminal.toggle(nil, { interactive = true, win = { height = 5 }}) 	end, desc = "Toggle Terminal" },
-		{ "<leader>rb", function() Snacks.terminal("btop", { win = { position = "float" } }) 	end, desc = "Btop" },
+		{ "<leader>rh", function() Snacks.terminal("htop", { win = { position = "float" } }) 	end, desc = "Htop" },
 		{ "<leader>rl", function() Snacks.lazygit() 											end, desc = "Lazygit" },
 		{ "[[",         function() Snacks.words.jump(-vim.v.count1) 							end, desc = "Prev Reference", mode = { "n", "t" } },
 		{ "]]",         function() Snacks.words.jump(vim.v.count1) 								end, desc = "Next Reference", mode = { "n", "t" } },
