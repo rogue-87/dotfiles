@@ -1,19 +1,15 @@
----@type table<string, vim.lsp.Config>
-local configs = {
-	marksman = {
-		cmd = { "marksman", "server" },
-		filetypes = { "markdown", "markdown.mdx" },
-		root_markers = { ".git", ".marksman.toml" },
-	},
-	tinymist = {
-		cmd = { "tinymist" },
-		filetypes = { "typst" },
-		root_markers = { ".git" },
-	},
+vim.lsp.config.marksman = {
+	cmd = { "marksman", "server" },
+	filetypes = { "markdown", "markdown.mdx" },
+	root_markers = { ".git", ".marksman.toml" },
 }
 
--- stylua: ignore
-for k, v in pairs(configs) do vim.lsp.config[k] = v end
+vim.lsp.config.tinymist = {
+	cmd = { "tinymist" },
+	filetypes = { "typst" },
+	root_markers = { ".git" },
+}
+
 vim.lsp.enable({ "marksman", "tinymist" })
 
 return {
