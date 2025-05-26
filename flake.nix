@@ -19,16 +19,16 @@
       packages.${system}.default = pkgs.buildEnv {
         name = "global pkgs";
         paths = with pkgs; [
-          # lua stuff
+          # lua
           lua-language-server
           selene
           stylua
 
-          # nix stuff
+          # nix
           nixd
           nixfmt-rfc-style
 
-          # rust stuff
+          # rust
           rustup
           taplo
 
@@ -54,21 +54,34 @@
           deno
           bun
 
-          # notes & stuff
+          # notes
           marksman
           tinymist
           typst
 
           # other
           bash-language-server
-          yaml-language-server
           fish-lsp
-          httpie
-          hurl
-          shfmt
-          wrkflw
-        ];
+          yaml-language-server
 
+          bacon
+          bat
+          du-dust
+          dua
+          eza
+          hurl
+          hyperfine
+          mask
+          mprocs
+          presenterm
+          rusty-man
+          shfmt
+          tokei
+          wiki-tui
+          wrkflw
+          xh
+          zoxide
+        ];
       };
     };
 }
