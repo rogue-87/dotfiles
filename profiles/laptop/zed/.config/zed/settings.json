@@ -27,6 +27,9 @@
     "diagnostics": true,
     "metrics": false
   },
+  "terminal": {
+    "shell": { "program": "fish" }
+  },
   "vim_mode": true,
   "vim": {
     "use_system_clipboard": "always",
