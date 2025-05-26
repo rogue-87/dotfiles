@@ -18,10 +18,10 @@ vim.lsp.enable({
 	-- programming langs
 	"clangd",
 	"jdtls",
+	"kotlin-ls",
 	"luals",
 	"nixd",
 	"pyright",
-	"teal-ls",
 	-- other
 	"jsonls",
 	"taplo",
