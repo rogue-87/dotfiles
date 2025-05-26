@@ -1,16 +1,6 @@
 return {
 	"stevearc/conform.nvim",
-	event = { "BufReadPre", "BufWritePre", "BufWritePost", "BufNewFile" },
-	keys = {
-		{
-			"<localleader>f",
-			function()
-				require("conform").format({ async = true })
-			end,
-			mode = { "n", "v" },
-			desc = "range format buffer",
-		},
-	},
+	version = "*",
 	---@module "conform"
 	---@type conform.setupOpts
 	opts = {

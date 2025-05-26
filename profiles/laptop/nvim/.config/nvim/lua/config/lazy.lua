@@ -20,7 +20,7 @@ require("lazy").setup({
 		{ import = "plugins.ui" }, -- colorschemes, dashboard, improved lsp UI and more
 		{ import = "plugins.editor" }, -- fuzzy finder, filetree, scrollbar, git integration & more
 		{ import = "plugins.coding" }, -- code completion, formatting, linting, etc...
-		-- { import = "plugins.debugging" }, -- DAP support for nvim
+		-- { import = "plugins.debug" }, -- DAP support for nvim
 
 		-- { import = "extras" }, -- extra stuff
 		-- { import = "extras.db" },

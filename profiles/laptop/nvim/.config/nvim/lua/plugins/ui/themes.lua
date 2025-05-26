@@ -1,3 +1,3 @@
 return {
-	{ "EdenEast/nightfox.nvim", lazy = false, opts = {} },
+	{ "EdenEast/nightfox.nvim", version = "*", lazy = false, opts = {} },
 }

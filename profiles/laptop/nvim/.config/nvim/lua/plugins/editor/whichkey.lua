@@ -1,6 +1,7 @@
 ---@diagnostic disable: missing-fields
 return {
 	"folke/which-key.nvim",
+	version = "*",
 	event = "VeryLazy",
 	---@module "which-key"
 	---@type wk.Opts

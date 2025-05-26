@@ -2,6 +2,7 @@ return {
 	{
 		"lewis6991/gitsigns.nvim",
 		lazy = false,
+		version = "*",
 		-- stylua: ignore
 		keys = {
 			{ "<leader>g", "", desc = "git" },
@@ -60,5 +61,5 @@ return {
 			buftypes = {},
 		},
 	},
-	{ "folke/todo-comments.nvim", dependencies = { "nvim-lua/plenary.nvim" }, opts = {} },
+	{ "folke/todo-comments.nvim", version = "*", dependencies = { "nvim-lua/plenary.nvim" }, opts = {} },
 }

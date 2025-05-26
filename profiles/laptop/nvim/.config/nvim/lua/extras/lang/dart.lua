@@ -1,1 +1,7 @@
-return { "nvim-flutter/flutter-tools.nvim", lazy = false, dependencies = { "nvim-lua/plenary.nvim" }, opts = {} }
+return {
+	"nvim-flutter/flutter-tools.nvim",
+	version = "*",
+	dependencies = { "nvim-lua/plenary.nvim" },
+	lazy = false,
+	opts = {},
+}

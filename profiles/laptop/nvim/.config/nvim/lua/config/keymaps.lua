@@ -52,33 +52,6 @@ utils.map("n", "<leader>qQ", "<cmd>qa!<cr>", opts)
 opts.desc = "Lazy"
 utils.map("n", "<leader>ml", "<cmd>Lazy<cr>", opts)
 
-opts.desc = "Open remote git repository"
-utils.map("n", "<leader>go", function()
-	-- Get the Git remote URL
-	local handle = io.popen("git config --get remote.origin.url")
-	local remote_url
-	if handle then
-		remote_url = handle:read("*a")
-		handle:close()
-	end
-
-	-- Remove any newline character
-	remote_url:gsub("%s+", "")
-
-	-- Convert SSH remote URLs to HTTPS URLs
-	if remote_url:match("^git@") then
-		remote_url = remote_url:gsub(":", "/"):gsub("^git@", "https://")
-	elseif remote_url:match("^https://") then
-	-- HTTPS URLs are fine as is
-	else
-		print("Unsupported remote URL format: " .. remote_url)
-		return
-	end
-
-	-- Open the URL in the default browser (for Linux)
-	os.execute("xdg-open " .. remote_url)
-end, opts)
-
 utils.map("n", "<A-n>", "<cmd>tabnew<cr>", opts)
 utils.map("n", "<A-c>", "<cmd>tabclose<cr>", opts)
 utils.map("n", "<A-.>", "<cmd>tabn<cr>", opts)
@@ -177,17 +150,15 @@ lsp.on_attach(function(client, bufnr)
 	end
 
 	if client.server_capabilities.documentFormattingProvider then
-		if not utils.has("conform.nvim") then
-			utils.map("n", "<localleader>f", function()
+		if utils.has("conform.nvim") then
+			utils.map({ "n", "v" }, "<localleader>f", function()
+				require("conform").format({ async = true })
+			end, ls_opts, "format code")
+		else
+			utils.map({ "n", "v" }, "<localleader>f", function()
 				vim.lsp.buf.format({ async = true })
-			end, ls_opts, "range format buffer")
+			end, ls_opts, "lsp format")
 		end
-	end
-
-	if client.server_capabilities.documentRangeFormattingProvider then
-		utils.map("v", "<localleader>f", function()
-			vim.lsp.buf.format({ async = true })
-		end, ls_opts, "range format buffer")
 	end
 
 	if client.server_capabilities.renameProvider then
