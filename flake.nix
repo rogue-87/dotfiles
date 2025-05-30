@@ -2,15 +2,11 @@
   description = "dotfiles flake(only for installing cli/tui tools)";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs";
   };
 
   outputs =
-    inputs@{
-      self,
-      nixpkgs,
-      ...
-    }:
+    { self, nixpkgs, ... }:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs { inherit system; };
@@ -19,10 +15,17 @@
       packages.${system}.default = pkgs.buildEnv {
         name = "global pkgs";
         paths = with pkgs; [
+          home-manager
           # lua
           lua-language-server
           selene
           stylua
+          lux-cli
+
+          # luau
+          lune
+          luau
+          luau-lsp
 
           # nix
           nixd
@@ -31,6 +34,7 @@
           # rust
           rustup
           taplo
+          rustlings
 
           # python
           pyright
