@@ -1,3 +1,4 @@
+-- personal utils
 local utils = require("myutils")
 
 -- load vim settings(options, keymaps, etc...)
@@ -13,17 +14,18 @@ vim.cmd("colorscheme nightfox")
 -- language server configs to enable
 vim.lsp.enable({
 	-- shell langs
-	"bashls",
+	"bash-ls",
 	"fish-lsp",
 	-- programming langs
 	"clangd",
-	"jdtls",
+	"jdt-ls",
 	"kotlin-ls",
-	"luals",
+	"lua-ls",
+	"luau-lsp",
 	"nixd",
 	"pyright",
 	-- other
-	"jsonls",
+	"json-ls",
 	"taplo",
-	"yamlls",
+	"yaml-ls",
 })
