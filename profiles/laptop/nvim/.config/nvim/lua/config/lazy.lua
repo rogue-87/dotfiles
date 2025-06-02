@@ -24,15 +24,10 @@ require("lazy").setup({
 
 		-- { import = "extras" }, -- extra stuff
 		-- { import = "extras.db" },
-		{ import = "extras.discord" },
+		-- { import = "extras.discord" },
 		{ import = "extras.notes" },
 		{ import = "extras.wakatime" },
 		{ import = "extras.webdev" },
-
-		-- { import = "extras.lang" }, -- uncomment this to load all lang configs
-		{ import = "extras.lang.csharp" },
-		{ import = "extras.lang.dart" },
-		{ import = "extras.lang.rust" },
 	},
 	install = { colorscheme = { "nightfox" } },
 	checker = { enabled = false },

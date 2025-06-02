@@ -24,6 +24,7 @@ vim.lsp.enable({
 	"luau-lsp",
 	"nixd",
 	"pyright",
+	"rust-analyzer",
 	-- other
 	"json-ls",
 	"taplo",

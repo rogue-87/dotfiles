@@ -4,7 +4,6 @@ return {
 	"folke/noice.nvim",
 	version = "*",
 	dependencies = { "MunifTanjim/nui.nvim" },
-	enabled = true,
 	lazy = false,
 	---@type NoiceConfig
 	opts = {
