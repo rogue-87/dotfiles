@@ -6,7 +6,11 @@
   };
 
   outputs =
-    { self, nixpkgs, ... }:
+    {
+      self,
+      nixpkgs,
+      ...
+    }:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs { inherit system; };
@@ -15,26 +19,25 @@
       packages.${system}.default = pkgs.buildEnv {
         name = "global pkgs";
         paths = with pkgs; [
-          home-manager
-          # lua
-          lua-language-server
-          selene
-          stylua
-          lux-cli
-
-          # luau
-          lune
-          luau
-          luau-lsp
-
           # nix
           nixd
           nixfmt-rfc-style
 
+          # lua
+          lua-language-server
+          lux-cli
+          selene
+          stylua
+
+          # luau
+          luau
+          luau-lsp
+          lune
+
           # rust
+          rustlings
           rustup
           taplo
-          rustlings
 
           # python
           pyright
@@ -42,33 +45,28 @@
           uv
 
           # java
-          jdt-language-server
           gradle
+          jdt-language-server
           maven
 
-          # csharp
-          dotnet-sdk_9
-          roslyn-ls
-
           # webdev
+          bun
+          deno
           prettierd
+          svelte-language-server
           typescript-language-server
           vscode-langservers-extracted
-          svelte-language-server
-          deno
-          bun
 
-          # notes
-          marksman
-          tinymist
-          typst
-
-          # other
+          # text editor stuff
           bash-language-server
           fish-lsp
+          marksman
+          shfmt
+          tinymist
+          typst
           yaml-language-server
 
-          bacon
+          # other
           bat
           du-dust
           dua
@@ -77,9 +75,7 @@
           hyperfine
           mask
           mprocs
-          presenterm
           rusty-man
-          shfmt
           tokei
           wiki-tui
           wrkflw
