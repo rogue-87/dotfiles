@@ -2,8 +2,16 @@
 local lsp = require("myutils.lsp")
 
 lsp.on_attach(function(client, bufnr)
-	if client.server_capabilities.inlayHintProvider then
+	if client:supports_method("textDocument/inlayHints") then
 		vim.lsp.inlay_hint.enable(false)
+	end
+
+	if client:supports_method("textDocument/codeLens") then
+		vim.lsp.codelens.refresh()
+		vim.api.nvim_create_autocmd({ "BufEnter", "CursorHold", "InsertLeave" }, {
+			buffer = bufnr,
+			callback = vim.lsp.codelens.refresh,
+		})
 	end
 
 	-- prefer LSP folding if client supports it
