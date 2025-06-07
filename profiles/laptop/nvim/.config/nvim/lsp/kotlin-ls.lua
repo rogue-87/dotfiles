@@ -1,6 +1,6 @@
 --- WARN: this language server is still in pre-alpha
 
----@type vim.lsp.ClientConfig
+---@type vim.lsp.Config
 return {
 	cmd = { "kotlin-ls", "--stdio" },
 	single_file_support = true,
