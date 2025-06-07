@@ -18,6 +18,7 @@ vim.lsp.enable({
 	"fish-lsp",
 	-- programming langs
 	"clangd",
+	"dart-ls",
 	"jdt-ls",
 	"kotlin-ls",
 	"lua-ls",
@@ -25,8 +26,10 @@ vim.lsp.enable({
 	"nixd",
 	"pyright",
 	"rust-analyzer",
+	"zls",
 	-- other
 	"json-ls",
+	"marksman",
 	"taplo",
 	"yaml-ls",
 })
