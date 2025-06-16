@@ -32,75 +32,37 @@
           # targets
           # targets = [ ];
         };
+
+        cli = import ./nix/cli.nix { inherit pkgs; };
+        editor = import ./nix/editor.nix { inherit pkgs; };
+        java = import ./nix/java.nix { inherit pkgs; };
+        lua = import ./nix/lua.nix { inherit pkgs; };
+        luau = import ./nix/luau.nix { inherit pkgs; };
+        python = import ./nix/python.nix { inherit pkgs; };
+        webdev = import ./nix/webdev.nix { inherit pkgs; };
       in
-      with pkgs;
       {
-        packages.default = buildEnv {
+        packages.default = pkgs.buildEnv {
           name = "dotfiles-pkgs";
-          paths = [
-            # nix
-            nixd
-            nixfmt-rfc-style
+          paths =
+            with pkgs;
+            [
+              # nix
+              nixd
+              nixfmt-rfc-style
 
-            # rust
-            rust
-            rustlings
-            taplo
-
-            # lua
-            lua-language-server
-            lux-cli
-            selene
-            stylua
-
-            # luau
-            luau
-            luau-lsp
-            lune
-
-            # python
-            pyright
-            ruff
-            uv
-
-            # java
-            gradle
-            jdt-language-server
-            maven
-
-            # webdev
-            bun
-            deno
-            prettierd
-            svelte-language-server
-            typescript-language-server
-            vscode-langservers-extracted
-
-            # text editor stuff
-            bash-language-server
-            fish-lsp
-            marksman
-            shfmt
-            tinymist
-            typst
-            yaml-language-server
-
-            # other
-            bat
-            du-dust
-            dua
-            eza
-            hurl
-            hyperfine
-            mask
-            mprocs
-            rusty-man
-            tokei
-            wiki-tui
-            wrkflw
-            xh
-            zoxide
-          ];
+              # rust
+              rust
+              rustlings
+              taplo
+            ]
+            ++ cli
+            ++ editor
+            # ++ java
+            ++ lua
+            ++ luau
+            # ++ python
+            ++ webdev;
         };
       }
     );

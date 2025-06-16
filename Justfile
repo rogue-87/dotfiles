@@ -86,7 +86,7 @@ nix-installer CMD:
 
         printf "{{YELLOW}} installing nix... {{NORMAL}}\n"
         sleep 2s
-        curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install --determinate
+        curl -fsSL https://install.determinate.systems/nix | sh -s -- install --determinate
         printf "{{GREEN}} successfully installed nix! {{NORMAL}}\n"
 
     elif [[ "{{CMD}}" == "uninstall" ]]; then
