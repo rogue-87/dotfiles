@@ -64,11 +64,11 @@ lsp.on_attach(function(client, bufnr)
 	local ls_opts = { buffer = bufnr }
 
 	if client:supports_method("textDocument/hover") then
-		utils.map("n", "K", vim.lsp.buf.hover, ls_opts, "get hover info")
+		utils.map("n", "K", vim.lsp.buf.hover, ls_opts, "hover info")
 	end
 
 	if client:supports_method("textDocument/signatureHelp") then
-		utils.map("n", "<localleader>k", vim.lsp.buf.signature_help, ls_opts, "get fn signature help")
+		utils.map("n", "<localleader>k", vim.lsp.buf.signature_help, ls_opts, "signature help")
 	end
 
 	if client:supports_method("textDocument/declaration") then
@@ -94,7 +94,7 @@ lsp.on_attach(function(client, bufnr)
 	end
 
 	if client:supports_method("textDocument/documentSymbol") then
-		utils.map("n", "<localleader>ds", vim.lsp.buf.document_symbol, ls_opts, "document symbols")
+		utils.map("n", "<localleader>ds", Snacks.picker.lsp_symbols, ls_opts, "document symbols")
 	end
 
 	if client:supports_method("textDocument/codeAction") then
@@ -123,7 +123,7 @@ lsp.on_attach(function(client, bufnr)
 	end
 
 	if client:supports_method("workspace/symbol") then
-		utils.map("n", "<localleader>ws", vim.lsp.buf.workspace_symbol, ls_opts, "list workspace symbols")
+		utils.map("n", "<localleader>ws", Snacks.picker.lsp_workspace_symbols, ls_opts, "list workspace symbols")
 	end
 
 	if client:supports_method("textDocument/publishDiagnostic") then
@@ -151,6 +151,6 @@ lsp.on_attach(function(client, bufnr)
 	utils.map("n", "<localleader>wo", "<cmd>Lspsaga outline<cr>", ls_opts, "workspace outline")
 
 	utils.map("n", "<localleader>wf", function()
-		vim.print(vim.lsp.buf.list_workspace_folders())
+		vim.notify(vim.inspect(vim.lsp.buf.list_workspace_folders()), vim.log.levels.INFO)
 	end, ls_opts, "list workspace folders")
 end)

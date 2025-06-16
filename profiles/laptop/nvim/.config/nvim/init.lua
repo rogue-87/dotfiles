@@ -31,5 +31,6 @@ vim.lsp.enable({
 	"json-ls",
 	"marksman",
 	"taplo",
+	"tinymist",
 	"yaml-ls",
 })

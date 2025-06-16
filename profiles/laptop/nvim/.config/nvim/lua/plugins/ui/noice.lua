@@ -43,7 +43,7 @@ return {
 		{ "<leader>ne", "<cmd>Noice errors<cr>", 	desc = "Errors" },
 		{ "<leader>nh", "<cmd>Noice history<cr>", 	desc = "History" },
 		{ "<leader>np", "<cmd>Noice pick<cr>", 		desc = "Pick" },
-		{ "<c-esc>", 	"<cmd>Noice dismiss<cr>", 	desc = "Dismiss" },
+		{ "<leader>nd", 	"<cmd>Noice dismiss<cr>", 	desc = "Dismiss" },
 	},
 	init = function()
 		local utils = require("myutils")

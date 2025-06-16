@@ -14,7 +14,7 @@ return {
 	},
 	settings = {
 		Lua = {
-			["codeLens.enable"] = true,
+			["codeLens.enable"] = false,
 		},
 	},
 }

@@ -22,7 +22,6 @@ require("lazy").setup({
 		{ import = "plugins.coding" }, -- code completion, formatting, linting, etc...
 		-- { import = "plugins.debug" }, -- DAP support for nvim
 		-- { import = "plugins.discord" }, -- flex on discord
-		{ import = "plugins.markview" }, -- view markdown & typst files
 		{ import = "plugins.wakatime" }, -- track usage
 
 		-- { import = "extras" }, -- extra stuff

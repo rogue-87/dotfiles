@@ -19,5 +19,5 @@
 			"~/.local/share/nvim/lazy/nvim-treesitter/"
 		]
 	},
-	"completion.callSnippet": "Replace",
+	"completion.callSnippet": "Replace"
 }

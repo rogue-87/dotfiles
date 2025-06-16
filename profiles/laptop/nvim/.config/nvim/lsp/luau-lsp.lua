@@ -8,19 +8,26 @@ return {
 		".luaurc.jsonc",
 		".stylua.toml",
 		"stylua.toml",
+		"selene.toml",
 		".git",
 	},
 	settings = {
 		-- https://github.com/folke/neoconf.nvim/blob/main/schemas/luau_lsp.json
 		["luau-lsp"] = {
+			platform = {
+				---@type "standard"|"roblox"
+				type = "standard",
+			},
+			sourcemap = {
+				enabled = false,
+				-- sourcemapFile = nil,
+			},
 			completion = {
 				enabled = true,
-				addParentheses = false,
-				imports = { enabled = false },
+				addParentheses = true,
+				imports = { enabled = true },
 			},
-			diagnostics = {
-				workspace = false,
-			},
+			diagnostics = { workspace = false },
 		},
 	},
 }
