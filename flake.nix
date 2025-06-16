@@ -35,10 +35,10 @@
 
         cli = import ./nix/cli.nix { inherit pkgs; };
         editor = import ./nix/editor.nix { inherit pkgs; };
-        java = import ./nix/java.nix { inherit pkgs; };
-        lua = import ./nix/lua.nix { inherit pkgs; };
-        luau = import ./nix/luau.nix { inherit pkgs; };
-        python = import ./nix/python.nix { inherit pkgs; };
+        java = import ./nix/lang/java.nix { inherit pkgs; };
+        lua = import ./nix/lang/lua.nix { inherit pkgs; };
+        luau = import ./nix/lang/luau.nix { inherit pkgs; };
+        python = import ./nix/lang/python.nix { inherit pkgs; };
         webdev = import ./nix/webdev.nix { inherit pkgs; };
       in
       {

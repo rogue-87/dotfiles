@@ -1,3 +1,4 @@
+# stuff that neovim uses
 { pkgs, ... }:
 with pkgs;
 [
@@ -8,4 +9,6 @@ with pkgs;
   tinymist
   typst
   yaml-language-server
+  lazygit
+  btop
 ]

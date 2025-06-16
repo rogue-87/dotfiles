@@ -2,7 +2,7 @@
 with pkgs;
 [
   bun
-  deno
+  # deno
   prettierd
   svelte-language-server
   typescript-language-server
