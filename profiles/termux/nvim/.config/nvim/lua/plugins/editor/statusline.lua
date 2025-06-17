@@ -1,5 +1,6 @@
 return {
 	"nvim-lualine/lualine.nvim",
+	version = "*",
 	dependencies = { "nvim-tree/nvim-web-devicons" },
 	---@module "lualine"
 	opts = {
@@ -18,6 +19,17 @@ return {
 			lualine_b = { "branch", "diff" },
 			lualine_c = { "filename", "diagnostics" },
 			lualine_x = {
+				{
+					function()
+						local rec = vim.fn.reg_recording()
+						if rec ~= "" then
+							return "Recording @" .. rec
+						end
+						return ""
+					end,
+					-- stylua: ignore
+					color = function() return { fg = "#ff9e64" } end,
+				},
 				"encoding",
 				"filetype",
 			},
@@ -25,11 +37,8 @@ return {
 				{ "progress", separator = " ", padding = { left = 1, right = 0 } },
 				{ "location", padding = { left = 0, right = 1 } },
 			},
-			lualine_z = {
-				function()
-					return " " .. os.date("%R")
-				end,
-			},
+			-- stylua: ignore
+			lualine_z = { function() return "  " .. os.date("%I:%M %p ") end, },
 		},
 		inactive_sections = {
 			lualine_a = {},

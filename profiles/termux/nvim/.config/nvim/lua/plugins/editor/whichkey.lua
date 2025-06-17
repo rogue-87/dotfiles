@@ -1,6 +1,7 @@
 ---@diagnostic disable: missing-fields
 return {
 	"folke/which-key.nvim",
+	version = "*",
 	event = "VeryLazy",
 	---@module "which-key"
 	---@type wk.Opts
@@ -18,13 +19,12 @@ return {
 			{ "<leader>u", desc = "toggles" },
 			{ "<leader>w", desc = "write", icon = { icon = "" } },
 			{ "<localleader>b", desc = "buffer" },
-			{ "<localleader>c", desc = "actions", icon = { icon = "", color = "orange" } },
+			{ "<localleader>c", desc = "code", icon = { icon = "", color = "orange" } },
 			{ "<localleader>d", desc = "document", icon = { icon = "󰈙", color = "green" } },
 			{ "<localleader>g", desc = "goto", icon = { icon = "", color = "orange" } },
 			{ "<localleader>l", desc = "line", icon = "" },
 			{ "<localleader>p", desc = "peek", icon = { icon = "", color = "green" } },
 			{ "<localleader>r", desc = "rename", icon = { icon = "", color = "orange" } },
-			{ "<localleader>s", desc = "set", icon = { icon = "", color = "cyan" } },
 			{ "<localleader>u", desc = "toggles" },
 			{ "<localleader>w", desc = "workspace", icon = "󱇙" },
 		},

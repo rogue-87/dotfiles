@@ -1,17 +1,18 @@
-local theme = {
-	fill = "TabLineFill",
-	head = "TabLine",
-	current_tab = "TabLineSel",
-	tab = "TabLine",
-	win = "TabLine",
-	tail = "TabLine",
-}
-
 return {
 	"nanozuki/tabby.nvim",
+	version = "*",
 	dependencies = "nvim-tree/nvim-web-devicons",
 	opts = {
 		line = function(line)
+			local theme = {
+				fill = "TabLineFill",
+				head = "TabLine",
+				current_tab = "TabLineSel",
+				tab = "TabLine",
+				win = "TabLine",
+				tail = "TabLine",
+			}
+
 			return {
 				{
 					{ "  ", hl = theme.head },

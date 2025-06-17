@@ -7,13 +7,13 @@ M.node = {
 		local conform = require("conform")
 		conform.setup({
 			formatters_by_ft = {
-				javascript = { "prettierd" },
-				javascriptreact = { "prettierd" },
-				typescript = { "prettierd" },
-				typescriptreact = { "prettierd" },
+				javascript = { "prettierd", "prettier" },
+				javascriptreact = { "prettierd", "prettier" },
+				typescript = { "prettierd", "prettier" },
+				typescriptreact = { "prettierd", "prettier" },
 
-				html = { "prettierd" },
-				css = { "prettierd" },
+				html = { "prettierd", "prettier" },
+				css = { "prettierd", "prettier" },
 			},
 		})
 	end,

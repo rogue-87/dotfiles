@@ -2,32 +2,26 @@
 
 Supported Programming Languages
 
-| Language   |      Language Server       |     Formatter      | Linter |     Debugger     |
-| :--------- | :------------------------: | :----------------: | :----: | :--------------: |
-| c/cpp      |           clangd           |        LSP         |        |     codelldb     |
-| csharp     |         omnisharp          |        LSP         |        |    netcoredbg    |
-| dart       |    dart language-server    |        LSP         |        |                  |
-| fish       |          fish-lsp          |        LSP         |        |                  |
-| golang     |           gopls            |     gofmt,LSP      |        |      delve       |
-| java       |           jdtls            |        LSP         |        |                  |
-| kotlin     |   kotlin-language-server   |                    |        |                  |
-| lua        |    lua-language-server     |       stylua       | selene |                  |
-| luau       |          luau-lsp          |       stylua       | selene |                  |
-| php        |        intelephense        |        LSP         |        |                  |
-| python     |          pyright           | ruff, black, isort |  ruff  |     debugpy      |
-| rust       |       rust-analyzer        |    rustfmt, LSP    |        |     codelldb     |
-| javascript | typescript-language-server |      prettier      | eslint | js-debug-adapter |
-| typescript | typescript-language-server |      prettier      | eslint |       deno       |
+| Language   |  Language Server   | Formatter |      Linter      |      Debugger      |
+| :--------- | :----------------: | :-------: | :--------------: | :----------------: |
+| c/cpp      |       clangd       |    LSP    |                  |                    |
+| csharp     |     omnisharp      |    LSP    |                  |     netcoredbg     |
+| dart       |     `builtin`      | `buildin` |                  |                    |
+| fish       |      fish-lsp      |    LSP    |                  |                    |
+| java       |       jdtls        |    LSP    |                  |                    |
+| lua        |       luals        |  stylua   |      selene      |                    |
+| python     |      pyright       |   ruff    |       ruff       |                    |
+| rust       |   rust-analyzer    |  rustfmt  |      clippy      | lldb `or` codelldb |
+| javascript | tsserver `or` deno | prettierd | eslint `or` deno |                    |
+| typescript | tsserver `or` deno | prettierd | eslint `or` deno |                    |
 
 Other Supported Languages(markup, sql, etc...)
 
-|   Language    |                            LSP                            | Formatter |
-| :-----------: | :-------------------------------------------------------: | :-------: |
-|     astro     |                         astro-ls                          |    LSP    |
-|    svelte     |                       svelteserver                        |    LSP    |
-|   markdown    |                          `NONE`                           | prettier  |
-| css/scss/less | vscode-css-language-server, css-variables-language-server | prettier  |
-|     json      |                          jsonls                           | prettier  |
+| Language |   LSP    |      Formatter      |
+| :------: | :------: | :-----------------: |
+|  svelte  |  svelte  |         LSP         |
+| markdown | marksman | prettierd `or` deno |
+|   json   |  jsonls  | prettierd `or` deno |
 
 # dotfiles/profiles/laptop/nvim/.config/nvim
 
@@ -108,10 +102,6 @@ Other Supported Languages(markup, sql, etc...)
 - [onsails/lspkind.nvim](https://dotfyle.com/plugins/onsails/lspkind.nvim)
 - [mrcjkb/rustaceanvim](https://dotfyle.com/plugins/mrcjkb/rustaceanvim)
 - [mfussenegger/nvim-lint](https://dotfyle.com/plugins/mfussenegger/nvim-lint)
-
-### lsp-installer
-
-- [williamboman/mason.nvim](https://dotfyle.com/plugins/williamboman/mason.nvim)
 
 ### markdown-and-latex
 

@@ -1,6 +1,5 @@
 local function switch_source_header(bufnr)
 	local method_name = "textDocument/switchSourceHeader"
-	bufnr = vim.validate("bufnr", bufnr, "number")
 	local client = vim.lsp.get_clients({ bufnr = bufnr, name = "clangd" })[1]
 	if not client then
 		return vim.notify(
@@ -22,7 +21,7 @@ end
 
 local function symbol_info()
 	local bufnr = vim.api.nvim_get_current_buf()
-	local clangd_client = vim.lsp.get_clients({bufnr = bufnr, name = "clangd"})[1]
+	local clangd_client = vim.lsp.get_clients({ bufnr = bufnr, name = "clangd" })[1]
 	if not clangd_client or not clangd_client:supports_method("textDocument/symbolInfo") then
 		return vim.notify("Clangd client not found", vim.log.levels.ERROR)
 	end
@@ -45,19 +44,18 @@ local function symbol_info()
 		})
 	end, bufnr)
 end
-
 ---@type vim.lsp.Config
 return {
 	cmd = { "clangd" },
 	filetypes = { "c", "cpp", "objc", "objcpp", "cuda", "proto" },
 	root_markers = {
-		".git",
 		".clangd",
 		".clang-tidy",
 		".clang-format",
 		"compile_commands.json",
 		"compile_flags.txt",
 		"configure.ac", -- AutoTools
+		".git",
 	},
 	capabilities = {
 		textDocument = {
@@ -67,18 +65,13 @@ return {
 		},
 		offsetEncoding = { "utf-8", "utf-16" },
 	},
-	commands = {
-		ClangdSwitchSourceHeader = {
-			function()
-				switch_source_header(0)
-			end,
-			description = "Switch between source/header",
-		},
-		ClangdShowSymbolInfo = {
-			function()
-				symbol_info()
-			end,
-			description = "Show symbol info",
-		},
-	},
+	on_attach = function()
+		vim.api.nvim_buf_create_user_command(0, "LspClangdSwitchSourceHeader", function()
+			switch_source_header(0)
+		end, { desc = "Switch between source/header" })
+
+		vim.api.nvim_buf_create_user_command(0, "LspClangdShowSymbolInfo", function()
+			symbol_info()
+		end, { desc = "Show symbol info" })
+	end,
 }

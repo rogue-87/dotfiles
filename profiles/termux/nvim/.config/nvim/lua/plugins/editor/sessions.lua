@@ -1,5 +1,6 @@
 return {
 	"folke/persistence.nvim",
+	version = "*",
     -- stylua: ignore
 	keys = {
 		{ "<leader>qs", function() require("persistence").load()                end, desc = "Load session for cwd" },

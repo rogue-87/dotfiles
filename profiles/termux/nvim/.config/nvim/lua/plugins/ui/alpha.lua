@@ -30,13 +30,14 @@ return {
 				"<cmd>lua require('persistence').load({ last = true })<cr>"
 			),
 
-			dashboard.button("r", "  Recent Sessions", "<cmd>lua require('persistence').select()<cr>"),
+			dashboard.button("r", "  Recent Sessions", "<cmd>lua require('persistence').select()<cr>"),
 
 			dashboard.button("l", "󰒲  Lazy", "<cmd>Lazy<cr>"),
 
 		  	-- stylua: ignore
 		  	dashboard.button("c", "  Config", "<cmd>lua vim.fn.chdir(vim.fn.stdpath('config'))<cr>" .. "<cmd>lua Snacks.picker.files({ hidden = true })<cr>"),
 			dashboard.button("h", "󰓙  Run healthcheck", "<cmd>checkhealth<cr>"),
+
 			dashboard.button("q", "󰗼  Quit Neovim", "<cmd>qa<cr>"),
 		}
 		alpha.setup(dashboard.config)
@@ -59,6 +60,6 @@ return {
 		})
 	end,
 	keys = {
-		{ "<leader>a", "<cmd>Alpha<cr>", desc = "Alpha Dashboard" },
+		{ "<leader>a", "<cmd>Alpha<cr>", desc = "dashboard" },
 	},
 }

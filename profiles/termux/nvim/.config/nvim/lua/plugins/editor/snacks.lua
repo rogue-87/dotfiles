@@ -1,5 +1,6 @@
 return {
 	"folke/snacks.nvim",
+	version = "*",
 	priority = 1000,
 	lazy = false,
 	---@module "snacks"
@@ -8,12 +9,21 @@ return {
 		bigfile = { enabled = true },
 		-- dashboard = { enabled = true },
 		-- explorer = { enabled = true },
-		indent = { enabled = true, animate = { enabled = false } },
+		indent = {
+			enabled = true,
+			animate = { enabled = false },
+			filter = function(buf)
+				-- stylua: ignore
+				if vim.bo[buf].filetype == "markdown" then return end
+
+				return vim.g.snacks_indent ~= false and vim.b[buf].snacks_indent ~= false and vim.bo[buf].buftype == ""
+			end,
+		},
 		-- input = { enabled = true },
-		-- notifier = { enabled = true },
+		-- notifier = { enabled = true, style = "minimal" },
 		picker = { enabled = true },
 		quickfile = { enabled = true },
-		-- scope = { enabled = true },
+		scope = { enabled = true },
 		scroll = { enabled = false },
 		statuscolumn = { enabled = true },
 		words = { enabled = true },
@@ -47,10 +57,11 @@ return {
 		-- { "<leader>nw",	function() Snacks.notifier.show_history({filter = "warn"})	end,	desc = "Warn"			},
 		-- { "<c-esc>",   	function() Snacks.notifier.hide()							end,	desc = "Dismiss"  		},
 
-		-- Other
+		-- Terminal
 		{ "<c-_>",      function() Snacks.terminal.toggle(nil, { interactive = true, win = { height = 5 }}) 	end, desc = "Toggle Terminal" },
 		{ "<leader>rh", function() Snacks.terminal("htop", { win = { position = "float" } }) 	end, desc = "Htop" },
 		{ "<leader>rl", function() Snacks.lazygit() 											end, desc = "Lazygit" },
+		-- Other
 		{ "[[",         function() Snacks.words.jump(-vim.v.count1) 							end, desc = "Prev Reference", mode = { "n", "t" } },
 		{ "]]",         function() Snacks.words.jump(vim.v.count1) 								end, desc = "Next Reference", mode = { "n", "t" } },
 		{

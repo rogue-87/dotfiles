@@ -2,8 +2,8 @@
 ---@diagnostic disable: missing-fields
 return {
 	"folke/noice.nvim",
+	version = "*",
 	dependencies = { "MunifTanjim/nui.nvim" },
-	enabled = true,
 	lazy = false,
 	---@type NoiceConfig
 	opts = {
@@ -39,10 +39,11 @@ return {
 	--stylua: ignore
 	keys = {
 		{ "<leader>n", 	"", 						desc = "notifications" },
-		{ "<leader>nh", "<cmd>Noice history<cr>", 	desc = "History" },
-		{ "<leader>ne", "<cmd>Noice errors<cr>", 	desc = "Errors" },
 		{ "<leader>nw", "<cmd>Noice warn<cr>", 		desc = "Warn" },
-		{ "<c-esc>", 	"<cmd>Noice dismiss<cr>", 	desc = "Dismiss" },
+		{ "<leader>ne", "<cmd>Noice errors<cr>", 	desc = "Errors" },
+		{ "<leader>nh", "<cmd>Noice history<cr>", 	desc = "History" },
+		{ "<leader>np", "<cmd>Noice pick<cr>", 		desc = "Pick" },
+		{ "<leader>nd", 	"<cmd>Noice dismiss<cr>", 	desc = "Dismiss" },
 	},
 	init = function()
 		local utils = require("myutils")

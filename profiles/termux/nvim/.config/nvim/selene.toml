@@ -1,4 +1,4 @@
-std="luajit"
+std = "luajit"
 
 [lints]
-mixed_table="allow"
+mixed_table = "allow"

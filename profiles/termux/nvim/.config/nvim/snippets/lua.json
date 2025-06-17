@@ -1,11 +1,9 @@
 {
-  "lazy-plugn": {
-	"prefix": "lazy-plugn",
-	  "body": [
-		  "{", 
-				"	\"${1:author}/${2:plugin}\",",
-				"opts = {},",
-			"}"
-	  ]
+  "foo": {
+	  "prefix": "foo",
+    "body": [
+      "local ${1:foo} = ${2:bar}",
+      "return ${3:baz}"
+    ]
   }
 }

@@ -17,19 +17,14 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
 	spec = {
-		{
-			"mason-org/mason.nvim",
-			keys = { { "<leader>mm", "<cmd>Mason<cr>", desc = "Mason" } },
-			opts = {},
-		},
 		{ import = "plugins.ui" }, -- colorschemes, dashboard, improved lsp UI and more
 		{ import = "plugins.editor" }, -- fuzzy finder, filetree, scrollbar, git integration & more
 		{ import = "plugins.coding" }, -- code completion, formatting, linting, etc...
+		-- { import = "plugins.debug" }, -- DAP support for nvim
+		-- { import = "plugins.discord" }, -- flex on discord
+		{ import = "plugins.wakatime" }, -- track usage
+
 		-- { import = "extras" }, -- extra stuff
-		-- { import = "extras.ai" },
-		-- { import = "extras.db" },
-		{ import = "extras.notes" },
-		{ import = "extras.wakatime" },
 		{ import = "extras.webdev" },
 	},
 	install = { colorscheme = { "nightfox" } },
