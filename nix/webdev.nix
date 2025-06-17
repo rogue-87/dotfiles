@@ -2,6 +2,7 @@
 with pkgs;
 [
   bun
+  pnpm
   # deno
   prettierd
   svelte-language-server
