@@ -2,7 +2,7 @@ local Spec = {}
 vim.g.markdown_fenced_languages = { "ts=typescript" }
 require("extras.webdev.lsp.basic").setup()
 require("extras.webdev.lsp.svelte").setup()
-require("extras.webdev.lsp.tailwindcss").setup()
+-- require("extras.webdev.lsp.tailwindcss").setup()
 
 if vim.fn.filereadable("package.json") == 1 then
 	require("extras.webdev.lsp.typescript-ls").setup()

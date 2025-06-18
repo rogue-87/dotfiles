@@ -15,8 +15,8 @@ lsp.on_attach(function(client, bufnr)
 	end
 
 	-- prefer LSP folding if client supports it
-	--[[ if client.server_capabilities.foldingRangeProvider then
+	if client.server_capabilities.foldingRangeProvider then
 		local win = vim.api.nvim_get_current_win()
 		vim.wo[win][0].foldexpr = "v:lua.vim.lsp.foldexpr()"
-	end ]]
+	end
 end)
