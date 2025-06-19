@@ -11,6 +11,11 @@ if status is-interactive
     set -x EDITOR nvim
     set -x VISUAL nvim
 
+    # source mise if it exists
+    if type -q mise
+        mise activate fish | source
+    end
+
     # browser to be used by flutter
     set -x CHROME_EXECUTABLE chromium-browser
 end
