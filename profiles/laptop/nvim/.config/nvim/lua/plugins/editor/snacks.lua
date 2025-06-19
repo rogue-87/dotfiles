@@ -1,11 +1,21 @@
-local header = [[
-          :::      ::::::::  ::: :::::::::
-       :+: :+:   :+:    :+: :+: :+:    :+:
-     +:+   +:+  +:+        +:+ +:+    +:+ 
-   +#++:++#++: +#+        +#+ +#+    +:+  
-  +#+     +#+ +#+        +#+ +#+    +#+   
- #+#     #+# #+#    #+#     #+#    #+#    
-###     ###  ########  ### #########      
+local acid = [[
+          :::         ::::::::      :::      :::::::::
+       :+: :+:      :+:    :+:     :+:      :+:    :+:
+     +:+   +:+     +:+            +:+      +:+    +:+ 
+   +#++:++#++:    +#+            +#+      +#+    +:+  
+  +#+     +#+    +#+            +#+      +#+    +#+   
+ #+#     #+#    #+#    #+#              #+#    #+#    
+###     ###     ########      ###      #########      
+]]
+
+local rogue = [[
+      :::::::::       ::::::::       ::::::::      :::    :::       ::::::::::
+     :+:    :+:     :+:    :+:     :+:    :+:     :+:    :+:       :+:        
+    +:+    +:+     +:+    +:+     +:+            +:+    +:+       +:+         
+   +#++:++#:      +#+    +:+     :#:            +#+    +:+       +#++:++#     
+  +#+    +#+     +#+    +#+     +#+   +#+#     +#+    +#+       +#+           
+ #+#    #+#     #+#    #+#     #+#    #+#     #+#    #+#       #+#            
+###    ###      ########       ########       ########        ##########      
 ]]
 
 return {
@@ -19,9 +29,9 @@ return {
 		bigfile = { enabled = true },
 		dashboard = {
 			enabled = true,
-			preset = { header = header },
+			preset = { header = acid },
 		},
-		-- explorer = { enabled = true },
+		explorer = { enabled = false },
 		indent = {
 			enabled = true,
 			animate = { enabled = false },
@@ -33,7 +43,7 @@ return {
 			end,
 		},
 		input = { enabled = true },
-		-- notifier = { enabled = true, style = "minimal" },
+		notifier = { enabled = false, style = "minimal" },
 		picker = { enabled = true },
 		quickfile = { enabled = true },
 		scope = { enabled = true },
