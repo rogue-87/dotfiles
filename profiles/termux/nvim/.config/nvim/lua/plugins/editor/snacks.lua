@@ -1,3 +1,13 @@
+local header = [[
+      :::::::::       ::::::::       ::::::::      :::    :::       ::::::::::
+     :+:    :+:     :+:    :+:     :+:    :+:     :+:    :+:       :+:        
+    +:+    +:+     +:+    +:+     +:+            +:+    +:+       +:+         
+   +#++:++#:      +#+    +:+     :#:            +#+    +:+       +#++:++#     
+  +#+    +#+     +#+    +#+     +#+   +#+#     +#+    +#+       +#+           
+ #+#    #+#     #+#    #+#     #+#    #+#     #+#    #+#       #+#            
+###    ###      ########       ########       ########        ##########      
+]]
+
 return {
 	"folke/snacks.nvim",
 	version = "*",
@@ -7,7 +17,10 @@ return {
 	---@type snacks.Config
 	opts = {
 		bigfile = { enabled = true },
-		-- dashboard = { enabled = true },
+		dashboard = {
+			enabled = true,
+			preset = { header = header },
+		},
 		-- explorer = { enabled = true },
 		indent = {
 			enabled = true,
@@ -19,7 +32,7 @@ return {
 				return vim.g.snacks_indent ~= false and vim.b[buf].snacks_indent ~= false and vim.bo[buf].buftype == ""
 			end,
 		},
-		-- input = { enabled = true },
+		input = { enabled = true },
 		-- notifier = { enabled = true, style = "minimal" },
 		picker = { enabled = true },
 		quickfile = { enabled = true },
@@ -58,8 +71,9 @@ return {
 		-- { "<c-esc>",   	function() Snacks.notifier.hide()							end,	desc = "Dismiss"  		},
 
 		-- Terminal
-		{ "<c-_>",      function() Snacks.terminal.toggle(nil, { interactive = true, win = { height = 5 }}) 	end, desc = "Toggle Terminal" },
-		{ "<leader>rh", function() Snacks.terminal("htop", { win = { position = "float" } }) 	end, desc = "Htop" },
+		{ "<c-`>",      function() Snacks.terminal.toggle(nil, { interactive = true, win = { height = 5, }}) 	end, desc = "Toggle Terminal" },
+		{ "<c-/>",      function() Snacks.terminal.open(nil, { interactive = false, win = { height = 5 }}) 	end, desc = "Open Terminal" },
+		{ "<leader>rb", function() Snacks.terminal("btop", { win = { position = "float" } }) 	end, desc = "Btop" },
 		{ "<leader>rl", function() Snacks.lazygit() 											end, desc = "Lazygit" },
 		-- Other
 		{ "[[",         function() Snacks.words.jump(-vim.v.count1) 							end, desc = "Prev Reference", mode = { "n", "t" } },
