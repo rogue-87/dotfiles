@@ -71,9 +71,8 @@ return {
 		-- { "<c-esc>",   	function() Snacks.notifier.hide()							end,	desc = "Dismiss"  		},
 
 		-- Terminal
-		{ "<c-`>",      function() Snacks.terminal.toggle(nil, { interactive = true, win = { height = 5, }}) 	end, desc = "Toggle Terminal" },
-		{ "<c-/>",      function() Snacks.terminal.open(nil, { interactive = false, win = { height = 5 }}) 	end, desc = "Open Terminal" },
-		{ "<leader>rb", function() Snacks.terminal("btop", { win = { position = "float" } }) 	end, desc = "Btop" },
+		{ "<c-_>",      function() Snacks.terminal.toggle(nil, { interactive = true, win = { height = 5 }}) 	end, desc = "Toggle Terminal" },
+		{ "<leader>rh", function() Snacks.terminal("htop", { win = { position = "float" } }) 	end, desc = "Htop" },
 		{ "<leader>rl", function() Snacks.lazygit() 											end, desc = "Lazygit" },
 		-- Other
 		{ "[[",         function() Snacks.words.jump(-vim.v.count1) 							end, desc = "Prev Reference", mode = { "n", "t" } },

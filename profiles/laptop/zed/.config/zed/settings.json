@@ -11,6 +11,7 @@
     "edit_prediction_provider": "zed"
   },
   "agent": {
+    "enabled": false,
     "model_parameters": [],
     "default_profile": "minimal",
     "version": "2"
