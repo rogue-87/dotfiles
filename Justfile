@@ -4,9 +4,9 @@ laptop := env('PWD') + "/profiles/laptop"
 termux := env('PWD') + "/profiles/termux"
 
 # stow configs
-global_configs := "fastfetch fish git" 
-laptop_configs := "kitty neovide nvim rio zed zellij"
-termux_configs := "nvim termux-settings"
+global_configs := "fastfetch fish git nvim" 
+laptop_configs := "kitty neovide rio zed zellij"
+termux_configs := "termux-settings"
 
 # where to put these configs
 target := env('HOME')

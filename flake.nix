@@ -50,11 +50,10 @@
           paths =
             with pkgs;
             [
-              # nix
+              # Nix
               nixd
               nixfmt-rfc-style
-
-              # rust
+              # Rust
               rust
               rustlings
               taplo
