@@ -25,12 +25,15 @@
         rust = pkgs.rust-bin.stable.latest.default.override {
           # components
           extensions = [
-            "clippy"
-            "rust-analyzer"
-            "rust-src"
+            "clippy" # linter
+            "rust-analyzer" # language server
+            "rust-src" # rust standard lib
           ];
-          # targets
-          # targets = [ ];
+          # targets that rust can compile to
+          targets = [
+            "x86_64-unknown-linux-gnu" # default
+            "wasm32-unknown-unknown"
+          ];
         };
 
         cli = import ./nix/cli.nix { inherit pkgs; };
@@ -55,6 +58,7 @@
               rust
               rustlings
               taplo
+              cargo-binstall
             ]
             ++ cli
             ++ editor
