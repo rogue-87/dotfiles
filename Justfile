@@ -4,7 +4,7 @@ laptop := env('PWD') + "/profiles/laptop"
 termux := env('PWD') + "/profiles/termux"
 
 # stow configs
-global_configs := "fastfetch fish git nvim" 
+global_configs := "fastfetch fish git inlyne nvim" 
 laptop_configs := "kitty neovide rio zed zellij"
 termux_configs := "termux-settings"
 
