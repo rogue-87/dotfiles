@@ -25,4 +25,4 @@ tada!, you're good to go :]
 
 ### extra stuff
 
-[laptop nvim config](https://github.com/rogue-87/dotfiles/blob/master/profiles/global/nvim/.config/nvim/note.md)
+[nvim config](https://github.com/rogue-87/dotfiles/blob/master/profiles/global/nvim/.config/nvim/note.md)
