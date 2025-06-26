@@ -25,6 +25,4 @@ tada!, you're good to go :]
 
 ### extra stuff
 
-[laptop nvim config](https://github.com/acid-32bit/dotfiles/blob/master/profiles/laptop/nvim/.config/nvim/note.md)
-
-[termux nvim config](https://github.com/acid-32bit/dotfiles/blob/master/profiles/termux/nvim/.config/nvim/note.md)
+[laptop nvim config](https://github.com/rogue-87/dotfiles/blob/master/profiles/global/nvim/.config/nvim/note.md)

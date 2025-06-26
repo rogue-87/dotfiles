@@ -24,7 +24,7 @@ return {
 			},
 			completion = {
 				enabled = true,
-				addParentheses = true,
+				addParentheses = false,
 				imports = { enabled = true },
 			},
 			diagnostics = { workspace = false },
