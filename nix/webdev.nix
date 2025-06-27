@@ -3,7 +3,7 @@ with pkgs;
 [
   bun
   pnpm
-  # deno
+  deno
   prettierd
   svelte-language-server
   typescript-language-server
