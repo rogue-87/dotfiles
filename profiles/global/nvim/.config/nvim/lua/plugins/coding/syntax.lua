@@ -11,6 +11,13 @@ return {
 			"diff",
 			"luadoc",
 			"regex",
+			"c",
+			"lua",
+			"markdown",
+			"markdown_inline",
+			"query",
+			"vim",
+			"vimdoc",
 			-- other
 			"bash",
 			"cpp",
@@ -21,16 +28,11 @@ return {
 			"just",
 			"luau",
 			"nix",
+			"prisma",
 			"rust",
 			"toml",
-			--- these are already installed by default
-			-- "c",
-			-- "lua",
-			-- "markdown",
-			-- "markdown_inline",
-			-- "query",
-			-- "vim",
-			-- "vimdoc",
+			"typst",
+			"yaml",
 		})
 	end,
 }
