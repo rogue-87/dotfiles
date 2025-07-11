@@ -17,15 +17,17 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
 	spec = {
+		-- essential plugins
 		{ import = "plugins.ui" }, -- colorschemes, improved lsp UI and more
 		{ import = "plugins.editor" }, -- fuzzy finder, filetree, scrollbar, git integration & more
 		{ import = "plugins.coding" }, -- code completion, formatting, linting, etc...
-		-- { import = "plugins.debug" }, -- DAP support for nvim
+		{ import = "plugins.debug" }, -- DAP support for nvim
+		-- other (removable plugins)
 		{ import = "plugins.discord" }, -- flex on discord
-		-- { import = "plugins.roslyn" }, -- C# language support(can't bother setting that stuff up)
+		{ import = "plugins.roslyn" }, -- C# language support(can't bother setting that stuff up)
 		{ import = "plugins.wakatime" }, -- track usage
-
-		-- { import = "extras" }, -- extra configs and plugin overrides
+		{ import = "plugins.markview" }, -- view markdown files in neovim
+		-- extra configs and plugin overrides
 		{ import = "extras.webdev" },
 	},
 	install = { colorscheme = { "nightfox" } },
