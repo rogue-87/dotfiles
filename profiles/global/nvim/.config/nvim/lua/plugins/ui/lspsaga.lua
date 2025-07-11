@@ -8,5 +8,6 @@ return {
 	opts = {
 		lightbulb = { sign = false, virtual_text = true },
 		rename = { in_select = false, keys = { quit = "<esc>" } },
+		symbol_in_winbar = { enable = false },
 	},
 }
