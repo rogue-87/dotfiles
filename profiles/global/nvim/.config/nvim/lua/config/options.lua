@@ -32,7 +32,7 @@ vim.o.smartindent = false
 vim.o.smoothscroll = false
 vim.o.tabstop = 4
 vim.o.termguicolors = true
-vim.o.wrap = true
+vim.o.wrap = false
 
 -- spelling
 vim.o.spell = false
