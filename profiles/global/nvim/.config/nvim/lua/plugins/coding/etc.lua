@@ -1,8 +1,8 @@
 return {
 	-- Auto close
-	{ "echasnovski/mini.pairs", version = "*", enabled = true, opts = {} },
+	{ "echasnovski/mini.pairs", version = "*", opts = {} },
 	-- don't know what this plugin exactly does but it seems cool
-	{ "echasnovski/mini.surround", version = "*" },
+	{ "echasnovski/mini.surround", version = "*", opts = {} },
 	-- Moving code
 	{ "echasnovski/mini.move", version = "*", opts = {} },
 	-- autoclose & autorename for html tags
