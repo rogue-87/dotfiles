@@ -15,8 +15,8 @@
 			/* nvim plugins */
 			"~/.local/share/nvim/lazy/blink.cmp/",
 			"~/.local/share/nvim/lazy/snacks.nvim/",
-			// "~/.local/share/nvim/lazy/lspsaga.nvim/",
-			// "~/.local/share/nvim/lazy/nvim-treesitter/"
+			"~/.local/share/nvim/lazy/lspsaga.nvim/",
+			"~/.local/share/nvim/lazy/nvim-treesitter/"
 		]
 	},
 	"completion.callSnippet": "Replace"
