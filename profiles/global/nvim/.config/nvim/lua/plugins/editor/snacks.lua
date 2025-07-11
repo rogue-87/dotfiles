@@ -1,7 +1,7 @@
 local ascii = require("myutils.ascii")
 return {
 	"folke/snacks.nvim",
-	version = "*",
+	-- version = "*",
 	priority = 1000,
 	lazy = false,
 	---@module "snacks"
@@ -24,7 +24,8 @@ return {
 			end,
 		},
 		input = { enabled = true },
-		notifier = { enabled = false, style = "minimal" },
+		-- WARN: apparently, running checkhealth twice with this enabled, causes nvim to crash
+		notifier = { enabled = true, style = "compact" },
 		picker = { enabled = true },
 		quickfile = { enabled = true },
 		scope = { enabled = true },
@@ -54,17 +55,17 @@ return {
 		{ "<leader>si", function() Snacks.picker.icons() 		end, desc = "Icons" },
 		{ "<leader>sl", function() Snacks.picker.loclist() 		end, desc = "Location List" },
 		-- Notifier
-		-- { "<leader>n", "",																	desc = "notifications"	},
-		-- { "<leader>nh",	function() Snacks.notifier.show_history()					end,	desc = "History"		},
-		-- { "<leader>ne",	function() Snacks.notifier.show_history({filter = "error"})	end,	desc = "Errors"			},
-		-- { "<leader>ni",	function() Snacks.notifier.show_history({filter = "info"})	end,	desc = "Info"			},
-		-- { "<leader>nw",	function() Snacks.notifier.show_history({filter = "warn"})	end,	desc = "Warn"			},
-		-- { "<c-esc>",   	function() Snacks.notifier.hide()							end,	desc = "Dismiss"  		},
-
+		{ "<leader>n", "",																	desc = "notifications"	},
+		{ "<leader>nh",	function() Snacks.notifier.show_history()					end,	desc = "History"		},
+		{ "<leader>ne",	function() Snacks.notifier.show_history({filter = "error"})	end,	desc = "Errors"			},
+		{ "<leader>ni",	function() Snacks.notifier.show_history({filter = "info"})	end,	desc = "Info"			},
+		{ "<leader>nw",	function() Snacks.notifier.show_history({filter = "warn"})	end,	desc = "Warn"			},
+		{ "<c-esc>",   	function() Snacks.notifier.hide()							end,	desc = "Dismiss"  		},
 		-- Terminal
 		{ "<c-/>",      function() Snacks.terminal.toggle(nil, { interactive = true, win = { height = 5, }}) 	end, desc = "Toggle Terminal" },
-		{ "<leader>rb", function() Snacks.terminal("btop", { win = { position = "float" } }) 	end, desc = "Btop" },
-		{ "<leader>rl", function() Snacks.lazygit() 											end, desc = "Lazygit" },
+		{ "<leader>rb", function() Snacks.terminal("btop", { win = { position = "float" } }) 	                end, desc = "Btop" },
+		{ "<leader>rh", function() Snacks.terminal("htop", { win = { position = "float" } }) 	                end, desc = "Htop" },
+		{ "<leader>rg", function() Snacks.lazygit() 											                end, desc = "Lazygit" },
 		-- Other
 		{ "[[",         function() Snacks.words.jump(-vim.v.count1) 							end, desc = "Prev Reference", mode = { "n", "t" } },
 		{ "]]",         function() Snacks.words.jump(vim.v.count1) 								end, desc = "Next Reference", mode = { "n", "t" } },
@@ -74,9 +75,9 @@ return {
 			function()
 				Snacks.win({
 					file = vim.api.nvim_get_runtime_file("doc/news.txt", false)[1],
-					width = 0.8,
-					height = 0.9,
-					border = "rounded",
+					width = 0,
+					height = 0,
+					border = "none",
 					wo = {
 						spell = false,
 						wrap = false,
