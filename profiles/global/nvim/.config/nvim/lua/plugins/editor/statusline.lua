@@ -32,6 +32,7 @@ return {
 				},
 				"encoding",
 				"filetype",
+				"lsp_status",
 			},
 			lualine_y = {
 				{ "progress", separator = " ", padding = { left = 1, right = 0 } },

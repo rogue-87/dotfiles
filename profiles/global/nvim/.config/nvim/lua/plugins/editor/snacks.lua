@@ -25,14 +25,29 @@ return {
 		},
 		input = { enabled = true },
 		-- WARN: apparently, running checkhealth twice with this enabled, causes nvim to crash
-		notifier = { enabled = true, style = "compact" },
+		notifier = {
+			enabled = true,
+			-- INFO: disable if you want to customize the notifier
+			-- style = "minimal", ---@type snacks.notifier.style
+			top_down = false,
+			margin = { top = 0, right = 0, bottom = 0 },
+		},
 		picker = { enabled = true },
 		quickfile = { enabled = true },
 		scope = { enabled = true },
 		scroll = { enabled = false },
 		statuscolumn = { enabled = true },
 		words = { enabled = true },
-		styles = {},
+
+		styles = {
+			notification = {
+				backdrop = false,
+				border = "none",
+				focusable = false,
+				ft = "markdown",
+				relative = "editor",
+			},
+		},
 	},
 	-- stylua: ignore
 	keys = {

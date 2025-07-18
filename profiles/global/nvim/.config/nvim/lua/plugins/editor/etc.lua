@@ -61,4 +61,17 @@ return {
 		},
 	},
 	{ "folke/todo-comments.nvim", version = "*", dependencies = { "nvim-lua/plenary.nvim" }, opts = {} },
+	{
+		"lewis6991/satellite.nvim",
+		opts = {
+			handlers = {
+				cursor = { enable = true },
+				gitsigns = { enable = false },
+				marks = { enable = true },
+				quickfix = { enable = true },
+				diagnostic = { enable = true },
+				search = { enable = true },
+			},
+		},
+	},
 }
