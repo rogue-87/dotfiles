@@ -1,0 +1,8 @@
+[Unit]
+PartOf=graphical-session.target
+After=graphical-session.target
+Requisite=graphical-session.target
+
+[Service]
+ExecStart=/usr/bin/swaybg -m fill -i "%h/Pictures/Wallpapers/akira-in-city-4k-v0.jpg"
+Restart=on-failure
