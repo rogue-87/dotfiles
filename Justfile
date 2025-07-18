@@ -77,26 +77,3 @@ unstow:
 
     fi
     printf "{{GREEN}} dotfiles unstowed successfully! {{NORMAL}}\n"
-
-nix-installer CMD:
-    #!/usr/bin/env bash
-    set -euo pipefail
-
-    if [[ "{{CMD}}" == "install" ]]; then
-
-        printf "{{YELLOW}} installing nix... {{NORMAL}}\n"
-        sleep 2s
-        curl -fsSL https://install.determinate.systems/nix | sh -s -- install --determinate
-        printf "{{GREEN}} successfully installed nix! {{NORMAL}}\n"
-
-    elif [[ "{{CMD}}" == "uninstall" ]]; then
-
-        printf "{{YELLOW}} uninstalling nix... {{NORMAL}}\n"
-        sleep 2s
-        /nix/nix-installer uninstall
-        printf "{{GREEN}} successfully uninstalled nix! {{NORMAL}}\n"
-
-    fi
-
-install-rust:
-    sudo dnf in rust rustfmt rust-analyzer clippy cargo
