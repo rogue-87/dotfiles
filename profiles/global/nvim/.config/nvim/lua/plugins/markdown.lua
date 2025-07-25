@@ -8,9 +8,9 @@ return {
 	{
 		"rogue-87/inlyne.nvim",
 		keys = {
-			{ "<leader>ie", "<cmd>Inlyne enable<cr>", desc = "Start Inlyne" },
-			{ "<leader>id", "<cmd>Inlyne disable<cr>", desc = "Stops Inlyne" },
-			{ "<leader>it", "<cmd>Inlyne enable<cr>", desc = "Toggles Inlyne" },
+			{ "<leader>ie", "<cmd>Inlyne enable<cr>", desc = "Enable Inlyne" },
+			{ "<leader>id", "<cmd>Inlyne disable<cr>", desc = "Disable Inlyne" },
+			{ "<leader>it", "<cmd>Inlyne toggle<cr>", desc = "Toggle Inlyne" },
 		},
 		opts = {},
 	},
