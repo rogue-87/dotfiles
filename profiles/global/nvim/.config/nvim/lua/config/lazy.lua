@@ -26,7 +26,7 @@ require("lazy").setup({
 		{ import = "plugins.discord" }, -- flex on discord
 		{ import = "plugins.roslyn" }, -- C# language support(can't bother setting that stuff up)
 		{ import = "plugins.wakatime" }, -- track usage
-		{ import = "plugins.markview" }, -- view markdown files in neovim
+		{ import = "plugins.markdown" }, -- view markdown files in neovim
 		-- extra configs and plugin overrides
 		{ import = "extras.webdev" },
 	},
