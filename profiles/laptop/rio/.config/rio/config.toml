@@ -1,76 +1,39 @@
-
-# hide-cursor-when-typing = false
-# ignore-selection-foreground-color = false
-
+hide-cursor-when-typing = false
+ignore-selection-foreground-color = false
+padding-x = 0
+# setting it to [0, -3] fixes the annoying void bar that appears at the bottom of any tui program
+padding-y = [0, -3]
+line-height = 1.0
+env-vars = []
+use-fork = false
+confirm-before-quit = false
 # theme = "dracula"
 
-# padding-x = 10
-# padding-y = [30, 10]
-
-# line-height = 1.2
-
-# working-dir = "/Users/raphael/Documents/"
-
-# env-vars = []
-
-# Use fork
-#
-# Defaults for POSIX-based systems (Windows is not configurable):
-# MacOS: spawn processes
-# Linux/BSD: fork processes
-#
-# Example:
-# use-fork = false
-
-# confirm-before-quit = false
-
-# [cursor]
-# shape = 'block'
-# blinking = false
-# blinking-interval = 800
+[cursor]
+shape = "block"
+blinking = true
+blinking-interval = 800
 
 [editor]
 program = "nvim"
 args = []
 
-# [window]
+[window]
 # width = 600
 # height = 400
-# mode = "windowed"
-# opacity = 1.0
-# blur = false
-# decorations = "enabled"
+opacity = 1.0
+blur = false
+mode = "windowed"       # ("windowed", "maximized", "fullscreen")
+decorations = "enabled" # ("enabled", "disabled", "transparent", "buttonless")
 
-# Renderer
-#
-# • Performance: Set WGPU rendering performance
-#   - High: Adapter that has the highest performance. This is often a discrete GPU.
-#   - Low: Adapter that uses the least possible power. This is often an integrated GPU.
-#
-# • Backend: Set WGPU rendering backend
-#   - Automatic: Leave Sugarloaf/WGPU to decide
-#   - GL: Supported on Linux/Android, and Windows and macOS/iOS via ANGLE
-#   - Vulkan: Supported on Windows, Linux/Android
-#   - DX12: Supported on Windows 10
-#   - Metal: Supported on macOS/iOS
-#
-# • disable-unfocused-render: This property disable renderer processes while Rio is unfocused.
-#
-# • level: Configure renderer level
-#   - Available options: 0 and 1.
-#       Higher the level more rendering features and computations
-#       will be done like enable font ligatures or emoji support.
-#       For more information please check the docs.
-#
-# • filters: A list of paths to RetroArch slang shaders. Might not work with OpenGL.
-#
-# Example:
-# [renderer]
-# performance = "high"
-# backend = "automatic"
-# disable-unfocused-render = false
-# level = 1
-# filters = []
+[renderer]
+performance = "high"             # (low, high)
+backend = "automatic"            # (automatic, gl, vulkan, dx12, metal)
+disable-unfocused-render = false # disable renderer processes while Rio is unfocused.
+level = 1                        # Higher the level more rendering features and computations
+# list of paths to RetroArch slang shaders. Might not work with OpenGL.
+filters = []
+
 
 # [keyboard]
 # use-kitty-keyboard-protocol = false
@@ -85,32 +48,18 @@ size = 16
 multiplier = 3.0
 divider = 1.0
 
-# Navigation
-#
-# "mode" - Define navigation mode
-#   • NativeTab (MacOS only)
-#   • Bookmark
-#   • BottomTab
-#   • TopTab
-#   • Plain
-#
-# "hide-if-single" - Hide navigation UI if is single.
-# "clickable" - Enable click on tabs to switch.
-# "use-current-path" - Use same path whenever a new tab is created (Note: requires `use-fork` to be set to false).
-# "color-automation" - Set a specific color for the tab whenever a specific program is running, or in a specific directory.
-#
-# Example:
-# [navigation]
-# mode = "bookmark"
-# clickable = false
-# hide-if-single = true
-# use-current-path = false
-# color-automation = []
+[navigation]
+mode = "Bookmark"       # (Bookmark, BottomTab, TopTab, Plain)
+clickable = false       # self explanatory
+hide-if-single = true   # self explanatory
+use-current-path = true # Note: requires `use-fork` to be set to false
+# Set a specific color for the tab whenever a specific program is running, or in a specific directory.
+color-automation = []
 
 [shell]
 program = "fish"
 args = ["--login"]
 
-# [developer]
-# log-level = "OFF"
-# enable-log-file = false
+[developer]
+log-level = "OFF"
+enable-log-file = false
