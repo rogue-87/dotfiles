@@ -5,7 +5,7 @@ return {
 		version = "*",
 		-- stylua: ignore
 		keys = {
-			{ "<leader>g", "", desc = "git" },
+			{ "<leader>g", "", desc = "Git" },
 			{ "<leader>gb", function() package.loaded.gitsigns.blame_line({ full = true })  end, desc = "Blame line"        },
 			{ "<leader>gB", function() package.loaded.gitsigns.toggle_current_line_blame()  end, desc = "Toggle line blame" },
 			{ "<leader>gp", function() package.loaded.gitsigns.preview_hunk()               end, desc = "Preview hunk"      },

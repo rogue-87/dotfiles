@@ -4,6 +4,7 @@
 ---@diagnostic disable: missing-fields
 return {
 	"folke/noice.nvim",
+    enabled = true,
 	-- version = "*",
 	dependencies = { "MunifTanjim/nui.nvim" },
 	lazy = false,

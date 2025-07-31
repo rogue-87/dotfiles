@@ -36,5 +36,5 @@ vim.lsp.enable({
 	"taplo",
 	"tinymist",
 	"yaml-ls",
-    "prisma-ls",
+	"prisma-ls",
 })

@@ -24,6 +24,7 @@ return {
 			end,
 		},
 		input = { enabled = true },
+		image = { enabled = true },
 		-- WARN: apparently, running checkhealth twice with this enabled, causes nvim to crash
 		notifier = {
 			enabled = true,

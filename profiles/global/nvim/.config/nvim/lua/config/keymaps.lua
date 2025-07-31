@@ -75,7 +75,7 @@ lsp.on_attach(function(client, bufnr)
 		utils.map("n", "<localleader>gD", vim.lsp.buf.declaration, ls_opts, "goto declaration")
 	end
 
-	if client:supports_method("textDocument/definiition") then
+	if client:supports_method("textDocument/definition") then
 		utils.map("n", "<localleader>gd", "<cmd>Lspsaga goto_definition<cr>", ls_opts, "goto definition")
 		utils.map("n", "<localleader>pd", "<cmd>Lspsaga peek_definition<cr>", ls_opts, "peek definition")
 	end
@@ -144,7 +144,7 @@ lsp.on_attach(function(client, bufnr)
 		Snacks.toggle.words():map("<localleader>uw")
 	end
 
-	if client:supports_method("textDocument/inlayHints") then
+	if client:supports_method("textDocument/inlayHint") then
 		Snacks.toggle.inlay_hints():map("<localleader>uh")
 	end
 
