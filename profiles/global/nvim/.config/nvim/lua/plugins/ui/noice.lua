@@ -1,10 +1,8 @@
--- WARN: apparently, running checkhealth twice with this plugin enabled, causes nvim to crash(or silently exit?)
-
 --- I only use this for the fancy cmdline :p
 ---@diagnostic disable: missing-fields
 return {
 	"folke/noice.nvim",
-    enabled = true,
+	enabled = true,
 	-- version = "*",
 	dependencies = { "MunifTanjim/nui.nvim" },
 	lazy = false,
