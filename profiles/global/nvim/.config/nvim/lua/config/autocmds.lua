@@ -2,7 +2,7 @@
 local lsp = require("myutils.lsp")
 
 lsp.on_attach(function(client, bufnr)
-	if client:supports_method("textDocument/inlayHints") then
+	if client:supports_method("textDocument/inlayHint") then
 		vim.lsp.inlay_hint.enable(false)
 	end
 
