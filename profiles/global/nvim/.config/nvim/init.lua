@@ -20,7 +20,6 @@ vim.lsp.enable({
 	"bash-ls",
 	"fish-lsp",
 	-- programming langs
-	"clangd",
 	"dart-ls",
 	"jdt-ls",
 	"kotlin-ls",
