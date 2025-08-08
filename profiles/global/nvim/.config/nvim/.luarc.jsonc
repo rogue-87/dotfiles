@@ -4,12 +4,16 @@
 		"vim"
 	],
 	"runtime": {
-		"version": "LuaJIT"
+		"version": "LuaJIT",
+		"path": [
+			"lua/?.lua",
+			"lua/?/init.lua"
+		]
 	},
 	"workspace": {
 		"checkThirdParty": false,
 		"library": [
-			"$VIMRUNTIME/lua",
+			"$VIMRUNTIME",
 			"${3rd}/luv/library",
 			"${3rd}/busted/library",
 			/* nvim plugins */

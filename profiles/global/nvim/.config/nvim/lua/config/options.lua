@@ -18,7 +18,7 @@ vim.o.conceallevel = 0
 vim.o.confirm = true
 vim.o.cursorline = true
 vim.o.cursorlineopt = "number"
-vim.o.expandtab = true
+vim.o.expandtab = false
 vim.o.incsearch = true
 vim.o.number = true
 vim.o.relativenumber = true
@@ -47,6 +47,9 @@ vim.o.foldmethod = "expr"
 vim.o.foldtext = ""
 -- default to treesitter folding
 vim.o.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+
+vim.o.list = true
+vim.o.listchars = "tab: ->,space:."
 
 local signs = require("myutils.icons").diagnostics
 -- diagnostic options
