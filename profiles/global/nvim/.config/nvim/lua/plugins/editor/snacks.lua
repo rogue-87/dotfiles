@@ -1,4 +1,3 @@
-local ascii = require("myutils.ascii")
 return {
 	"folke/snacks.nvim",
 	-- version = "*",
@@ -10,7 +9,7 @@ return {
 		bigfile = { enabled = true },
 		dashboard = {
 			enabled = true,
-			preset = { header = ascii.rogue },
+			preset = { header = utils.ascii.rogue },
 		},
 		explorer = { enabled = false },
 		indent = {

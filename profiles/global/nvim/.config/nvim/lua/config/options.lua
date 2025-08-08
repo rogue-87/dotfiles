@@ -51,7 +51,7 @@ vim.o.foldexpr = "v:lua.vim.treesitter.foldexpr()"
 vim.o.list = true
 vim.o.listchars = "tab: ->,space:."
 
-local signs = require("myutils.icons").diagnostics
+local signs = utils.icons.diagnostics
 -- diagnostic options
 vim.diagnostic.config({
 	float = {

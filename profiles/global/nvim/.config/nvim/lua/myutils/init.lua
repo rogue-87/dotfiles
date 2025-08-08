@@ -1,4 +1,9 @@
-local M = {}
+local M = {
+	ascii = require("myutils.ascii"),
+	cmd = require("myutils.cmd"),
+	icons = require("myutils.icons"),
+	lsp = require("myutils.lsp"),
+}
 
 function _G.dump(...)
 	vim.print(...)

@@ -38,7 +38,6 @@ return {
 		},
 	},
 	init = function()
-		local utils = require("myutils")
 		utils.autocmd({ "ColorScheme", "VimEnter" }, {
 			callback = function()
 				local hl = vim.api.nvim_get_hl(0, { name = "lualine_c_normal" })
