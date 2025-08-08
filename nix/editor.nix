@@ -8,7 +8,7 @@ with pkgs;
   lazydocker
   lazygit
   lazysql
-  marksman
+  markdown-oxide
   shfmt
   tinymist
   typst
