@@ -21,13 +21,4 @@ function M.on_attach(on_attach)
 	})
 end
 
-M.capabilities = {}
--- not needed if nvim version >= 0.11
-function M.capabilities.get()
-	-- stylua: ignore
-	if M.has("blink.cmp") then return require("blink-cmp").get_lsp_capabilities() end
-
-	return vim.lsp.protocol.make_client_capabilities()
-end
-
 return M
