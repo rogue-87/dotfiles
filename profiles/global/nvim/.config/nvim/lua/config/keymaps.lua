@@ -47,6 +47,9 @@ utils.map("n", "<leader>qq", "<cmd>wqa<cr>", opts)
 opts.desc = "quit witout saving"
 utils.map("n", "<leader>qQ", "<cmd>qa!<cr>", opts)
 
+opts.desc = "restart editor"
+utils.map("n", "<leader>qr", "<cmd>restart<cr>", opts)
+
 opts.desc = "Lazy"
 utils.map("n", "<leader>ml", "<cmd>Lazy<cr>", opts)
 
