@@ -22,13 +22,17 @@ return {
 				hyperlinks = { enable = false },
 				images = { enable = true },
 			},
-			preview = { enable = true },
+			preview = {
+				enable = true,
+				filetypes = { "markdown", "codecompanion" },
+				ignore_buftypes = {},
+			},
 		},
 	},
 	{
 		"rogue-87/inlyne.nvim",
 		version = "*",
-        lazy = false,
+		lazy = false,
 		keys = {
 			{ "<leader>ie", "<cmd>Inlyne enable<cr>", desc = "Enable Inlyne" },
 			{ "<leader>id", "<cmd>Inlyne disable<cr>", desc = "Disable Inlyne" },

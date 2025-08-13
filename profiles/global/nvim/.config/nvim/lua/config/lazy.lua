@@ -14,7 +14,6 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 	end
 end
 vim.opt.rtp:prepend(lazypath)
-
 require("lazy").setup({
 	spec = {
 		-- essential plugins
@@ -27,12 +26,13 @@ require("lazy").setup({
 		{ import = "plugins.roslyn", enabled = false }, -- C# language support(can't bother setting that stuff up)
 		{ import = "plugins.wakatime", enabled = true }, -- track usage
 		{ import = "plugins.markdown", enabled = true }, -- view markdown files in neovim
+		{ import = "plugins.ai", enabled = true },
 		-- extra configs and plugin overrides
 		{ import = "extras.webdev" },
 	},
 	install = { colorscheme = { "nightfox" } },
 	checker = { enabled = false },
-	ui = { wrap = true, border = "none" },
+	ui = { wrap = true },
 	news = { lazy = true },
 	performance = {
 		cache = { enabled = true },

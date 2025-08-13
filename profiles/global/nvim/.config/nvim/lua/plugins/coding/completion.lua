@@ -1,5 +1,5 @@
 return {
-	"saghen/blink.cmp",
+	"Saghen/blink.cmp",
 	-- optional: provides snippets for the snippet source
 	dependencies = { "rafamadriz/friendly-snippets" },
 	-- use a release tag to download pre-built binaries
@@ -17,6 +17,7 @@ return {
 			documentation = { window = { border = "padded", scrollbar = true } },
 			list = { selection = { preselect = true, auto_insert = false } },
 			ghost_text = { enabled = true },
+			trigger = { prefetch_on_insert = false },
 		},
 
 		signature = { enabled = true },
