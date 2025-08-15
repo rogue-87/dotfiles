@@ -1,7 +1,22 @@
+local function set_python_path(path)
+	local clients = vim.lsp.get_clients({
+		bufnr = vim.api.nvim_get_current_buf(),
+		name = "pyright",
+	})
+	for _, client in ipairs(clients) do
+		if client.settings then
+			client.settings.python = vim.tbl_deep_extend("force", client.settings.python, { pythonPath = path })
+		else
+			client.config.settings =
+				vim.tbl_deep_extend("force", client.config.settings, { python = { pythonPath = path } })
+		end
+		client:notify("workspace/didChangeConfiguration", { settings = nil })
+	end
+end
 ---@type vim.lsp.Config
 return {
 	cmd = { "pyright-langserver", "--stdio" },
-	filetypes = { "python", "py" },
+	filetypes = { "python" },
 	root_markers = {
 		"pyproject.toml",
 		"setup.py",
@@ -20,40 +35,19 @@ return {
 			},
 		},
 	},
-	commands = {
-		-- description = "Organize Imports",
-		PyrightOrganizeImports = function(command, ctx)
-			local params = {
+	on_attach = function(client, bufnr)
+		vim.api.nvim_buf_create_user_command(bufnr, "LspPyrightOrganizeImports", function()
+			client:exec_cmd({
 				command = "pyright.organizeimports",
-				arguments = { vim.uri_from_bufnr(0) },
-			}
-
-			local clients = vim.lsp.get_clients({
-				bufnr = vim.api.nvim_get_current_buf(),
-				name = "pyright",
+				arguments = { vim.uri_from_bufnr(bufnr) },
 			})
-			for _, client in ipairs(clients) do
-				client:request("workspace/executeCommand", params, nil, 0)
-			end
-		end,
-		-- description = "Reconfigure pyright with the provided python path",
-		-- nargs = 1,
-		-- complete = "file",
-		PyrightSetPythonPath = function(command, ctx)
-			local clients = vim.lsp.get_clients({
-				bufnr = vim.api.nvim_get_current_buf(),
-				name = "pyright",
-			})
-
-			for _, client in ipairs(clients) do
-				if client.settings then
-					client.settings.python = vim.tbl_deep_extend("force", client.settings.python, { pythonPath = path })
-				else
-					client.config.settings =
-						vim.tbl_deep_extend("force", client.config.settings, { python = { pythonPath = path } })
-				end
-				client:notify("workspace/didChangeConfiguration", { settings = nil })
-			end
-		end,
-	},
+		end, {
+			desc = "Organize Imports",
+		})
+		vim.api.nvim_buf_create_user_command(bufnr, "LspPyrightSetPythonPath", set_python_path, {
+			desc = "Reconfigure pyright with the provided python path",
+			nargs = 1,
+			complete = "file",
+		})
+	end,
 }

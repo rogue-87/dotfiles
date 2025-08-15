@@ -141,10 +141,6 @@ utils.lsp.on_attach(function(client, bufnr)
 		Snacks.toggle.diagnostics():map("<localleader>ud")
 	end
 
-	if client:supports_method("textDocument/documentHighlight") then
-		Snacks.toggle.words():map("<localleader>uw")
-	end
-
 	if client:supports_method("textDocument/inlayHint") then
 		Snacks.toggle.inlay_hints():map("<localleader>uh")
 	end
