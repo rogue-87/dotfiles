@@ -18,7 +18,7 @@ return {
 				list_items = { enable = false },
 			},
 			markdown_inline = {
-				enable = true,
+				enable = false,
 				hyperlinks = { enable = false },
 				images = { enable = true },
 			},

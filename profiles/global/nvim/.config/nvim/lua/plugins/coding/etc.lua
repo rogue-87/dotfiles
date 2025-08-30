@@ -1,10 +1,10 @@
 return {
 	-- Auto close
-	{ "echasnovski/mini.pairs", enabled = false, version = "*", opts = {} },
+	{ "nvim-mini/mini.pairs", enabled = false, version = "*", opts = {} },
 	-- don't know what this plugin exactly does but it seems cool
-	{ "echasnovski/mini.surround", enabled = false, version = "*", opts = {} },
+	{ "nvim-mini/mini.surround", enabled = false, version = "*", opts = {} },
 	-- Moving code
-	{ "echasnovski/mini.move", version = "*", opts = {} },
+	{ "nvim-mini/mini.move", version = "*", opts = {} },
 	-- autoclose & autorename for html tags
 	{ "windwp/nvim-ts-autotag", opts = {} },
 	-- Commenting
