@@ -58,6 +58,7 @@
               rustlings
               taplo
               cargo-binstall
+              tiny
             ]
             ++ cli
             ++ editor
