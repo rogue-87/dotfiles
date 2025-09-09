@@ -21,7 +21,7 @@ require("lazy").setup({
 		{ import = "plugins.editor" }, -- fuzzy finder, filetree, scrollbar, git integration & more
 		{ import = "plugins.coding" }, -- code completion, formatting, linting, etc...
 		-- other (removable plugins)
-		{ import = "plugins.debug", enabled = false }, -- DAP support for nvim
+		{ import = "plugins.debug", enabled = true }, -- DAP support for nvim
 		{ import = "plugins.discord", enabled = true }, -- flex on discord
 		{ import = "plugins.roslyn", enabled = false }, -- C# language support(can't bother setting that stuff up)
 		{ import = "plugins.java", enabled = false }, -- Java language support
