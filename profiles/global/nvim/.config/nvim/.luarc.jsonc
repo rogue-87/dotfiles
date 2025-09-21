@@ -22,7 +22,9 @@
       "~/.local/share/nvim/lazy/snacks.nvim/",
       "~/.local/share/nvim/lazy/lspsaga.nvim/",
       "~/.local/share/nvim/lazy/nvim-treesitter/",
-      "~/.local/share/nvim/lazy/opencode.nvim/"
+      "~/.local/share/nvim/lazy/nvim-dap/",
+      "~/.local/share/nvim/lazy/nvim-dap-view/",
+      "~/.local/share/nvim/lazy/markview.nvim/"
     ]
   },
   "completion.callSnippet": "Replace"

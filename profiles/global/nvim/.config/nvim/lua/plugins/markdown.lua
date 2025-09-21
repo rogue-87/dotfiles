@@ -1,3 +1,4 @@
+---@type LazySpec
 ---@diagnostic disable: missing-fields
 return {
 	{
@@ -18,13 +19,15 @@ return {
 				list_items = { enable = false },
 			},
 			markdown_inline = {
-				enable = false,
+				enable = true,
 				hyperlinks = { enable = false },
+				inline_codes = { enable = false },
 				images = { enable = true },
 			},
 			preview = {
 				enable = true,
-				filetypes = { "markdown", "codecompanion" },
+				enable_hybrid_mode = false,
+				filetypes = { "markdown" },
 				ignore_buftypes = {},
 			},
 		},

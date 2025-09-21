@@ -16,11 +16,53 @@ local function get_args(config)
 	return config
 end
 
+local function setup_codelldb(dap)
+	dap.adapters.codelldb = {
+		type = "executable",
+		command = "codelldb",
+		-- detached = false, -- On windows you may have to uncomment this:
+	}
+
+	dap.configurations.c = {
+		{
+			name = "Launch",
+			type = "codelldb",
+			request = "launch",
+			program = function()
+				return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
+			end,
+			cwd = "${workspaceFolder}",
+			stopOnEntry = false,
+			args = {},
+		},
+	}
+	dap.configurations.cpp = dap.configurations.c
+	dap.configurations.rust = dap.configurations.c
+	dap.configurations.zig = dap.configurations.c
+end
+
+local function setup_netcoreclr(dap)
+	dap.adapters.coreclr = {
+		type = "executable",
+		command = "path/to/netcoredbg",
+		args = { "--interpreter=vscode" },
+	}
+	dap.configurations.cs = {
+		{
+			type = "coreclr",
+			name = "launch - netcoredbg",
+			request = "launch",
+			program = function()
+				return vim.fn.input("Path to dll", vim.fn.getcwd() .. "/bin/Debug/", "file")
+			end,
+		},
+	}
+end
+
 return {
 	{
 		"mfussenegger/nvim-dap",
 		dependencies = {
-			"rcarriga/nvim-dap-ui",
 			{ "theHamsta/nvim-dap-virtual-text", opts = {} },
 		},
 		init = function()
@@ -52,95 +94,32 @@ return {
 		config = function()
 			local dap = require("dap")
 
-			dap.adapters.gdb = {
-				type = "executable",
-				command = "gdb",
-				args = { "--interpreter=dap", "--eval-command", "set print pretty on" },
-			}
-
-			dap.configurations.c = {
-				{
-					name = "Launch",
-					type = "gdb",
-					request = "launch",
-					program = function()
-						return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
-					end,
-					cwd = "${workspaceFolder}",
-					stopAtBeginningOfMainSubprogram = false,
-				},
-				{
-					name = "Select and attach to process",
-					type = "gdb",
-					request = "attach",
-					program = function()
-						return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
-					end,
-					pid = function()
-						local name = vim.fn.input("Executable name (filter): ")
-						return require("dap.utils").pick_process({ filter = name })
-					end,
-					cwd = "${workspaceFolder}",
-				},
-				{
-					name = "Attach to gdbserver :1234",
-					type = "gdb",
-					request = "attach",
-					target = "localhost:1234",
-					program = function()
-						return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
-					end,
-					cwd = "${workspaceFolder}",
-				},
-			}
-			dap.configurations.cpp = dap.configurations.c
-			dap.configurations.rust = dap.configurations.c
-
-			dap.adapters.coreclr = {
-				type = "executable",
-				command = "path/to/netcoredbg",
-				args = { "--interpreter=vscode" },
-			}
-			dap.configurations.cs = {
-				{
-					type = "coreclr",
-					name = "launch - netcoredbg",
-					request = "launch",
-					program = function()
-						return vim.fn.input("Path to dll", vim.fn.getcwd() .. "/bin/Debug/", "file")
-					end,
-				},
-			}
-
-			--  setup dap config by VsCode launch.json file
-			local vscode = require("dap.ext.vscode")
-			local json = require("plenary.json")
-			vscode.json_decode = function(str)
-				return vim.json.decode(json.json_strip_comments(str))
-			end
+			setup_codelldb(dap)
+			setup_netcoreclr(dap)
 		end,
 	},
 	{
-		"rcarriga/nvim-dap-ui",
-		dependencies = { "nvim-neotest/nvim-nio" },
-        -- stylua: ignore
-        keys = {
-          { "<leader>du", function() require("dapui").toggle({ }) end, desc = "Dap UI" },
-          { "<leader>de", function() require("dapui").eval() end, desc = "Eval", mode = {"n", "v"} },
-        },
+		"igorlfs/nvim-dap-view",
+		-- stylua: ignore
+		keys = {
+			{ "<leader>du", function() require("dap-view").toggle() end, desc = "Dap View Toggle" },
+		},
+		---@module 'dap-view'
+		---@type dapview.Config
 		opts = {},
 		config = function(_, opts)
 			local dap = require("dap")
-			local dapui = require("dapui")
-			dapui.setup(opts)
+			local dapview = require("dap-view")
+
+			dapview.setup(opts)
 			dap.listeners.after.event_initialized["dapui_config"] = function()
-				dapui.open({})
+				dapview.open()
 			end
 			dap.listeners.before.event_terminated["dapui_config"] = function()
-				dapui.close({})
+				dapview.close()
 			end
 			dap.listeners.before.event_exited["dapui_config"] = function()
-				dapui.close({})
+				dapview.close()
 			end
 		end,
 	},
