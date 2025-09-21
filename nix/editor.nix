@@ -3,7 +3,6 @@
 with pkgs;
 [
   bash-language-server
-  # btop # use system package if you want gpu stats
   fish-lsp
   lazydocker
   lazygit

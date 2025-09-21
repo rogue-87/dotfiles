@@ -1,5 +1,5 @@
 {
-  description = "dotfiles flake(only for installing cli/tui tools)";
+  description = "dotfiles flake (only for installing cli/tui tools)";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
@@ -19,19 +19,23 @@
       system:
       let
         overlays = [ (import rust-overlay) ];
-        pkgs = import nixpkgs { inherit system overlays; };
+        pkgs = import nixpkgs {
+          inherit system overlays;
+          config = {
+            allowUnfree = true;
+          };
+        };
 
         # manage rust installation
         rust = pkgs.rust-bin.stable.latest.default.override {
-          # components
           extensions = [
-            "clippy" # linter
-            "rust-analyzer" # language server
-            "rust-src" # rust standard lib
+            "clippy"
+            "rust-analyzer"
+            "rust-src"
           ];
           # targets that rust can compile to
           targets = [
-            "x86_64-unknown-linux-gnu" # default
+            "x86_64-unknown-linux-gnu"
             "wasm32-unknown-unknown"
           ];
         };
@@ -50,22 +54,20 @@
           paths =
             with pkgs;
             [
-              # Nix
               nixd
               nixfmt-rfc-style
-              # Rust
               rust
               rustlings
               taplo
               cargo-binstall
               tiny
+              zig
+              zls
             ]
             ++ cli
             ++ editor
-            # ++ java
             ++ lua
             ++ luau
-            # ++ python
             ++ webdev;
         };
       }
