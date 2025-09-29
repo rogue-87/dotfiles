@@ -8,11 +8,13 @@
     flake-utils.url = "github:numtide/flake-utils"; # noice utils
     rust-overlay.url = "github:oxalica/rust-overlay"; # rustup but nixified
 
+    # Manage system config using nix on any distro
     system-manager = {
       url = "github:numtide/system-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # Run graphics accelerated programs built with Nix on any Linux distribution.
     nix-system-graphics = {
       url = "github:soupglasses/nix-system-graphics";
       inputs.nixpkgs.follows = "nixpkgs";
