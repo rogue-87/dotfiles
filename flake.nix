@@ -34,7 +34,7 @@
         pkgs = import nixpkgs { inherit system overlays; };
         pkgs-unstable = import nixpkgs-unstable { inherit system overlays; };
 
-        pkgsCollections = import ./nix/modules/packages { inherit pkgs; };
+        pkgsCollections = import ./nix/packages { inherit pkgs; };
 
         deps =
           with pkgs;
