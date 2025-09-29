@@ -4,7 +4,8 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
-    flake-utils.url = "github:numtide/flake-utils";
+
+    flake-utils.url = "github:numtide/flake-utils"; # noice utils
     rust-overlay.url = "github:oxalica/rust-overlay"; # rustup but nixified
 
     system-manager = {
@@ -23,8 +24,9 @@
       self,
       nixpkgs,
       nixpkgs-unstable,
-      rust-overlay,
       flake-utils,
+      rust-overlay,
+      system-manager,
       ...
     }:
     flake-utils.lib.eachDefaultSystem (
@@ -49,6 +51,12 @@
 
       in
       {
+        systemConfigs.default = system-manager.lib.makeSystemConfig {
+          modules = [
+            ./nix/system/default.nix
+          ];
+        };
+
         packages.default = pkgs.symlinkJoin {
           name = "dotfiles-packages";
           paths = deps;
