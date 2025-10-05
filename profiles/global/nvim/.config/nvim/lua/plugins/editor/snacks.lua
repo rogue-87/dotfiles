@@ -77,6 +77,7 @@ return {
 		{ "<c-esc>",   	function() Snacks.notifier.hide()							end,	desc = "Dismiss"  		},
 		-- Terminal
 		{ "<c-/>",      function() Snacks.terminal.toggle(nil, { interactive = true, win = { height = 5, }}) 	end, desc = "Toggle Terminal" },
+		{ "<c-_>",      function() Snacks.terminal.toggle(nil, { interactive = true, win = { height = 5, }}) 	end, desc = "Toggle Terminal" },
 		{ "<leader>rb", function() Snacks.terminal("btop", { win = { position = "float" } }) 	                end, desc = "Btop" },
 		{ "<leader>rh", function() Snacks.terminal("htop", { win = { position = "float" } }) 	                end, desc = "Htop" },
 		{ "<leader>rg", function() Snacks.lazygit() 											                end, desc = "Lazygit" },
