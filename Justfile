@@ -6,7 +6,7 @@ termux := env('PWD') + "/profiles/termux"
 # stow configs
 global_configs := "fastfetch fish git inlyne nvim opencode" 
 laptop_configs := "kitty neovide rio zed zellij"
-termux_configs := "termux-settings"
+termux_configs := "termux-settings tmux"
 
 # where to put these configs
 target := env('HOME')
