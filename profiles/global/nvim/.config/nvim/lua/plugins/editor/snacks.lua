@@ -23,7 +23,7 @@ return {
 			end,
 		},
 		input = { enabled = true },
-		image = { enabled = true },
+		image = { enabled = true, math = { enabled = false } },
 		notifier = {
 			enabled = true,
 			-- INFO: disable if you want to customize the notifier

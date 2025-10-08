@@ -12,4 +12,16 @@ return {
 		},
 		opts = {},
 	},
+	{
+
+		"chomosuke/typst-preview.nvim",
+		lazy = false,
+		version = "*",
+		opts = {
+			dependencies_bin = {
+				["tinymist"] = nil,
+				["websocat"] = nil,
+			},
+		},
+	},
 }

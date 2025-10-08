@@ -5,6 +5,8 @@ return {
 	{ "nvim-mini/mini.surround", enabled = false, version = "*", opts = {} },
 	-- Moving code
 	{ "nvim-mini/mini.move", version = "*", opts = {} },
+	-- noice diffs
+	{ "nvim-mini/mini.diff", version = "*", opts = {} },
 	-- autoclose & autorename for html tags
 	{ "windwp/nvim-ts-autotag", opts = {} },
 	-- Commenting

@@ -14,6 +14,7 @@ return {
 			nix = { "nixfmt" },
 			python = { "ruff_format", lsp_format = "fallback" },
 			rust = { "rustfmt", lsp_format = "fallback" },
+			typst = { "typstyle", lsp_format = "fallback" },
 			xml = { "xmllint" },
 			yaml = { "prettierd" },
 		},
