@@ -11,5 +11,7 @@ with pkgs;
   shfmt
   tinymist
   typst
+  typstyle
+  websocat
   yaml-language-server
 ]
