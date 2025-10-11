@@ -26,7 +26,7 @@ require("lazy").setup({
 		{ import = "plugins.roslyn", enabled = false }, -- C# language support(can't bother setting that stuff up)
 		{ import = "plugins.java", enabled = false }, -- Java language support
 		{ import = "plugins.wakatime", enabled = true }, -- track usage
-		{ import = "plugins.markdown", enabled = true }, -- view markdown files in neovim
+		{ import = "plugins.notes", enabled = true }, -- note taking in neovim
 		{ import = "plugins.ai", enabled = true },
 		-- extra configs and plugin overrides
 		{ import = "extras.webdev" },
