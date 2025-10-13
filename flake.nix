@@ -34,15 +34,13 @@
             nixd
             nixfmt-rfc-style
             tiny
-            zig
-            zls
           ]
           ++ pkgsCollections;
 
       in
       {
         packages.default = pkgs.symlinkJoin {
-          name = "dotfiles-packages";
+          name = "dotfiles";
           paths = deps;
         };
       }

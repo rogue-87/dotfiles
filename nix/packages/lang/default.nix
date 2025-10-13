@@ -1,13 +1,15 @@
 { pkgs, ... }:
 let
-  javaPackages = import ./java.nix { inherit pkgs; };
-  luaPackages = import ./lua.nix { inherit pkgs; };
-  luauPackages = import ./luau.nix { inherit pkgs; };
-  pythonPackages = import ./python.nix { inherit pkgs; };
-  rustPackages = import ./rust.nix {inherit pkgs;};
+  java = import ./java.nix { inherit pkgs; };
+  lua = import ./lua.nix { inherit pkgs; };
+  luau = import ./luau.nix { inherit pkgs; };
+  python = import ./python.nix { inherit pkgs; };
+  rust = import ./rust.nix { inherit pkgs; };
+  zig = import ./zig.nix { inherit pkgs; };
 in
-  javaPackages
-  ++ luaPackages
-  ++ luauPackages
-  ++ pythonPackages
-  ++ rustPackages
+  java
+  ++ lua
+  ++ luau
+  ++ python
+  ++ rust
+  ++ zig
