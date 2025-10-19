@@ -27,7 +27,7 @@ require("lazy").setup({
 		{ import = "plugins.java", enabled = false }, -- Java language support
 		{ import = "plugins.wakatime", enabled = true }, -- track usage
 		{ import = "plugins.notes", enabled = true }, -- note taking in neovim
-		{ import = "plugins.ai", enabled = true },
+		{ import = "plugins.ai", enabled = true }, -- I kinda regret this
 		-- extra configs and plugin overrides
 		{ import = "extras.webdev" },
 	},
