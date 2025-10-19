@@ -11,7 +11,21 @@ return {
 			enabled = true,
 			preset = { header = utils.ascii.rogue },
 		},
-		explorer = { enabled = false },
+		explorer = { enabled = true, replace_netrw = true },
+		picker = {
+			enabled = true,
+			sources = {
+				explorer = {
+					layout = {
+						preset = "sidebar",
+						layout = {
+							width = 0.28,
+							position = "right",
+						},
+					},
+				},
+			},
+		},
 		indent = {
 			enabled = true,
 			animate = { enabled = false },
@@ -31,7 +45,6 @@ return {
 			top_down = false,
 			margin = { top = 0, right = 0, bottom = 0 },
 		},
-		picker = { enabled = true },
 		quickfile = { enabled = true },
 		scope = { enabled = true },
 		scroll = { enabled = false },
@@ -68,6 +81,9 @@ return {
 		{ "<leader>sh", function() Snacks.picker.help() 		end, desc = "Help Pages" },
 		{ "<leader>si", function() Snacks.picker.icons() 		end, desc = "Icons" },
 		{ "<leader>sl", function() Snacks.picker.loclist() 		end, desc = "Location List" },
+		-- Explorer
+		{ "<leader>e",  function() Snacks.explorer.open() 		end, desc = "explore" },
+		{ "<leader>\\", function() Snacks.explorer.reveal() 	end, desc = "reveal file location in Filetree" },
 		-- Notifier
 		{ "<leader>n", "",																	desc = "notifications"	},
 		{ "<leader>nh",	function() Snacks.notifier.show_history()					end,	desc = "History"		},
