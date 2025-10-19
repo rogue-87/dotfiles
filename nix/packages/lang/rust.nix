@@ -21,4 +21,6 @@ with pkgs;
   rustlings
   cargo-binstall
   taplo
+  pkg-config
+  openssl
 ]
