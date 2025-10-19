@@ -1,14 +1,9 @@
 {
   "$schema": "https://raw.githubusercontent.com/LuaLS/vscode-lua/master/setting/schema.json",
-  "diagnostics.globals": [
-    "vim"
-  ],
+  "diagnostics.globals": ["vim"],
   "runtime": {
     "version": "LuaJIT",
-    "path": [
-      "lua/?.lua",
-      "lua/?/init.lua"
-    ]
+    "path": ["lua/?.lua", "lua/?/init.lua"]
   },
   "workspace": {
     "checkThirdParty": false,
@@ -16,7 +11,7 @@
       "$VIMRUNTIME",
       "${3rd}/luv/library",
       "${3rd}/busted/library",
-      /* nvim plugins */
+
       "~/.local/share/nvim/lazy/lazy.nvim/",
       "~/.local/share/nvim/lazy/blink.cmp/",
       "~/.local/share/nvim/lazy/snacks.nvim/",
