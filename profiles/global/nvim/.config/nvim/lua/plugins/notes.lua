@@ -38,16 +38,13 @@ return {
 				markdown = {
 					enable = true,
 					tables = { enable = false },
-					code_blocks = {
-						enable = true,
-						style = "block",
-						label_direction = "right",
-						sign = true,
-						pad_amount = 2,
-					},
+					code_blocks = { enable = true, style = "block" },
+					list_items = { enable = false },
 				},
 				markdown_inline = {
 					enable = true,
+					checkboxes = { enable = false },
+					entities = { enable = false },
 				},
 			}
 		end,
