@@ -142,6 +142,8 @@ return {
 				Snacks.toggle.scroll():map("<leader>uS")
 				Snacks.toggle.treesitter():map("<leader>ut")
 				Snacks.toggle.words():map("<localleader>uw")
+				Snacks.toggle.profiler():map("<leader>pp")
+				Snacks.toggle.profiler_highlights():map("<leader>ph")
 			end,
 		})
 	end,

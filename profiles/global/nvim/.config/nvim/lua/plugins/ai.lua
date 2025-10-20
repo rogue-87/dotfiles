@@ -8,6 +8,7 @@ return {
 	---@type opencode.Opts
 	opts = {},
 	keys = {
+		{ "<leader>o", "", desc = "Opencode" },
 		{
 			"<leader>oA",
 			function()

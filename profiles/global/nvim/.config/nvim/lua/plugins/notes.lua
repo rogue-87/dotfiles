@@ -6,6 +6,7 @@ return {
 		version = "*",
 		lazy = false,
 		keys = {
+			{ "<leader>i", "", desc = "Inlyne" },
 			{ "<leader>ie", "<cmd>Inlyne enable<cr>", desc = "Enable Inlyne" },
 			{ "<leader>id", "<cmd>Inlyne disable<cr>", desc = "Disable Inlyne" },
 			{ "<leader>it", "<cmd>Inlyne toggle<cr>", desc = "Toggle Inlyne" },

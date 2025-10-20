@@ -13,6 +13,7 @@ return {
 		spec = {
 			{ "<leader>f", desc = "file/find" },
 			{ "<leader>m", desc = "manage", icon = { icon = "", color = "grey" } },
+			{ "<leader>p", desc = "profiler", icon = { icon = "󰓅", color = "grey" } },
 			{ "<leader>r", desc = "run", icon = { icon = "", color = "red" } },
 			{ "<leader>s", desc = "search", icon = { icon = "", color = "orange" } },
 			{ "<leader>t", desc = "treesitter", icon = { icon = "", color = "green" } },
