@@ -63,6 +63,10 @@ utils.map("n", "<C-.>", "<cmd>+tabmove<cr>", opts)
 -- NOTE: LSP related mappings
 utils.lsp.on_attach(function(client, bufnr)
 	local ls_opts = { buffer = bufnr }
+	if client == nil then
+		vim.notify("Couldn't setup language server related keymaps", vim.log.levels.ERROR)
+		return
+	end
 
 	if client:supports_method("textDocument/hover") then
 		utils.map("n", "K", vim.lsp.buf.hover, ls_opts, "hover info")
