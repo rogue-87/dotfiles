@@ -1,87 +1,72 @@
 ---@type LazySpec
 return {
 	"NickvanDyke/opencode.nvim",
+	lazy = false,
 	dependencies = {
 		-- Recommended for better prompt input, and required to use opencode.nvim's embedded terminal — otherwise optional
 		{ "folke/snacks.nvim", opts = { input = { enabled = true } } },
 	},
-	---@type opencode.Opts
-	opts = {},
+	config = function()
+		---@type opencode.Opts
+		vim.g.opencode_opts = {
+			provider = {
+				enabled = "snacks",
+				snacks = {}
+			},
+		}
+
+		-- Required for `opts.auto_reload`.
+		vim.o.autoread = true
+	end,
 	keys = {
 		{ "<leader>o", "", desc = "Opencode" },
 		{
-			"<leader>oA",
+			"<leader>oa",
 			function()
-				require("opencode").ask()
+				require("opencode").ask("@this: ", { submit = true })
 			end,
 			desc = "Ask opencode",
+			mode = { "n", "x" },
 		},
 		{
-			"<leader>oa",
+			"<leader>oe",
 			function()
-				require("opencode").ask("@cursor: ")
+				require("opencode").select()
 			end,
-			desc = "Ask opencode about this",
-			mode = "n",
+			desc = "Execute opencode action…",
+			mode = { "n", "x" },
 		},
 		{
-			"<leader>oa",
+			"<leader>op",
 			function()
-				require("opencode").ask("@selection: ")
+				require("opencode").prompt("@this")
 			end,
-			desc = "Ask opencode about selection",
-			mode = "v",
+			desc = "Add to opencode",
+			mode = { "n", "x" },
 		},
 		{
 			"<leader>ot",
 			function()
 				require("opencode").toggle()
 			end,
-			desc = "Toggle embedded opencode",
+			desc = "Toggle opencode",
+			mode = { "n", "t" },
 		},
 		{
-			"<leader>on",
+			"<leader>osu",
 			function()
-				require("opencode").command("session_new")
+				require("opencode").command("session.half.page.up")
 			end,
-			desc = "New session",
+			desc = "opencode half page up",
+			mode = "n",
 		},
 		{
-			"<leader>oy",
+			"<leader>osd",
 			function()
-				require("opencode").command("messages_copy")
+				require("opencode").command("session.half.page.down")
 			end,
-			desc = "Copy last message",
-		},
-		{
-			"<S-C-u>",
-			function()
-				require("opencode").command("messages_half_page_up")
-			end,
-			desc = "Scroll messages up",
-		},
-		{
-			"<S-C-d>",
-			function()
-				require("opencode").command("messages_half_page_down")
-			end,
-			desc = "Scroll messages down",
-		},
-		{
-			"<leader>op",
-			function()
-				require("opencode").select_prompt()
-			end,
-			desc = "Select prompt",
-			mode = { "n", "v" },
-		},
-		-- Example: keymap for custom prompt
-		{
-			"<leader>oe",
-			function()
-				require("opencode").prompt("Explain @cursor and its context")
-			end,
-			desc = "Explain code near cursor",
+			desc = "opencode half page down",
+			mode = "n",
 		},
 	},
 }
