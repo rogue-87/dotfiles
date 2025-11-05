@@ -1,6 +1,6 @@
 return {
 	"folke/snacks.nvim",
-	-- version = "*",
+	version = "*",
 	priority = 1000,
 	lazy = false,
 	---@module "snacks"
@@ -11,7 +11,7 @@ return {
 			enabled = true,
 			preset = { header = utils.ascii.rogue },
 		},
-		explorer = { enabled = true, replace_netrw = true },
+		explorer = { enabled = true, replace_netrw = true, trash = true },
 		picker = {
 			enabled = true,
 			sources = {
@@ -37,7 +37,7 @@ return {
 			end,
 		},
 		input = { enabled = true },
-		image = { enabled = true, math = { enabled = false } },
+		image = { enabled = false, math = { enabled = false } },
 		notifier = {
 			enabled = true,
 			-- INFO: disable if you want to customize the notifier
@@ -53,6 +53,8 @@ return {
 
 		styles = {
 			notification = {
+				title_pos = "center",
+				footer_pos = "center",
 				backdrop = false,
 				border = "none",
 				focusable = false,
