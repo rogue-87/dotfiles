@@ -11,9 +11,6 @@ require("config.lazy")
 -- choose colorscheme
 vim.cmd("colorscheme nightfox")
 
--- prepend mise shims to PATH
-vim.env.PATH = vim.env.HOME .. "/.local/share/mise/shims:" .. vim.env.PATH
-
 -- language server configs to enable
 vim.lsp.enable({
 	-- shell langs
