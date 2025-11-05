@@ -29,7 +29,7 @@ vim.lsp.enable({
 	"zls",
 	-- other
 	"json-ls",
-	"markdown-oxide",
+	"marksman",
 	"taplo",
 	"tinymist",
 	"yaml-ls",

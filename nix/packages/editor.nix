@@ -4,7 +4,7 @@ with pkgs;
 [
   bash-language-server
   fish-lsp
-  markdown-oxide
+  marksman
   shfmt
   tinymist
   typst
