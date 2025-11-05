@@ -1,20 +1,5 @@
 local M = {}
 
----@param bufnr integer
----@param client vim.lsp.Client
-local function buf_cache(bufnr, client)
-	local params = {
-		command = "deno.cache",
-		arguments = { {}, vim.uri_from_bufnr(bufnr) },
-	}
-	client:request("workspace/executeCommand", params, function(err, _result, ctx)
-		if err then
-			local uri = ctx.params.arguments[2]
-			vim.notify("cache command failed for " .. vim.uri_to_fname(uri), vim.log.levels.ERROR)
-		end
-	end, bufnr)
-end
-
 ---@param uri string
 ---@param res? any
 ---@param client vim.lsp.Client
@@ -98,16 +83,21 @@ function M.setup()
 			["textDocument/typeDefinition"] = denols_handler,
 			["textDocument/references"] = denols_handler,
 		},
-		commands = {
-			-- description = "Cache a module and all of its dependencies."
-			DenolsCache = function(command, ctx)
-				local clients = vim.lsp.get_clients({ bufnr = 0, name = "denols" })
-
-				if #clients > 0 then
-					buf_cache(0, clients[#clients])
-				end
-			end,
-		},
+		on_attach = function(client, bufnr)
+			vim.api.nvim_buf_create_user_command(bufnr, "LspDenolsCache", function()
+				client:exec_cmd({
+					command = "deno.cache",
+					arguments = { {}, vim.uri_from_bufnr(bufnr) },
+				}, { bufnr = bufnr }, function(err, _, ctx)
+					if err then
+						local uri = ctx.params.arguments[2]
+						vim.notify("cache command failed for" .. vim.uri_to_fname(uri), vim.log.levels.ERROR)
+					end
+				end)
+			end, {
+				desc = "Cache a module and all of its dependencies.",
+			})
+		end,
 	})
 
 	vim.lsp.enable("denols")
