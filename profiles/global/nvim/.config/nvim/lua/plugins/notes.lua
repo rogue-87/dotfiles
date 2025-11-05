@@ -31,10 +31,11 @@ return {
 		lazy = false,
 		dependencies = { "saghen/blink.cmp" },
 		opts = function()
-			-- too lazy to properly configure this :p
-			local spec = package.loaded["markview.spec"]
 			---@type markview.config
 			return {
+				html = { enable = false },
+				latex = { enable = false },
+				yaml = { enable = false },
 				markdown = {
 					enable = true,
 					tables = { enable = false },
