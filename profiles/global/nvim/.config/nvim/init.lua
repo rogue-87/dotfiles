@@ -21,7 +21,7 @@ vim.lsp.enable({
 	"dart-ls",
 	"jdt-ls",
 	"kotlin-ls",
-	"lua-ls",
+	"emmylua-ls",
 	"luau-lsp",
 	"nixd",
 	"pyright",
