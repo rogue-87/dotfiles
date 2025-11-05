@@ -1,12 +1,9 @@
 # stuff that I typically couple in with my nvim config
-{ pkgs, ... }:
+{ pkgs, pkgs-unstable, ... }:
 with pkgs;
 [
   bash-language-server
   fish-lsp
-  lazydocker
-  lazygit
-  lazysql
   markdown-oxide
   shfmt
   tinymist

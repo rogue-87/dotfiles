@@ -23,15 +23,13 @@
         overlays = [ (import rust-overlay) ];
         pkgs = import nixpkgs { inherit system overlays; };
         pkgs-unstable = import nixpkgs-unstable { inherit system overlays; };
-        pkgsCollections = import ./nix/packages { inherit pkgs; };
+        pkgsCollections = import ./nix/packages { inherit pkgs pkgs-unstable; };
 
         deps =
           with pkgs;
           [
             nixd
             nixfmt-rfc-style
-            tiny
-            neocmakelsp
           ]
           ++ pkgsCollections;
 
