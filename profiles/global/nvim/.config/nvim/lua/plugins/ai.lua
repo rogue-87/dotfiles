@@ -11,7 +11,7 @@ return {
 		vim.g.opencode_opts = {
 			provider = {
 				enabled = "snacks",
-				snacks = {}
+				snacks = {},
 			},
 		}
 
@@ -50,7 +50,9 @@ return {
 				require("opencode").toggle()
 			end,
 			desc = "Toggle opencode",
-			mode = { "n", "t" },
+			mode = {
+				"n", --[[ "t" ]]
+			},
 		},
 		{
 			"<leader>osu",
