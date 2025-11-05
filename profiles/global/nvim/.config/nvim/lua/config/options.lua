@@ -6,9 +6,8 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 
 -- use fish if available; otherwise, fallback to bash.
-local shell = "fish"
-local fallback_shell = "bash"
-vim.o.shell = vim.fn.exepath(shell) ~= "" and vim.fn.exepath(shell) or vim.fn.exepath(fallback_shell)
+local shell = { main = "fish", fallback = "bash" }
+vim.o.shell = vim.fn.exepath(shell.main) ~= "" and vim.fn.exepath(shell.main) or vim.fn.exepath(shell.fallback)
 
 vim.o.autoindent = true
 vim.o.autowrite = true

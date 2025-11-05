@@ -95,14 +95,14 @@ utils.lsp.on_attach(function(client, bufnr)
 	end
 
 	if client:supports_method("textDocument/documentSymbol") then
-		utils.map("n", "<localleader>ds", Snacks.picker.lsp_symbols, ls_opts, "document symbols")
+		utils.map("n", "<localleader>ds", Snacks.picker.lsp_symbols, ls_opts, "symbols")
 	end
 
 	if client:supports_method("textDocument/codeAction") then
 		utils.map({ "n", "v" }, "<localleader>ca", "<cmd>Lspsaga code_action<cr>", ls_opts, "action")
 	end
 
-	if not utils.has("conform.nvim") then
+	if not utils.has("guard.nvim") then
 		if client:supports_method("textDocument/formatting") then
 			utils.map("n", "<localleader>df", "<cmd>lua vim.lsp.buf.format({ async = true })<cr>", ls_opts, "format")
 		end
