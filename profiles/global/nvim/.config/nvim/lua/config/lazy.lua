@@ -14,6 +14,7 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 	end
 end
 vim.opt.rtp:prepend(lazypath)
+---@diagnostic disable-next-line: missing-fields, param-type-not-match
 require("lazy").setup({
 	spec = {
 		-- essential plugins
@@ -29,7 +30,7 @@ require("lazy").setup({
 		{ import = "plugins.notes", enabled = true }, -- note taking in neovim
 		{ import = "plugins.ai", enabled = true }, -- I kinda regret this
 		-- extra configs and plugin overrides
-		{ import = "extras.webdev" },
+		{ import = "extra.plugins.webdev" },
 	},
 	install = { colorscheme = { "nightfox" } },
 	checker = { enabled = false },

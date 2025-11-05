@@ -4,6 +4,7 @@ return {
 	optional = true,
 	config = function()
 		local ft = require("guard.filetype")
+
 		ft([[
 			html,
 			css,

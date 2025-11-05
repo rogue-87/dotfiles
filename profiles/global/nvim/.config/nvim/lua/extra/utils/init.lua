@@ -1,8 +1,8 @@
 local M = {
-	ascii = require("myutils.ascii"),
-	cmd = require("myutils.cmd"),
-	icons = require("myutils.icons"),
-	lsp = require("myutils.lsp"),
+	ascii = require("extra.utils.ascii"),
+	cmd = require("extra.utils.cmd"),
+	icons = require("extra.utils.icons"),
+	lsp = require("extra.utils.lsp"),
 }
 
 ---@param fn fun()
