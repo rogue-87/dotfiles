@@ -31,6 +31,7 @@
             nixd
             nixfmt-rfc-style
             tiny
+            neocmakelsp
           ]
           ++ pkgsCollections;
 
