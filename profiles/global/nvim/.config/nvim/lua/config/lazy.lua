@@ -29,8 +29,6 @@ require("lazy").setup({
 		{ import = "plugins.wakatime", enabled = true }, -- track usage
 		{ import = "plugins.notes", enabled = true }, -- note taking in neovim
 		{ import = "plugins.ai", enabled = true }, -- I kinda regret this
-		-- extra configs and plugin overrides
-		{ import = "extra.plugins.webdev" },
 	},
 	install = { colorscheme = { "nightfox" } },
 	checker = { enabled = false },

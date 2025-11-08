@@ -1,9 +1,13 @@
--- personal utils
+--  utilities & helper functions
 _G.utils = require("extra.utils")
 
 -- load vim settings(options, keymaps, etc...)
 require("config.options")
-utils.lazy_load({ "config.keymaps", "config.autocmds" })
+utils.lazy_load({
+	"config.keymaps",
+	"config.autocmds",
+	"extra.plugins.webdev",
+})
 
 -- bootstrap lazy.nvim
 require("config.lazy")
