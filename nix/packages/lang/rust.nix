@@ -6,6 +6,7 @@ let
       "clippy"
       "rust-analyzer"
       "rust-src"
+      "rust-docs"
     ];
     # targets that rust can compile to
     targets = [
@@ -14,10 +15,23 @@ let
     ];
   };
 
+  rustup-docs = pkgs.writeShellApplication {
+    name = "rustup-docs";
+    runtimeInputs = [
+      rust
+      pkgs.xdg-utils
+    ];
+    text = ''
+      #!/usr/bin/env bash
+      xdg-open "$(rustc --print sysroot)/share/doc/rust/html/index.html"
+    '';
+  };
+
 in
 with pkgs;
 [
   rust
+  rustup-docs
   rustlings
   cargo-binstall
   taplo
