@@ -7,10 +7,6 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
-  "disable_ai": true,
-  "audio": {
-    "experimental.rodio_audio": true
-  },
   "features": {
     "edit_prediction_provider": "zed"
   },
@@ -18,6 +14,7 @@
     "enabled": false,
     "model_parameters": [],
     "default_profile": "minimal",
+    "version": "2"
   },
   "buffer_font_size": 16,
   "format_on_save": "off",
