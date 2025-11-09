@@ -6,7 +6,8 @@ require("config.options")
 utils.lazy_load({
 	"config.keymaps",
 	"config.autocmds",
-	"extra.plugins.webdev",
+	"extra.collections.webdev",
+	"extra.collections.godot",
 })
 
 -- bootstrap lazy.nvim

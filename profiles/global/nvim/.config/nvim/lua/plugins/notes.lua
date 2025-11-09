@@ -49,6 +49,9 @@ return {
 				},
 			}
 		end,
+		keys = {
+			{ "<leader>um", "<cmd>Markview toggle<cr>", desc = "Toggle Markview" },
+		},
 	},
 	{ "OXY2DEV/markdoc.nvim", opts = {} },
 }
