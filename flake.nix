@@ -2,8 +2,8 @@
   description = "dotfiles flake (only for installing cli/tui tools)";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
-    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs.url = "https://flakehub.com/f/NixOS/nixpkgs/0";
+    nixpkgs-unstable.url = "https://flakehub.com/f/NixOS/nixpkgs/0.1"; # (0.1) means unstable
     flake-utils.url = "github:numtide/flake-utils"; # noice utils
     rust-overlay.url = "github:oxalica/rust-overlay"; # rustup but nixified
   };
@@ -24,21 +24,18 @@
         pkgs = import nixpkgs { inherit system overlays; };
         pkgs-unstable = import nixpkgs-unstable { inherit system overlays; };
         pkgsCollections = import ./nix/packages { inherit pkgs pkgs-unstable; };
-
-        deps =
-          with pkgs;
-          [
-            nixd
-            nixfmt-rfc-style
-            gdtoolkit_4
-          ]
-          ++ pkgsCollections;
-
       in
       {
         packages.default = pkgs.symlinkJoin {
           name = "dotfiles";
-          paths = deps;
+          paths =
+            with pkgs;
+            [
+              nixd
+              nixfmt-rfc-style
+              gdtoolkit_4
+            ]
+            ++ pkgsCollections;
         };
       }
     );
