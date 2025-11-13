@@ -102,6 +102,7 @@ return {
 		-- Other
 		{ "[[",         function() Snacks.words.jump(-vim.v.count1) 							end, desc = "Prev Reference", mode = { "n", "t" } },
 		{ "]]",         function() Snacks.words.jump(vim.v.count1) 								end, desc = "Next Reference", mode = { "n", "t" } },
+		{ "<leader>go", function() Snacks.gitbrowse()											end, desc ="Open the current file, branch, commit, or repo in a browser"},
 		{
 			"<leader>N",
 			desc = "Neovim News",
