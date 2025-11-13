@@ -14,14 +14,15 @@
     "context": "Editor  && vim_mode == normal",
     "bindings": {
       // space
-      "space e": "workspace::ToggleLeftDock",
+      "space e": "project_panel::ToggleFocus",
+      "space \\": "pane::RevealInProjectPanel",
       "space f f": "file_finder::Toggle",
       "space s c": "theme_selector::Toggle",
       "space w a": "workspace::SaveAll",
       "space w w": "workspace::Save",
       "space q q": "zed::Quit",
 
-      "\\ f": "editor::Format",
+      "\\ d f": "editor::Format",
       "\\ c a": "editor::ToggleCodeActions"
     }
   }

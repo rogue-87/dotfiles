@@ -7,6 +7,21 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+  "project_panel": {
+    "dock": "right"
+  },
+  "pane_split_direction_vertical": "right",
+  "bottom_dock_layout": "contained",
+  "preview_tabs": {
+    "enable_preview_from_file_finder": true
+  },
+  "tabs": {
+    "close_position": "right"
+  },
+  "title_bar": {
+    "show_branch_icon": true
+  },
+  "icon_theme": "Material Icon Theme",
   "disable_ai": true,
   "audio": {
     "experimental.rodio_audio": true
@@ -25,7 +40,7 @@
   "theme": {
     "mode": "system",
     "light": "One Light",
-    "dark": "Ayu Dark"
+    "dark": "One Dark"
   },
   "telemetry": {
     "diagnostics": true,
