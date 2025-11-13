@@ -25,44 +25,7 @@ function M.setup()
 		},
 	}
 
-	vim.lsp.config.css_vars = {
-		cmd = { "css-variables-language-server", "--stdio" },
-		filetypes = { "css", "scss", "less" },
-		root_markers = { "package.json", ".git" },
-		settings = {
-			cssVariables = {
-				lookupFiles = {
-					"**/*.less",
-					"**/*.scss",
-					"**/*.sass",
-					"**/*.css",
-
-					"src/lib/style/abstracts/colorscheme.css",
-					"src/lib/style/abstracts/variables.css",
-				},
-				blacklistFolders = {
-					"**/.cache",
-					"**/.DS_Store",
-					"**/.git",
-					"**/.hg",
-					"**/.next",
-					"**/.svn",
-					"**/bower_components",
-					"**/CVS",
-					"**/dist",
-					"**/node_modules",
-					"**/tests",
-					"**/tmp",
-				},
-			},
-		},
-	}
-
-	vim.lsp.enable({
-		"html",
-		"css",
-		"css_vars",
-	})
+	vim.lsp.enable({ "html", "css" })
 end
 
 return M
