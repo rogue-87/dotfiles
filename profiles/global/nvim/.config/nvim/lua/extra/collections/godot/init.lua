@@ -1,4 +1,5 @@
 require("extra.collections.godot.lsp").setup()
+require("extra.collections.godot.dap").setup()
 require("extra.collections.godot.tools").setup()
 
 local projectfile = vim.fn.getcwd() .. "/project.godot"
