@@ -26,7 +26,6 @@ require("lazy").setup({
 		{ import = "plugins.discord", enabled = true }, -- flex on discord
 		{ import = "plugins.roslyn", enabled = false }, -- C# language support(can't bother setting that stuff up)
 		{ import = "plugins.java", enabled = false }, -- Java language support
-		{ import = "plugins.wakatime", enabled = true }, -- track usage
 		{ import = "plugins.notes", enabled = true }, -- note taking in neovim
 		{ import = "plugins.ai", enabled = true }, -- I kinda regret this
 	},
