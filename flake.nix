@@ -30,6 +30,7 @@
           [
             nixd
             nixfmt-rfc-style
+            gdtoolkit_4
           ]
           ++ pkgsCollections;
 
