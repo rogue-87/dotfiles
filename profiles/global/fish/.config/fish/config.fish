@@ -3,7 +3,6 @@ if status is-interactive
     set fish_greeting
 
     # paths
-    fish_add_path ~/.wakatime
     fish_add_path ~/.cargo/bin
 
     # default editor
