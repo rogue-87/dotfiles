@@ -1,8 +1,13 @@
 -- auto-commands go here
 
 utils.lsp.on_attach(function(client, bufnr)
+	if client == nil then
+		vim.notify("Couldn't setup language server settings", vim.log.levels.ERROR)
+		return
+	end
+
 	if client:supports_method("textDocument/inlayHint") then
-		vim.lsp.inlay_hint.enable(false)
+		vim.lsp.inlay_hint.enable(true)
 	end
 
 	if client:supports_method("textDocument/codeLens") then
