@@ -39,13 +39,44 @@ return {
 				markdown = {
 					enable = true,
 					tables = { enable = false },
-					code_blocks = { enable = true, style = "block" },
+					code_blocks = { enable = false, style = "block" },
 					list_items = { enable = false },
 				},
 				markdown_inline = {
 					enable = true,
 					checkboxes = { enable = false },
 					entities = { enable = false },
+				},
+
+				preview = {
+					enable = true,
+					enable_hybrid_mode = true,
+					map_gx = true,
+					debounce = 150,
+					raw_previews = {},
+					modes = { "n", "no", "c" },
+					hybrid_modes = {},
+
+					callbacks = {
+						on_enable = function(_, wins)
+							for _, win in ipairs(wins) do
+								vim.wo[win].conceallevel = 1
+								vim.wo[win].concealcursor = "nc"
+							end
+						end,
+
+						on_disable = function(_, wins)
+							for _, win in ipairs(wins) do
+								vim.wo[win].conceallevel = 0
+								vim.wo[win].concealcursor = ""
+							end
+						end,
+
+						on_splitview_open = function(_, _, win)
+							vim.wo[win].conceallevel = 3
+							vim.wo[win].concealcursor = "n"
+						end,
+					},
 				},
 			}
 		end,

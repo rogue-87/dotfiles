@@ -7,7 +7,7 @@ utils.lsp.on_attach(function(client, bufnr)
 	end
 
 	if client:supports_method("textDocument/inlayHint") then
-		vim.lsp.inlay_hint.enable(true)
+		vim.lsp.inlay_hint.enable(false)
 	end
 
 	if client:supports_method("textDocument/codeLens") then

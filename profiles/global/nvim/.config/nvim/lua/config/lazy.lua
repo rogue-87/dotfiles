@@ -14,7 +14,7 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 	end
 end
 vim.opt.rtp:prepend(lazypath)
----@diagnostic disable-next-line: missing-fields, param-type-not-match
+---@diagnostic disable-next-line: missing-fields, param-type-mismatch
 require("lazy").setup({
 	spec = {
 		-- essential plugins

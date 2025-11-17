@@ -11,6 +11,7 @@ return {
 			auto_lint = true,
 			lint_interval = 500,
 			refresh_diagnostic = true,
+			always_save = false,
 		}
 	end,
 	config = function()
