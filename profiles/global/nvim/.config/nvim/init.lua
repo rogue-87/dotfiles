@@ -20,7 +20,6 @@ vim.cmd("colorscheme nightfox")
 vim.lsp.enable({
 	-- shell langs
 	"bash-ls",
-	"fish-lsp",
 	-- programming langs
 	"clangd",
 	"dart-ls",
@@ -37,6 +36,4 @@ vim.lsp.enable({
 	"marksman",
 	"taplo",
 	"tinymist",
-	"yaml-ls",
-	"prisma-ls",
 })
