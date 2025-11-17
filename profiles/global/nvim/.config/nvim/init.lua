@@ -1,5 +1,7 @@
 --  utilities & helper functions
 _G.utils = require("extra.utils")
+-- global settings
+_G.settings = { colorscheme = "nightfox" }
 
 -- load vim settings(options, keymaps, etc...)
 require("config.options")
@@ -14,7 +16,7 @@ utils.lazy_load({
 require("config.lazy")
 
 -- choose colorscheme
-vim.cmd("colorscheme nightfox")
+vim.cmd("colorscheme " .. settings.colorscheme)
 
 -- language server configs to enable
 vim.lsp.enable({

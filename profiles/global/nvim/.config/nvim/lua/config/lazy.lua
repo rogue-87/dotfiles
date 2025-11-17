@@ -29,7 +29,7 @@ require("lazy").setup({
 		{ import = "plugins.notes", enabled = true }, -- note taking in neovim
 		{ import = "plugins.ai", enabled = true }, -- I kinda regret this
 	},
-	install = { colorscheme = { "nightfox" } },
+	install = { colorscheme = { settings.colorscheme } },
 	checker = { enabled = false },
 	ui = { wrap = true },
 	news = { lazy = true },
