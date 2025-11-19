@@ -1,10 +1,9 @@
-{ pkgs, pkgs-unstable, ... }:
+{ pkgs, ... }:
 with pkgs;
 [
-
   act
   bat
-  du-dust
+  dust
   dua
   gitleaks
   hurl

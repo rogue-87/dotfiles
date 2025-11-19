@@ -2,28 +2,24 @@
   description = "dotfiles flake (only for installing cli/tui tools)";
 
   inputs = {
-    nixpkgs.url = "https://flakehub.com/f/NixOS/nixpkgs/0";
-    nixpkgs-unstable.url = "https://flakehub.com/f/NixOS/nixpkgs/0.1"; # (0.1) means unstable
+    # /0 for stable
+    # /0.1 for unstable
+    nixpkgs.url = "https://flakehub.com/f/NixOS/nixpkgs/0.1";
     flake-utils.url = "github:numtide/flake-utils"; # noice utils
-    rust-overlay.url = "github:oxalica/rust-overlay"; # rustup but nixified
   };
 
   outputs =
     {
       self,
       nixpkgs,
-      nixpkgs-unstable,
       flake-utils,
-      rust-overlay,
       ...
     }:
     flake-utils.lib.eachDefaultSystem (
       system:
       let
-        overlays = [ rust-overlay.overlays.default ];
-        pkgs = import nixpkgs { inherit system overlays; };
-        pkgs-unstable = import nixpkgs-unstable { inherit system overlays; };
-        pkgsCollections = import ./nix/packages { inherit pkgs pkgs-unstable; };
+        pkgs = import nixpkgs { inherit system; };
+        pkgsCollections = import ./nix/pkgs { inherit pkgs; };
       in
       {
         packages.default = pkgs.symlinkJoin {
