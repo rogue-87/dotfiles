@@ -26,6 +26,7 @@ return {
 		ft("python"):fmt("ruff")
 		ft("typst"):fmt("typstyle")
 		ft("xml"):fmt("xmllint")
+		ft("zig"):fmt("zigfmt")
 	end,
 	keys = {
 		{ "<localleader>df", "<cmd>Guard fmt<cr>", desc = "format", mode = { "n", "v" } },
