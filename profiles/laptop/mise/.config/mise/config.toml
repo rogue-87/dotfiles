@@ -1,0 +1,53 @@
+[tools]
+# rust
+rust = { version = "latest", profile = "default" }
+cargo-binstall = "latest"
+taplo = "latest"
+
+# nodejs
+node = "latest"
+
+# zig
+zig = "latest"
+zls = "latest"
+
+# cli
+bat = "latest"
+btop = "latest"
+gitleaks = "latest"
+hyperfine = "latest"
+just = "latest"
+lazygit = "latest"
+mprocs = "latest"
+ripgrep = "latest"
+tmux = "latest"
+uv = "latest"
+zoxide = "latest"
+
+# editor
+marksman = "latest"
+ruff = "latest"
+shfmt = "3.12.0"
+stylua = "latest"
+tinymist = "latest"
+typst = "latest"
+typstyle = "latest"
+fzf = "latest"
+
+# other sources. github, http, etc..
+"npm:bash-language-server" = "5.6.0"
+"npm:typescript-language-server" = "5.1.3"
+
+"github:lumen-oss/lux" = "0.20.1"
+"github:JohnnyMorganz/luau-lsp" = "1.56.2"
+"github:lune-org/lune" = "0.10.4"
+"github:Inlyne-Project/inlyne" = "latest"
+"github:adalinesimonian/gdvm" = "latest"
+
+"cargo:emmylua_check" = "latest"
+"cargo:emmylua_doc_cli" = "latest"
+"cargo:emmylua_ls" = "latest"
+"cargo:trunk" = "latest"
+
+[settings]
+experimental = false
