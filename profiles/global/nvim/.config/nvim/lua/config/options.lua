@@ -47,7 +47,7 @@ vim.o.foldtext = ""
 -- default to treesitter folding
 vim.o.foldexpr = "v:lua.vim.treesitter.foldexpr()"
 
-vim.o.list = true
+vim.o.list = false
 vim.o.listchars = "tab: ->,space:."
 
 local signs = utils.icons.diagnostics

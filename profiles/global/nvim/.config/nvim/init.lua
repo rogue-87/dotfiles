@@ -29,7 +29,6 @@ vim.lsp.enable({
 	"kotlin-ls",
 	"emmylua-ls",
 	"luau-lsp",
-	"nixd",
 	"pyright",
 	"rust-analyzer",
 	"zls",
