@@ -24,6 +24,7 @@ return {
 		ft("markdown"):fmt("prettier")
 		ft("python"):fmt("ruff")
 		ft("rust"):fmt("rustfmt")
+		ft("toml"):fmt("taplo")
 		ft("typst"):fmt("typstyle")
 		ft("xml"):fmt("xmllint")
 		ft("zig"):fmt("zigfmt")

@@ -19,7 +19,9 @@
       "$HOME/.local/share/nvim/lazy/nvim-treesitter/",
       "$HOME/.local/share/nvim/lazy/markview.nvim/",
       "$HOME/.local/share/nvim/lazy/guard.nvim/",
-      "$HOME/.local/share/nvim/lazy/opencode.nvim/"
+      "$HOME/.local/share/nvim/lazy/opencode.nvim/",
+      "$HOME/.local/share/nvim/lazy/nvim-dap/",
+      "$HOME/.local/share/nvim/lazy/roslyn.nvim/"
     ]
   }
 }

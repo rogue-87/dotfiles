@@ -2,6 +2,8 @@
 _G.utils = require("extra.utils")
 -- global settings
 _G.settings = { colorscheme = "nightfox" }
+-- Prepend mise shims to PATH
+vim.env.PATH = vim.env.HOME .. "/.local/share/mise/shims:" .. vim.env.PATH
 
 -- load vim settings(options, keymaps, etc...)
 require("config.options")
