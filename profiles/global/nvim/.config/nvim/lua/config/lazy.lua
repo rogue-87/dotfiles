@@ -23,13 +23,14 @@ require("lazy").setup({
 		{ import = "plugins.coding" }, -- code completion, formatting, linting, etc...
 		-- other (removable plugins)
 		{ import = "plugins.debug", enabled = true }, -- DAP support for nvim
-		{ import = "plugins.roslyn", enabled = false }, -- C# language support(can't bother setting that stuff up)
-		{ import = "plugins.java", enabled = false }, -- Java language support
-		{ import = "plugins.notes", enabled = true }, -- note taking in neovim
-		{ import = "plugins.etc.ai", enabled = true }, -- I kinda regret this
-		{ import = "plugins.etc.discord", enabled = false }, -- flex on discord
-		{ import = "plugins.etc.exercism", enabled = false },
-		{ import = "plugins.etc.leetcode", enabled = false },
+		{ import = "plugins.roslyn", enabled = true }, -- C# language support(can't bother setting that stuff up)
+		-- 
+		{ import = "plugins.misc.ai", enabled = true }, -- I kinda regret this
+		{ import = "plugins.misc.discord", enabled = false }, -- flex on discord
+		{ import = "plugins.misc.exercism", enabled = false }, -- exercism on nvim
+		{ import = "plugins.misc.notes", enabled = true }, -- note taking in neovim
+		{ import = "plugins.misc.leetcode", enabled = false }, -- leetcode on nvim
+		{ import = "plugins.misc.otter", enabled = false },
 	},
 	install = { colorscheme = { settings.colorscheme } },
 	checker = { enabled = false },

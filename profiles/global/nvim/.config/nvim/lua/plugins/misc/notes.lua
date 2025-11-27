@@ -84,5 +84,5 @@ return {
 			{ "<leader>um", "<cmd>Markview toggle<cr>", desc = "Toggle Markview" },
 		},
 	},
-	{ "OXY2DEV/markdoc.nvim", opts = {} },
+	{ "OXY2DEV/markdoc.nvim", enabled = false, opts = {} },
 }
