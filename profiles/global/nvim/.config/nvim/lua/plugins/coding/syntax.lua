@@ -8,14 +8,14 @@ return {
 		local ts = require("nvim-treesitter")
 		ts.install({
 			-- required
-			"diff",
-			"luadoc",
-			"regex",
 			"c",
+			"diff",
 			"lua",
+			"luadoc",
 			"markdown",
 			"markdown_inline",
 			"query",
+			"regex",
 			"vim",
 			"vimdoc",
 			-- other
@@ -26,9 +26,6 @@ return {
 			"json",
 			"jsonc",
 			"just",
-			"luau",
-			"nix",
-			"prisma",
 			"rust",
 			"toml",
 			"typst",

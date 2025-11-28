@@ -94,8 +94,8 @@ return {
 		{ "<leader>nw",	function() Snacks.notifier.show_history({filter = "warn"})	end,	desc = "Warn"			},
 		{ "<c-esc>",   	function() Snacks.notifier.hide()							end,	desc = "Dismiss"  		},
 		-- Terminal
-		{ "<c-/>",      function() Snacks.terminal.toggle(nil, { interactive = true, win = { height = 5, }}) 	end, desc = "Toggle Terminal" },
-		{ "<c-_>",      function() Snacks.terminal.toggle(nil, { interactive = true, win = { height = 5, }}) 	end, desc = "Toggle Terminal" },
+		{ "<c-/>",      function() Snacks.terminal.toggle(nil, { interactive = true, win = { height = 5, }}) 	end, desc = "Toggle Terminal", mode = { "n", "t" } },
+		{ "<c-_>",      function() Snacks.terminal.toggle(nil, { interactive = true, win = { height = 5, }}) 	end, desc = "Toggle Terminal", mode = { "n", "t" } },
 		{ "<leader>rb", function() Snacks.terminal("btop", { win = { position = "float" } }) 	                end, desc = "Btop" },
 		{ "<leader>rh", function() Snacks.terminal("htop", { win = { position = "float" } }) 	                end, desc = "Htop" },
 		{ "<leader>rg", function() Snacks.lazygit() 											                end, desc = "Lazygit" },
@@ -144,7 +144,6 @@ return {
 				Snacks.toggle.option("wrap", { name = "Wrap" }):map("<leader>uw")
 				Snacks.toggle.scroll():map("<leader>uS")
 				Snacks.toggle.treesitter():map("<leader>ut")
-				Snacks.toggle.words():map("<localleader>uw")
 				Snacks.toggle.profiler():map("<leader>pp")
 				Snacks.toggle.profiler_highlights():map("<leader>ph")
 			end,

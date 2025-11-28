@@ -67,7 +67,7 @@ return {
 		opts = {
 			handlers = {
 				cursor = { enable = true },
-				gitsigns = { enable = false },
+				gitsigns = { enable = true },
 				marks = { enable = true },
 				quickfix = { enable = true },
 				diagnostic = { enable = true },
