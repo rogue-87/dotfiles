@@ -26,62 +26,15 @@ return {
 		},
 	},
 	{
-		"OXY2DEV/markview.nvim",
-		version = "*",
-		lazy = false,
-		dependencies = { "saghen/blink.cmp" },
-		opts = function()
-			---@type markview.config
-			return {
-				html = { enable = false },
-				latex = { enable = false },
-				yaml = { enable = false },
-				markdown = {
-					enable = true,
-					tables = { enable = false },
-					code_blocks = { enable = false, style = "block" },
-					list_items = { enable = false },
-				},
-				markdown_inline = {
-					enable = true,
-					checkboxes = { enable = false },
-					entities = { enable = false },
-				},
-
-				preview = {
-					enable = true,
-					enable_hybrid_mode = true,
-					map_gx = true,
-					debounce = 150,
-					raw_previews = {},
-					modes = { "n", "no", "c" },
-					hybrid_modes = {},
-
-					callbacks = {
-						on_enable = function(_, wins)
-							for _, win in ipairs(wins) do
-								vim.wo[win].conceallevel = 1
-								vim.wo[win].concealcursor = "nc"
-							end
-						end,
-
-						on_disable = function(_, wins)
-							for _, win in ipairs(wins) do
-								vim.wo[win].conceallevel = 0
-								vim.wo[win].concealcursor = ""
-							end
-						end,
-
-						on_splitview_open = function(_, _, win)
-							vim.wo[win].conceallevel = 3
-							vim.wo[win].concealcursor = "n"
-						end,
-					},
-				},
-			}
-		end,
-		keys = {
-			{ "<leader>um", "<cmd>Markview toggle<cr>", desc = "Toggle Markview" },
+		"MeanderingProgrammer/render-markdown.nvim",
+		dependencies = {
+			"nvim-treesitter/nvim-treesitter",
+			"nvim-tree/nvim-web-devicons",
+		},
+		---@module 'render-markdown'
+		---@type render.md.UserConfig
+		opts = {
+			completions = { lsp = { enabled = true } },
 		},
 	},
 	{ "OXY2DEV/markdoc.nvim", enabled = false, opts = {} },
