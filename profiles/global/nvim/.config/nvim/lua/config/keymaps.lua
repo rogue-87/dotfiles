@@ -50,9 +50,6 @@ utils.map("n", "<leader>qQ", "<cmd>qa!<cr>", opts)
 opts.desc = "restart editor"
 utils.map("n", "<leader>qr", "<cmd>restart<cr>", opts)
 
-opts.desc = "Lazy"
-utils.map("n", "<leader>ml", "<cmd>Lazy<cr>", opts)
-
 utils.map("n", "<A-n>", "<cmd>tabnew<cr>", opts)
 utils.map("n", "<A-c>", "<cmd>tabclose<cr>", opts)
 utils.map("n", "<A-.>", "<cmd>tabn<cr>", opts)
@@ -63,6 +60,26 @@ utils.map("n", "<C-.>", "<cmd>+tabmove<cr>", opts)
 -- NOTE: LSP related mappings
 utils.lsp.on_attach(function(client, bufnr)
 	local ls_opts = { buffer = bufnr }
+
+	if utils.has("which-key.nvim") then
+		local whichkey = require("which-key")
+
+		local spec = {
+			{ "<localleader>", desc = "lsp", buffer = bufnr },
+			{ "<localleader>c", desc = "code", icon = { icon = "", color = "orange" }, buffer = bufnr },
+			{ "<localleader>b", desc = "buffer", buffer = bufnr },
+			{ "<localleader>d", desc = "document", icon = { icon = "󰈙", color = "green" }, buffer = bufnr },
+			{ "<localleader>g", desc = "goto", icon = { icon = "", color = "orange" }, buffer = bufnr },
+			{ "<localleader>l", desc = "line", icon = "", buffer = bufnr },
+			{ "<localleader>p", desc = "peek", icon = { icon = "", color = "green" }, buffer = bufnr },
+			{ "<localleader>r", desc = "rename", icon = { icon = "", color = "orange" }, buffer = bufnr },
+			{ "<localleader>u", desc = "toggles", buffer = bufnr },
+			{ "<localleader>w", desc = "workspace", icon = "󱇙", buffer = bufnr },
+		}
+		---@diagnostic disable-next-line: param-type-mismatch
+		whichkey.add(spec)
+	end
+
 	if client == nil then
 		vim.notify("Couldn't setup language server related keymaps", vim.log.levels.ERROR)
 		return
@@ -73,7 +90,7 @@ utils.lsp.on_attach(function(client, bufnr)
 	end
 
 	if client:supports_method("textDocument/signatureHelp") then
-		utils.map("n", "<localleader>k", vim.lsp.buf.signature_help, ls_opts, "signature help")
+		utils.map("n", "<C-S-K>", vim.lsp.buf.signature_help, ls_opts, "signature help")
 	end
 
 	if client:supports_method("textDocument/declaration") then
@@ -131,7 +148,7 @@ utils.lsp.on_attach(function(client, bufnr)
 		utils.map("n", "<localleader>ws", Snacks.picker.lsp_workspace_symbols, ls_opts, "list workspace symbols")
 	end
 
-	if client:supports_method("textDocument/publishDiagnostic") then
+	if client:supports_method("textDocument/diagnostic") then
 		-- keymaps
 		utils.map("n", "[d", "<cmd>Lspsaga diagnostic_jump_prev<cr>", ls_opts, "goto previous diagnostics")
 		utils.map("n", "]d", "<cmd>Lspsaga diagnostic_jump_next<cr>", ls_opts, "goto next diagnostics")
@@ -154,4 +171,6 @@ utils.lsp.on_attach(function(client, bufnr)
 	utils.map("n", "<localleader>wf", function()
 		vim.notify(vim.inspect(vim.lsp.buf.list_workspace_folders()), vim.log.levels.INFO)
 	end, ls_opts, "list workspace folders")
+
+	Snacks.toggle.words():map("<localleader>uw")
 end)
