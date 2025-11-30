@@ -16,12 +16,12 @@ return {
 	end,
 	config = function()
 		local ft = require("guard.filetype")
+		local deno = require("extra.collections.webdev.deno")
 
 		ft("bash"):fmt("shfmt")
-		ft("json"):fmt("prettier")
+		ft("markdown,json,jsonc,yaml"):fmt(deno.fmt.get())
 		ft("lua"):fmt("stylua")
 		ft("luau"):fmt("stylua")
-		ft("markdown"):fmt("prettier")
 		ft("python"):fmt("ruff")
 		ft("rust"):fmt("rustfmt")
 		ft("toml"):fmt("taplo")

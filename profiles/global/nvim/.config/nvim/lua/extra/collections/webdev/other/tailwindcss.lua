@@ -1,6 +1,6 @@
-local M = {}
+local TailwindCSS = {}
 
-function M.setup()
+function TailwindCSS.setup()
 	vim.lsp.config("tailwindcss", {
 		cmd = { "tailwindcss-language-server", "--stdio" },
 		-- filetypes copied and adjusted from tailwindcss-intellisense
@@ -133,4 +133,4 @@ function M.setup()
 	vim.lsp.enable("tailwindcss")
 end
 
-return M
+return TailwindCSS

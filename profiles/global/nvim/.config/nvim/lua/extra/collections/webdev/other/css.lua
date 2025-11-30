@@ -1,19 +1,8 @@
-local M = {}
+local CSS = {}
 
-function M.setup()
-	vim.lsp.config.html = {
-		cmd = { "vscode-html-language-server", "--stdio" },
-		filetypes = { "html", "templ" },
-		root_markers = { "package.json", ".git" },
-		settings = {},
-		init_options = {
-			provideFormatter = true,
-			embeddedLanguages = { css = true, javascript = true },
-			configurationSection = { "html", "css", "javascript" },
-		},
-	}
-
-	vim.lsp.config.css = {
+CSS.lsp = {}
+function CSS.lsp.setup()
+	vim.lsp.config("css", {
 		cmd = { "vscode-css-language-server", "--stdio" },
 		filetypes = { "css", "scss", "less" },
 		init_options = { provideFormatter = true }, -- needed to enable formatting capabilities
@@ -23,9 +12,12 @@ function M.setup()
 			scss = { validate = true, lint = { unknownAtRules = "ignore" } },
 			less = { validate = true, lint = { unknownAtRules = "ignore" } },
 		},
-	}
-
-	vim.lsp.enable({ "html", "css" })
+	})
+	vim.lsp.enable("css")
 end
 
-return M
+function CSS:setup()
+	self.lsp.setup()
+end
+
+return CSS

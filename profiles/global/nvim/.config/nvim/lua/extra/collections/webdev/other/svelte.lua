@@ -1,6 +1,7 @@
-local M = {}
+local Svelte = {}
 
-function M.setup()
+Svelte.lsp = {}
+function Svelte.lsp.setup()
 	vim.lsp.config("svelte", {
 		cmd = { "svelteserver", "--stdio" },
 		filetypes = { "svelte" },
@@ -47,4 +48,8 @@ function M.setup()
 	vim.lsp.enable("svelte")
 end
 
-return M
+function Svelte:setup()
+	self.lsp.setup()
+end
+
+return Svelte

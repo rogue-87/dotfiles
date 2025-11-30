@@ -1,7 +1,8 @@
-local M = {}
+local TypescriptLS = {}
 
-function M.setup()
-	vim.lsp.config("typescript-ls", {
+---@return vim.lsp.Config
+function TypescriptLS.get()
+	return {
 		init_options = { hostInfo = "neovim" },
 		cmd = { "typescript-language-server", "--stdio" },
 		filetypes = {
@@ -82,9 +83,12 @@ function M.setup()
 				})
 			end, {})
 		end,
-	})
+	}
+end
 
+function TypescriptLS:setup()
+	vim.lsp.config("typescript-ls", self.get())
 	vim.lsp.enable("typescript-ls")
 end
 
-return M
+return TypescriptLS
