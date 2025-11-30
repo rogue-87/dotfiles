@@ -27,7 +27,6 @@ function Fmt.get()
 			local extension = extensions[vim.bo[buf].filetype]
 			return { "fmt", "-", "--ext", extension } ---@as string[]
 		end,
-		fname = true,
 		stdin = true,
 	}
 end
