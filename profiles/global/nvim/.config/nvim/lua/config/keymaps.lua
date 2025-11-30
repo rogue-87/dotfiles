@@ -156,10 +156,13 @@ utils.lsp.on_attach(function(client, bufnr)
 		--can use ++normal to show in loclist
 		utils.map("n", "<localleader>ld", "<cmd>Lspsaga show_line_diagnostics<cr>", ls_opts, "line diagnostics")
 		utils.map("n", "<localleader>bd", "<cmd>Lspsaga show_buf_diagnostics<cr>", ls_opts, "buffer diagnostics")
-		-- stylua: ignore
-		utils.map("n", "<localleader>wd", "<cmd>Lspsaga show_workspace_diagnostics<cr>", ls_opts, "workspace diagnostics")
 
 		Snacks.toggle.diagnostics():map("<localleader>ud")
+	end
+
+	if client:supports_method("workspace/diagnostic") then
+		-- stylua: ignore
+		utils.map("n", "<localleader>wd", "<cmd>Lspsaga show_workspace_diagnostics<cr>", ls_opts, "workspace diagnostics")
 	end
 
 	if client:supports_method("textDocument/inlayHint") then
