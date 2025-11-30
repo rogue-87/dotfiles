@@ -20,7 +20,8 @@ return {
 		version = "*",
 		opts = {
 			dependencies_bin = {
-				["tinymist"] = nil,
+				-- why would I need ternary operator if I could do this? xD
+				["tinymist"] = vim.fn.exepath("tinymist") ~= "" and vim.fn.exepath("tinymist") or nil,
 				["websocat"] = nil,
 			},
 		},
@@ -37,5 +38,4 @@ return {
 			completions = { lsp = { enabled = true } },
 		},
 	},
-	{ "OXY2DEV/markdoc.nvim", enabled = false, opts = {} },
 }
