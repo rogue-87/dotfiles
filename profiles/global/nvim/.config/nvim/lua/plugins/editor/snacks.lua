@@ -1,5 +1,7 @@
+---@type LazySpec
 return {
 	"folke/snacks.nvim",
+	dependencies = { "nvim-tree/nvim-web-devicons" },
 	version = "*",
 	priority = 1000,
 	lazy = false,
