@@ -1,0 +1,8 @@
+[tools]
+"cargo:trunk" = "latest"
+cargo-binstall = "latest"
+taplo = "latest"
+
+[tools.rust]
+version = "latest"
+components = "cargo,clippy,rust-src,rustc,rust-std,rustfmt,rust-analyzer"

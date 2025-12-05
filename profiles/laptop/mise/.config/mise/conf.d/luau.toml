@@ -1,0 +1,4 @@
+[tools]
+"github:JohnnyMorganz/luau-lsp" = "1.56.2"
+"github:lumen-oss/lux" = "v0.21.0"
+"github:lune-org/lune" = "0.10.4"

@@ -1,0 +1,8 @@
+[tools]
+java = "latest"
+gradle = "latest"
+
+[tools."http:jdtls"]
+checksum = "sha256:1a291a269bd88b3c4048219122961a52ec80872afbc7a3f34270b2ce77f7a14c"
+version = "1.54.0"
+url = "https://download.eclipse.org/jdtls/milestones/{{version}}/jdt-language-server-{{version}}-202511261751.tar.gz"

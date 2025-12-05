@@ -1,0 +1,4 @@
+[tools]
+lua-language-server = "3.15.0"
+stylua = "latest"
+"github:EmmyLuaLs/emmylua-analyzer-rust" = { version = "latest" }

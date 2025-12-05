@@ -1,0 +1,7 @@
+[tools]
+shfmt = "3.12.0"
+tinymist = "latest"
+typst = "latest"
+typstyle = "latest"
+lazygit = "latest"
+"github:Inlyne-Project/inlyne" = "0.5.0"
