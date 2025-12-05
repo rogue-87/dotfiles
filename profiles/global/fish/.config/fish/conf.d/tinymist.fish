@@ -1,3 +1,3 @@
-if command -q -v zoxide >/dev/null
+if command -q -v tinymist >/dev/null
 	tinymist completion fish | source
 end
