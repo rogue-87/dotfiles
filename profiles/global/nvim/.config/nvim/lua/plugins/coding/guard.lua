@@ -19,9 +19,9 @@ return {
 		local deno = require("extra.collections.webdev.deno")
 
 		ft("bash"):fmt("shfmt")
-		ft("markdown,json,jsonc,yaml"):fmt(deno.fmt.get())
 		ft("lua"):fmt("stylua")
 		ft("luau"):fmt("stylua")
+		ft("markdown,json,jsonc,yaml"):fmt(deno.fmt.get())
 		ft("python"):fmt("ruff")
 		ft("rust"):fmt("rustfmt")
 		ft("toml"):fmt("taplo")
@@ -29,7 +29,5 @@ return {
 		ft("xml"):fmt("xmllint")
 		ft("zig"):fmt("zigfmt")
 	end,
-	keys = {
-		{ "<localleader>df", "<cmd>Guard fmt<cr>", desc = "format", mode = { "n", "v" } },
-	},
+	keys = { { "<localleader>dd", "<cmd>Guard fmt<cr>", desc = "format (guard.nvim)", mode = { "n", "v" } } },
 }

@@ -1,5 +1,6 @@
 return {
 	"jmbuhr/otter.nvim",
+	version = "*",
 	dependencies = { "nvim-treesitter/nvim-treesitter" },
 	init = function()
 		vim.api.nvim_create_autocmd({ "FileType" }, {

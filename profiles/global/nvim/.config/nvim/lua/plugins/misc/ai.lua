@@ -3,18 +3,9 @@ return {
 	{
 		"NickvanDyke/opencode.nvim",
 		lazy = false,
-		dependencies = {
-			-- Recommended for better prompt input, and required to use opencode.nvim's embedded terminal — otherwise optional
-			{ "folke/snacks.nvim", opts = { input = { enabled = true } } },
-		},
 		config = function()
 			---@type opencode.Opts
-			vim.g.opencode_opts = {
-				provider = {
-					enabled = "snacks",
-					snacks = {},
-				},
-			}
+			vim.g.opencode_opts = {}
 
 			-- Required for `opts.auto_reload`.
 			vim.o.autoread = true
@@ -74,9 +65,26 @@ return {
 		},
 	},
 	{
-		"Exafunction/windsurf.nvim",
+		"monkoose/neocodeium",
 		enabled = false,
-		dependencies = { "nvim-lua/plenary.nvim", "saghen/blink.cmp" },
-		opts = {},
+		lazy = false,
+		-- stylua: ignore
+		keys = {
+			{ "<A-f>", mode = { "i" }, function() require("neocodeium").accept() end },
+			{ "<A-w>", mode = { "i" }, function() require("neocodeium").accept_word() end },
+			{ "<A-a>", mode = { "i" }, function() require("neocodeium").accept_line() end },
+			{ "<A-e>", mode = { "i" }, function() require("neocodeium").cycle_or_complete() end },
+			{ "<A-c>", mode = { "i" }, function() require("neocodeium").clear() end },
+			{ "<A-r>", mode = { "i" }, function() require("neocodeium").cycle_or_complete(-1) end },
+		},
+		opts = {
+			enabled = false,
+			filter = function(bufnr)
+				if vim.endswith(vim.api.nvim_buf_get_name(bufnr), ".env") then
+					return false
+				end
+				return true
+			end,
+		},
 	},
 }

@@ -98,21 +98,19 @@ utils.lsp.on_attach(function(client, bufnr)
 	end
 
 	if client:supports_method("textDocument/definition") then
-		utils.map("n", "<localleader>gd", "<cmd>Lspsaga goto_definition<cr>", ls_opts, "goto definition")
-		utils.map("n", "<localleader>pd", "<cmd>Lspsaga peek_definition<cr>", ls_opts, "peek definition")
+		utils.map("n", "<localleader>gd", vim.lsp.buf.definition, ls_opts, "goto definition")
 	end
 
 	if client:supports_method("textDocument/typeDefinition") then
-		utils.map("n", "<localleader>gt", "<cmd>Lspsaga goto_type_definition<cr>", ls_opts, "goto type definition")
-		utils.map("n", "<localleader>pt", "<cmd>Lspsaga peek_type_definition<cr>", ls_opts, "peek type definition")
+		utils.map("n", "<localleader>gt", vim.lsp.buf.type_definition, ls_opts, "goto type definition")
 	end
 
 	if client:supports_method("textDocument/implementation") then
-		utils.map("n", "<localleader>gi", "<cmd>Lspsaga finder imp+def<cr>", ls_opts, "goto type implementation")
+		utils.map("n", "<localleader>gi", Snacks.picker.lsp_implementations, ls_opts, "goto type implementation")
 	end
 
 	if client:supports_method("textDocument/references") then
-		utils.map("n", "<localleader>gr", "<cmd>Lspsaga finder ref<cr>", ls_opts, "goto type references")
+		utils.map("n", "<localleader>gr", Snacks.picker.lsp_references, ls_opts, "goto type references")
 	end
 
 	if client:supports_method("textDocument/documentSymbol") then
@@ -120,28 +118,32 @@ utils.lsp.on_attach(function(client, bufnr)
 	end
 
 	if client:supports_method("textDocument/codeAction") then
-		utils.map({ "n", "v" }, "<localleader>ca", "<cmd>Lspsaga code_action<cr>", ls_opts, "action")
+		utils.map({ "n", "v" }, "<localleader>ca", vim.lsp.buf.code_action, ls_opts, "action")
 	end
 
-	if not utils.has("guard.nvim") then
-		if client:supports_method("textDocument/formatting") then
-			utils.map("n", "<localleader>df", "<cmd>lua vim.lsp.buf.format({ async = true })<cr>", ls_opts, "format")
-		end
-		-- TODO: implement this keymap
-		if client:supports_method("textDocument/rangeFormatting") then
-			utils.map("v", "<localleader>df", function()
-				vim.lsp.buf.format({ async = true })
-			end, ls_opts, "range format")
-		end
+	if client:supports_method("textDocument/formatting") then
+		utils.map("n", "<localleader>df", "<cmd>lua vim.lsp.buf.format({ async = true })<cr>", ls_opts, "format")
+	end
+
+	if client:supports_method("textDocument/rangeFormatting") then
+		utils.map("v", "<localleader>df", function()
+			vim.lsp.buf.format({
+				async = true,
+				range = {
+					["start"] = vim.api.nvim_buf_get_mark(0, "<"),
+					["end"] = vim.api.nvim_buf_get_mark(0, ">"),
+				},
+			})
+		end, ls_opts, "range format")
 	end
 
 	if client:supports_method("textDocument/rename") then
-		utils.map("n", "<localleader>r", "<cmd>Lspsaga rename<cr>", ls_opts, "rename symbol")
+		utils.map("n", "<localleader>r", vim.lsp.buf.rename, ls_opts, "rename symbol")
 	end
 
 	if client:supports_method("textDocument/prepareCallHierarchy") then
-		utils.map("n", "<localleader>ci", "<cmd>Lspsaga incoming_calls<cr>", ls_opts, "incoming calls")
-		utils.map("n", "<localleader>co", "<cmd>Lspsaga outgoing_calls<cr>", ls_opts, "outgoing calls")
+		utils.map("n", "<localleader>ci", Snacks.picker.lsp_incoming_calls, ls_opts, "incoming calls")
+		utils.map("n", "<localleader>co", Snacks.picker.lsp_outgoing_calls, ls_opts, "outgoing calls")
 	end
 
 	if client:supports_method("workspace/symbol") then
@@ -150,26 +152,32 @@ utils.lsp.on_attach(function(client, bufnr)
 
 	if client:supports_method("textDocument/diagnostic") then
 		-- keymaps
-		utils.map("n", "[d", "<cmd>Lspsaga diagnostic_jump_prev<cr>", ls_opts, "goto previous diagnostics")
-		utils.map("n", "]d", "<cmd>Lspsaga diagnostic_jump_next<cr>", ls_opts, "goto next diagnostics")
+		utils.map("n", "[d", function()
+			vim.diagnostic.jump({ count = -1, float = true })
+		end, ls_opts, "goto previous diagnostics")
+
+		utils.map("n", "]d", function()
+			vim.diagnostic.jump({ count = 1, float = true })
+		end, ls_opts, "goto next diagnostics")
 
 		--can use ++normal to show in loclist
-		utils.map("n", "<localleader>ld", "<cmd>Lspsaga show_line_diagnostics<cr>", ls_opts, "line diagnostics")
-		utils.map("n", "<localleader>bd", "<cmd>Lspsaga show_buf_diagnostics<cr>", ls_opts, "buffer diagnostics")
+		utils.map("n", "<localleader>ld", vim.diagnostic.open_float, ls_opts, "line diagnostics")
+		utils.map("n", "<localleader>bd", Snacks.picker.diagnostics_buffer, ls_opts, "buffer diagnostics")
 
 		Snacks.toggle.diagnostics():map("<localleader>ud")
 	end
 
 	if client:supports_method("workspace/diagnostic") then
-		-- stylua: ignore
-		utils.map("n", "<localleader>wd", "<cmd>Lspsaga show_workspace_diagnostics<cr>", ls_opts, "workspace diagnostics")
+		utils.map("n", "<localleader>wd", Snacks.picker.diagnostics, ls_opts, "workspace diagnostics")
 	end
 
 	if client:supports_method("textDocument/inlayHint") then
 		Snacks.toggle.inlay_hints():map("<localleader>uh")
 	end
 
-	utils.map("n", "<localleader>wo", "<cmd>Lspsaga outline<cr>", ls_opts, "workspace outline")
+	if utils.has("lspsaga.nvim") then
+		utils.map("n", "<localleader>wo", "<cmd>Lspsaga outline<cr>", ls_opts, "workspace outline")
+	end
 
 	utils.map("n", "<localleader>wf", function()
 		vim.notify(vim.inspect(vim.lsp.buf.list_workspace_folders()), vim.log.levels.INFO)

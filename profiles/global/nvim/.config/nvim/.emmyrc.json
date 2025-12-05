@@ -1,9 +1,16 @@
 {
   "$schema": "https://raw.githubusercontent.com/EmmyLuaLs/emmylua-analyzer-rust/refs/heads/main/crates/emmylua_code_analysis/resources/schema.json",
-  "diagnostics": { "globals": ["vim"] },
+  "diagnostics": {
+    "globals": [
+      "vim"
+    ]
+  },
   "runtime": {
     "version": "LuaJIT",
-    "requirePattern": ["lua/?.lua", "lua/?/init.lua"]
+    "requirePattern": [
+      "lua/?.lua",
+      "lua/?/init.lua"
+    ]
   },
   "workspace": {
     "enableReindex": false,
@@ -11,7 +18,6 @@
       "$VIMRUNTIME",
       "${3rd}/luv/library",
       "${3rd}/busted/library",
-
       "$HOME/.local/share/nvim/lazy/blink.cmp/",
       "$HOME/.local/share/nvim/lazy/guard.nvim/",
       "$HOME/.local/share/nvim/lazy/lazy.nvim/",

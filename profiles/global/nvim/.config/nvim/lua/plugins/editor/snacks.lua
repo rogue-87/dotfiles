@@ -89,12 +89,12 @@ return {
 		{ "<leader>e",  function() Snacks.explorer.open() 		end, desc = "explore" },
 		{ "<leader>\\", function() Snacks.explorer.reveal() 	end, desc = "reveal file location in Filetree" },
 		-- Notifier
-		{ "<leader>n", "",																	desc = "notifications"	},
-		{ "<leader>nh",	function() Snacks.notifier.show_history()					end,	desc = "History"		},
-		{ "<leader>ne",	function() Snacks.notifier.show_history({filter = "error"})	end,	desc = "Errors"			},
-		{ "<leader>ni",	function() Snacks.notifier.show_history({filter = "info"})	end,	desc = "Info"			},
-		{ "<leader>nw",	function() Snacks.notifier.show_history({filter = "warn"})	end,	desc = "Warn"			},
-		{ "<c-esc>",   	function() Snacks.notifier.hide()							end,	desc = "Dismiss"  		},
+		{ "<leader>n", "",																					desc = "notifications"	},
+		{ "<leader>nh",	function() Snacks.notifier.show_history()									end,	desc = "History"		},
+		{ "<leader>ne",	function() Snacks.notifier.show_history({ filter = vim.log.levels.ERROR })	end,	desc = "Errors"			},
+		{ "<leader>ni",	function() Snacks.notifier.show_history({ filter = vim.log.levels.INFO })	end,	desc = "Info"			},
+		{ "<leader>nw",	function() Snacks.notifier.show_history({ filter = vim.log.levels.INFO })	end,	desc = "Warn"			},
+		{ "<c-esc>",   	function() Snacks.notifier.hide()											end,	desc = "Dismiss"  		},
 		-- Terminal
 		{ "<c-/>",      function() Snacks.terminal.toggle(nil, { interactive = true, win = { height = 5, }}) 	end, desc = "Toggle Terminal", mode = { "n", "t" } },
 		{ "<c-_>",      function() Snacks.terminal.toggle(nil, { interactive = true, win = { height = 5, }}) 	end, desc = "Toggle Terminal", mode = { "n", "t" } },
