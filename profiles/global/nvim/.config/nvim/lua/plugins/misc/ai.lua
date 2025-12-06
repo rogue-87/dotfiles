@@ -64,27 +64,4 @@ return {
 			},
 		},
 	},
-	{
-		"monkoose/neocodeium",
-		enabled = false,
-		lazy = false,
-		-- stylua: ignore
-		keys = {
-			{ "<A-f>", mode = { "i" }, function() require("neocodeium").accept() end },
-			{ "<A-w>", mode = { "i" }, function() require("neocodeium").accept_word() end },
-			{ "<A-a>", mode = { "i" }, function() require("neocodeium").accept_line() end },
-			{ "<A-e>", mode = { "i" }, function() require("neocodeium").cycle_or_complete() end },
-			{ "<A-c>", mode = { "i" }, function() require("neocodeium").clear() end },
-			{ "<A-r>", mode = { "i" }, function() require("neocodeium").cycle_or_complete(-1) end },
-		},
-		opts = {
-			enabled = false,
-			filter = function(bufnr)
-				if vim.endswith(vim.api.nvim_buf_get_name(bufnr), ".env") then
-					return false
-				end
-				return true
-			end,
-		},
-	},
 }
