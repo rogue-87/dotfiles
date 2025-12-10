@@ -2,28 +2,16 @@
 ---@diagnostic disable: missing-fields
 return {
 	{
-		"rogue-87/inlyne.nvim",
-		version = "*",
-		lazy = false,
+		"vihu/penview.nvim",
+		enabled = false,
+		build = function()
+			require("penview.build").install()
+		end,
+		ft = "markdown",
+		opts = { browser = "firefox" },
 		keys = {
-			{ "<leader>i", "", desc = "Inlyne" },
-			{ "<leader>ie", "<cmd>Inlyne enable<cr>", desc = "Enable Inlyne" },
-			{ "<leader>id", "<cmd>Inlyne disable<cr>", desc = "Disable Inlyne" },
-			{ "<leader>it", "<cmd>Inlyne toggle<cr>", desc = "Toggle Inlyne" },
-		},
-		opts = {},
-	},
-	{
-
-		"chomosuke/typst-preview.nvim",
-		lazy = false,
-		version = "*",
-		opts = {
-			dependencies_bin = {
-				-- why would I need ternary operator if I could do this? xD
-				["tinymist"] = vim.fn.exepath("tinymist") ~= "" and vim.fn.exepath("tinymist") or nil,
-				["websocat"] = nil,
-			},
+			{ "<leader>po", "<cmd>PenviewStart<cr>", desc = "[P]review [O]pen" },
+			{ "<leader>pc", "<cmd>PenviewStop<cr>", desc = "[P]review [C]lose" },
 		},
 	},
 	{
@@ -36,6 +24,19 @@ return {
 		---@type render.md.UserConfig
 		opts = {
 			completions = { lsp = { enabled = true } },
+		},
+	},
+	{
+
+		"chomosuke/typst-preview.nvim",
+		lazy = false,
+		version = "*",
+		opts = {
+			dependencies_bin = {
+				-- why would I need ternary operator if I could do this? xD
+				["tinymist"] = vim.fn.exepath("tinymist") ~= "" and vim.fn.exepath("tinymist") or nil,
+				["websocat"] = nil,
+			},
 		},
 	},
 }

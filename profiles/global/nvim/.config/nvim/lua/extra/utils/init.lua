@@ -57,13 +57,14 @@ end
 ---@param mode string|table
 ---@param lhs string
 ---@param rhs string|function
----@param opts? table
+---@param opts? vim.keymap.set.Opts
 ---@param desc? string
 function M.map(mode, lhs, rhs, opts, desc)
 	opts = opts and opts or {}
 	opts = mdesc(opts, desc)
 	vim.keymap.set(mode, lhs, rhs, opts)
 end
+
 
 --- shortcut to vim.api.nvim_create_autocmd
 M.autocmd = vim.api.nvim_create_autocmd

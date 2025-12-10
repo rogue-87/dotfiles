@@ -175,10 +175,6 @@ utils.lsp.on_attach(function(client, bufnr)
 		Snacks.toggle.inlay_hints():map("<localleader>uh")
 	end
 
-	if utils.has("lspsaga.nvim") then
-		utils.map("n", "<localleader>wo", "<cmd>Lspsaga outline<cr>", ls_opts, "workspace outline")
-	end
-
 	utils.map("n", "<localleader>wf", function()
 		vim.notify(vim.inspect(vim.lsp.buf.list_workspace_folders()), vim.log.levels.INFO)
 	end, ls_opts, "list workspace folders")
