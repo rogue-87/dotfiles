@@ -107,7 +107,7 @@ return {
 				end, opts)
 
 				opts.desc = "Set Quickfix List"
-				utils.map("n", "<leader>hq", gitsigns.setqflist, opts)
+				utils.map("n", "<leader>gq", gitsigns.setqflist, opts)
 
 				opts.desc = "Set Quickfix List All"
 				utils.map("n", "<leader>gQ", function()
