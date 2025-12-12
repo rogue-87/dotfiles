@@ -1,3 +1,4 @@
+---@diagnostic disable: missing-parameter
 -- NOTE: bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
@@ -14,7 +15,6 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 	end
 end
 vim.opt.rtp:prepend(lazypath)
----@diagnostic disable-next-line: missing-fields, param-type-mismatch
 require("lazy").setup({
 	spec = {
 		-- essential plugins
@@ -23,12 +23,9 @@ require("lazy").setup({
 		{ import = "plugins.coding" }, -- code completion, formatting, linting, etc...
 		-- other (removable plugins)
 		{ import = "plugins.debug", enabled = true }, -- DAP support for nvim
-		{ import = "plugins.misc.ai", enabled = true }, -- I kinda regret this
 		{ import = "plugins.misc.discord", enabled = false }, -- flex on discord
-		{ import = "plugins.misc.exercism", enabled = false }, -- exercism on nvim
-		{ import = "plugins.misc.leetcode", enabled = false }, -- leetcode on nvim
 		{ import = "plugins.misc.notes", enabled = true }, -- note taking in neovim
-		{ import = "plugins.misc.otter", enabled = false },
+		{ import = "plugins.misc.otter", enabled = false }, -- lsp  for code embedded in documents
 	},
 	install = { colorscheme = { settings.colorscheme } },
 	checker = { enabled = false },
