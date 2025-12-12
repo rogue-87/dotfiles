@@ -38,7 +38,6 @@ vim.lsp.enable({
 	"zls",
 	-- other
 	"json-ls",
-	"marksman",
 	"taplo",
 	"tinymist",
 })
