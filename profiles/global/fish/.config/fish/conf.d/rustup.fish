@@ -1,3 +1,3 @@
-if command -q -v mise >/dev/null
+if command -q -v rustup >/dev/null
 	source "$HOME/.cargo/env.fish"
 end

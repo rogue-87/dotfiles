@@ -4,8 +4,8 @@ laptop := env('PWD') + "/profiles/laptop"
 termux := env('PWD') + "/profiles/termux"
 
 # stow configs
-global_configs := "fastfetch fish git inlyne nvim opencode" 
-laptop_configs := "alacritty godot kitty mise neovide rio zed zellij"
+global_configs := "fastfetch fish git inlyne nvim opencode zellij" 
+laptop_configs := "alacritty godot kitty mise neovide rio zed"
 termux_configs := "termux-settings tmux"
 
 # where to put these configs
