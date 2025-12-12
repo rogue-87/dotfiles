@@ -2,7 +2,6 @@
 return {
 	"folke/which-key.nvim",
 	version = "*",
-	event = "VeryLazy",
 	---@module "which-key"
 	---@type wk.Opts
 	opts = {
@@ -16,7 +15,6 @@ return {
 			{ "<leader>p", desc = "profiler", icon = { icon = "󰓅", color = "grey" } },
 			{ "<leader>r", desc = "run", icon = { icon = "", color = "red" } },
 			{ "<leader>s", desc = "search", icon = { icon = "", color = "orange" } },
-			{ "<leader>t", desc = "treesitter", icon = { icon = "", color = "green" } },
 			{ "<leader>u", desc = "toggles" },
 			{ "<leader>w", desc = "write", icon = { icon = "" } },
 		},
