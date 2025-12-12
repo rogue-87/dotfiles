@@ -41,24 +41,6 @@ local function setup_codelldb(dap)
 	dap.configurations.zig = dap.configurations.c
 end
 
-local function setup_netcoreclr(dap)
-	dap.adapters.coreclr = {
-		type = "executable",
-		command = "path/to/netcoredbg",
-		args = { "--interpreter=vscode" },
-	}
-	dap.configurations.cs = {
-		{
-			type = "coreclr",
-			name = "launch - netcoredbg",
-			request = "launch",
-			program = function()
-				return vim.fn.input("Path to dll", vim.fn.getcwd() .. "/bin/Debug/", "file")
-			end,
-		},
-	}
-end
-
 return {
 	{
 		"mfussenegger/nvim-dap",
@@ -93,9 +75,7 @@ return {
 		},
 		config = function()
 			local dap = require("dap")
-
 			setup_codelldb(dap)
-			setup_netcoreclr(dap)
 		end,
 	},
 	{
