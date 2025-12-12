@@ -146,7 +146,6 @@ NVIM_APPNAME=rogue-87/dotfiles/profiles/global/nvim/.config/nvim nvim
 - json-ls
 - ~~lua-ls~~ emmylua-ls
 - luau-lsp
-- marksman
 - pyright
 - roslyn-ls
 - rust-analyzer

@@ -35,9 +35,6 @@ utils.map("n", "<leader>ww", "<cmd>w<cr>", opts)
 opts.desc = "write all files"
 utils.map("n", "<leader>wa", "<cmd>wa<cr>", opts)
 
-opts.desc = "nohlsearch"
-utils.map("n", "<leader>h", "<cmd>nohlsearch<cr>", opts)
-
 opts.desc = "quit/session"
 utils.map("n", "<leader>q", "", opts)
 

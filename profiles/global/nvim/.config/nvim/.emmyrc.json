@@ -22,6 +22,8 @@
       "$HOME/.local/share/nvim/lazy/gitsigns.nvim/",
       "$HOME/.local/share/nvim/lazy/guard.nvim/",
       "$HOME/.local/share/nvim/lazy/lazy.nvim/",
+      "$HOME/.local/share/nvim/lazy/markdown-plus.nvim/",
+      "$HOME/.local/share/nvim/lazy/nvim-dap-view/",
       "$HOME/.local/share/nvim/lazy/nvim-dap/",
       "$HOME/.local/share/nvim/lazy/nvim-treesitter/",
       "$HOME/.local/share/nvim/lazy/opencode.nvim/",
