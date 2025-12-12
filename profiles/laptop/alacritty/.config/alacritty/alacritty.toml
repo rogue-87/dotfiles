@@ -1,0 +1,21 @@
+[general]
+import = [
+	"~/.config/alacritty/themes/kitty.toml"
+]
+
+[window]
+dynamic_padding = true
+decorations = "Full"
+startup_mode = "Maximized"
+
+
+[font]
+normal = { family = "JetBrainsMono Nerd Font", style = "Regular" }
+size = 14.0
+
+[cursor]
+style = { shape = "Block", blinking = "Off" }
+vi_mode_style = { shape = "Beam", blinking = "On" }
+
+[terminal]
+shell = "fish"

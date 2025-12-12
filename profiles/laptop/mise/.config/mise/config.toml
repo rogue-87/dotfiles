@@ -15,6 +15,9 @@ bun = "latest"
 deno = "latest"
 opencode = "latest"
 "github:seaofvoices/darklua" = "latest"
+pandoc = "latest"
+marp-cli = "latest"
+zellij = "latest"
 
 [settings]
 cargo = { binstall = true }
